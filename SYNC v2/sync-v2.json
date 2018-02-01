@@ -758,7 +758,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"lg\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"lg\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"langue\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"langue\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -770,7 +770,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"lg\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"lg\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"langue\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"langue\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
