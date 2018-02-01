@@ -1,0 +1,409 @@
+{
+  "info": {
+    "name": "DigitalWallonia.be API V3 Documentation",
+    "_postman_id": "7bdda161-e2e9-83b5-6ff1-c9acd9649bba",
+    "description": "# Overview\nList of queries allowing the partners to access Digital Wallonia API V3 read-only<br />\nOnly partner's owned datas are availble.\n\n# Environment\nVariables in requests'urls and bodies are between double braces. Ex: {{my_token}}. You have to replace the entire string (double braces included) with your custom variables or set them in the environment if you use Postman Desktop Application\n\n# Authentication\nAccess is strictly authorized by the use of a token. You can get a token by making a post request on the /users/login endpoint with your username and password in the body's request.<br />\n<b>The time to live is 2 weeks</b>.\n\n# Error Codes\nCode | Error\n--- | --- \n401 | Authorization Required\n404 | There is no method to handle the request\n\n# Team\nFor any question contact us at [webdev@adn.be](mailto:webdev@adn.be)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "cdd23f80-185f-ebc0-c547-a32cf54715a2",
+      "name": "Authentification",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2774a2aa-7f04-254e-4859-6075f5ed3518",
+          "name": "Get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7559a654-4ab5-4e9e-aefc-78bb9512f2cc",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{v3_email}}\",\n  \"password\": \"{{v3_password}}\"\n}"
+            },
+            "url": "{{protocol}}://{{domain}}/api/users/login",
+            "description": null
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "9c33a1c5-482f-4a48-bc73-cbe947da4103",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "ee586c6b-4f8b-46a6-9da4-2ea4cdbc51f2",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "ff1f0ad2-b325-1149-a5df-39fdf555bf4c",
+      "name": "Profile",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "9a59639f-c174-e29b-2b85-50b5e4a23661",
+          "name": "List of profiles",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=3&filter[offset]=0&filter[where][slug.language]=fre&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "3",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[offset]",
+                  "value": "0",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nUsed for pagination. It's the number of records into a dataset that you want to start"
+                },
+                {
+                  "key": "filter[where][slug.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles with a slug with this value"
+                },
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2bc84376-5b3b-008a-9a33-4f8874a3c28e",
+          "name": "One profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "deco-de-reve",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "1c08a021-8397-a84e-30b3-80cab07302a7",
+      "name": "Events",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "9ac44906-c963-7675-ad1c-fe0f59e143ba",
+          "name": "List of events",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=4&filter[offset]=0&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&filter[where][startDate][lte]=2018-01-31T22:59:59.999Z&filter[where][endDate][gte]=2018-01-05T10:11:48.620Z&filter[order]=startDate%20ASC",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "4",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[offset]",
+                  "value": "0",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nUsed for pagination. It's the number of records into a dataset that you want to start"
+                },
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly events that have a title in this language. Values : \"fre\" or \"eng\""
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly events that are tagged with this value"
+                },
+                {
+                  "key": "filter[where][startDate][lte]",
+                  "value": "2018-01-31T22:59:59.999Z",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly events with this start date. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal)"
+                },
+                {
+                  "key": "filter[where][endDate][gte]",
+                  "value": "2018-01-05T10:11:48.620Z",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly events with this end date. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal)"
+                },
+                {
+                  "key": "filter[order]",
+                  "value": "startDate%20ASC",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nSpecifies how to sort the results: ascending (ASC) or descending (DESC) based on the specified property"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "350a4f58-8455-8f96-3cf4-df743490da5d",
+          "name": "One event",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?access_token={{v3_token}}&filter[where][status]=Published&filter[where][slug.slug]=top-secret-un-monde-a-decrypter&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe event that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "top-secret-un-monde-a-decrypter",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe event that has this slug"
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe event that is tagged with this value"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "a0b11415-5edb-4051-a30f-46f8a7f0db7f",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "6b8bd2fb-8e59-4667-be9d-56f70576e33b",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
