@@ -1,0 +1,2387 @@
+{
+  "info": {
+    "name": "DigitalWallonia.be API v3 - Tests",
+    "_postman_id": "9cf049c9-d4ff-44a2-e072-ceedc58fa0c7",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "1657bcd1-5cc7-9628-cd65-f51e020ae12e",
+      "name": "Auth",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "c0bfc83c-2aba-e4ab-6dc6-856fd941d312",
+          "name": "Get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fbc1c4ce-ad3c-4bdb-9d2a-f9b4c9b8334c",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id){",
+                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+                  "        postman.setNextRequest(\"Ajout d'un evenement\");",
+                  "    }else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@digitalwallonia.be\",\n  \"password\": \"v6]G(uk.NUGVohei{Ai?e2bn\"\n}"
+            },
+            "url": "{{protocol}}://{{domain}}/api/users/login",
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "dc80d471-091d-cbcf-af87-db7a0bd745d0",
+      "name": "Contact",
+      "description": null,
+      "item": []
+    },
+    {
+      "_postman_id": "ae03b61e-8736-c042-e473-d0b2f82ac156",
+      "name": "Enterprise",
+      "description": null,
+      "item": []
+    },
+    {
+      "_postman_id": "6910e5d6-aebd-40a9-8a11-16d6d55c7283",
+      "name": "Event",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "0ebf7d9a-031c-3a5c-ae7e-050f58c99c3c",
+          "name": "Ajout d'un evenement",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
+                  "tests[\"Le paramètre type est présent\"] = jsonData.type;",
+                  "tests[\"La valeur du paramètre type est Standard\"] = jsonData.type === \"Standard\";",
+                  "",
+                  "// Si le JSON comporte un paramètre id",
+                  "if (responseBody.has(\"id\")) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "    postman.setEnvironmentVariable(\"eventId\", jsonData.id);",
+                  "}",
+                  "",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"v2Id\": 786,\n  \"type\": \"Standard\",\n  \"status\": \"Published\",\n  \"startDate\": \"2017-01-19T23:00:00.000Z\",\n  \"endDate\": \"2017-01-19T23:00:00.000Z\",\n  \"day\": true,\n  \"venueAddress\": {\n    \"v2Id\": 19803,\n    \"thoroughfare\": \"Rue Saucin\",\n    \"number\": \"68\",\n    \"box\": null,\n    \"additionalInformation\": null,\n    \"postalCode\": \"5032\",\n    \"locality\": \"Gembloux\",\n    \"countryCode\": \"BE\",\n    \"coordinates\": {\n      \"lat\": 50.4991417,\n      \"lng\": 4.7257159000001\n    },\n    \"phoneNumbers\": [\n      3281249292\n    ],\n    \"faxNumbers\": [\n      3281249290\n    ],\n    \"createdAt\": \"2015-09-18T11:25:13.000Z\",\n    \"id\": \"59df50a1ba949\"\n  },\n  \"contacts\": [\n    {\n      \"v2Id\": 34317,\n      \"role\": \"agendacontact_role_personnecontact\",\n      \"firstName\": \"Francis\",\n      \"lastName\": \"Carnoy\",\n      \"emailAddresses\": [\n        \"francis.carnoy@ccw.be\"\n      ],\n      \"id\": \"59df50a1bb4ca\",\n      \"createdAt\": \"2015-09-14T09:11:36.000Z\",\n      \"updatedAt\": \"2017-10-12T09:41:51.326Z\",\n      \"images\": [\n        {\n          \"type\": \"Photo\",\n          \"container\": \"digitalwallonia-images\",\n          \"url\": \"https:\\/\\/api.digitalwallonia.be\\/v2\\/ressources\\/25814\\/carnoy\",\n          \"id\": \"59df38df4baa9\"\n        }\n      ],\n      \"profiles\": [\n        {\n          \"v2Id\": 10809,\n          \"status\": \"Pending\",\n          \"id\": \"59df50a1bc850\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Conf\\u00e9d\\u00e9ration Construction Wallonne\",\n              \"id\": \"59df46e19b9ff\"\n            },\n            {\n              \"language\": \"eng\",\n              \"text\": \"Conf\\u00e9d\\u00e9ration Construction Wallonne\",\n              \"id\": \"59df46e19ba07\"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"Conf\\u00e9d\\u00e9ration Construction Wallonne\",\n              \"id\": \"59df46e19ba0e\"\n            },\n            {\n              \"language\": \"ger\",\n              \"text\": \"Conf\\u00e9d\\u00e9ration Construction Wallonne\",\n              \"id\": \"59df46e19ba15\"\n            }\n          ],\n          \"shortTitle\": [\n            \n          ],\n          \"shortDescription\": [\n            \n          ],\n          \"longDescription\": [\n            \n          ],\n          \"images\": [\n            \n          ],\n          \"addresses\": [\n            \n          ],\n          \"contacts\": [\n            \n          ],\n          \"enterprises\": [\n            \n          ],\n          \"createdAt\": \"2017-10-12T11:23:13.776Z\",\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"confederation-construction-wallonne\",\n              \"status\": \"Published\",\n              \"createdAt\": \"2015-08-10T15:09:22.000Z\",\n              \"id\": \"59df46e19b99e\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"confederation-construction-wallonne\",\n              \"status\": \"Published\",\n              \"createdAt\": \"2015-08-10T15:09:22.000Z\",\n              \"id\": \"59df46e19b9a9\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"confederation-construction-wallonne\",\n              \"status\": \"Published\",\n              \"createdAt\": \"2015-08-10T15:09:22.000Z\",\n              \"id\": \"59df46e19b9b1\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"confederation-construction-wallonne\",\n              \"status\": \"Published\",\n              \"createdAt\": \"2015-08-10T15:09:22.000Z\",\n              \"id\": \"59df46e19b9c4\"\n            }\n          ],\n          \"tags\": [\n            \n          ],\n          \"themes\": [\n            \n          ],\n          \"urls\": [\n            \n          ]\n        }\n      ],\n      \"tags\": [\n        {\n          \"v2Id\": 103,\n          \"status\": \"Published\",\n          \"id\": \"59df373d9fb9d710b743c47d\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Smartcities 2015\",\n              \"id\": \"59df373deb2da\"\n            }\n          ],\n          \"shortDescription\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Ensemble des participants (villes, institutions et porteurs de projets) \\u00e0 la mission exploratoire \\\"SmartCities 2015\\\" du 19 octobre au 27 novembre 2015 en France, \\u00e0 Strasbourg, Issy-les-Moulineaux, Bordeaux et Nantes\",\n              \"id\": \"59df373deb2e5\"\n            }\n          ],\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"smartcities2015\",\n              \"id\": \"59df373deb2ba\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"smartcities2015\",\n              \"id\": \"59df373deb2c3\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"smartcities2015\",\n              \"id\": \"59df373deb2cb\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"smartcities2015\",\n              \"id\": \"59df373deb2d2\"\n            }\n          ],\n          \"tagBundle\": {\n            \"v2Id\": 10,\n            \"status\": \"Published\",\n            \"id\": \"59df373c9fb9d710b743c3da\",\n            \"title\": [\n              {\n                \"language\": \"fre\",\n                \"text\": \"missions et \\u00e9v\\u00e9nements\",\n                \"id\": \"59df373c49fc4\"\n              }\n            ],\n            \"shortDescription\": [\n              {\n                \"language\": \"fre\",\n                \"text\": \"missions et \\u00e9v\\u00e9nements du secteur du num\\u00e9rique\",\n                \"id\": \"59df373c49fcd\"\n              }\n            ],\n            \"slug\": [\n              {\n                \"language\": \"fre\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fa4\"\n              },\n              {\n                \"language\": \"eng\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fad\"\n              },\n              {\n                \"language\": \"dut\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fb5\"\n              },\n              {\n                \"language\": \"ger\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fbb\"\n              }\n            ],\n            \"createdAt\": \"2017-10-12T09:34:52.308Z\",\n            \"updatedAt\": \"2017-10-12T09:34:52.308Z\",\n            \"tagCategory\": {\n              \"v2Id\": 3,\n              \"status\": \"Published\",\n              \"id\": \"59df373c9fb9d710b743c3cc\",\n              \"title\": [\n                {\n                  \"language\": \"fre\",\n                  \"text\": \"communaut\\u00e9s\",\n                  \"id\": \"59df373c1cede\"\n                }\n              ],\n              \"shortDescription\": [\n                {\n                  \"language\": \"fre\",\n                  \"text\": \"Communaut\\u00e9s li\\u00e9es au d\\u00e9veloppement num\\u00e9rique de la Wallonie.  R\\u00e9pond \\u00e0 la question \\\"\\u00e0 quelle communaut\\u00e9 j'appartiens?\\\"\",\n                  \"id\": \"59df373c1cee8\"\n                }\n              ],\n              \"slug\": [\n                {\n                  \"language\": \"fre\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1ce9a\"\n                },\n                {\n                  \"language\": \"eng\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1ceab\"\n                },\n                {\n                  \"language\": \"dut\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1cebc\"\n                },\n                {\n                  \"language\": \"ger\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1cece\"\n                }\n              ],\n              \"createdAt\": \"2017-10-12T09:34:52.120Z\",\n              \"updatedAt\": \"2017-10-12T09:34:52.120Z\"\n            }\n          },\n          \"createdAt\": \"2017-10-12T09:34:53.968Z\",\n          \"updatedAt\": \"2017-10-12T09:34:53.968Z\"\n        },\n        {\n          \"v2Id\": 105,\n          \"status\": \"Hidden\",\n          \"id\": \"59df373d9fb9d710b743c47e\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Smartcities-BN 2015\",\n              \"id\": \"59df373decdb6\"\n            }\n          ],\n          \"shortDescription\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Ensemble des participants (villes, institutions et porteurs de projets) \\u00e0 la mission exploratoire \\\"SmartCities 2015\\\" du 19 octobre au 27 novembre 2015 en France, \\u00e0 Bordeaux et Nantes\",\n              \"id\": \"59df373decdbf\"\n            }\n          ],\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"smartcities-bn2015\",\n              \"id\": \"59df373decd95\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"smartcities-bn2015\",\n              \"id\": \"59df373decd9d\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"smartcities-bn2015\",\n              \"id\": \"59df373decda6\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"smartcities-bn2015\",\n              \"id\": \"59df373decdad\"\n            }\n          ],\n          \"tagBundle\": {\n            \"v2Id\": 10,\n            \"status\": \"Published\",\n            \"id\": \"59df373c9fb9d710b743c3da\",\n            \"title\": [\n              {\n                \"language\": \"fre\",\n                \"text\": \"missions et \\u00e9v\\u00e9nements\",\n                \"id\": \"59df373c49fc4\"\n              }\n            ],\n            \"shortDescription\": [\n              {\n                \"language\": \"fre\",\n                \"text\": \"missions et \\u00e9v\\u00e9nements du secteur du num\\u00e9rique\",\n                \"id\": \"59df373c49fcd\"\n              }\n            ],\n            \"slug\": [\n              {\n                \"language\": \"fre\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fa4\"\n              },\n              {\n                \"language\": \"eng\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fad\"\n              },\n              {\n                \"language\": \"dut\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fb5\"\n              },\n              {\n                \"language\": \"ger\",\n                \"slug\": \"missions\",\n                \"id\": \"59df373c49fbb\"\n              }\n            ],\n            \"createdAt\": \"2017-10-12T09:34:52.308Z\",\n            \"updatedAt\": \"2017-10-12T09:34:52.308Z\",\n            \"tagCategory\": {\n              \"v2Id\": 3,\n              \"status\": \"Published\",\n              \"id\": \"59df373c9fb9d710b743c3cc\",\n              \"title\": [\n                {\n                  \"language\": \"fre\",\n                  \"text\": \"communaut\\u00e9s\",\n                  \"id\": \"59df373c1cede\"\n                }\n              ],\n              \"shortDescription\": [\n                {\n                  \"language\": \"fre\",\n                  \"text\": \"Communaut\\u00e9s li\\u00e9es au d\\u00e9veloppement num\\u00e9rique de la Wallonie.  R\\u00e9pond \\u00e0 la question \\\"\\u00e0 quelle communaut\\u00e9 j'appartiens?\\\"\",\n                  \"id\": \"59df373c1cee8\"\n                }\n              ],\n              \"slug\": [\n                {\n                  \"language\": \"fre\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1ce9a\"\n                },\n                {\n                  \"language\": \"eng\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1ceab\"\n                },\n                {\n                  \"language\": \"dut\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1cebc\"\n                },\n                {\n                  \"language\": \"ger\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1cece\"\n                }\n              ],\n              \"createdAt\": \"2017-10-12T09:34:52.120Z\",\n              \"updatedAt\": \"2017-10-12T09:34:52.120Z\"\n            }\n          },\n          \"createdAt\": \"2017-10-12T09:34:53.974Z\",\n          \"updatedAt\": \"2017-10-12T09:34:53.974Z\"\n        },\n        {\n          \"v2Id\": 324,\n          \"status\": \"Published\",\n          \"id\": \"59df373e9fb9d710b743c494\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Digital Wallonia champions\",\n              \"id\": \"59df373e1c7d7\"\n            }\n          ],\n          \"shortDescription\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Personnes charg\\u00e9es de repr\\u00e9senter et diffuser la strat\\u00e9gie Digital Wallonia\",\n              \"id\": \"59df373e1c7e8\"\n            }\n          ],\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"dw-champions\",\n              \"id\": \"59df373e1c7a0\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"dw-champions\",\n              \"id\": \"59df373e1c7a9\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"dw-champions\",\n              \"id\": \"59df373e1c7be\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"dw-champions\",\n              \"id\": \"59df373e1c7cb\"\n            }\n          ],\n          \"tagBundle\": {\n            \"v2Id\": 5,\n            \"status\": \"Published\",\n            \"id\": \"59df373c9fb9d710b743c3d5\",\n            \"title\": [\n              {\n                \"language\": \"fre\",\n                \"text\": \"r\\u00e9seaux\",\n                \"id\": \"59df373c409a6\"\n              }\n            ],\n            \"shortDescription\": [\n              {\n                \"language\": \"fre\",\n                \"text\": \"R\\u00e9seaux reconnus li\\u00e9s \\u00e0 la Wallonie\",\n                \"id\": \"59df373c409af\"\n              }\n            ],\n            \"slug\": [\n              {\n                \"language\": \"fre\",\n                \"slug\": \"reseaux\",\n                \"id\": \"59df373c40983\"\n              },\n              {\n                \"language\": \"eng\",\n                \"slug\": \"reseaux\",\n                \"id\": \"59df373c4098c\"\n              },\n              {\n                \"language\": \"dut\",\n                \"slug\": \"reseaux\",\n                \"id\": \"59df373c40993\"\n              },\n              {\n                \"language\": \"ger\",\n                \"slug\": \"reseaux\",\n                \"id\": \"59df373c4099b\"\n              }\n            ],\n            \"createdAt\": \"2017-10-12T09:34:52.270Z\",\n            \"updatedAt\": \"2017-10-12T09:34:52.270Z\",\n            \"tagCategory\": {\n              \"v2Id\": 3,\n              \"status\": \"Published\",\n              \"id\": \"59df373c9fb9d710b743c3cc\",\n              \"title\": [\n                {\n                  \"language\": \"fre\",\n                  \"text\": \"communaut\\u00e9s\",\n                  \"id\": \"59df373c1cede\"\n                }\n              ],\n              \"shortDescription\": [\n                {\n                  \"language\": \"fre\",\n                  \"text\": \"Communaut\\u00e9s li\\u00e9es au d\\u00e9veloppement num\\u00e9rique de la Wallonie.  R\\u00e9pond \\u00e0 la question \\\"\\u00e0 quelle communaut\\u00e9 j'appartiens?\\\"\",\n                  \"id\": \"59df373c1cee8\"\n                }\n              ],\n              \"slug\": [\n                {\n                  \"language\": \"fre\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1ce9a\"\n                },\n                {\n                  \"language\": \"eng\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1ceab\"\n                },\n                {\n                  \"language\": \"dut\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1cebc\"\n                },\n                {\n                  \"language\": \"ger\",\n                  \"slug\": \"communautes\",\n                  \"id\": \"59df373c1cece\"\n                }\n              ],\n              \"createdAt\": \"2017-10-12T09:34:52.120Z\",\n              \"updatedAt\": \"2017-10-12T09:34:52.120Z\"\n            }\n          },\n          \"createdAt\": \"2017-10-12T09:34:54.123Z\",\n          \"updatedAt\": \"2017-10-12T09:34:54.123Z\"\n        }\n      ],\n      \"urls\": [\n        {\n          \"type\": \"LinkedIn\",\n          \"address\": \"https:\\/\\/www.linkedin.com\\/in\\/francis-carnoy-02794110\",\n          \"v2Id\": 24258,\n          \"id\": \"59df38df4dd37\",\n          \"createdAt\": \"2016-06-27T15:15:48+0200\"\n        }\n      ]\n    }\n  ],\n  \"createdAt\": \"2016-12-08T10:27:17.000Z\",\n  \"updatedAt\": \"2017-10-12T11:23:13.777Z\",\n  \"images\": [\n    {\n      \"type\": \"Thumbnail\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https:\\/\\/api.digitalwallonia.be\\/v2\\/ressources\\/27088\\/20170120-ctsc-rdv-nrj\",\n      \"id\": \"59df50a1b6df8\"\n    }\n  ],\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Rendez-vous de l'\\u00e9nergie\",\n      \"id\": \"59df50a1b6e18\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Int\\u00e9gration des \\u00e9nergies renouvelables dans les b\\u00e2timents \\u00e0 consommation d'\\u00e9nergie quasi-nulle (NZEB)\",\n      \"id\": \"59df50a1b6e35\"\n    }\n  ],\n  \"longDescription\": [\n    \n  ],\n  \"targetAudience\": [\n    \n  ],\n  \"price\": [\n    \n  ],\n  \"scheduleAdditionalInformation\": [\n    \n  ],\n  \"venueAdditionalInformation\": [\n    \n  ],\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"rendez-vous-de-lenergieernqzrnqetn\",\n      \"id\": \"59df50a1b6dd4\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"rendez-vous-de-lenergieqenqzrnqern\",\n      \"id\": \"59df50a1b6de0\"\n    },\n    {\n      \"language\": \"dut\",\n      \"slug\": \"rendez-vous-de-lenergieqzrbqzrenqerern\",\n      \"id\": \"59df50a1b6de8\"\n    },\n    {\n      \"language\": \"ger\",\n      \"slug\": \"rendez-vous-de-lenergiezqrhzrHZQHNZQRHN\",\n      \"id\": \"59df50a1b6df0\"\n    }\n  ],\n  \"tags\": [\n    {\n      \"v2Id\": 223,\n      \"status\": \"Hidden\",\n      \"id\": \"59df50a1b94fa\",\n      \"title\": [\n        {\n          \"language\": \"fre\",\n          \"text\": \"filtre Cluster TWEED\",\n          \"id\": \"59df373ed9101\"\n        }\n      ],\n      \"shortDescription\": [\n        {\n          \"language\": \"fre\",\n          \"text\": \"permet de lier un \\u00e9l\\u00e9ment au Cluster TWEED\",\n          \"id\": \"59df373ed910c\"\n        }\n      ],\n      \"slug\": [\n        {\n          \"language\": \"fre\",\n          \"slug\": \"filtre-cluster-tweed\",\n          \"id\": \"59df373ed90d6\"\n        },\n        {\n          \"language\": \"eng\",\n          \"slug\": \"filtre-cluster-tweed\",\n          \"id\": \"59df373ed90df\"\n        },\n        {\n          \"language\": \"dut\",\n          \"slug\": \"filtre-cluster-tweed\",\n          \"id\": \"59df373ed90e6\"\n        },\n        {\n          \"language\": \"ger\",\n          \"slug\": \"filtre-cluster-tweed\",\n          \"id\": \"59df373ed90f3\"\n        }\n      ],\n      \"tagBundle\": {\n        \"v2Id\": 23,\n        \"status\": \"Hidden\",\n        \"id\": \"59df373c9fb9d710b743c3e7\",\n        \"title\": [\n          {\n            \"language\": \"fre\",\n            \"text\": \"filtre\",\n            \"id\": \"59df373c6da97\"\n          }\n        ],\n        \"shortDescription\": [\n          {\n            \"language\": \"fre\",\n            \"text\": \"int\\u00e9r\\u00eat d'un partenaire pour un \\u00e9l\\u00e9ment\",\n            \"id\": \"59df373c6daa5\"\n          }\n        ],\n        \"slug\": [\n          {\n            \"language\": \"fre\",\n            \"slug\": \"filtre\",\n            \"id\": \"59df373c6da63\"\n          },\n          {\n            \"language\": \"eng\",\n            \"slug\": \"filtre\",\n            \"id\": \"59df373c6da75\"\n          },\n          {\n            \"language\": \"dut\",\n            \"slug\": \"filtre\",\n            \"id\": \"59df373c6da82\"\n          },\n          {\n            \"language\": \"ger\",\n            \"slug\": \"filtre\",\n            \"id\": \"59df373c6da8c\"\n          }\n        ],\n        \"createdAt\": \"2017-10-12T09:34:52.457Z\",\n        \"updatedAt\": \"2017-10-12T09:34:52.457Z\",\n        \"tagCategory\": {\n          \"v2Id\": 8,\n          \"status\": \"Hidden\",\n          \"id\": \"59df373c9fb9d710b743c3ce\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"partenaires\",\n              \"id\": \"59df373c1ecb3\"\n            }\n          ],\n          \"shortDescription\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Tags invisibles utilis\\u00e9s pour r\\u00e9pondre \\u00e0 des besoins particuliers d'un ou plusieurs partenaires\",\n              \"id\": \"59df373c1ecbc\"\n            }\n          ],\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"partenaires\",\n              \"id\": \"59df373c1ec93\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"partenaires\",\n              \"id\": \"59df373c1ec9c\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"partenaires\",\n              \"id\": \"59df373c1eca4\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"partenaires\",\n              \"id\": \"59df373c1ecab\"\n            }\n          ],\n          \"createdAt\": \"2017-10-12T09:34:52.127Z\",\n          \"updatedAt\": \"2017-10-12T09:34:52.127Z\"\n        }\n      },\n      \"createdAt\": \"2017-10-12T09:34:54.894Z\",\n      \"updatedAt\": \"2017-10-12T09:34:54.894Z\"\n    },\n    {\n      \"v2Id\": 259,\n      \"status\": \"Published\",\n      \"id\": \"59df50a1b9f59\",\n      \"title\": [\n        {\n          \"language\": \"fre\",\n          \"text\": \"Cluster TWEED\",\n          \"id\": \"59df373e14aa9\"\n        }\n      ],\n      \"shortDescription\": [\n        {\n          \"language\": \"fre\",\n          \"text\": \"Entreprises affili\\u00e9es et \\u00e9v\\u00e9nements du Cluster TWEED, r\\u00e9seau d'entreprises wallonnes du secteur du d\\u00e9veloppement durable\",\n          \"id\": \"59df373e14ab3\"\n        }\n      ],\n      \"slug\": [\n        {\n          \"language\": \"fre\",\n          \"slug\": \"tweed\",\n          \"id\": \"59df373e14a6c\"\n        },\n        {\n          \"language\": \"eng\",\n          \"slug\": \"tweed\",\n          \"id\": \"59df373e14a7c\"\n        },\n        {\n          \"language\": \"dut\",\n          \"slug\": \"tweed\",\n          \"id\": \"59df373e14a8f\"\n        },\n        {\n          \"language\": \"ger\",\n          \"slug\": \"tweed\",\n          \"id\": \"59df373e14a9c\"\n        }\n      ],\n      \"tagBundle\": {\n        \"v2Id\": 5,\n        \"status\": \"Published\",\n        \"id\": \"59df373c9fb9d710b743c3d5\",\n        \"title\": [\n          {\n            \"language\": \"fre\",\n            \"text\": \"r\\u00e9seaux\",\n            \"id\": \"59df373c409a6\"\n          }\n        ],\n        \"shortDescription\": [\n          {\n            \"language\": \"fre\",\n            \"text\": \"R\\u00e9seaux reconnus li\\u00e9s \\u00e0 la Wallonie\",\n            \"id\": \"59df373c409af\"\n          }\n        ],\n        \"slug\": [\n          {\n            \"language\": \"fre\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c40983\"\n          },\n          {\n            \"language\": \"eng\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c4098c\"\n          },\n          {\n            \"language\": \"dut\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c40993\"\n          },\n          {\n            \"language\": \"ger\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c4099b\"\n          }\n        ],\n        \"createdAt\": \"2017-10-12T09:34:52.270Z\",\n        \"updatedAt\": \"2017-10-12T09:34:52.270Z\",\n        \"tagCategory\": {\n          \"v2Id\": 3,\n          \"status\": \"Published\",\n          \"id\": \"59df373c9fb9d710b743c3cc\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"communaut\\u00e9s\",\n              \"id\": \"59df373c1cede\"\n            }\n          ],\n          \"shortDescription\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Communaut\\u00e9s li\\u00e9es au d\\u00e9veloppement num\\u00e9rique de la Wallonie.  R\\u00e9pond \\u00e0 la question \\\"\\u00e0 quelle communaut\\u00e9 j'appartiens?\\\"\",\n              \"id\": \"59df373c1cee8\"\n            }\n          ],\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1ce9a\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1ceab\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1cebc\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1cece\"\n            }\n          ],\n          \"createdAt\": \"2017-10-12T09:34:52.120Z\",\n          \"updatedAt\": \"2017-10-12T09:34:52.120Z\"\n        }\n      },\n      \"createdAt\": \"2017-10-12T09:34:54.089Z\",\n      \"updatedAt\": \"2017-10-12T09:34:54.089Z\"\n    },\n    {\n      \"v2Id\": 277,\n      \"status\": \"Published\",\n      \"id\": \"59df50a1ba934\",\n      \"title\": [\n        {\n          \"language\": \"fre\",\n          \"text\": \"REWallonia\",\n          \"id\": \"59df373e36b88\"\n        }\n      ],\n      \"shortDescription\": [\n        {\n          \"language\": \"fre\",\n          \"text\": \"Acteurs du secteur des \\u00e9nergies renouvelables et de l'efficacit\\u00e9 \\u00e9nerg\\u00e9tique r\\u00e9f\\u00e9renc\\u00e9s sur le portail ReWallonia (www.rewallonia.be). Initiative du Cluster TWEED, le portail ReWallonia rassemble tous les acteurs technologiques du secteur des \\u00e9nergies renouvelables en Wallonie et \\u00e0 Bruxelles\",\n          \"id\": \"59df373e36b91\"\n        }\n      ],\n      \"slug\": [\n        {\n          \"language\": \"fre\",\n          \"slug\": \"rewallonia\",\n          \"id\": \"59df373e36b69\"\n        },\n        {\n          \"language\": \"eng\",\n          \"slug\": \"rewallonia\",\n          \"id\": \"59df373e36b71\"\n        },\n        {\n          \"language\": \"dut\",\n          \"slug\": \"rewallonia\",\n          \"id\": \"59df373e36b79\"\n        },\n        {\n          \"language\": \"ger\",\n          \"slug\": \"rewallonia\",\n          \"id\": \"59df373e36b80\"\n        }\n      ],\n      \"tagBundle\": {\n        \"v2Id\": 5,\n        \"status\": \"Published\",\n        \"id\": \"59df373c9fb9d710b743c3d5\",\n        \"title\": [\n          {\n            \"language\": \"fre\",\n            \"text\": \"r\\u00e9seaux\",\n            \"id\": \"59df373c409a6\"\n          }\n        ],\n        \"shortDescription\": [\n          {\n            \"language\": \"fre\",\n            \"text\": \"R\\u00e9seaux reconnus li\\u00e9s \\u00e0 la Wallonie\",\n            \"id\": \"59df373c409af\"\n          }\n        ],\n        \"slug\": [\n          {\n            \"language\": \"fre\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c40983\"\n          },\n          {\n            \"language\": \"eng\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c4098c\"\n          },\n          {\n            \"language\": \"dut\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c40993\"\n          },\n          {\n            \"language\": \"ger\",\n            \"slug\": \"reseaux\",\n            \"id\": \"59df373c4099b\"\n          }\n        ],\n        \"createdAt\": \"2017-10-12T09:34:52.270Z\",\n        \"updatedAt\": \"2017-10-12T09:34:52.270Z\",\n        \"tagCategory\": {\n          \"v2Id\": 3,\n          \"status\": \"Published\",\n          \"id\": \"59df373c9fb9d710b743c3cc\",\n          \"title\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"communaut\\u00e9s\",\n              \"id\": \"59df373c1cede\"\n            }\n          ],\n          \"shortDescription\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Communaut\\u00e9s li\\u00e9es au d\\u00e9veloppement num\\u00e9rique de la Wallonie.  R\\u00e9pond \\u00e0 la question \\\"\\u00e0 quelle communaut\\u00e9 j'appartiens?\\\"\",\n              \"id\": \"59df373c1cee8\"\n            }\n          ],\n          \"slug\": [\n            {\n              \"language\": \"fre\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1ce9a\"\n            },\n            {\n              \"language\": \"eng\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1ceab\"\n            },\n            {\n              \"language\": \"dut\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1cebc\"\n            },\n            {\n              \"language\": \"ger\",\n              \"slug\": \"communautes\",\n              \"id\": \"59df373c1cece\"\n            }\n          ],\n          \"createdAt\": \"2017-10-12T09:34:52.120Z\",\n          \"updatedAt\": \"2017-10-12T09:34:52.120Z\"\n        }\n      },\n      \"createdAt\": \"2017-10-12T09:34:54.228Z\",\n      \"updatedAt\": \"2017-10-12T09:34:54.228Z\"\n    }\n  ],\n  \"themes\": [\n    \n  ],\n  \"url\": {\n    \"type\": \"Web\",\n    \"address\": \"http:\\/\\/www.confederationconstruction.be\\/wallonie\\/Agenda\\/AgendaDetail.aspx?no_reference=06016884\",\n    \"v2Id\": 26341,\n    \"id\": \"59df50a1bc85c\",\n    \"createdAt\": \"2016-12-08T11:27:17+0100\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "41db1f3c-5ff0-4c90-8a24-8a997b44b41d",
+          "name": "Liste des événements",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe au moins 1 événement\"] = jsonData.length >= 1;",
+                  "tests[\"On récupère 10 événements ou moins\"] = jsonData.length <= 10;",
+                  "",
+                  "// On fournit le schéma (très simplifié) du JSON attendu avec les champs obligatoires",
+                  "var schema = {",
+                  "  \"properties\": {",
+                  "    \"title\": {",
+                  "        \"text\" : \"string\"",
+                  "    },",
+                  "    \"slug\" : {",
+                  "        \"slug\" : \"string\"",
+                  "    },",
+                  "    \"status\" : \"string\",",
+                  "    \"type\" : \"string\"",
+                  "  },",
+                  "  \"required\": [\"title\", \"slug\", \"status\", \"type\"]",
+                  "};",
+                  "",
+                  "// Pour chaque profil, on teste les champs obligatoires",
+                  "jsonData.forEach(function(post) {",
+                  "    var eventTitle = \"Profile '\" + post.title[0].text + \"' conforme au schéma\";",
+                  "    var eventSlug = post.slug;",
+                  "    var eventStatus = post.status;",
+                  "    var eventType = post.type;",
+                  "    tests[eventTitle] = tv4.validate(post, schema);",
+                  "    tests[\"Le paramètre titre est présent\"] = eventTitle;",
+                  "    console.log(eventTitle[0].text);",
+                  "    tests[\"Le paramètre slug est présent\"] = eventSlug;",
+                  "    console.log(eventSlug[0].slug);",
+                  "    tests[\"Le paramètre status est présent\"] = eventStatus;",
+                  "    console.log(eventStatus);",
+                  "    tests[\"Le paramètre type est présent\"] = eventType;",
+                  "    console.log(eventType);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":10}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "593c983c-e350-8444-c907-2e2cbe689edf",
+          "name": "Détail d'un événement",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
+                  "tests[\"Le paramètre type est présent\"] = jsonData.type;",
+                  "tests[\"La valeur du paramètre type est Standard\"] = jsonData.type === \"Standard\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2fe0fd91-a35d-5e9c-2dd6-f23d5a8bd0a8",
+          "name": "Supprimer un événement",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Un et un seul événement a été supprimée\"] = jsonData.count === 1;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7048dafb-b35e-0205-6847-b63b2cd69010",
+          "name": "Détail d'un événement inexistant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"Une erreur 404 est bien renvoyée\"] = responseCode.code === 404;",
+                  "",
+                  "// Si le code renvoyé est 404",
+                  "if(responseCode.code === 404){",
+                  "    // On supprime la variable d'environnement",
+                  "    postman.clearEnvironmentVariable(\"eventId\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "b6d12204-4a46-0af4-b26f-6a1f5582aff3",
+      "name": "Post",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "48586826-8170-3dd1-bddd-f0c8fd0f9966",
+          "name": "Ajout d'une publication",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
+                  "",
+                  "// Si le JSON comporte un paramètre id",
+                  "if (responseBody.has(jsonData.id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "    postman.setEnvironmentVariable(\"postId\", jsonData.id);",
+                  "}",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"v2Id\": 222664,\n  \"status\": \"Published\",\n  \"publicationDate\": \"2017-10-18T07:44:07.000Z\",\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Conf\\u00e9rences Smart Farming. Les messages cl\\u00e9s\",\n      \"id\": \"59edd06cdfe8e\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"Smart Farming. Key messages\",\n      \"id\": \"59edd06ce032d\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"<p>Le num\\u00e9rique est de plus en plus pr\\u00e9sent dans les exploitations agricoles. Guidage GPS et logiciels d\\u2019aide \\u00e0 la d\\u00e9cision font d\\u00e9j\\u00e0 partie int\\u00e9grante de certaines fermes. D\\u2019autres technologies (robots, drones, cloud), jusqu\\u2019\\u00e0 pr\\u00e9sent moins utilis\\u00e9es par les agriculteurs, apparaissent d\\u00e9sormais dans le paysage agricole.<\\/p>\\n\",\n      \"id\": \"59edd06cdff44\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"<p>Agriculture and digital are increasingly associated in the news and many issues are emerging. What are the issues and opportunities for the farmer? Will digital technology revolutionize agriculture? Is there a choice? What technology for what use? Etc.<\\/p>\\n\",\n      \"id\": \"59edd06ce0360\"\n    }\n  ],\n  \"images\": [\n    \n  ],\n  \"content\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"<p>Agriculture et num\\u00e9rique sont de plus en plus souvent associ\\u00e9s dans l\\u2019actualit\\u00e9 et de nombreuses questions \\u00e9mergent. Quels enjeux et opportunit\\u00e9s pour l\\u2019agriculteur ? Le num\\u00e9rique va-t-il r\\u00e9volutionner l\\u2019agriculture ? A-t-on le choix ? Quelle technologie pour quel usage ? Etc.<\\/p>\\n<p><strong>Autant de questions que la <a href=\\\"https:\\/\\/www.cbc.be\\/entreprendre\\/fr.html?zone=topnav\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">CBC banque<\\/a> a souhait\\u00e9 adresser directement aux agriculteurs wallons lors d\\u2019un roadshow \\u00ab Agriculture Num\\u00e9rique \\u00bb.<\\/strong> En tant que banque partenaire du secteur agricole en Wallonia, CBC banque juge qu\\u2019il est important d\\u2019informer ses clients sur les enjeux de demain. De v\\u00e9ritables opportunit\\u00e9s sont \\u00e0 saisir, notamment sur la r\\u00e9organisation des fili\\u00e8res. Il est crucial que les agriculteurs soient une partie prenante centrale de la cha\\u00eene de valeur tout en ne perdant pas de vue que le digital reste au service de l\\u2019humain, et non l\\u2019inverse.<\\/p>\\n<p><strong>Trois conf\\u00e9rences ont \\u00e9t\\u00e9 organis\\u00e9es en f\\u00e9vrier 2017 \\u00e0 Amay, Mons et Gembloux et ont rassembl\\u00e9 plus de 600 agriculteurs.<\\/strong><\\/p>\\n<p><strong>Ce roadshow a \\u00e9t\\u00e9 l\\u2019occasion de :<\\/strong><\\/p>\\n<ul>\\n<li>Pr\\u00e9senter les r\\u00e9sultats de l\\u2019\\u00e9tude sur la transition num\\u00e9rique du secteur agricole wallon r\\u00e9alis\\u00e9e en 2016 par la CBC.<\\/li>\\n<li>Exposer des t\\u00e9moignages d\\u2019agriculteurs ayant int\\u00e9gr\\u00e9 une dimension num\\u00e9rique importante dans leur activit\\u00e9.<\\/li>\\n<li>Collecter des informations sur la perception du num\\u00e9rique par le monde agricole en Wallonie.<\\/li>\\n<\\/ul>\\n<h2>Agriculture et num\\u00e9rique : \\u00e9tat des lieux en Wallonie<\\/h2>\\n<p><strong><a href=\\\"https:\\/\\/cbc.prezly.com\\/resultats-du-premier-observatoire-cbc-de-la-transition-numerique-du-monde-agricole-wallon\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">Selon l\\u2019observatoire CBC sur la transition num\\u00e9rique<\\/a>, 60% des agriculteurs wallons utilisent internet pour leur activit\\u00e9 au bureau, mais seulement 12% l\\u2019utilisent sur le terrain.<\\/strong> En ce qui concerne les outils num\\u00e9riques utilis\\u00e9s, la tendance est la m\\u00eame. Parmi les agriculteurs qui utilisent internet:<\\/p>\\n<ul>\\n<li>68% d\\u2019entre eux utilisent des outils classiques (email, moteur de recherche et r\\u00e9seaux sociaux),<\\/li>\\n<li>17% des logiciels de gestion,<\\/li>\\n<li>12% seulement des technologies de terrain (t\\u00e9l\\u00e9guidage, capteur, drone, etc.).<\\/li>\\n<\\/ul>\\n<p><strong>Cette \\u00e9tude nous permet d\\u2019\\u00e9tablir un premier constat : les agriculteurs wallons semblent utiliser les outils num\\u00e9riques de fa\\u00e7on assez classique alors que le <a href=\\\"https:\\/\\/www.digitalwallonia.be\\/smart-farming\\/\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">Smart Farming <\\/a>offre la possibilit\\u00e9 d\\u2019utiliser des outils num\\u00e9riques tr\\u00e8s diversifi\\u00e9s et pouvant \\u00eatre int\\u00e9gr\\u00e9s sur l\\u2019ensemble de l\\u2019exploitation et de la cha\\u00eene de valeur<\\/strong>.<\\/p>\\n<p>Face \\u00e0 ce constat, il nous para\\u00eet important de sensibiliser les agriculteurs sur les derni\\u00e8res tendances en terme de transformation num\\u00e9rique ainsi que de les mettre en relation avec l\\u2019offre de produits et services num\\u00e9riques en r\\u00e9gion wallonne. C\\u2019est ensuite aux agriculteurs de juger de l\\u2019int\\u00e9r\\u00eat de certaines technologies pour leur exploitation. Les principales motivations d\\u2019utilisation de ces technologies sont :<\\/p>\\n<ul>\\n<li>en liant les pratiques agricoles aux besoins personnalis\\u00e9s des cultures et du b\\u00e9tail ;<\\/li>\\n<li>d\\u00e9velopper des avantages \\u00e9conomiques en stimulant la comp\\u00e9titivit\\u00e9 gr\\u00e2ce \\u00e0 des pratiques plus efficaces, mais aussi en cr\\u00e9ant de nouvelles opportunit\\u00e9s commerciales gr\\u00e2ce au temps lib\\u00e9r\\u00e9 ;<\\/li>\\n<li>r\\u00e9duire les risques environnementaux et l\\u2019empreinte de l\\u2019agriculture en limitant, notamment, l\\u2019utilisation d\\u2019intrants.<\\/li>\\n<\\/ul>\\n<h2>T\\u00e9moignages d\\u2019agriculteurs<\\/h2>\\n<p><strong>Les 3 t\\u00e9moignages diffus\\u00e9s lors des conf\\u00e9rences traitaient du sujet suivant : agriculture num\\u00e9rique, bras de levier pour am\\u00e9liorer la rentabilit\\u00e9 de nos exploitations ?<\\/strong><\\/p>\\n<ul>\\n<li>La ferme Cense du Mayeur, en Belgique, utilisant diff\\u00e9rents <a href=\\\"https:\\/\\/vimeo.com\\/210593742\\\">robots de traites, racleur, distributeur d\\u2019aliments, etc.<\\/a> ;<\\/li>\\n<li>Paul-Henri Leluc, producteur ind\\u00e9pendant en France, utilisant des <a href=\\\"https:\\/\\/www.youtube.com\\/watch?v=NvbWR5blw4I\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">pluviom\\u00e8tres num\\u00e9riques et drones<\\/a> ;<\\/li>\\n<li>Steve Tanner, en Suisse, utilisant un <a href=\\\"https:\\/\\/www.youtube.com\\/watch?v=CmsX0_ZVs_E\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">robot autonome de d\\u00e9sherbage<\\/a>.<\\/li>\\n<\\/ul>\\n<p>Chacun de ces t\\u00e9moignages met en exergue l\\u2019am\\u00e9lioration d\\u2019un enjeu agricole gr\\u00e2ce \\u00e0 l\\u2019int\\u00e9gration d\\u2019une technologie num\\u00e9rique sp\\u00e9cifique. Ces technologies sont donc utilis\\u00e9es comme moyens pour, par exemple:<\\/p>\\n<ul>\\n<li>optimiser la gestion des exploitations (anticiper l\\u2019\\u00e9volution des cultures, \\u2026),<\\/li>\\n<li>d\\u00e9velopper la comp\\u00e9titivit\\u00e9 (en gagnant du temps sur des t\\u00e2ches r\\u00e9p\\u00e9titives avec peu de valeur ajout\\u00e9e, \\u2026),<\\/li>\\n<li>cr\\u00e9er de nouvelles opportunit\\u00e9s (en consacrant du temps \\u00e0 de nouvelles activit\\u00e9s avec plus de valeur ajout\\u00e9e, \\u2026),<\\/li>\\n<li>utiliser moins d\\u2019intrants.<\\/li>\\n<\\/ul>\\n<p>Finalement, ces vid\\u00e9os montrent aussi que chaque situation est particuli\\u00e8re et que l\\u2019utilisation des technologies num\\u00e9riques est \\u00e0 d\\u00e9finir en fonction des sp\\u00e9cificit\\u00e9s des exploitations.<\\/p>\\n<p><iframe src=\\\"https:\\/\\/player.vimeo.com\\/video\\/210593742\\\" width=\\\"500\\\" height=\\\"281\\\" frameborder=\\\"0\\\" title=\\\"Digital Wallonia Smart farming : La ferme Cense du mayeur\\\" webkitallowfullscreen mozallowfullscreen allowfullscreen><\\/iframe><\\/p>\\n<h2>Perception du num\\u00e9rique par le monde agricole en Wallonie<\\/h2>\\n<p><strong>Tout au long des conf\\u00e9rences, des questions ont \\u00e9t\\u00e9 pos\\u00e9es aux participants sur 3 sujets cl\\u00e9s :<\\/strong><\\/p>\\n<ol>\\n<li>Sensibilisation et besoin en information.<\\/li>\\n<li>Int\\u00e9gration de technologies au sein des exploitations.<\\/li>\\n<li>Coop\\u00e9ration et partage de l\\u2019information.<\\/li>\\n<\\/ol>\\n<p>La premi\\u00e8re question ciblait l\\u2019int\\u00e9r\\u00eat port\\u00e9 \\u00e0 la th\\u00e9matique de la transformation num\\u00e9rique du secteur agricole. 90% des r\\u00e9pondants se disent int\\u00e9ress\\u00e9s par le sujet. Parmi ces int\\u00e9ress\\u00e9s:<\\/p>\\n<ul>\\n<li>53% sont convaincus de l\\u2019importance du sujet,<\\/li>\\n<li>16% se disent simplement int\\u00e9ress\\u00e9s,<\\/li>\\n<li>21% sont int\\u00e9ress\\u00e9s, mais pas assez inform\\u00e9s.<\\/li>\\n<\\/ul>\\n<p>La deuxi\\u00e8me question a \\u00e9t\\u00e9 pos\\u00e9e sur l\\u2019int\\u00e9r\\u00eat de l\\u2019int\\u00e9gration de nouvelles technologies (collier d\\u2019alimentation, GPS, capteur, etc.) permettant la gestion en temps r\\u00e9el de troupeaux et \\/ ou de parcelles. Il ressort que:<\\/p>\\n<ul>\\n<li>53% des r\\u00e9pondants ont confirm\\u00e9 \\u00eatre \\u00e9quip\\u00e9s ou en train de s\\u2019\\u00e9quiper de ces technologies,<\\/li>\\n<li>45% n\\u2019ont pas encore essay\\u00e9 d\\u2019int\\u00e9grer ces technologies sur leur exploitation, mais trouvent cependant le sujet int\\u00e9ressant,<\\/li>\\n<li>2% d\\u2019entre eux seulement n\\u2019en voient pas l\\u2019int\\u00e9r\\u00eat.<\\/li>\\n<\\/ul>\\n<p>Finalement, la derni\\u00e8re question portait sur l\\u2019int\\u00e9r\\u00eat d\\u2019int\\u00e9grer davantage de coop\\u00e9ration entre les exploitations agricoles au niveau du partage d\\u2019informations, de mat\\u00e9riel ou de main d\\u2019\\u0153uvre, etc. 58% des r\\u00e9pondants souhaitent plus de coop\\u00e9ration, alors que 33% souhaitent aussi plus de coop\\u00e9ration, mais pensent que cela reste une utopie. Finalement, 10% ne trouvent cela pas int\\u00e9ressant et, pour certains, potentiellement risqu\\u00e9.<\\/p>\\n\",\n      \"id\": \"59edd06cdff80\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"<p>Agriculture and digital are increasingly associated in the news and many issues are emerging. What are the issues and opportunities for the farmer? Will digital technology revolutionize agriculture? Is there a choice? What technology for what use? Etc.<\\/p>\\n<p>So many questions that the CBC bank wished to address directly to Walloon farmers during a \\u00ab Digital Agriculture \\u00bb roadshow. As a bank partner in the agricultural sector in Wallonia, CBC Bank believes it is important to inform its clients about tomorrow\\u2019s issues. Real opportunities are to be seized, notably on the reorganization of the sectors. It is crucial that farmers be a central stakeholder in the value chain, bearing in mind that digital remains at the service of humans, not the other way round.<\\/p>\\n<p>Three conferences were held in Amay, Mons and Gembloux in February 2017 and brought together more than 600 farmers.<\\/p>\\n\",\n      \"id\": \"59edd06ce0395\"\n    }\n  ],\n  \"contacts\": [\n    \n  ],\n  \"createdAt\": \"2017-10-18T07:44:07.000Z\",\n  \"updatedAt\": \"2017-10-23T11:20:12.920Z\",\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"conferences-smart-farmingqvevzebazeebzbrzr\",\n      \"status\": \"Published\",\n      \"createdAt\": \"2017-10-18T07:44:07.000Z\",\n      \"id\": \"59edd06cdfe80\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"smart-farming-key-messageszebzebzrbzrbzrb\",\n      \"status\": \"Published\",\n      \"createdAt\": \"2017-10-18T08:21:15.000Z\",\n      \"id\": \"59edd06ce0322\"\n    }\n  ],\n  \"tags\": [\n    \n  ],\n  \"themes\": [\n    \n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "94a7ea53-a888-51c8-d2d8-654f9f974ded",
+          "name": "Liste des publications",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe au moins 1 profil\"] = jsonData.length >= 1;",
+                  "tests[\"On récupère 10 profils ou moins\"] = jsonData.length <= 10;",
+                  "",
+                  "// On fournit le schéma (très simplifié) du JSON attendu avec les champs obligatoires",
+                  "var schema = {",
+                  "  \"properties\": {",
+                  "    \"title\": {",
+                  "        \"text\" : \"string\"",
+                  "    },",
+                  "    \"slug\" : {",
+                  "        \"slug\" : \"string\"",
+                  "    },",
+                  "    \"status\" : \"string\"",
+                  "  },",
+                  "  \"required\": [\"title\", \"slug\", \"status\"]",
+                  "};",
+                  "",
+                  "// Pour chaque profil, on teste les champs obligatoires",
+                  "jsonData.forEach(function(post) {",
+                  "    var postTitle = \"Profile '\" + post.title[0].text + \"' conforme au schéma\";",
+                  "    var postSlug = post.slug;",
+                  "    var postStatus = post.status;",
+                  "    tests[postTitle] = tv4.validate(post, schema);",
+                  "    tests[\"Le paramètre titre est présent\"] = postTitle;",
+                  "    console.log(postTitle[0].text);",
+                  "    tests[\"Le paramètre slug est présent\"] = postSlug;",
+                  "    console.log(postSlug[0].slug);",
+                  "    tests[\"Le paramètre status est présent\"] = postStatus;",
+                  "    console.log(postStatus);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"limit\":10}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":10}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Liste des publications"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bf65ad4b-8696-aedc-7669-f259d780b995",
+          "name": "Détail d'une publication",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a56bdf7d-7ea8-b0d6-c16c-8c1ac82822cb",
+          "name": "Supprimer une publication",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Une et un seule publication a été supprimée\"] = jsonData.count === 1;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d1f5b070-d261-4ad8-5f52-64a04c5a03c5",
+          "name": "Détail d'une publication inexistante",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"Une erreur 404 est bien renvoyée\"] = responseCode.code === 404;",
+                  "",
+                  "// Si le code renvoyé est 404",
+                  "if(responseCode.code === 404){",
+                  "    // On supprime la variable d'environnement",
+                  "    postman.clearEnvironmentVariable(\"postId\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "aea24529-a8cf-0c7e-3d60-2f651c8ff943",
+      "name": "Profile",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "d0b4fbdc-cdaf-7f1b-af3e-f86635ca489f",
+          "name": "Ajout d'un profil",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"La valeur du paramètre slug est ctp-f\"] = jsonData.slug[0].slug === \"ctp-f\";",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"La valeur du paramètre title est La centrale du test Postman\"] = jsonData.title[0].text === \"La centrale du test Postman\";",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
+                  "",
+                  "// Si le JSON comporte un paramètre id",
+                  "if (responseBody.has(jsonData.id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "    postman.setEnvironmentVariable(\"profileId\", jsonData.id);",
+                  "}",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"emailAddresses\": [\r\n    \"test@hotmail.com\"\r\n  ],\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman\",\r\n    \"id\": 45456464651516\r\n  }],\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"CTP3\",\r\n    \"id\": 383543453\r\n  }],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de tests\",\r\n    \"id\": 783783\r\n  }],\r\n  \"longDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"C'est un outil magnifique pour réaliser toute une série de tests\",\r\n    \"id\": 786786786\r\n  }],\r\n  \"images\": [{\r\n    \"type\": \"Image\",\r\n    \"container\": \"digitalwallonia-images\",\r\n    \"name\": \"string\",\r\n    \"url\": \"https://api.digitalwallonia.be/v2/ressources/23213/logo-agence-du-numerique\",\r\n    \"id\": 7786786786\r\n  }],\r\n  \"addresses\": [{\r\n    \"thoroughfare\": \"Rue du Tilleul\",\r\n    \"number\": \"54\",\r\n    \"box\": null,\r\n    \"additionalInformation\": null,\r\n    \"postalCode\": \"4432\",\r\n    \"locality\": \"Ans\",\r\n    \"countryCode\": \"BE\",\r\n    \"coordinates\": {\r\n      \"lat\": 50.6760996,\r\n      \"lng\": 5.519184300000006\r\n    },\r\n    \"phoneNumbers\": [\r\n\r\n    ],\r\n    \"id\": \"59b8e8a38a8c9\"\r\n  }],\r\n  \"contacts\": [{\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Defays\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275616\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n\r\n    ],\r\n    \"tags\": [\r\n\r\n    ],\r\n    \"urls\": [{\r\n      \"type\": \"LinkedIn\",\r\n      \"address\": \"https://www.linkedin.com/in/boris-defays-7107257/\",\r\n      \"id\": \"59b7e9286c83f\",\r\n      \"createdAt\": \"2017-05-17T15:16:10+0200\"\r\n    }]\r\n  }],\r\n  \"enterprises\": [{\r\n    \"role\": \"[object Object]\",\r\n    \"countryCode\": \"BE\",\r\n    \"enterpriseNumber\": \"BE0824959363\",\r\n    \"startDate\": null,\r\n    \"vatNumber\": \"BE 0824.959.363\",\r\n    \"authorizedCapital\": null,\r\n    \"id\": \"59b8e8a38a839\",\r\n    \"legalForm\": {\r\n      \"countryCode\": \"BE\",\r\n      \"id\": \"59b7e72c65a72b1156273eb7\",\r\n      \"name\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Société Privée à Responsabilité Limitée\",\r\n        \"id\": \"c75b4ba2d3628941840cb2b6\"\r\n      }],\r\n      \"abbreviation\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"SPRL\",\r\n        \"id\": \"4f03b28afd815438637072cc\"\r\n      }]\r\n    },\r\n    \"legalName\": [{\r\n      \"language\": \"fre\",\r\n      \"text\": \"A+ Concept\",\r\n      \"id\": \"59b8e8a38a886\"\r\n    }],\r\n    \"abbreviation\": [\r\n\r\n    ]\r\n  }],\r\n  \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"ctp-f\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"ctp-e\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"ctp-d\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"ctp-g\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"tags\": [{\r\n      \"id\": \"59b7e72965a72b1156273d3c\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Wallonie\",\r\n        \"id\": \"59b7e7292a8bd\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Entreprises et activités situées en Région wallonne\",\r\n        \"id\": \"59b7e7292a8f7\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a7d1\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a812\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a84c\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a884\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d15\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions\",\r\n          \"id\": \"59b7e728a593a\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions d'origine ou d'activité\",\r\n          \"id\": \"59b7e728a5974\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a584d\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a588d\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a58c7\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a5900\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d0d\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"appartenance territoriale et institutionnelle\",\r\n            \"id\": \"59b7e7288d0ef\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Appartenance institutionnelle (Région Wallonne, Fédération Wallonie Bruxelles, etc.) et localisation géographique (Wallonie, Bruxelles, etc.). Répond à la question: \\\"où je me situe?\\\", \\\"Dans quel périmètre institutionnel je travaille?\\\"\",\r\n            \"id\": \"59b7e7288d12a\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d006\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d043\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d07c\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d0b5\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"59b7e72b65a72b1156273e2a\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"filtre Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b642f6\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"permet de lier un élément au Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b64331\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6420d\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6424a\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b64283\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b642bc\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d26\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"filtre\",\r\n          \"id\": \"59b7e728c5bb8\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"intérêt d'un partenaire pour un élément\",\r\n          \"id\": \"59b7e728c5bf2\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5ac9\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b0a\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b44\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b7d\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d11\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"partenaires\",\r\n            \"id\": \"59b7e72891ec8\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Tags invisibles utilisés pour répondre à des besoins particuliers d'un ou plusieurs partenaires\",\r\n            \"id\": \"59b7e72891f03\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891ddd\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e1e\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e57\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e8f\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"themes\": [{\r\n    \"id\": 65464654654,\r\n    \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"entreprises\",\r\n        \"id\": \"59b7e72c6208d\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Digital business\",\r\n        \"id\": \"59b7e72c620c5\"\r\n      }\r\n    ],\r\n    \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Augmenter l'intensité numérique des entreprises de tous les secteurs d'activité de l'économie de la Wallonie\",\r\n        \"id\": \"59b7e72c620fe\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Boosting the Walloon economy depends on a strong and fast increase of digital maturity of our companies.\",\r\n        \"id\": \"59b7e72c62137\"\r\n      }\r\n    ],\r\n    \"longDescription\": [\r\n\r\n    ],\r\n    \"images\": [\r\n\r\n    ],\r\n    \"slug\": [{\r\n        \"language\": \"fre\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fa8\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fe3\"\r\n      },\r\n      {\r\n        \"language\": \"dut\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c6201b\"\r\n      },\r\n      {\r\n        \"language\": \"ger\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c62054\"\r\n      }\r\n    ]\r\n  }],\r\n  \"urls\": [{\r\n    \"type\": \"Facebook\",\r\n    \"address\": \"https://www.facebook.com/aplusconcept/?fref=ts\",\r\n    \"id\": \"59b8e8a38b297\"\r\n  }]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7530def9-208d-6875-08bd-de2816d4771c",
+          "name": "Liste des profils",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe au moins 1 profil\"] = jsonData.length >= 1;",
+                  "tests[\"On récupère 10 profils ou moins\"] = jsonData.length <= 10;",
+                  "",
+                  "// On fournit le schéma (très simplifié) du JSON attendu avec les champs obligatoires",
+                  "var schema = {",
+                  "  \"properties\": {",
+                  "    \"title\": {",
+                  "        \"text\" : \"string\"",
+                  "    },",
+                  "    \"slug\" : {",
+                  "        \"slug\" : \"string\"",
+                  "    },",
+                  "    \"status\" : \"string\"",
+                  "  },",
+                  "  \"required\": [\"title\", \"slug\", \"status\"]",
+                  "};",
+                  "",
+                  "// Pour chaque profil, on teste les champs obligatoires",
+                  "jsonData.forEach(function(post) {",
+                  "    var profileTitle = \"Profile '\" + post.title[0].text + \"' conforme au schéma\";",
+                  "    var profileSlug = post.slug;",
+                  "    var profileStatus = post.status;",
+                  "    tests[profileTitle] = tv4.validate(post, schema);",
+                  "    tests[\"Le paramètre titre est présent\"] = profileTitle;",
+                  "    console.log(profileTitle[0].text);",
+                  "    tests[\"Le paramètre slug est présent\"] = profileSlug;",
+                  "    console.log(profileSlug[0].slug);",
+                  "    tests[\"Le paramètre status est présent\"] = profileStatus;",
+                  "    console.log(profileStatus);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":10}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4e9a6540-774e-3518-6b8f-bdbc0bdf1c3d",
+          "name": "Détail d'un profil",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b75a103f-037f-587d-417e-281602c3c1cc",
+          "name": "Supprimer un profil",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Un et un seul profil a été supprimée\"] = jsonData.count === 1;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b06e49bc-d824-d2e9-19a8-3d906fccf8a2",
+          "name": "Détail d'un profil inexistant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"Une erreur 404 est bien renvoyée\"] = responseCode.code === 404;",
+                  "",
+                  "// Si le code renvoyé est 404",
+                  "if(responseCode.code === 404){",
+                  "    // On supprime la variable d'environnement",
+                  "    postman.clearEnvironmentVariable(\"profileId\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "d83832ac-cbfd-e92d-f6a3-c54a3b582b42",
+      "name": "Project",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "1a03d122-1c29-ccf3-5b2f-a55cbfc9a5b2",
+          "name": "Ajout Projet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"Url de images présente\"] = jsonData.images[0].url;",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "// Si le JSON comporte un paramètre id",
+                  "if (responseBody.has(jsonData.id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "    postman.setEnvironmentVariable(\"projetId\", jsonData.id);",
+                  "}",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\n        \"v2Id\": 323,\n        \"status\": \"Published\",\n        \"title\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"#WallCode\",\n                \"id\": \"5a158e962345d\"\n            }\n        ],\n        \"shortDescription\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"Ensemble des éléments relatifs au programme Wallcode : publications, partenaires, événements, etc. Wallcode est le programme d'initiation des élèves wallons aux sciences informatiques, à la logique algorithmique et aux langages de programmation faisant partie de la stratégie Digital Wallonia\",\n                \"id\": \"5a158e96234a3\"\n            }\n        ],\n        \"longDescription\": [],\n        \"images\": [ \n          {\n          \"type\": \"Image\",\n          \"container\": \"digitalwallonia-images\",\n          \"name\": \"Image prise sur digital Wallonia\",\n          \"url\": \"https://api.digitalwallonia.be/v2/ressources/29604/kodo.jpg?w=250&h=175\",\n          \"id\": \"654651651651651651651651651654445616\"\n       }\n    ],\n        \"contacts\": [],\n        \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n        \"updatedAt\": \"2017-11-22T14:49:58.157Z\",\n        \"slug\": [\n            {\n                \"language\": \"fre\",\n                \"slug\": \"wallcode\",\n                \"id\": \"5a158e962340e\"\n            }\n        ],\n        \"tags\": [],\n        \"themes\": []\n    }"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": [
+            {
+              "id": "9d8956ea-f3a1-fb33-f76e-02b98ef9d19a",
+              "name": "Exemple Post Projet",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"v2Id\":323,\"createdAt\":\"2016-11-17T19:05:23+0100\",\"updatedAt\":\"2017-07-28T15:16:06+0200\",\"slug\":[{\"id\":\"5a1596100c37c\",\"language\":\"fre\",\"slug\":\"wallcode\"}],\"title\":[{\"id\":\"5a1596100c3ce\",\"language\":\"fre\",\"text\":\"#WallCode\"}],\"shortDescription\":[{\"id\":\"5a1596100c413\",\"language\":\"fre\",\"text\":\"Ensemble des \\u00e9l\\u00e9ments relatifs au programme Wallcode : publications, partenaires, \\u00e9v\\u00e9nements, etc. Wallcode est le programme d'initiation des \\u00e9l\\u00e8ves wallons aux sciences informatiques, \\u00e0 la logique algorithmique et aux langages de programmation faisant partie de la strat\\u00e9g["
+                },
+                "url": "{{protocol}}://{{domain}}/api/projects"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true",
+                  "name": "Access-Control-Allow-Credentials",
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "274",
+                  "name": "Content-Length",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Nov 2017 15:19:31 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"112-LU3qg+1QTliBPvl3CnvD7hg8JTM\"",
+                  "name": "ETag",
+                  "description": ""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin",
+                  "name": "Vary",
+                  "description": ""
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": ""
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "name": "X-Download-Options",
+                  "description": ""
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": ""
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "40",
+              "body": "{\"id\":\"8a08f170-cf98-11e7-9f78-dbd672e1342d\",\"v2Id\":null,\"status\":\"Pending\",\"title\":[],\"shortDescription\":[],\"longDescription\":[],\"images\":[],\"contacts\":[],\"createdAt\":\"2017-11-22T15:19:31.590Z\",\"updatedAt\":\"2017-11-22T15:19:31.591Z\",\"slug\":[],\"tags\":[],\"themes\":[]}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "39c7e167-b68c-4e25-2241-cfb0f11874e1",
+          "name": "Liste des projets",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe au moins 1 projet\"] = jsonData.length >= 1;",
+                  "tests[\"On récupère 10 profils ou moins\"] = jsonData.length <= 5;",
+                  "",
+                  "// On fournit le schéma (très simplifié) du JSON attendu avec les champs obligatoires",
+                  "var schema = {",
+                  "  \"properties\": {",
+                  "    \"v2Id\": \"number\",  ",
+                  "    \"title\": {",
+                  "        \"text\" : \"string\"",
+                  "    },",
+                  "    \"slug\" : {",
+                  "        \"slug\" : \"string\"",
+                  "    },",
+                  "    \"status\" : \"string\"",
+                  "  },",
+                  "  \"required\": [\"title\", \"slug\", \"status\"]",
+                  "};",
+                  "",
+                  "",
+                  "// Pour chaque profil, on teste les champs obligatoires",
+                  "jsonData.forEach(function(post) {",
+                  "    var postTitle = \"Projet '\" + post.title[0].text + \"' conforme au schéma\";",
+                  "    var postSlug = post.slug;",
+                  "    var postStatus = post.status;",
+                  "    tests[postTitle] = tv4.validate(post, schema);",
+                  "    tests[\"Le paramètre titre est présent\"] = postTitle;",
+                  "    console.log(postTitle[0].text);",
+                  "    tests[\"Le paramètre slug est présent\"] = postSlug;",
+                  "    console.log(postSlug[0].slug);",
+                  "    tests[\"Le paramètre status est présent\"] = postStatus;",
+                  "    console.log(postStatus);",
+                  "});",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects?filter={\"limit\":5}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":5}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fb080f88-337e-fa76-70c3-cf81b02dc7b1",
+          "name": "Détail d'un projet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title;",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projetId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projetId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f43a3ea3-4a8d-1726-5c35-86b6a82b440a",
+          "name": "Supression d'un projet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Une et un seule publication a été supprimée\"] = jsonData.count === 1;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projetId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projetId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "82cbde7c-f3d4-1d92-39a1-c9315587e8c0",
+          "name": "Détail d'un projet inexistant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3b89c802-6830-47fd-849a-acae83db1843",
+                "type": "text/javascript",
+                "exec": [
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"Une erreur 404 est bien renvoyée\"] = responseCode.code === 404;",
+                  "",
+                  "// Si le code renvoyé est 404",
+                  "if(responseCode.code === 404){",
+                  "    // On supprime la variable d'environnement",
+                  "    postman.clearEnvironmentVariable(\"projectId\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projetId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projetId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "a81a0aa9-ac3c-681d-0484-4cae4f864541",
+      "name": "Tag",
+      "description": null,
+      "item": []
+    },
+    {
+      "_postman_id": "67a4261c-9198-0b6b-3670-097c14d6ee92",
+      "name": "TagBundle",
+      "description": null,
+      "item": []
+    },
+    {
+      "_postman_id": "68535188-d450-f364-b9c9-f626c0852ae5",
+      "name": "TagCategory",
+      "description": null,
+      "item": []
+    },
+    {
+      "_postman_id": "e592981c-d415-6f97-f0a4-deb86c227bc9",
+      "name": "Partners",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "a0a5a3e7-0b82-00ca-87b1-73d746d831f2",
+          "name": "Dev POST One Profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "10fe68a5-e53c-4e5d-bde9-373730e64e8d",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "postman.setNextRequest('Dev POST One Profile Not Partners');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman Partners CETIC\",\r\n    \"id\": 45456464651516\r\n  }],\r\n \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"test-partners-cetic\",\r\n      \"id\": \"59b8e8a3872c956\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"test-partners-cetic\",\r\n      \"id\": \"59b8e8a38730756\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"test-partners-cetic\",\r\n      \"id\": \"59b8e8a38734056\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"test-partners-cetic\",\r\n      \"id\": \"59b8e8a38737956\"\r\n    }\r\n  ],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement TEST CETIC\",\r\n    \"id\": 78378356\r\n  }],\r\n  \"partners\":[\r\n  \t\"filtre-cetic\"\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b236b216-d54b-e467-198e-a79f2dd99e0e",
+          "name": "Dev POST One Profile Not Partners",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "377a01a8-16cf-490b-a4ba-037cd13649a6",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "postman.setNextRequest('Dev POST One Event');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman Partners\",\r\n    \"id\": 45456464651545\r\n  }],\r\n \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a3872c945\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a38730745\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a38734045\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a3873795645\"\r\n    }\r\n  ],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement TEST CETIC Filtre\",\r\n    \"id\": 7837835645\r\n  }],\r\n  \"partners\":[\r\n  \t\"filtre-digital-wallonia\"\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9c2333ba-0561-7cb3-ab79-142e5a2e9079",
+          "name": "Dev POST One Event",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0623d784-dc05-427d-b9f0-fde29eeeb436",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "postman.setNextRequest('Dev POST One Event Not Partners');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"Standard\",\n  \"status\": \"Published\",\n  \"startDate\": \"2017-01-19T23:00:00.000Z\",\n  \"endDate\": \"2017-01-19T23:00:00.000Z\",\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test Event Partners\",\n      \"id\": \"59df50a1b6e18\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test Event Partners\",\n      \"id\": \"59df50a1b6e35\"\n    }\n  ],\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"test-partners-cetic\",\n      \"id\": \"59df50a1b6dd4\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"test-partners-cetic\",\n      \"id\": \"59df50a1b6de0\"\n    }\n  ],\n  \"partners\":[\n  \t\"filtre-cetic\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1fae750c-d1c3-e375-bf86-7395f3113e1c",
+          "name": "Dev POST One Event Not Partners",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2c5a73d6-5f1d-4910-b302-6f7223fb6897",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "postman.setNextRequest('Partner Get Token');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"Standard\",\n  \"status\": \"Published\",\n  \"startDate\": \"2017-01-19T23:00:00.000Z\",\n  \"endDate\": \"2017-01-19T23:00:00.000Z\",\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test Event Not Partner\",\n      \"id\": \"59df50a1b6e56\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test Event Not Partner\",\n      \"id\": \"59df50a1b6e3556\"\n    }\n  ],\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"test-not-partners\",\n      \"id\": \"59df50a1b6ddsds4\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"test-not-partners\",\n      \"id\": \"59df50a1bsdf6dewsdq0\"\n    }\n  ],\n  \"partners\":[\n  \t\"filtre-digital-wallonia\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5ad677a6-51c9-e68e-c35f-9070cb64a6fa",
+          "name": "Partner Get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f789d3ab-0af9-4373-b41a-318b13fd74fd",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"userId is \"+ jsonData.userId] = jsonData.userId !== undefined;",
+                  "    if(jsonData.id && jsonData.userId){",
+                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+                  "        postman.setNextRequest(\"Partner Owned Profile\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"digitalwallonia@cetic.be\",\n  \"password\": \"t3xibY94s8EkVuuK\"\n}"
+            },
+            "url": "{{protocol}}://{{domain}}/api/users/login",
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a8a5f23f-b184-33f0-37d8-917086e3fa82",
+          "name": "Partner Owned Profile",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "id": "8a40bc76-d6d6-4122-805f-61ee226a183d",
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id && jsonData.partners){",
+                  "        tests[\"filtre-cetic is in partners's list\"] = jsonData.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
+                  "        postman.setNextRequest('Partner Unowned Profile');",
+                  "    }",
+                  "}"
+                ],
+                "id": "e739464c-6d9c-4df9-8d92-5ffe0be3331a",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\":\"test-partners-cetic\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"test-partners-cetic\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "738feaef-d7c0-dc21-3cae-38786ed2e047",
+          "name": "Partner Unowned Profile",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "id": "8a40bc76-d6d6-4122-805f-61ee226a183d",
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "tests[\"response code is 404 Not Found\"] = responseCode.code === 404;",
+                  "",
+                  "if (responseCode.code === 404) {",
+                  "    postman.setNextRequest('Partner Owned Event');",
+                  "}"
+                ],
+                "id": "473c5d36-45d6-4f34-a577-db5fbf931ba0",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\":\"test-partners\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"test-partners\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "72b202d1-a272-fbba-9133-01dac61e283b",
+          "name": "Partner Owned Event",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "id": "8a40bc76-d6d6-4122-805f-61ee226a183d",
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id && jsonData.partners){",
+                  "        tests[\"filtre-cetic is in partners's list\"] = jsonData.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
+                  "        postman.setNextRequest('Partner Unowned Event');",
+                  "    }",
+                  "}"
+                ],
+                "id": "99e6e673-f518-472c-ae9c-9b090c4954b7",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"test-partners-cetic\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"test-partners-cetic\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8b9d2dd7-d1ba-9c20-a176-9aefca4ae960",
+          "name": "Partner Unowned Event",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "id": "8a40bc76-d6d6-4122-805f-61ee226a183d",
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "tests[\"response code is 404 Not Found\"] = responseCode.code === 404;",
+                  "",
+                  "if (responseCode.code === 404) {",
+                  "    postman.setNextRequest('Partner Profiles List Random');",
+                  "}"
+                ],
+                "id": "d22e1918-2adb-49c0-8711-d84ff51b9972",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"test-not-partners\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"test-not-partners\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "74d36391-9fcb-71e7-ef82-e84f499ffeea",
+          "name": "Partner Profiles List Random",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "8a40bc76-d6d6-4122-805f-61ee226a183d",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "6a7a5750-0e78-4340-9735-34faa48ed703",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData && jsonData.length){",
+                  "        const randomNumber = Math.floor(Math.random() * jsonData.length);",
+                  "        const profile = jsonData[randomNumber];",
+                  "        tests[\"filtre-cetic is in \" + profile.shortTitle[0].text + \" partners's list\"] = profile.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
+                  "        postman.setNextRequest('Partner Event List Random');",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "equals": true,
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "9fc5f937-6bf8-7dfb-31ad-5edb4dffa749",
+          "name": "Partner Event List Random",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "8a40bc76-d6d6-4122-805f-61ee226a183d",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a06aec97-1757-46a7-a1cb-0014b1554504",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData && jsonData.length){",
+                  "        const randomNumber = Math.floor(Math.random() * jsonData.length);",
+                  "        const event = jsonData[randomNumber];",
+                  "        tests[\"filtre-cetic is in \" + event.title[0].text + \" partners's list\"] = event.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
+                  "        postman.setNextRequest('Partner Try POST One Profile');",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "298b4b82-361f-bbcb-a061-0a360258acdf",
+          "name": "Partner Try POST One Profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8eb6783e-06f4-42a3-b4f5-bbb3cac22807",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 401 Unauthorized\"] = responseCode.code === 401;",
+                  "postman.setNextRequest('Partner Try POST One Event');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman Partners\",\r\n    \"id\": 45456464651516\r\n  }],\r\n \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"test-partners\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de Test Partners\",\r\n    \"id\": 783783\r\n  }]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0a8903b8-9d15-ffa4-48a6-fa3a23878593",
+          "name": "Partner Try POST One Event",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c8737fa5-9b5b-44c4-9096-a8611416ff41",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 401 Unauthorized\"] = responseCode.code === 401;",
+                  "postman.setNextRequest('Partner Try GET Posts');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"Standard\",\n  \"status\": \"Published\",\n  \"startDate\": \"2017-01-19T23:00:00.000Z\",\n  \"endDate\": \"2017-01-19T23:00:00.000Z\",\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test Event Partners\",\n      \"id\": \"59df50a1b6e18\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test Event Partners\",\n      \"id\": \"59df50a1b6e35\"\n    }\n  ],\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"test-partners\",\n      \"id\": \"59df50a1b6dd4\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"test-partners\",\n      \"id\": \"59df50a1b6de0\"\n    },\n    {\n      \"language\": \"dut\",\n      \"slug\": \"test-partners\",\n      \"id\": \"59df50a1b6de8\"\n    },\n    {\n      \"language\": \"ger\",\n      \"slug\": \"test-partners\",\n      \"id\": \"59df50a1b6df0\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "cacf3e16-df07-b91e-4824-3be21701db67",
+          "name": "Partner Try GET Posts",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8b50b97c-749c-43a2-9eac-0ba20ccb0cbd",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 401 Unauthorized\"] = responseCode.code === 401;",
+                  "postman.setNextRequest('Partner Try GET Projects');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"emailAddresses\": [\r\n    \"test@hotmail.com\"\r\n  ],\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman\",\r\n    \"id\": 45456464651516\r\n  }],\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"CTP3\",\r\n    \"id\": 383543453\r\n  }],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de tests\",\r\n    \"id\": 783783\r\n  }],\r\n  \"longDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"C'est un outil magnifique pour réaliser toute une série de tests\",\r\n    \"id\": 786786786\r\n  }],\r\n  \"images\": [{\r\n    \"type\": \"Image\",\r\n    \"container\": \"digitalwallonia-images\",\r\n    \"name\": \"string\",\r\n    \"url\": \"https://api.digitalwallonia.be/v2/ressources/23213/logo-agence-du-numerique\",\r\n    \"id\": 7786786786\r\n  }],\r\n  \"addresses\": [{\r\n    \"thoroughfare\": \"Rue du Tilleul\",\r\n    \"number\": \"54\",\r\n    \"box\": null,\r\n    \"additionalInformation\": null,\r\n    \"postalCode\": \"4432\",\r\n    \"locality\": \"Ans\",\r\n    \"countryCode\": \"BE\",\r\n    \"coordinates\": {\r\n      \"lat\": 50.6760996,\r\n      \"lng\": 5.519184300000006\r\n    },\r\n    \"phoneNumbers\": [\r\n\r\n    ],\r\n    \"id\": \"59b8e8a38a8c9\"\r\n  }],\r\n  \"contacts\": [{\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Defays\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275616\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n\r\n    ],\r\n    \"tags\": [\r\n\r\n    ],\r\n    \"urls\": [{\r\n      \"type\": \"LinkedIn\",\r\n      \"address\": \"https://www.linkedin.com/in/boris-defays-7107257/\",\r\n      \"id\": \"59b7e9286c83f\",\r\n      \"createdAt\": \"2017-05-17T15:16:10+0200\"\r\n    }]\r\n  }],\r\n  \"enterprises\": [{\r\n    \"role\": \"[object Object]\",\r\n    \"countryCode\": \"BE\",\r\n    \"enterpriseNumber\": \"BE0824959363\",\r\n    \"startDate\": null,\r\n    \"vatNumber\": \"BE 0824.959.363\",\r\n    \"authorizedCapital\": null,\r\n    \"id\": \"59b8e8a38a839\",\r\n    \"legalForm\": {\r\n      \"countryCode\": \"BE\",\r\n      \"id\": \"59b7e72c65a72b1156273eb7\",\r\n      \"name\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Société Privée à Responsabilité Limitée\",\r\n        \"id\": \"c75b4ba2d3628941840cb2b6\"\r\n      }],\r\n      \"abbreviation\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"SPRL\",\r\n        \"id\": \"4f03b28afd815438637072cc\"\r\n      }]\r\n    },\r\n    \"legalName\": [{\r\n      \"language\": \"fre\",\r\n      \"text\": \"A+ Concept\",\r\n      \"id\": \"59b8e8a38a886\"\r\n    }],\r\n    \"abbreviation\": [\r\n\r\n    ]\r\n  }],\r\n  \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"ctp-f\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"ctp-e\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"ctp-d\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"ctp-g\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"tags\": [{\r\n      \"id\": \"59b7e72965a72b1156273d3c\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Wallonie\",\r\n        \"id\": \"59b7e7292a8bd\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Entreprises et activités situées en Région wallonne\",\r\n        \"id\": \"59b7e7292a8f7\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a7d1\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a812\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a84c\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a884\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d15\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions\",\r\n          \"id\": \"59b7e728a593a\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions d'origine ou d'activité\",\r\n          \"id\": \"59b7e728a5974\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a584d\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a588d\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a58c7\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a5900\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d0d\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"appartenance territoriale et institutionnelle\",\r\n            \"id\": \"59b7e7288d0ef\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Appartenance institutionnelle (Région Wallonne, Fédération Wallonie Bruxelles, etc.) et localisation géographique (Wallonie, Bruxelles, etc.). Répond à la question: \\\"où je me situe?\\\", \\\"Dans quel périmètre institutionnel je travaille?\\\"\",\r\n            \"id\": \"59b7e7288d12a\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d006\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d043\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d07c\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d0b5\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"59b7e72b65a72b1156273e2a\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"filtre Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b642f6\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"permet de lier un élément au Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b64331\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6420d\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6424a\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b64283\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b642bc\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d26\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"filtre\",\r\n          \"id\": \"59b7e728c5bb8\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"intérêt d'un partenaire pour un élément\",\r\n          \"id\": \"59b7e728c5bf2\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5ac9\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b0a\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b44\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b7d\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d11\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"partenaires\",\r\n            \"id\": \"59b7e72891ec8\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Tags invisibles utilisés pour répondre à des besoins particuliers d'un ou plusieurs partenaires\",\r\n            \"id\": \"59b7e72891f03\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891ddd\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e1e\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e57\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e8f\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"themes\": [{\r\n    \"id\": 65464654654,\r\n    \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"entreprises\",\r\n        \"id\": \"59b7e72c6208d\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Digital business\",\r\n        \"id\": \"59b7e72c620c5\"\r\n      }\r\n    ],\r\n    \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Augmenter l'intensité numérique des entreprises de tous les secteurs d'activité de l'économie de la Wallonie\",\r\n        \"id\": \"59b7e72c620fe\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Boosting the Walloon economy depends on a strong and fast increase of digital maturity of our companies.\",\r\n        \"id\": \"59b7e72c62137\"\r\n      }\r\n    ],\r\n    \"longDescription\": [\r\n\r\n    ],\r\n    \"images\": [\r\n\r\n    ],\r\n    \"slug\": [{\r\n        \"language\": \"fre\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fa8\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fe3\"\r\n      },\r\n      {\r\n        \"language\": \"dut\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c6201b\"\r\n      },\r\n      {\r\n        \"language\": \"ger\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c62054\"\r\n      }\r\n    ]\r\n  }],\r\n  \"urls\": [{\r\n    \"type\": \"Facebook\",\r\n    \"address\": \"https://www.facebook.com/aplusconcept/?fref=ts\",\r\n    \"id\": \"59b8e8a38b297\"\r\n  }]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "dd610808-1f8b-2449-5aee-c7777acf3b2e",
+          "name": "Partner Try GET Projects",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f4f70399-8b1e-4f73-bf74-8f30a66cc6aa",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 401 Unauthorized\"] = responseCode.code === 401;",
+                  "postman.setNextRequest('Partner Try GET Missions');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"emailAddresses\": [\r\n    \"test@hotmail.com\"\r\n  ],\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman\",\r\n    \"id\": 45456464651516\r\n  }],\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"CTP3\",\r\n    \"id\": 383543453\r\n  }],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de tests\",\r\n    \"id\": 783783\r\n  }],\r\n  \"longDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"C'est un outil magnifique pour réaliser toute une série de tests\",\r\n    \"id\": 786786786\r\n  }],\r\n  \"images\": [{\r\n    \"type\": \"Image\",\r\n    \"container\": \"digitalwallonia-images\",\r\n    \"name\": \"string\",\r\n    \"url\": \"https://api.digitalwallonia.be/v2/ressources/23213/logo-agence-du-numerique\",\r\n    \"id\": 7786786786\r\n  }],\r\n  \"addresses\": [{\r\n    \"thoroughfare\": \"Rue du Tilleul\",\r\n    \"number\": \"54\",\r\n    \"box\": null,\r\n    \"additionalInformation\": null,\r\n    \"postalCode\": \"4432\",\r\n    \"locality\": \"Ans\",\r\n    \"countryCode\": \"BE\",\r\n    \"coordinates\": {\r\n      \"lat\": 50.6760996,\r\n      \"lng\": 5.519184300000006\r\n    },\r\n    \"phoneNumbers\": [\r\n\r\n    ],\r\n    \"id\": \"59b8e8a38a8c9\"\r\n  }],\r\n  \"contacts\": [{\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Defays\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275616\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n\r\n    ],\r\n    \"tags\": [\r\n\r\n    ],\r\n    \"urls\": [{\r\n      \"type\": \"LinkedIn\",\r\n      \"address\": \"https://www.linkedin.com/in/boris-defays-7107257/\",\r\n      \"id\": \"59b7e9286c83f\",\r\n      \"createdAt\": \"2017-05-17T15:16:10+0200\"\r\n    }]\r\n  }],\r\n  \"enterprises\": [{\r\n    \"role\": \"[object Object]\",\r\n    \"countryCode\": \"BE\",\r\n    \"enterpriseNumber\": \"BE0824959363\",\r\n    \"startDate\": null,\r\n    \"vatNumber\": \"BE 0824.959.363\",\r\n    \"authorizedCapital\": null,\r\n    \"id\": \"59b8e8a38a839\",\r\n    \"legalForm\": {\r\n      \"countryCode\": \"BE\",\r\n      \"id\": \"59b7e72c65a72b1156273eb7\",\r\n      \"name\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Société Privée à Responsabilité Limitée\",\r\n        \"id\": \"c75b4ba2d3628941840cb2b6\"\r\n      }],\r\n      \"abbreviation\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"SPRL\",\r\n        \"id\": \"4f03b28afd815438637072cc\"\r\n      }]\r\n    },\r\n    \"legalName\": [{\r\n      \"language\": \"fre\",\r\n      \"text\": \"A+ Concept\",\r\n      \"id\": \"59b8e8a38a886\"\r\n    }],\r\n    \"abbreviation\": [\r\n\r\n    ]\r\n  }],\r\n  \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"ctp-f\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"ctp-e\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"ctp-d\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"ctp-g\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"tags\": [{\r\n      \"id\": \"59b7e72965a72b1156273d3c\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Wallonie\",\r\n        \"id\": \"59b7e7292a8bd\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Entreprises et activités situées en Région wallonne\",\r\n        \"id\": \"59b7e7292a8f7\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a7d1\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a812\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a84c\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a884\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d15\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions\",\r\n          \"id\": \"59b7e728a593a\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions d'origine ou d'activité\",\r\n          \"id\": \"59b7e728a5974\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a584d\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a588d\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a58c7\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a5900\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d0d\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"appartenance territoriale et institutionnelle\",\r\n            \"id\": \"59b7e7288d0ef\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Appartenance institutionnelle (Région Wallonne, Fédération Wallonie Bruxelles, etc.) et localisation géographique (Wallonie, Bruxelles, etc.). Répond à la question: \\\"où je me situe?\\\", \\\"Dans quel périmètre institutionnel je travaille?\\\"\",\r\n            \"id\": \"59b7e7288d12a\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d006\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d043\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d07c\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d0b5\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"59b7e72b65a72b1156273e2a\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"filtre Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b642f6\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"permet de lier un élément au Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b64331\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6420d\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6424a\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b64283\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b642bc\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d26\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"filtre\",\r\n          \"id\": \"59b7e728c5bb8\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"intérêt d'un partenaire pour un élément\",\r\n          \"id\": \"59b7e728c5bf2\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5ac9\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b0a\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b44\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b7d\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d11\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"partenaires\",\r\n            \"id\": \"59b7e72891ec8\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Tags invisibles utilisés pour répondre à des besoins particuliers d'un ou plusieurs partenaires\",\r\n            \"id\": \"59b7e72891f03\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891ddd\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e1e\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e57\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e8f\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"themes\": [{\r\n    \"id\": 65464654654,\r\n    \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"entreprises\",\r\n        \"id\": \"59b7e72c6208d\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Digital business\",\r\n        \"id\": \"59b7e72c620c5\"\r\n      }\r\n    ],\r\n    \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Augmenter l'intensité numérique des entreprises de tous les secteurs d'activité de l'économie de la Wallonie\",\r\n        \"id\": \"59b7e72c620fe\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Boosting the Walloon economy depends on a strong and fast increase of digital maturity of our companies.\",\r\n        \"id\": \"59b7e72c62137\"\r\n      }\r\n    ],\r\n    \"longDescription\": [\r\n\r\n    ],\r\n    \"images\": [\r\n\r\n    ],\r\n    \"slug\": [{\r\n        \"language\": \"fre\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fa8\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fe3\"\r\n      },\r\n      {\r\n        \"language\": \"dut\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c6201b\"\r\n      },\r\n      {\r\n        \"language\": \"ger\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c62054\"\r\n      }\r\n    ]\r\n  }],\r\n  \"urls\": [{\r\n    \"type\": \"Facebook\",\r\n    \"address\": \"https://www.facebook.com/aplusconcept/?fref=ts\",\r\n    \"id\": \"59b8e8a38b297\"\r\n  }]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7f99844d-a220-5f79-90be-c3b1ed2012e0",
+          "name": "Partner Try GET Missions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ce527d4b-560c-440c-a749-16ff1174e037",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 401 Unauthorized\"] = responseCode.code === 401;",
+                  "postman.setNextRequest('Partner Try GET PressReviews');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"emailAddresses\": [\r\n    \"test@hotmail.com\"\r\n  ],\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman\",\r\n    \"id\": 45456464651516\r\n  }],\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"CTP3\",\r\n    \"id\": 383543453\r\n  }],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de tests\",\r\n    \"id\": 783783\r\n  }],\r\n  \"longDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"C'est un outil magnifique pour réaliser toute une série de tests\",\r\n    \"id\": 786786786\r\n  }],\r\n  \"images\": [{\r\n    \"type\": \"Image\",\r\n    \"container\": \"digitalwallonia-images\",\r\n    \"name\": \"string\",\r\n    \"url\": \"https://api.digitalwallonia.be/v2/ressources/23213/logo-agence-du-numerique\",\r\n    \"id\": 7786786786\r\n  }],\r\n  \"addresses\": [{\r\n    \"thoroughfare\": \"Rue du Tilleul\",\r\n    \"number\": \"54\",\r\n    \"box\": null,\r\n    \"additionalInformation\": null,\r\n    \"postalCode\": \"4432\",\r\n    \"locality\": \"Ans\",\r\n    \"countryCode\": \"BE\",\r\n    \"coordinates\": {\r\n      \"lat\": 50.6760996,\r\n      \"lng\": 5.519184300000006\r\n    },\r\n    \"phoneNumbers\": [\r\n\r\n    ],\r\n    \"id\": \"59b8e8a38a8c9\"\r\n  }],\r\n  \"contacts\": [{\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Defays\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275616\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n\r\n    ],\r\n    \"tags\": [\r\n\r\n    ],\r\n    \"urls\": [{\r\n      \"type\": \"LinkedIn\",\r\n      \"address\": \"https://www.linkedin.com/in/boris-defays-7107257/\",\r\n      \"id\": \"59b7e9286c83f\",\r\n      \"createdAt\": \"2017-05-17T15:16:10+0200\"\r\n    }]\r\n  }],\r\n  \"enterprises\": [{\r\n    \"role\": \"[object Object]\",\r\n    \"countryCode\": \"BE\",\r\n    \"enterpriseNumber\": \"BE0824959363\",\r\n    \"startDate\": null,\r\n    \"vatNumber\": \"BE 0824.959.363\",\r\n    \"authorizedCapital\": null,\r\n    \"id\": \"59b8e8a38a839\",\r\n    \"legalForm\": {\r\n      \"countryCode\": \"BE\",\r\n      \"id\": \"59b7e72c65a72b1156273eb7\",\r\n      \"name\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Société Privée à Responsabilité Limitée\",\r\n        \"id\": \"c75b4ba2d3628941840cb2b6\"\r\n      }],\r\n      \"abbreviation\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"SPRL\",\r\n        \"id\": \"4f03b28afd815438637072cc\"\r\n      }]\r\n    },\r\n    \"legalName\": [{\r\n      \"language\": \"fre\",\r\n      \"text\": \"A+ Concept\",\r\n      \"id\": \"59b8e8a38a886\"\r\n    }],\r\n    \"abbreviation\": [\r\n\r\n    ]\r\n  }],\r\n  \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"ctp-f\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"ctp-e\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"ctp-d\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"ctp-g\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"tags\": [{\r\n      \"id\": \"59b7e72965a72b1156273d3c\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Wallonie\",\r\n        \"id\": \"59b7e7292a8bd\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Entreprises et activités situées en Région wallonne\",\r\n        \"id\": \"59b7e7292a8f7\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a7d1\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a812\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a84c\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a884\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d15\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions\",\r\n          \"id\": \"59b7e728a593a\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions d'origine ou d'activité\",\r\n          \"id\": \"59b7e728a5974\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a584d\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a588d\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a58c7\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a5900\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d0d\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"appartenance territoriale et institutionnelle\",\r\n            \"id\": \"59b7e7288d0ef\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Appartenance institutionnelle (Région Wallonne, Fédération Wallonie Bruxelles, etc.) et localisation géographique (Wallonie, Bruxelles, etc.). Répond à la question: \\\"où je me situe?\\\", \\\"Dans quel périmètre institutionnel je travaille?\\\"\",\r\n            \"id\": \"59b7e7288d12a\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d006\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d043\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d07c\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d0b5\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"59b7e72b65a72b1156273e2a\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"filtre Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b642f6\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"permet de lier un élément au Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b64331\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6420d\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6424a\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b64283\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b642bc\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d26\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"filtre\",\r\n          \"id\": \"59b7e728c5bb8\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"intérêt d'un partenaire pour un élément\",\r\n          \"id\": \"59b7e728c5bf2\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5ac9\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b0a\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b44\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b7d\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d11\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"partenaires\",\r\n            \"id\": \"59b7e72891ec8\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Tags invisibles utilisés pour répondre à des besoins particuliers d'un ou plusieurs partenaires\",\r\n            \"id\": \"59b7e72891f03\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891ddd\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e1e\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e57\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e8f\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"themes\": [{\r\n    \"id\": 65464654654,\r\n    \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"entreprises\",\r\n        \"id\": \"59b7e72c6208d\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Digital business\",\r\n        \"id\": \"59b7e72c620c5\"\r\n      }\r\n    ],\r\n    \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Augmenter l'intensité numérique des entreprises de tous les secteurs d'activité de l'économie de la Wallonie\",\r\n        \"id\": \"59b7e72c620fe\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Boosting the Walloon economy depends on a strong and fast increase of digital maturity of our companies.\",\r\n        \"id\": \"59b7e72c62137\"\r\n      }\r\n    ],\r\n    \"longDescription\": [\r\n\r\n    ],\r\n    \"images\": [\r\n\r\n    ],\r\n    \"slug\": [{\r\n        \"language\": \"fre\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fa8\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fe3\"\r\n      },\r\n      {\r\n        \"language\": \"dut\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c6201b\"\r\n      },\r\n      {\r\n        \"language\": \"ger\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c62054\"\r\n      }\r\n    ]\r\n  }],\r\n  \"urls\": [{\r\n    \"type\": \"Facebook\",\r\n    \"address\": \"https://www.facebook.com/aplusconcept/?fref=ts\",\r\n    \"id\": \"59b8e8a38b297\"\r\n  }]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0b9267ad-8690-4b46-3705-0d038d582310",
+          "name": "Partner Try GET PressReviews",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c36522a8-0e95-4e65-80b6-ab7411ddea2b",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 401 Unauthorized\"] = responseCode.code === 401;",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"emailAddresses\": [\r\n    \"test@hotmail.com\"\r\n  ],\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"La centrale du test Postman\",\r\n    \"id\": 45456464651516\r\n  }],\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"CTP3\",\r\n    \"id\": 383543453\r\n  }],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de tests\",\r\n    \"id\": 783783\r\n  }],\r\n  \"longDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"C'est un outil magnifique pour réaliser toute une série de tests\",\r\n    \"id\": 786786786\r\n  }],\r\n  \"images\": [{\r\n    \"type\": \"Image\",\r\n    \"container\": \"digitalwallonia-images\",\r\n    \"name\": \"string\",\r\n    \"url\": \"https://api.digitalwallonia.be/v2/ressources/23213/logo-agence-du-numerique\",\r\n    \"id\": 7786786786\r\n  }],\r\n  \"addresses\": [{\r\n    \"thoroughfare\": \"Rue du Tilleul\",\r\n    \"number\": \"54\",\r\n    \"box\": null,\r\n    \"additionalInformation\": null,\r\n    \"postalCode\": \"4432\",\r\n    \"locality\": \"Ans\",\r\n    \"countryCode\": \"BE\",\r\n    \"coordinates\": {\r\n      \"lat\": 50.6760996,\r\n      \"lng\": 5.519184300000006\r\n    },\r\n    \"phoneNumbers\": [\r\n\r\n    ],\r\n    \"id\": \"59b8e8a38a8c9\"\r\n  }],\r\n  \"contacts\": [{\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Defays\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275616\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n\r\n    ],\r\n    \"tags\": [\r\n\r\n    ],\r\n    \"urls\": [{\r\n      \"type\": \"LinkedIn\",\r\n      \"address\": \"https://www.linkedin.com/in/boris-defays-7107257/\",\r\n      \"id\": \"59b7e9286c83f\",\r\n      \"createdAt\": \"2017-05-17T15:16:10+0200\"\r\n    }]\r\n  }],\r\n  \"enterprises\": [{\r\n    \"role\": \"[object Object]\",\r\n    \"countryCode\": \"BE\",\r\n    \"enterpriseNumber\": \"BE0824959363\",\r\n    \"startDate\": null,\r\n    \"vatNumber\": \"BE 0824.959.363\",\r\n    \"authorizedCapital\": null,\r\n    \"id\": \"59b8e8a38a839\",\r\n    \"legalForm\": {\r\n      \"countryCode\": \"BE\",\r\n      \"id\": \"59b7e72c65a72b1156273eb7\",\r\n      \"name\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Société Privée à Responsabilité Limitée\",\r\n        \"id\": \"c75b4ba2d3628941840cb2b6\"\r\n      }],\r\n      \"abbreviation\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"SPRL\",\r\n        \"id\": \"4f03b28afd815438637072cc\"\r\n      }]\r\n    },\r\n    \"legalName\": [{\r\n      \"language\": \"fre\",\r\n      \"text\": \"A+ Concept\",\r\n      \"id\": \"59b8e8a38a886\"\r\n    }],\r\n    \"abbreviation\": [\r\n\r\n    ]\r\n  }],\r\n  \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"ctp-f\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"ctp-e\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"ctp-d\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"ctp-g\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"tags\": [{\r\n      \"id\": \"59b7e72965a72b1156273d3c\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Wallonie\",\r\n        \"id\": \"59b7e7292a8bd\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Entreprises et activités situées en Région wallonne\",\r\n        \"id\": \"59b7e7292a8f7\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a7d1\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a812\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a84c\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"wallonie\",\r\n          \"id\": \"59b7e7292a884\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d15\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions\",\r\n          \"id\": \"59b7e728a593a\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"régions d'origine ou d'activité\",\r\n          \"id\": \"59b7e728a5974\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a584d\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a588d\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a58c7\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"regions\",\r\n            \"id\": \"59b7e728a5900\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d0d\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"appartenance territoriale et institutionnelle\",\r\n            \"id\": \"59b7e7288d0ef\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Appartenance institutionnelle (Région Wallonne, Fédération Wallonie Bruxelles, etc.) et localisation géographique (Wallonie, Bruxelles, etc.). Répond à la question: \\\"où je me situe?\\\", \\\"Dans quel périmètre institutionnel je travaille?\\\"\",\r\n            \"id\": \"59b7e7288d12a\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d006\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d043\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d07c\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"localisation\",\r\n              \"id\": \"59b7e7288d0b5\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"59b7e72b65a72b1156273e2a\",\r\n      \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"filtre Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b642f6\"\r\n      }],\r\n      \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"permet de lier un élément au Cluster Cap 2020\",\r\n        \"id\": \"59b7e72b64331\"\r\n      }],\r\n      \"slug\": [{\r\n          \"language\": \"fre\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6420d\"\r\n        },\r\n        {\r\n          \"language\": \"eng\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b6424a\"\r\n        },\r\n        {\r\n          \"language\": \"dut\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b64283\"\r\n        },\r\n        {\r\n          \"language\": \"ger\",\r\n          \"slug\": \"filtre-cap2020\",\r\n          \"id\": \"59b7e72b642bc\"\r\n        }\r\n      ],\r\n      \"tagBundle\": {\r\n        \"id\": \"59b7e72865a72b1156273d26\",\r\n        \"title\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"filtre\",\r\n          \"id\": \"59b7e728c5bb8\"\r\n        }],\r\n        \"shortDescription\": [{\r\n          \"language\": \"fre\",\r\n          \"text\": \"intérêt d'un partenaire pour un élément\",\r\n          \"id\": \"59b7e728c5bf2\"\r\n        }],\r\n        \"slug\": [{\r\n            \"language\": \"fre\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5ac9\"\r\n          },\r\n          {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b0a\"\r\n          },\r\n          {\r\n            \"language\": \"dut\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b44\"\r\n          },\r\n          {\r\n            \"language\": \"ger\",\r\n            \"slug\": \"filtre\",\r\n            \"id\": \"59b7e728c5b7d\"\r\n          }\r\n        ],\r\n        \"tagCategory\": {\r\n          \"id\": \"59b7e72865a72b1156273d11\",\r\n          \"title\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"partenaires\",\r\n            \"id\": \"59b7e72891ec8\"\r\n          }],\r\n          \"shortDescription\": [{\r\n            \"language\": \"fre\",\r\n            \"text\": \"Tags invisibles utilisés pour répondre à des besoins particuliers d'un ou plusieurs partenaires\",\r\n            \"id\": \"59b7e72891f03\"\r\n          }],\r\n          \"slug\": [{\r\n              \"language\": \"fre\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891ddd\"\r\n            },\r\n            {\r\n              \"language\": \"eng\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e1e\"\r\n            },\r\n            {\r\n              \"language\": \"dut\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e57\"\r\n            },\r\n            {\r\n              \"language\": \"ger\",\r\n              \"slug\": \"partenaires\",\r\n              \"id\": \"59b7e72891e8f\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"themes\": [{\r\n    \"id\": 65464654654,\r\n    \"title\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"entreprises\",\r\n        \"id\": \"59b7e72c6208d\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Digital business\",\r\n        \"id\": \"59b7e72c620c5\"\r\n      }\r\n    ],\r\n    \"shortDescription\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Augmenter l'intensité numérique des entreprises de tous les secteurs d'activité de l'économie de la Wallonie\",\r\n        \"id\": \"59b7e72c620fe\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"text\": \"Boosting the Walloon economy depends on a strong and fast increase of digital maturity of our companies.\",\r\n        \"id\": \"59b7e72c62137\"\r\n      }\r\n    ],\r\n    \"longDescription\": [\r\n\r\n    ],\r\n    \"images\": [\r\n\r\n    ],\r\n    \"slug\": [{\r\n        \"language\": \"fre\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fa8\"\r\n      },\r\n      {\r\n        \"language\": \"eng\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c61fe3\"\r\n      },\r\n      {\r\n        \"language\": \"dut\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c6201b\"\r\n      },\r\n      {\r\n        \"language\": \"ger\",\r\n        \"slug\": \"entreprises\",\r\n        \"id\": \"59b7e72c62054\"\r\n      }\r\n    ]\r\n  }],\r\n  \"urls\": [{\r\n    \"type\": \"Facebook\",\r\n    \"address\": \"https://www.facebook.com/aplusconcept/?fref=ts\",\r\n    \"id\": \"59b8e8a38b297\"\r\n  }]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
