@@ -3726,6 +3726,41 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "57ce1612-e360-bf81-b113-9fc73ab9fb5b",
+          "name": "Count PressReview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/count?where={\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-01-31T23:00:00.000Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "count"
+              ],
+              "query": [
+                {
+                  "key": "where",
+                  "value": "{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-01-31T23:00:00.000Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
