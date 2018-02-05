@@ -1357,7 +1357,7 @@
                 }
               ]
             },
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -3936,7 +3936,7 @@
             }
           ]
         },
-        "description": ""
+        "description": null
       },
       "response": []
     }
