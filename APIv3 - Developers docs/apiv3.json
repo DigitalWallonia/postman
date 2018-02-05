@@ -3770,7 +3770,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews?filter={\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-05T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews?filter={\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-01T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3782,7 +3782,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-05T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}",
+                  "value": "{\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-01T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}",
                   "equals": true
                 },
                 {
