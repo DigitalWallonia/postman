@@ -1464,11 +1464,11 @@
             {
               "listen": "test",
               "script": {
-                "id": "81e794e9-58bf-4854-8972-23c40276120f",
+                "id": "a6415bea-bc23-47f2-a136-9d66853f2fbc",
                 "type": "text/javascript",
                 "exec": [
-                  "console.log('event: ', pm.environment);",
                   "let v2Id = parseInt(pm.environment.get(\"eventV2Id\"));",
+                  "console.log('event: ', pm.environment, pm.environment.get(\"eventV2Id\"), pm.response.code);",
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
