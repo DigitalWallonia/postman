@@ -3761,6 +3761,40 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "33ac1487-0dd5-e56f-d0e0-b1f7a51988c3",
+          "name": "PressReview Dispay Feb 2018",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews?filter={\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-05T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-05T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
