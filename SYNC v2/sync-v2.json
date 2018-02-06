@@ -2722,7 +2722,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":\"test-post\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2735,7 +2735,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"test-post\"}}",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
                   "equals": true
                 },
                 {
