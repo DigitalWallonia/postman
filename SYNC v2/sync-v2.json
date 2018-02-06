@@ -3962,7 +3962,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "687f8431-d0bd-43af-b29f-5489381bf63a",
+                "id": "c59cb122-a189-44da-922c-79fe1ac42fb5",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3973,7 +3973,7 @@
                   "",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"publish\";",
+                  "    tests[\"Status is publish\"] = jsonData.status === \"publish\";",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Find Post v3 To Check Status Published\");",
                   "    }",
@@ -4003,7 +4003,7 @@
               "mode": "raw",
               "raw": "{\n\t\"status\": \"publish\"\n}"
             },
-            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
             "description": null
           },
           "response": []
@@ -4264,7 +4264,7 @@
             "method": "DELETE",
             "header": [],
             "body": {},
-            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}",
             "description": null
           },
           "response": []
