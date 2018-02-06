@@ -2387,7 +2387,76 @@
       "_postman_id": "5ae0a60f-dcbf-0ad0-306e-80c766061446",
       "name": "Page",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "500fdc5f-db0b-006e-72ae-89d7b3a80c5d",
+          "name": "Ajout d'une page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ec64c5f1-596a-4b28-b991-b9034f261e08",
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
+                  "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le paramètre title est présent\"] = jsonData.title[0];",
+                  "tests[\"Le paramètre statut est présent\"] = jsonData.status;",
+                  "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
+                  "",
+                  "// Si le JSON comporte un paramètre id",
+                  "if (responseBody.has(jsonData.id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "    postman.setEnvironmentVariable(\"pageId\", jsonData.id);",
+                  "}",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"v2Id\": 555555,\n  \"status\": \"Published\",\n  \"publicationDate\": \"2018-02-06T07:44:07.000Z\",\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Test ajout page\",\n      \"id\": \"59edd06cdfe8e\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"Add page test\",\n      \"id\": \"59edd06ce032d\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"<p>Ceci est un test d'ajout d'une page de contenu<\\/p>\\n\",\n      \"id\": \"59edd06cdff44\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"<p>This is a test to add a page content<\\/p>\\n\",\n      \"id\": \"59edd06ce0360\"\n    }\n  ],\n  \"content\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"<p>Test test test test FR<\\/p>\\n\",\n      \"id\": \"59edd06cdff80\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"<p>Test test test test EN<\\/p>\\n\",\n      \"id\": \"59edd06ce0395\"\n    }\n  ],\n  \"createdAt\": \"2018-01-06T07:44:07.000Z\",\n  \"updatedAt\": \"2018-02-06T11:20:12.920Z\",\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"testfr\",\n      \"status\": \"Published\",\n      \"createdAt\": \"2018-01-06T07:44:07.000Z\",\n      \"id\": \"59edd06cdfe80\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"testen\",\n      \"status\": \"Published\",\n      \"createdAt\": \"2018-01-06T08:21:15.000Z\",\n      \"id\": \"59edd06ce0322\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
