@@ -2977,11 +2977,11 @@
             {
               "listen": "test",
               "script": {
-                "id": "0257e0a7-9b8c-4baf-8b91-d8b2c1a8b5ed",
+                "id": "b33ecc3e-3a1e-47ff-8bf7-50465c590874",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
