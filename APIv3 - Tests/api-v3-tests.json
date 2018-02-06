@@ -2455,6 +2455,60 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "0f91276a-4917-a475-5ccb-50e8e43d7e13",
+          "name": "Détail d'une Page by slug",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7a5f55ad-5f69-441d-912f-e94916741de6",
+                "type": "text/javascript",
+                "exec": [
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < postman.getEnvironmentVariable('RESPONSE_TIME');",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"Digital Wallonia Champion\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"champion\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"champion\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
