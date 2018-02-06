@@ -3292,11 +3292,11 @@
             {
               "listen": "test",
               "script": {
-                "id": "7b2f5659-7ea5-49ea-b903-727713c2a231",
+                "id": "22848d6d-9d45-4a8d-a1d9-4c7ce4defc19",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
