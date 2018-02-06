@@ -3810,13 +3810,14 @@
             {
               "listen": "test",
               "script": {
+                "id": "e0532047-cf48-4eda-8a7c-f46f022bb64c",
                 "type": "text/javascript",
                 "exec": [
                   "let jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"Le temps de réponse est inférieur à 250ms\"] = responseTime < environment.responseTime;",
                   "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"A+ Concept\";"
+                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"Digital Wallonia Champion\";"
                 ]
               }
             }
