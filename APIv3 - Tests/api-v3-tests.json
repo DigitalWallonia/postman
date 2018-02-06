@@ -2509,6 +2509,36 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "9f62ccb4-10f2-7351-57f4-e995a7c18a44",
+          "name": "Supprimer une page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{pageId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{pageId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
