@@ -4174,7 +4174,7 @@
             "method": "DELETE",
             "header": [],
             "body": {},
-            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
             "description": null
           },
           "response": []
