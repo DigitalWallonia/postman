@@ -2555,6 +2555,56 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "1a224cbb-dc44-a02e-6375-24dbddf36540",
+          "name": "Détail d'une page inexistante",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "550909dc-d149-4ce3-8461-c80ef86f2f82",
+                "type": "text/javascript",
+                "exec": [
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"Une erreur 404 est bien renvoyée\"] = responseCode.code === 404;",
+                  "",
+                  "// Si le code renvoyé est 404",
+                  "if(responseCode.code === 404){",
+                  "    // On supprime la variable d'environnement",
+                  "    postman.clearEnvironmentVariable(\"pageId\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{pageId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{pageId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
