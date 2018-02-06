@@ -3802,7 +3802,61 @@
       "_postman_id": "e5fdd8b2-cc62-689b-10cf-86a926cb4658",
       "name": "Page",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "9c64ead7-da1a-963d-7ff0-46821cf57d4f",
+          "name": "Recherche Post by slug",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Le temps de réponse est inférieur à 250ms\"] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"A+ Concept\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"champion\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"champion\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
