@@ -2977,7 +2977,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b33ecc3e-3a1e-47ff-8bf7-50465c590874",
+                "id": "6cc2af07-0552-4146-9a48-2dbf4a49edfb",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
