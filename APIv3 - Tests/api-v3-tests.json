@@ -2513,6 +2513,23 @@
         {
           "_postman_id": "9f62ccb4-10f2-7351-57f4-e995a7c18a44",
           "name": "Supprimer une page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a99c4f5e-20c3-4303-bed8-44b2054aabec",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Une et un seule publication a été supprimée\"] = jsonData.count === 1;"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "DELETE",
             "header": [],
