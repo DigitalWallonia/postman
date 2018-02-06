@@ -3909,60 +3909,6 @@
           "response": []
         },
         {
-          "_postman_id": "23d9617e-4141-76ff-1e93-e8e90d80e42c",
-          "name": "Delete Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c2c6cb2b-bbd1-4af0-b79a-0c7ee78d7dd7",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post a été supprimé en v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postV3Id\");",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  "postman.setNextRequest(null);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "{{postV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "8bdd966b-8953-74b6-f1e5-eb64bad55356",
           "name": "Delete Post v2 EN",
           "event": [
@@ -4011,6 +3957,60 @@
                 {
                   "key": "force",
                   "value": "true",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "23d9617e-4141-76ff-1e93-e8e90d80e42c",
+          "name": "Delete Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c2c6cb2b-bbd1-4af0-b79a-0c7ee78d7dd7",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le post a été supprimé en v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"postV3Id\");",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  "postman.setNextRequest(null);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
