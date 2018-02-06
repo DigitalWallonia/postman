@@ -3805,7 +3805,7 @@
       "item": [
         {
           "_postman_id": "9c64ead7-da1a-963d-7ff0-46821cf57d4f",
-          "name": "Recherche Post by slug",
+          "name": "Recherche Page by slug",
           "event": [
             {
               "listen": "test",
