@@ -2514,7 +2514,7 @@
           "_postman_id": "9f62ccb4-10f2-7351-57f4-e995a7c18a44",
           "name": "Supprimer une page",
           "request": {
-            "method": "GET",
+            "method": "DELETE",
             "header": [],
             "body": {},
             "url": {
