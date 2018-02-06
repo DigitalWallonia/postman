@@ -3688,8 +3688,8 @@
               "raw": "{\n\t\"title\": \"Test Post EN\",\n\t\"slug\": \"test-post-EN\",\n\t\"content\": \"Ceci est un post de test EN\",\n\t\"status\": \"publish\"\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
-              "protocol": "{{protocol}}",
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
+              "protocol": "{{v2_wp_protocol}}",
               "host": [
                 "{{v2_wp_domain}}"
               ],
@@ -3702,8 +3702,7 @@
               "query": [
                 {
                   "key": "lang",
-                  "value": "en",
-                  "equals": true
+                  "value": "en"
                 }
               ]
             },
@@ -3750,8 +3749,8 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
-              "protocol": "{{protocol}}",
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
+              "protocol": "{{v2_wp_protocol}}",
               "host": [
                 "{{v2_wp_domain}}"
               ],
@@ -3764,8 +3763,7 @@
               "query": [
                 {
                   "key": "translations[en]",
-                  "value": "{{postV2IdEN}}",
-                  "equals": true
+                  "value": "{{postV2IdEN}}"
                 }
               ]
             },
