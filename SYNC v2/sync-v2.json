@@ -3749,8 +3749,8 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
-              "protocol": "{{protocol}}",
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
+              "protocol": "{{v2_wp_protocol}}",
               "host": [
                 "{{v2_wp_domain}}"
               ],
@@ -3763,8 +3763,7 @@
               "query": [
                 {
                   "key": "translations[en]",
-                  "value": "{{postV2IdEN}}",
-                  "equals": true
+                  "value": "{{postV2IdEN}}"
                 }
               ]
             },
@@ -3820,7 +3819,7 @@
               "mode": "raw",
               "raw": "{\n\t\"status\": \"draft\"\n}"
             },
-            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
             "description": null
           },
           "response": []
@@ -4004,7 +4003,7 @@
               "mode": "raw",
               "raw": "{\n\t\"status\": \"publish\"\n}"
             },
-            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
             "description": null
           },
           "response": []
@@ -4265,7 +4264,7 @@
             "method": "DELETE",
             "header": [],
             "body": {},
-            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}",
             "description": null
           },
           "response": []
