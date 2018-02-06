@@ -4080,7 +4080,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a44cfd27-fd0e-4c45-a762-b258358ed916",
+                "id": "18733360-53c3-4014-88c6-6acaecb77b0a",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4090,7 +4090,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Post EN is Pending\"] = jsonData.status === \"Published\";",
+                  "    tests[\"Status Post EN is Published\"] = jsonData.status === \"Published\";",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
