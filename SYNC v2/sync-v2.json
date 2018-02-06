@@ -4003,7 +4003,7 @@
               "mode": "raw",
               "raw": "{\n\t\"status\": \"publish\"\n}"
             },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
             "description": null
           },
           "response": []
