@@ -919,7 +919,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6b67fb4d-8596-4d88-9065-71ebfaf3e93e",
+                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -929,7 +929,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest('Batch Profil v2');",
+                  "    postman.setNextRequest('Find Artifact from previous tests event');",
                   "}else{",
                   "    postman.setNextRequest(null);",
                   "}",
