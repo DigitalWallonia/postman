@@ -4015,7 +4015,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f0dae13b-e2c0-4649-9a61-af8589b63905",
+                "id": "72d86548-e5d0-4139-8ecd-20c3792be557",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4025,7 +4025,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"Published\";",
+                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Find Post v3 To Check Status EN Published\");",
                   "    }",
