@@ -2483,7 +2483,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"champion\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"testfr\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2496,7 +2496,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"champion\"}}",
+                  "value": "{\"where\":{ \"slug.slug\":\"testfr\"}}",
                   "equals": true
                 },
                 {
