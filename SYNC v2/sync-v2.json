@@ -580,7 +580,7 @@
         },
         {
           "_postman_id": "230cabe8-7454-ca76-c6f7-6af73b7502d1",
-          "name": "Find New TagCategory v3 copy",
+          "name": "Find New TagBundle v3",
           "event": [
             {
               "listen": "test",
