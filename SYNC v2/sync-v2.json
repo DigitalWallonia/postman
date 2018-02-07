@@ -4255,22 +4255,14 @@
             {
               "listen": "test",
               "script": {
+                "id": "1306c2f0-1bc4-4c8b-b028-f63fa7d0ad56",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
-                  "        console.log(\"jsonData a un id\" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Descriptions Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
+                  "    ",
                   "}"
                 ]
               }
