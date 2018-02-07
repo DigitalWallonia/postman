@@ -4645,11 +4645,12 @@
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}"
+                  "value": "{{v2_token}}",
+                  "equals": true
                 }
               ]
             },
-            "description": null
+            "description": ""
           },
           "response": []
         },
