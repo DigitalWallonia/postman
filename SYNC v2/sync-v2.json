@@ -4435,10 +4435,10 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "68e2fe50-0229-4c3a-a5d1-1b84a737270d",
+                "id": "8dfb4d49-22b4-43a8-b304-2bc1efcd529b",
                 "type": "text/javascript",
                 "exec": [
-                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestmission.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestmission-${Math.random().toString(36).substring(2).toLowerCase()}`);",
                   "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
                   "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);"
                 ]
