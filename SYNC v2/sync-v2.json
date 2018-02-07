@@ -4506,12 +4506,10 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "8dfb4d49-22b4-43a8-b304-2bc1efcd529b",
+                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
                 "type": "text/javascript",
                 "exec": [
-                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestmission-${Math.random().toString(36).substring(2).toLowerCase()}`);",
-                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);"
+                  ""
                 ]
               }
             }
