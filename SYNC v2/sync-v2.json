@@ -4538,7 +4538,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2ca62f98-65e5-41fb-a4a5-56e0dbc8da6a",
+                "id": "da0c6d38-8a96-4e91-b7ad-55275b945426",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", () => {",
@@ -4547,17 +4547,14 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag was added in v2\"] = jsonData",
+                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
                   "        && jsonData.response",
                   "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.id;",
+                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
                   "    if (jsonData",
                   "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"tagV2Id\", jsonData.response.tag.id);",
-                  "        postman.setNextRequest(\"Find New Mission v3\");",
+                  "        && jsonData.response.tag) {",
+                  "        postman.setNextRequest(\"Find Updated Mission v3\");",
                   "    } else{",
                   "        postman.setNextRequest(null);",
                   "    }",
@@ -4589,7 +4586,7 @@
                 },
                 {
                   "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagIdautomatedtestmission-df41u19fyiaabos8lie0qw7b9\",\"fr\":\"automatedTestMission.90mzsk0yfssp1oixjpfqlrf6r\"}},\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"description\":{\"court\":{\"label\":\"labelDescriptionTagIdautomatedtestmission-df41u19fyiaabos8lie0qw7b9\",\"fr\":\"{{tagV2Description}}\",\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
                   "description": "",
                   "type": "text"
                 }
