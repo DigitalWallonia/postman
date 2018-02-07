@@ -4502,34 +4502,7 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{missionV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{missionV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
+            "url": "{{protocol}}://{{domain}}/api/missions/{{tagV2Id}}&access_token={{v3_token}}",
             "description": null
           },
           "response": []
