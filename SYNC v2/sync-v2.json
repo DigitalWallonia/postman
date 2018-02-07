@@ -4236,7 +4236,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "16128f29-4863-4f37-ac27-4e48e96c2847",
+                "id": "deaee8ad-c2d9-4bb5-93b7-ff534a3b2e8a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4246,6 +4246,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Mission is deleted in v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"missionv3Id\");",
+                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
                   "}",
                   "else{",
                   "}",
