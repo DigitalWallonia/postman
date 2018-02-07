@@ -4212,7 +4212,7 @@
         },
         {
           "_postman_id": "93940164-c94d-5885-5e43-84aa139f4427",
-          "name": "Delete Profile v2 copy",
+          "name": "Delete Theme v2",
           "event": [
             {
               "listen": "test",
