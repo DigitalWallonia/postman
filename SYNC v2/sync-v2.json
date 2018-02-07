@@ -970,6 +970,12 @@
       ]
     },
     {
+      "_postman_id": "1970fe27-5661-405e-164e-a63944c8f94b",
+      "name": "Add New FormeJuridique v2 / LegalForm v3",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
       "name": "Add New Profil v2 / Profile v3",
       "description": null,
@@ -5083,12 +5089,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "1970fe27-5661-405e-164e-a63944c8f94b",
-      "name": "Add New FormeJuridique v2 / LegalForm v3",
-      "description": "",
-      "item": []
     }
   ]
 }
