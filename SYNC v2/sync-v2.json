@@ -258,6 +258,705 @@
       "item": []
     },
     {
+      "_postman_id": "c0cd73f0-d15e-1e19-e31d-2521cfece7d8",
+      "name": "Add New Tag v2 / Mission v3",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "7a08d8c7-b4c8-d90e-c897-cc5ad218847d",
+          "name": "Find Artifact from previous tests mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9c676e15-f219-49f6-8b33-b3aa4e17b273",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"missionv3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests mission\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestmission\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestmission\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b82b1a49-01a9-e435-e04f-61fd10a55277",
+          "name": "Delete Artifact from previous tests mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6477fc50-82e8-4e42-8ccf-ea92c79014d3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Mission is deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"missionv3Id\");",
+                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionv3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e0c3cb2e-21a5-652d-9bba-1247a639275f",
+          "name": "Add Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ca62f98-65e5-41fb-a4a5-56e0dbc8da6a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag was added in v2\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.id;",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"tagV2Id\", jsonData.response.tag.id);",
+                  "        postman.setNextRequest(\"Find New Mission v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "8dfb4d49-22b4-43a8-b304-2bc1efcd529b",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestmission-${Math.random().toString(36).substring(2).toLowerCase()}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"themeId\":\"10\",\"bundleId\":\"29\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f6ca6067-c170-ca63-4c82-d38d67336e43",
+          "name": "Find New Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e8e3e7d9-d559-4a9f-8af1-9031ed1240d5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"A mission is been added in v3\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"The mission status is pending\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Add Images to New Mission v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fe86686e-4688-a9c9-326d-e7b1d687d997",
+          "name": "Add Images to New Mission v3",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
+                "type": "text/javascript",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "317450db-cab8-4f61-90e8-d6c082e0cf33",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The mission has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The mission has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fc7a8cdd-cc9f-c2b8-f8ee-da7bf1938433",
+          "name": "Update Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0d3c332a-f107-4fb5-b7a8-d1ea30e017e8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag) {",
+                  "        postman.setNextRequest(\"Find Updated Mission v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "edc87f2b-35cf-acde-f8b5-dfb38075bacd",
+          "name": "Find Updated Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "12151640-af5a-4112-a74e-e51759f2140b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The mission status is published\"] = jsonData.status === \"Hidden\";",
+                  "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "15643d34-7923-3886-7440-2d4e3b48d94c",
+          "name": "Update Status Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ad07fe27-a778-44b4-9e3f-e270c75ef403",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.visibleFront === true;",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag) {",
+                  "        postman.setNextRequest(\"Find Updated Status Mission v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":true,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ac5d80c2-1152-e4b1-b36e-f8e7af4400b9",
+          "name": "Find Updated Status Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6419f25f-74e7-429e-97f6-0979897f8ee5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The mission status is published\"] = jsonData.status === \"Published\";",
+                  "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8a7200a5-6248-0ea6-0f91-6fc664fb5080",
+          "name": "Delete Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "48cf4558-b160-4d48-863e-aaceb079cc91",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Tag mission was deleted in v2\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"missionV2Id\");",
+                  "    postman.setNextRequest(\"Delete Mission v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "tags",
+                "{{tagV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1fc95cfa-0128-269d-2d77-852415d15ce2",
+          "name": "Delete Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5a07fa1d-c578-407e-ae28-fe04b6403a1f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Mission was deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"missionv3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
       "name": "Add New Profile v2",
       "description": null,
@@ -2894,705 +3593,6 @@
       "name": "Add New Contact v2",
       "description": "",
       "item": []
-    },
-    {
-      "_postman_id": "c0cd73f0-d15e-1e19-e31d-2521cfece7d8",
-      "name": "Add New Tag v2 / Mission v3",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "7a08d8c7-b4c8-d90e-c897-cc5ad218847d",
-          "name": "Find Artifact from previous tests mission",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9c676e15-f219-49f6-8b33-b3aa4e17b273",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"missionv3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests mission\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestmission\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestmission\"}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b82b1a49-01a9-e435-e04f-61fd10a55277",
-          "name": "Delete Artifact from previous tests mission",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6477fc50-82e8-4e42-8ccf-ea92c79014d3",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Mission is deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"missionv3Id\");",
-                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionv3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionv3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e0c3cb2e-21a5-652d-9bba-1247a639275f",
-          "name": "Add Tag Mission v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2ca62f98-65e5-41fb-a4a5-56e0dbc8da6a",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag was added in v2\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.id;",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"tagV2Id\", jsonData.response.tag.id);",
-                  "        postman.setNextRequest(\"Find New Mission v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "8dfb4d49-22b4-43a8-b304-2bc1efcd529b",
-                "type": "text/javascript",
-                "exec": [
-                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestmission-${Math.random().toString(36).substring(2).toLowerCase()}`);",
-                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"themeId\":\"10\",\"bundleId\":\"29\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "description": "",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f6ca6067-c170-ca63-4c82-d38d67336e43",
-          "name": "Find New Mission v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e8e3e7d9-d559-4a9f-8af1-9031ed1240d5",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"A mission is been added in v3\"] = jsonData.id !== \"undefined\";",
-                  "    tests[\"The mission status is pending\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Add Images to New Mission v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fe86686e-4688-a9c9-326d-e7b1d687d997",
-          "name": "Add Images to New Mission v3",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
-                "type": "text/javascript",
-                "exec": [
-                  "function uuidv4() {",
-                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
-                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
-                  "    return v.toString(16);",
-                  "  });",
-                  "}",
-                  "pm.environment.set(\"uniqId1\", uuidv4());",
-                  "pm.environment.set(\"uniqId2\", uuidv4());"
-                ]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "317450db-cab8-4f61-90e8-d6c082e0cf33",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The mission has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The mission has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fc7a8cdd-cc9f-c2b8-f8ee-da7bf1938433",
-          "name": "Update Tag Mission v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0d3c332a-f107-4fb5-b7a8-d1ea30e017e8",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag) {",
-                  "        postman.setNextRequest(\"Find Updated Mission v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "description": "",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "edc87f2b-35cf-acde-f8b5-dfb38075bacd",
-          "name": "Find Updated Mission v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "12151640-af5a-4112-a74e-e51759f2140b",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The mission status is published\"] = jsonData.status === \"Hidden\";",
-                  "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "15643d34-7923-3886-7440-2d4e3b48d94c",
-          "name": "Update Status Tag Mission v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ad07fe27-a778-44b4-9e3f-e270c75ef403",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.visibleFront === true;",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag) {",
-                  "        postman.setNextRequest(\"Find Updated Status Mission v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":true,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "description": "",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ac5d80c2-1152-e4b1-b36e-f8e7af4400b9",
-          "name": "Find Updated Status Mission v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6419f25f-74e7-429e-97f6-0979897f8ee5",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The mission status is published\"] = jsonData.status === \"Published\";",
-                  "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8a7200a5-6248-0ea6-0f91-6fc664fb5080",
-          "name": "Delete Tag Mission v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "48cf4558-b160-4d48-863e-aaceb079cc91",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Tag mission was deleted in v2\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"missionV2Id\");",
-                  "    postman.setNextRequest(\"Delete Mission v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "tags",
-                "{{tagV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1fc95cfa-0128-269d-2d77-852415d15ce2",
-          "name": "Delete Mission v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5a07fa1d-c578-407e-ae28-fe04b6403a1f",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Mission was deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"missionv3Id\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        }
-      ]
     },
     {
       "_postman_id": "781c3dec-a576-8854-7ade-147da8d91385",
