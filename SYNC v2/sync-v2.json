@@ -664,7 +664,7 @@
         },
         {
           "_postman_id": "a1196053-2c12-0cc2-e6c3-d9a9440bf4d5",
-          "name": "Delete Theme v2 copy",
+          "name": "Delete Bundle v2",
           "event": [
             {
               "listen": "test",
