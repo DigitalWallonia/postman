@@ -166,7 +166,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "c5615d55-d9d7-4035-86f5-aebf4629cea1",
+                "id": "f3b720b9-5b8c-4cbd-816b-ea810b324b1d",
                 "type": "text/javascript",
                 "exec": [
                   "postman.setEnvironmentVariable(\"themeV2Label\", `automatedTest.${Math.random().toString(36).substring(2)}`);",
