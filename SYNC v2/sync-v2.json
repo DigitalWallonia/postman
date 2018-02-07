@@ -4146,7 +4146,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "25eaeb53-c81d-4058-9a76-43c91b36c8c9",
+                "id": "ab679eff-18c4-427b-8b3a-c1f2cfee7e38",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4155,10 +4155,10 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un profil a été ajouté\"] = jsonData.response.profil.id !== \"undefined\";",
-                  "    if (jsonData.response.profil.id) {",
+                  "    tests[\"Un profil a été ajouté\"] = jsonData.response.theme.id !== \"undefined\";",
+                  "    if (jsonData.response.theme.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
+                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.theme.id);",
                   "        postman.setNextRequest(\"Find New Profile v3\");",
                   "    }",
                   "    else{",
