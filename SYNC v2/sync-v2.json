@@ -4423,10 +4423,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "9f75b48e-36c1-47e5-af93-59241b0d62f7",
+                "id": "54448679-7714-4c89-949e-ddec6a3826df",
                 "type": "text/javascript",
                 "exec": [
-                  "var code;",
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "    code = pm.response.code;",
