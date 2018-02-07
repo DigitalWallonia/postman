@@ -4649,6 +4649,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "9962556f-f70d-45e4-9568-7c80df792efe",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4657,11 +4658,11 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un profil a été ajouté\"] = jsonData.response.profil.id !== \"undefined\";",
-                  "    if (jsonData.response.profil.id) {",
+                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.presse.id !== \"undefined\";",
+                  "    if (jsonData.response.presse.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
-                  "        postman.setNextRequest(\"Find New Profile v3\");",
+                  "        postman.setEnvironmentVariable(\"presseV2Id\", jsonData.response.presse.id);",
+                  "        postman.setNextRequest(\"Find New PressReview v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
@@ -4683,28 +4684,13 @@
                   "type": "text"
                 },
                 {
-                  "key": "nom",
+                  "key": "dateParution",
                   "value": "Test Synchro 1",
-                  "type": "text"
-                },
-                {
-                  "key": "permalien",
-                  "value": "test-synchro-1",
-                  "type": "text"
-                },
-                {
-                  "key": "statut",
-                  "value": "profil_statut_redaction",
-                  "type": "text"
-                },
-                {
-                  "key": "acronyme",
-                  "value": "TS1",
                   "type": "text"
                 }
               ]
             },
-            "url": "{{v2_protocol}}://{{v2_domain}}/profils/add",
+            "url": "{{v2_protocol}}://{{v2_domain}}/presse/add",
             "description": null
           },
           "response": []
