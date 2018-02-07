@@ -4382,10 +4382,10 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "cf1276f6-062d-4dad-a142-019de769378c",
+                "id": "68e2fe50-0229-4c3a-a5d1-1b84a737270d",
                 "type": "text/javascript",
                 "exec": [
-                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestmission.${Math.random().toString(36).substring(2)}`);",
                   "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
                   "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);"
                 ]
