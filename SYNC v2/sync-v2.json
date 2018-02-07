@@ -4476,7 +4476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e0a83f51-c689-47af-ad8e-f54cb15d59f7",
+                "id": "05fce2f3-1fcd-4d82-b255-98308679eed2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4492,7 +4492,7 @@
                   "        postman.setNextRequest(\"Find Slug FR v3\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Tag Mission v2\");",
                   "    }",
                   "}"
                 ]
