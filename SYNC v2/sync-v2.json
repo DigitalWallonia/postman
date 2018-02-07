@@ -4476,7 +4476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "05fce2f3-1fcd-4d82-b255-98308679eed2",
+                "id": "e8e3e7d9-d559-4a9f-8af1-9031ed1240d5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4489,7 +4489,7 @@
                   "    tests[\"The mission status is pending\"] = jsonData.status === \"Pending\";",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "        postman.setNextRequest(\"Add Images to New Mission v3\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(\"Delete Tag Mission v2\");",
