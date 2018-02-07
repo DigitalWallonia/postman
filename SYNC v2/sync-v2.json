@@ -1888,7 +1888,7 @@
     },
     {
       "_postman_id": "5006c1e7-04fa-68cb-6d9d-1d688a267a6f",
-      "name": "Add New Event v2",
+      "name": "Add New Evenement v2 / Event v3",
       "description": null,
       "item": [
         {
@@ -3598,6 +3598,28 @@
             "description": null
           },
           "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b57accd6-494d-476e-87bc-54057d1e4b4d",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "09b31856-5d49-44d6-b1da-6e9975d95eed",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     },
