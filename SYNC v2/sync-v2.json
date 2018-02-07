@@ -4555,7 +4555,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "0b6d283f-72d1-42b8-a784-f9f8f827e9f9",
+                "id": "8b86a8c8-41b8-4ce4-8d8b-77d3a314438f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4570,7 +4570,7 @@
                   "        postman.setNextRequest(\"Update Tag Mission v2\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
                   "    }",
                   "}"
                 ]
