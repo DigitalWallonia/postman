@@ -54,6 +54,12 @@
       ]
     },
     {
+      "_postman_id": "a231583d-3bf8-9712-28f9-8410aec6a7d9",
+      "name": "Add New Tag v2 / Tag v3",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
       "name": "Add New Profile v2",
       "description": null,
@@ -4268,12 +4274,6 @@
     {
       "_postman_id": "3a2f03e4-2d45-e0c4-96e0-dbf47694a68d",
       "name": "Add New Bundle v2 / TagBundle v3",
-      "description": "",
-      "item": []
-    },
-    {
-      "_postman_id": "a231583d-3bf8-9712-28f9-8410aec6a7d9",
-      "name": "Add New Tag v2 / Tag v3",
       "description": "",
       "item": []
     },
