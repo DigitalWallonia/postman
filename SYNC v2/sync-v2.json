@@ -257,7 +257,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ef2b789d-d7c1-4ccf-8181-6f9ff0f53231",
+                "id": "2643098c-1707-472c-bb05-07e48765ea41",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -273,7 +273,7 @@
                   "        postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
                   "        postman.setNextRequest(\"Add Images to New Mission v3\");",
                   "    } else {",
-                  "       postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "       postman.setNextRequest(\"Delete Theme v2\");",
                   "    }",
                   "}"
                 ]
