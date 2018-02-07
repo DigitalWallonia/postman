@@ -4471,7 +4471,7 @@
         },
         {
           "_postman_id": "fc7a8cdd-cc9f-c2b8-f8ee-da7bf1938433",
-          "name": "Update Status Tag Mission v2",
+          "name": "Update Tag Mission v2",
           "event": [
             {
               "listen": "test",
