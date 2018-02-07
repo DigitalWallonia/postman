@@ -389,6 +389,58 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "bff294a1-9e9d-7e6a-5bf8-e11477657f7e",
+          "name": "Delete Artifact from previous tests (TagCategory) copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "26bc7d6e-b215-47d3-9ad7-cbdfc17ce245",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful DELETE Request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    pm.environment.unset(\"tagCategoryV3Id\");",
+                  "}",
+                  "postman.setNextRequest(\"Add Theme v2\");",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/{{tagCategoryV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "{{tagCategoryV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
