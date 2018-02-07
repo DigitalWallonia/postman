@@ -4618,7 +4618,75 @@
       "_postman_id": "781c3dec-a576-8854-7ade-147da8d91385",
       "name": "Add New PressReview v2",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "32a7ed58-811b-ccd4-2338-350ad407ce34",
+          "name": "Add PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un profil a été ajouté\"] = jsonData.response.profil.id !== \"undefined\";",
+                  "    if (jsonData.response.profil.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
+                  "        postman.setNextRequest(\"Find New Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "nom",
+                  "value": "Test Synchro 1",
+                  "type": "text"
+                },
+                {
+                  "key": "permalien",
+                  "value": "test-synchro-1",
+                  "type": "text"
+                },
+                {
+                  "key": "statut",
+                  "value": "profil_statut_redaction",
+                  "type": "text"
+                },
+                {
+                  "key": "acronyme",
+                  "value": "TS1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/profils/add",
+            "description": null
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
