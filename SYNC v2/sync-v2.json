@@ -4230,62 +4230,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "b82b1a49-01a9-e435-e04f-61fd10a55277",
-          "name": "Delete Artifact from previous tests mission",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "deaee8ad-c2d9-4bb5-93b7-ff534a3b2e8a",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Mission is deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"missionv3Id\");",
-                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
-                  "}",
-                  "else{",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionv3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionv3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
           "_postman_id": "7a08d8c7-b4c8-d90e-c897-cc5ad218847d",
           "name": "Find Artifact from previous tests mission",
           "event": [
@@ -4333,6 +4277,62 @@
                   "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTestMission\"}}}",
                   "equals": true
                 },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b82b1a49-01a9-e435-e04f-61fd10a55277",
+          "name": "Delete Artifact from previous tests mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "deaee8ad-c2d9-4bb5-93b7-ff534a3b2e8a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Mission is deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"missionv3Id\");",
+                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
+                  "}",
+                  "else{",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionv3Id}}"
+              ],
+              "query": [
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
