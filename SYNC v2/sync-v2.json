@@ -4812,7 +4812,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "428055bd-f226-4f2c-8918-4c2e813ad31b",
+                "id": "2a5ae63d-bd55-43f4-94a7-863b9daa17cd",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4825,7 +4825,7 @@
                   "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
