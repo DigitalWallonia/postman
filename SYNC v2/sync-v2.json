@@ -4532,6 +4532,63 @@
           "response": []
         },
         {
+          "_postman_id": "fe86686e-4688-a9c9-326d-e7b1d687d997",
+          "name": "Add properties to New Mission v3",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
+                "type": "text/javascript",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://dev.digitalwallonia.be/wp-content/uploads/2017/11/CES-2018.jpg\",\n      \"name\": \"CES 2018\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://dev.digitalwallonia.be/wp-content/uploads/2017/12/EVENT-CES-2018-2.jpg\",\n      \"name\": \"CES 2018\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "fc7a8cdd-cc9f-c2b8-f8ee-da7bf1938433",
           "name": "Update Tag Mission v2",
           "event": [
@@ -4761,63 +4818,6 @@
               ]
             },
             "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fe86686e-4688-a9c9-326d-e7b1d687d997",
-          "name": "Add properties to New Mission v3",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
-                "type": "text/javascript",
-                "exec": [
-                  "function uuidv4() {",
-                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
-                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
-                  "    return v.toString(16);",
-                  "  });",
-                  "}",
-                  "pm.environment.set(\"uniqId1\", uuidv4());",
-                  "pm.environment.set(\"uniqId2\", uuidv4());"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://dev.digitalwallonia.be/wp-content/uploads/2017/11/CES-2018.jpg\",\n      \"name\": \"CES 2018\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://dev.digitalwallonia.be/wp-content/uploads/2017/12/EVENT-CES-2018-2.jpg\",\n      \"name\": \"CES 2018\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
           },
           "response": []
         }
