@@ -1050,6 +1050,59 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "aec83e53-3c21-9852-a6c1-008f2e5f3dfc",
+          "name": "Delete Mission v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5a07fa1d-c578-407e-ae28-fe04b6403a1f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Mission was deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"missionv3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
