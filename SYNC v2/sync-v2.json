@@ -4141,7 +4141,7 @@
         },
         {
           "_postman_id": "6f3db6e0-f6f3-bf9d-5706-f31b26805535",
-          "name": "Add Profile v2 copy",
+          "name": "Add Theme v2",
           "event": [
             {
               "listen": "test",
