@@ -319,7 +319,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5a07fa1d-c578-407e-ae28-fe04b6403a1f",
+                "id": "1e8697bb-7e2d-430a-b392-681c3fa4b1ab",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -327,8 +327,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Mission was deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"missionv3Id\");",
+                  "    tests[\"TagCategory was deleted in v3\"] = jsonData.count ",
+                  "        && jsonData.count === 1;",
+                  "    pm.environment.unset(\"tagCategoryV3Id\");",
                   "}",
                   ""
                 ]
@@ -343,7 +344,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{tagCategoryV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -351,13 +352,12 @@
               "path": [
                 "api",
                 "missions",
-                "{{missionV3Id}}"
+                "{{tagCategoryV3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
