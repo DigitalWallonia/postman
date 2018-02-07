@@ -4146,6 +4146,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "25eaeb53-c81d-4058-9a76-43c91b36c8c9",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4166,6 +4167,17 @@
                   "}"
                 ]
               }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "b45a6cdb-77d9-4e2d-998f-786a27f7d7ab",
+                "type": "text/javascript",
+                "exec": [
+                  "const randomId = Math.random().toString(36).substring(2);",
+                  "postman.setEnvironmentVariable(\"themeV2Label\", `automatedTest.${randomId}`);"
+                ]
+              }
             }
           ],
           "request": {
@@ -4180,28 +4192,14 @@
                   "type": "text"
                 },
                 {
-                  "key": "nom",
-                  "value": "Test Synchro 1",
-                  "type": "text"
-                },
-                {
-                  "key": "permalien",
-                  "value": "test-synchro-1",
-                  "type": "text"
-                },
-                {
-                  "key": "statut",
-                  "value": "profil_statut_redaction",
-                  "type": "text"
-                },
-                {
-                  "key": "acronyme",
-                  "value": "TS1",
+                  "key": "json",
+                  "value": "{\"theme\":{\"action\":\"add\",\"label\":\"05wxwzb26z39\",\"intitule\":{\"court\":{\"label\":\"labelIntituleThemeId05wxwzb26z39\",\"fr\":\"05wxwzb26z39\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeId05wxwzb26z39\",\"fr\":\"05wxwzb26z39\"}},\"statut\":{\"label\":\"theme_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false}}",
+                  "description": "",
                   "type": "text"
                 }
               ]
             },
-            "url": "{{v2_protocol}}://{{v2_domain}}/profils/add",
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
             "description": null
           },
           "response": []
