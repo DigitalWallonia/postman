@@ -4291,7 +4291,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a6815d46-2349-433c-bfcb-586ee93b2ab6",
+                "id": "1121426c-8dfb-4ffd-8c90-4001d9ba26bf",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -4299,10 +4299,10 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"postv3Id\", jsonData.id);",
+                  "    postman.setEnvironmentVariable(\"missionv3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests mission\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
+                  "    postman.setNextRequest(\"\");",
                   "}"
                 ]
               }
