@@ -4554,7 +4554,7 @@
             }
           ],
           "request": {
-            "method": "POST",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Content-Type",
@@ -4566,7 +4566,7 @@
               "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}/_images?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4574,8 +4574,7 @@
               "path": [
                 "api",
                 "missions",
-                "{{missionV3Id}}",
-                "_images"
+                "{{missionV3Id}}"
               ],
               "query": [
                 {
