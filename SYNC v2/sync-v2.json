@@ -4563,7 +4563,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://dev.digitalwallonia.be/wp-content/uploads/2017/11/CES-2018.jpg\",\n      \"name\": \"CES 2018\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://dev.digitalwallonia.be/wp-content/uploads/2017/12/EVENT-CES-2018-2.jpg\",\n      \"name\": \"CES 2018\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ],\n  \"contacts\":[\n     {\n        \"v2Id\": 0000,\n        \"role\": \"Contact Person\",\n        \"firstName\": \"Contact Test\",\n        \"lastName\": \"Contact Test\",\n        \"emailAddresses\": [\n            \"test@adn.be\"\n        ]\n     }\n  ]\n}"
             },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
