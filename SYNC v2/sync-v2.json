@@ -4746,7 +4746,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "49df88a9-2c64-457e-ad53-988d097f668a",
+                "id": "ad07fe27-a778-44b4-9e3f-e270c75ef403",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", () => {",
@@ -4764,7 +4764,7 @@
                   "        && jsonData.response.tag) {",
                   "        postman.setNextRequest(\"Find Updated Status Mission v3\");",
                   "    } else{",
-                  "        postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
                   "    }",
                   "}"
                 ]
