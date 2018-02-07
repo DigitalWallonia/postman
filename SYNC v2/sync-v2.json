@@ -4405,7 +4405,7 @@
                 },
                 {
                   "key": "json",
-                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"themeId\":\"10\",\"bundleId\":\"29\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
                   "description": "",
                   "type": "text"
                 }
