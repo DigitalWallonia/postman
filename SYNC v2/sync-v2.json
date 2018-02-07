@@ -4018,6 +4018,65 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "33026c1f-3444-75fd-b114-6b4ab63de1ca",
+          "name": "Find Artifact from previous tests post copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c1374e34-1602-4fb2-9f83-9789f2e492ee",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"postv3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests post\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
@@ -4070,65 +4129,6 @@
                 "{{postv3Id}}"
               ],
               "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "33026c1f-3444-75fd-b114-6b4ab63de1ca",
-          "name": "Find Artifact from previous tests post copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c1374e34-1602-4fb2-9f83-9789f2e492ee",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"postv3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests post\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
