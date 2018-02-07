@@ -4812,7 +4812,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a9a0987d-8db8-4dbc-990a-c325d17964b0",
+                "id": "428055bd-f226-4f2c-8918-4c2e813ad31b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4821,7 +4821,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The mission status is published\"] = jsonData.status === \"Hidden\";",
+                  "    tests[\"The mission status is published\"] = jsonData.status === \"Published\";",
                   "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
