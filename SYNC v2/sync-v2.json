@@ -260,10 +260,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "4a3224b1-4099-44a8-badc-c478909b1564",
+                "id": "c4d7343d-93fd-4e4e-b56e-f30dca7503bb",
                 "type": "text/javascript",
                 "exec": [
                   "const expectedStatus = 'Pending';",
+                  "const expectedSlug = postman.getEnvironmentVariable('themeV2Label');",
+                  "const expectedTitle = postman.getEnvironmentVariable('themeV2Intitule');",
+                  "const expectedDescription = postman.getEnvironmentVariable('themeV2Description');",
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "    code = pm.response.code;",
