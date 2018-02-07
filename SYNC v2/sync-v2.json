@@ -85,12 +85,15 @@
             {
               "listen": "test",
               "script": {
-                "id": "8ff2c4bd-96a7-456d-8303-8891807f08dd",
+                "id": "26bc7d6e-b215-47d3-9ad7-cbdfc17ce245",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful DELETE Request\", () => {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
+                  "if (pm.response.code === 200) {",
+                  "    pm.environment.unset(\"tagCategoryV3Id\");",
+                  "}",
                   "postman.setNextRequest(\"Add Theme v2\");",
                   ""
                 ]
