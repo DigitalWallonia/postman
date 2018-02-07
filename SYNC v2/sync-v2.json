@@ -429,26 +429,24 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "tagCategories",
+                "tagBundles",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
