@@ -4228,7 +4228,65 @@
       "_postman_id": "c0cd73f0-d15e-1e19-e31d-2521cfece7d8",
       "name": "Add New Tag v2 / Mission v3",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "b82b1a49-01a9-e435-e04f-61fd10a55277",
+          "name": "Delete Artifact from previous tests mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"postv3Id\");",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postv3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
