@@ -717,7 +717,7 @@
         },
         {
           "_postman_id": "abf129ce-ac49-df75-6c43-e2817a304de6",
-          "name": "Delete TagCategory v3 copy",
+          "name": "Delete TagBundle v3",
           "event": [
             {
               "listen": "test",
