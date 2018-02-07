@@ -4910,6 +4910,68 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "ac5d80c2-1152-e4b1-b36e-f8e7af4400b9",
+          "name": "Find Updated Mission v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a9a0987d-8db8-4dbc-990a-c325d17964b0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The mission status is published\"] = jsonData.status === \"Hidden\";",
+                  "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
