@@ -4820,6 +4820,64 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "f639a44d-4401-fd8a-7648-aaba5df2038f",
+          "name": "Add Images to New Mission v3 copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
+                "type": "text/javascript",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}/_images?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionV3Id}}",
+                "_images"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
