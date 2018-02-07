@@ -4171,11 +4171,12 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "b45a6cdb-77d9-4e2d-998f-786a27f7d7ab",
+                "id": "c5615d55-d9d7-4035-86f5-aebf4629cea1",
                 "type": "text/javascript",
                 "exec": [
-                  "const randomId = Math.random().toString(36).substring(2);",
-                  "postman.setEnvironmentVariable(\"themeV2Label\", `automatedTest.${randomId}`);"
+                  "postman.setEnvironmentVariable(\"themeV2Label\", `automatedTest.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"themeV2Intitule\", `automatedTest.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"themeV2Description\", `automatedTest.${Math.random().toString(36).substring(2)}`);"
                 ]
               }
             }
