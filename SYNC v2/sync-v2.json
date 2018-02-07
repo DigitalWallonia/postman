@@ -4555,7 +4555,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "246b1db7-9cd3-491c-81e7-9e563845e7e6",
+                "id": "bb2b3516-b3eb-402f-ad16-66367c3fca3f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4564,7 +4564,8 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The mission has a logo\"] = jsonData.status === \"Pending\";",
+                  "    tests[\"The mission has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The mission has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Find Slug FR v3\");",
                   "    }",
