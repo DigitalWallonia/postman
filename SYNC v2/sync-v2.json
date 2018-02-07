@@ -257,7 +257,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "02b61c0f-282f-46d4-aaf7-b3104d0c9244",
+                "id": "4a3224b1-4099-44a8-badc-c478909b1564",
                 "type": "text/javascript",
                 "exec": [
                   "const expectedStatus = 'Pending';",
@@ -272,7 +272,7 @@
                   "        && jsonData.status === expectedStatus;",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Add Images to New Mission v3\");",
+                  "        postman.setNextRequest(\"Delete Theme v2\");",
                   "    } else {",
                   "       postman.setNextRequest(\"Delete Theme v2\");",
                   "    }",
