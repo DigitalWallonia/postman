@@ -4601,6 +4601,68 @@
           "response": []
         },
         {
+          "_postman_id": "edc87f2b-35cf-acde-f8b5-dfb38075bacd",
+          "name": "Find New Mission v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a376d440-1e4f-4a0e-99d8-1c0b1ccbe6b5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"A mission is been added in v3\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"The mission status is hidden\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "8a7200a5-6248-0ea6-0f91-6fc664fb5080",
           "name": "Delete Tag Mission v2",
           "event": [
@@ -4704,68 +4766,6 @@
               ]
             },
             "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "edc87f2b-35cf-acde-f8b5-dfb38075bacd",
-          "name": "Find New Mission v3 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a376d440-1e4f-4a0e-99d8-1c0b1ccbe6b5",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"A mission is been added in v3\"] = jsonData.id !== \"undefined\";",
-                  "    tests[\"The mission status is hidden\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
           },
           "response": []
         }
