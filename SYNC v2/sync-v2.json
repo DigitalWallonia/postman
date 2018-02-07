@@ -4064,20 +4064,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "tagCategories",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}",
                   "equals": true
                 },
                 {
