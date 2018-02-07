@@ -389,6 +389,65 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "2243ffc3-bbd1-1778-f7c9-c3cca4f8ed7d",
+          "name": "Find Artifact from previous tests (TagCategory) copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2f59ffb5-58f8-4633-95f6-d72cddebdc33",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests (TagCategory)\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
