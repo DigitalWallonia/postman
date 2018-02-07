@@ -4247,6 +4247,73 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "808b5df5-f156-429f-b4ef-86c29e0414ea",
+          "name": "Batch Infos de base PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
+                  "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Descriptions Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
