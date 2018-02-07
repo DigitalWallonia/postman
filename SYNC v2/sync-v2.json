@@ -4746,7 +4746,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "da0c6d38-8a96-4e91-b7ad-55275b945426",
+                "id": "49df88a9-2c64-457e-ad53-988d097f668a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", () => {",
@@ -4758,11 +4758,11 @@
                   "    tests[\"Tag Status v2 is Published\"] = jsonData",
                   "        && jsonData.response",
                   "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
+                  "        && jsonData.response.tag.visibleFront === true;",
                   "    if (jsonData",
                   "        && jsonData.response",
                   "        && jsonData.response.tag) {",
-                  "        postman.setNextRequest(\"Find Updated Mission v3\");",
+                  "        postman.setNextRequest(\"Find Updated Status Mission v3\");",
                   "    } else{",
                   "        postman.setNextRequest(null);",
                   "    }",
@@ -4794,7 +4794,8 @@
                 },
                 {
                   "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"29\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":true,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "description": "",
                   "type": "text"
                 }
               ]
