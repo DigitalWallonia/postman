@@ -4423,7 +4423,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4fb1cc19-f515-475c-8cfa-c077693bb75f",
+                "id": "9f75b48e-36c1-47e5-af93-59241b0d62f7",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4435,7 +4435,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Une mission a été ajoutée\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV3Id\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
                   "        postman.setNextRequest(\"Find Slug FR v3\");",
                   "    }",
                   "    else{",
