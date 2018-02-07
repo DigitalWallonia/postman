@@ -4551,6 +4551,29 @@
                   "pm.environment.set(\"uniqId2\", uuidv4());"
                 ]
               }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "246b1db7-9cd3-491c-81e7-9e563845e7e6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The mission has a logo\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
             }
           ],
           "request": {
