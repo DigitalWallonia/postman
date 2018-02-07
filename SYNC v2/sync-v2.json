@@ -4476,7 +4476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "033b6bde-ea05-4df6-b75a-e213314d3871",
+                "id": "a376d440-1e4f-4a0e-99d8-1c0b1ccbe6b5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4486,7 +4486,7 @@
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"A mission is been added in v3\"] = jsonData.id !== \"undefined\";",
-                  "    tests[\"The mission status is hidden\"] = jsonData.status === \"Hidden\";",
+                  "    tests[\"The mission status is hidden\"] = jsonData.status === \"Pending\";",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
                   "        postman.setNextRequest(\"Find Slug FR v3\");",
