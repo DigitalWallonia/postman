@@ -4604,7 +4604,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8becb3fa-be67-4ec9-9aa8-c9a82a640d8f",
+                "id": "36cf0e99-91b6-4ea5-8240-1d677250a317",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4613,7 +4613,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The mission status is published\"] = jsonData.status === \"Published\";",
+                  "    tests[\"The mission status is published\"] = jsonData.status === \"Hidden\";",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Find Slug FR v3\");",
                   "    }",
