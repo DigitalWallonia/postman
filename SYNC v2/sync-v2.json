@@ -4533,6 +4533,59 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "1fc95cfa-0128-269d-2d77-852415d15ce2",
+          "name": "Delete Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f7f0d073-ce13-4ba9-a6f4-861774d8a041",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'événement a été supprimé en v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"eventv3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
