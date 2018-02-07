@@ -4554,7 +4554,7 @@
             }
           ],
           "request": {
-            "method": "PATCH",
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -4563,10 +4563,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ],\n  \"contacts\":[\n     {\n    \t\"id\": \"{{uniqId1}}\",\n        \"v2Id\": 0000,\n        \"role\": \"Contact Person\",\n        \"firstName\": \"Contact Test\",\n        \"lastName\": \"Contact Test\",\n        \"emailAddresses\": [\n            \"test@adn.be\"\n        ]\n     }\n  ],\n  \"themes\":[\n  \t    {\n    \t\"id\": \"{{uniqId1}}\",\n        \"title\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"secteur numérique\",\n                \"id\": \"5a0eedaf0184e\"\n            }\n        ],\n        \"shortDescription\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"Développer et structurer le secteur pour capter les opportunités et la valeur ajoutée de l'économie du numérique pour la Wallonie\",\n                \"id\": \"5a0eedaf018c2\"\n            }\n        ],\n        \"slug\": [\n            {\n                \"language\": \"fre\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf01764\"\n            }\n        ],\n        \"v2Id\": 0\n    }\n  ]\n}"
+              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}/_images?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4574,7 +4574,8 @@
               "path": [
                 "api",
                 "missions",
-                "{{missionV3Id}}"
+                "{{missionV3Id}}",
+                "_images"
               ],
               "query": [
                 {
