@@ -345,14 +345,14 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{tagCategoryV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/{{tagCategoryV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "missions",
+                "tagCategories",
                 "{{tagCategoryV3Id}}"
               ],
               "query": [
