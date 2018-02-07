@@ -977,9 +977,31 @@
     },
     {
       "_postman_id": "3018c690-6232-c106-11c5-f6276326c440",
-      "name": "Add New Contact v2 / v3",
+      "name": "Add New Contact",
       "description": "",
-      "item": []
+      "item": [],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "8c36f4dd-ad3c-49b6-9fec-00793f0cbe5a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "296c0d0e-fa1a-419d-82f5-196228c50005",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     },
     {
       "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
