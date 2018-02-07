@@ -4098,21 +4098,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
+                "id": "8ff2c4bd-96a7-456d-8303-8891807f08dd",
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
+                  "pm.test(\"Successful DELETE Request\", () => {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postv3Id\");",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
+                  "postman.setNextRequest(\"Add Theme v2\");",
                   ""
                 ]
               }
