@@ -4277,11 +4277,12 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
-            "description": null
+            "description": ""
           },
           "response": []
         },
