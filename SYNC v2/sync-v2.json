@@ -4193,7 +4193,7 @@
                 },
                 {
                   "key": "json",
-                  "value": "{\"theme\":{\"action\":\"add\",\"label\":\"05wxwzb26z39\",\"intitule\":{\"court\":{\"label\":\"labelIntituleThemeId05wxwzb26z39\",\"fr\":\"05wxwzb26z39\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeId05wxwzb26z39\",\"fr\":\"05wxwzb26z39\"}},\"statut\":{\"label\":\"theme_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false}}",
+                  "value": "{\"theme\":{\"action\":\"add\",\"label\":\"{{themeV2Label}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleThemeId{{themeV2Label}}\",\"fr\":\"{{themeV2Label}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeId{{themeV2Label}}\",\"fr\":\"{{themeV2Label}}\"}},\"statut\":{\"label\":\"theme_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false}}",
                   "description": "",
                   "type": "text"
                 }
