@@ -389,7 +389,14 @@
             "description": null
           },
           "response": []
-        },
+        }
+      ]
+    },
+    {
+      "_postman_id": "3a2f03e4-2d45-e0c4-96e0-dbf47694a68d",
+      "name": "Add New Bundle v2 / TagBundle v3",
+      "description": "",
+      "item": [
         {
           "_postman_id": "2243ffc3-bbd1-1778-f7c9-c3cca4f8ed7d",
           "name": "Find Artifact from previous tests (TagCategory) copy",
@@ -450,12 +457,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "3a2f03e4-2d45-e0c4-96e0-dbf47694a68d",
-      "name": "Add New Bundle v2 / TagBundle v3",
-      "description": "",
-      "item": []
     },
     {
       "_postman_id": "a231583d-3bf8-9712-28f9-8410aec6a7d9",
