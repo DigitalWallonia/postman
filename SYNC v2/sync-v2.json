@@ -4415,6 +4415,72 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "f6ca6067-c170-ca63-4c82-d38d67336e43",
+          "name": "Find New Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "90b200dd-e029-40a5-b949-c11b07b46354",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
