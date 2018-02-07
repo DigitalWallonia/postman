@@ -2806,63 +2806,6 @@
           "response": []
         },
         {
-          "_postman_id": "48f16bd7-064b-f4b7-ad33-4e20e39c2df8",
-          "name": "Delete Artifact from previous tests post copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postv3Id\");",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "{{postv3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "f8c38e29-b612-9fc5-2488-896d05e0d060",
           "name": "Auth WP",
           "event": [
@@ -4137,6 +4080,63 @@
                   "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}",
                   "equals": true
                 },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "48f16bd7-064b-f4b7-ad33-4e20e39c2df8",
+          "name": "Delete Artifact from previous tests post copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"postv3Id\");",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postv3Id}}"
+              ],
+              "query": [
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
