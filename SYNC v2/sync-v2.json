@@ -257,18 +257,19 @@
             {
               "listen": "test",
               "script": {
-                "id": "2643098c-1707-472c-bb05-07e48765ea41",
+                "id": "02b61c0f-282f-46d4-aaf7-b3104d0c9244",
                 "type": "text/javascript",
                 "exec": [
+                  "const expectedStatus = 'Pending';",
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "    code = pm.response.code;",
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
+                  "    const jsonData = JSON.parse(responseBody);",
                   "    tests[\"A new TagCategory has been added in v3\"] = typeof(jsonData.id) !== \"undefined\";",
-                  "    tests[\"The mission status is pending\"] = typeof(jsonData.status) !== \"undefined\" ",
-                  "        && jsonData.status === \"Pending\";",
+                  "    tests[`The TagCategory status is ${expectedStatus}`] = typeof(jsonData.status) !== \"undefined\" ",
+                  "        && jsonData.status === expectedStatus;",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
                   "        postman.setNextRequest(\"Add Images to New Mission v3\");",
