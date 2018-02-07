@@ -4236,7 +4236,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "285616aa-c094-472c-9986-eb7d8679bf71",
+                "id": "16128f29-4863-4f37-ac27-4e48e96c2847",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4245,7 +4245,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Mission is deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postv3Id\");",
+                  "    pm.environment.unset(\"missionv3Id\");",
                   "}",
                   "else{",
                   "}",
