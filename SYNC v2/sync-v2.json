@@ -4476,7 +4476,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "54448679-7714-4c89-949e-ddec6a3826df",
+                "id": "5b77c1f9-7cea-47d2-b343-34559cc1bc9b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4485,6 +4485,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"A mission is been added in v3\"] = jsonData.id !== \"undefined\";",
                   "    tests[\"Une mission a été ajoutée\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"missionV3Id\", jsonData.id);",
