@@ -4565,21 +4565,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "events",
-                "{{eventV3Id}}"
+                "missions",
+                "{{missionV3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
