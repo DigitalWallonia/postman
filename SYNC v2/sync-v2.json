@@ -4318,7 +4318,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTestMission\"}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4331,7 +4331,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTestMission\"}}}",
                   "equals": true
                 },
                 {
