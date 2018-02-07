@@ -4291,7 +4291,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1121426c-8dfb-4ffd-8c90-4001d9ba26bf",
+                "id": "9c676e15-f219-49f6-8b33-b3aa4e17b273",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -4302,7 +4302,7 @@
                   "    postman.setEnvironmentVariable(\"missionv3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests mission\");",
                   "}else{",
-                  "    postman.setNextRequest(\"\");",
+                  "    postman.setNextRequest(\"Add Tag Mission v2\");",
                   "}"
                 ]
               }
