@@ -4555,7 +4555,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e0a34e15-3c68-48d4-88b9-71d57ca202e5",
+                "id": "317450db-cab8-4f61-90e8-d6c082e0cf33",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4567,10 +4567,10 @@
                   "    tests[\"The mission has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The mission has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
                   "    }",
                   "    else{",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
                   "    }",
                   "}"
                 ]
