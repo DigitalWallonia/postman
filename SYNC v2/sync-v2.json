@@ -260,9 +260,31 @@
     },
     {
       "_postman_id": "a231583d-3bf8-9712-28f9-8410aec6a7d9",
-      "name": "Add New Tag v2 / Tag v3",
+      "name": "Add New Tag",
       "description": "",
-      "item": []
+      "item": [],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "e9146c76-bd03-4fbc-b038-bdf7e0630ac8",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "90a59ba5-07ce-4c3f-9b02-fc581119cc2f",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     },
     {
       "_postman_id": "854ca161-e26f-d787-f973-8983d7a2cb81",
