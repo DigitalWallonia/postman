@@ -389,60 +389,6 @@
             "description": null
           },
           "response": []
-        },
-        {
-          "_postman_id": "abf129ce-ac49-df75-6c43-e2817a304de6",
-          "name": "Delete TagCategory v3 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1e8697bb-7e2d-430a-b392-681c3fa4b1ab",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"TagCategory was deleted in v3\"] = jsonData.count ",
-                  "        && jsonData.count === 1;",
-                  "    pm.environment.unset(\"tagCategoryV3Id\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/{{tagCategoryV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tagCategories",
-                "{{tagCategoryV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
         }
       ]
     },
@@ -761,6 +707,60 @@
                 {
                   "key": "oauth_token",
                   "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "abf129ce-ac49-df75-6c43-e2817a304de6",
+          "name": "Delete TagCategory v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1e8697bb-7e2d-430a-b392-681c3fa4b1ab",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"TagCategory was deleted in v3\"] = jsonData.count ",
+                  "        && jsonData.count === 1;",
+                  "    pm.environment.unset(\"tagCategoryV3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/{{tagCategoryV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "{{tagCategoryV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
