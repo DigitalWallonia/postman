@@ -4502,7 +4502,30 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": "{{protocol}}://{{domain}}/api/missions/{{tagV2Id}}&access_token={{v3_token}}",
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
             "description": null
           },
           "response": []
