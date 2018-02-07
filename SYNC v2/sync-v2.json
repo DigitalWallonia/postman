@@ -967,59 +967,6 @@
             "description": null
           },
           "response": []
-        },
-        {
-          "_postman_id": "93940164-c94d-5885-5e43-84aa139f4427",
-          "name": "Delete Profile v2 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Le profil a été supprimée\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"profileV2Id\");",
-                  "    postman.setNextRequest(\"Delete Profile v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "profils",
-                "{{profileV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
         }
       ]
     },
@@ -4259,6 +4206,59 @@
               ]
             },
             "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "93940164-c94d-5885-5e43-84aa139f4427",
+          "name": "Delete Profile v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Le profil a été supprimée\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"profileV2Id\");",
+                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "profils",
+                "{{profileV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
             "description": null
           },
           "response": []
