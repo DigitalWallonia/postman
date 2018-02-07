@@ -976,6 +976,12 @@
       "item": []
     },
     {
+      "_postman_id": "3018c690-6232-c106-11c5-f6276326c440",
+      "name": "Add New Contact v2",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
       "name": "Add New Profil v2 / Profile v3",
       "description": null,
@@ -3628,12 +3634,6 @@
           }
         }
       ]
-    },
-    {
-      "_postman_id": "3018c690-6232-c106-11c5-f6276326c440",
-      "name": "Add New Contact v2",
-      "description": "",
-      "item": []
     },
     {
       "_postman_id": "781c3dec-a576-8854-7ade-147da8d91385",
