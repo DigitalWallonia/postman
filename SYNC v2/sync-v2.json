@@ -389,90 +389,6 @@
             "description": null
           },
           "response": []
-        },
-        {
-          "_postman_id": "230cabe8-7454-ca76-c6f7-6af73b7502d1",
-          "name": "Find New TagCategory v3 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "fabc2a95-60bb-453a-ba0b-bec1f7a0f245",
-                "type": "text/javascript",
-                "exec": [
-                  "const expectedStatus = 'Pending';",
-                  "const expectedSlug = postman.getEnvironmentVariable('themeV2Label');",
-                  "const expectedTitle = postman.getEnvironmentVariable('themeV2Intitule');",
-                  "const expectedShortDescription = postman.getEnvironmentVariable('themeV2Description');",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    const jsonData = JSON.parse(responseBody);",
-                  "    tests[\"A new TagCategory has been added in v3\"] = typeof(jsonData.id) !== \"undefined\";",
-                  "    tests[`Status is ${expectedStatus}`] = typeof(jsonData.status) !== \"undefined\" ",
-                  "        && jsonData.status === expectedStatus;",
-                  "    tests[`Slug is ${expectedSlug}`] = typeof(jsonData.slug) !== 'undefined'",
-                  "        && json.slug.length",
-                  "        && typeof(json.slug[0]) !== 'undefined'",
-                  "        && typeof(json.slug[0].slug) !== 'undefined'",
-                  "        && json.slug[0].slug.length",
-                  "        && json.slug[0].slug === expectedSlug;",
-                  "    tests[`Title is ${expectedTitle}`] = typeof(jsonData.title) !== 'undefined'",
-                  "        && json.title.length",
-                  "        && typeof(json.title[0]) !== 'undefined'",
-                  "        && typeof(json.title[0].text) !== 'undefined'",
-                  "        && json.title[0].text.length",
-                  "        && json.title[0].text === expectedTitle;",
-                  "    tests[`ShortDescription is ${expectedShortDescription}`] = typeof(jsonData.shortDescription) !== 'undefined'",
-                  "        && json.shortDescription.length",
-                  "        && typeof(json.shortDescription[0]) !== 'undefined'",
-                  "        && typeof(json.shortDescription[0].text) !== 'undefined'",
-                  "        && json.shortDescription[0].text.length",
-                  "        && json.shortDescription[0].text === expectedShortDescription;",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Delete Theme v2\");",
-                  "    } else {",
-                  "       postman.setNextRequest(\"Delete Theme v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?filter={\"where\":{\"v2Id\":\"{{themeV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tagCategories",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{themeV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
         }
       ]
     },
@@ -658,6 +574,90 @@
               ]
             },
             "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "230cabe8-7454-ca76-c6f7-6af73b7502d1",
+          "name": "Find New TagCategory v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fabc2a95-60bb-453a-ba0b-bec1f7a0f245",
+                "type": "text/javascript",
+                "exec": [
+                  "const expectedStatus = 'Pending';",
+                  "const expectedSlug = postman.getEnvironmentVariable('themeV2Label');",
+                  "const expectedTitle = postman.getEnvironmentVariable('themeV2Intitule');",
+                  "const expectedShortDescription = postman.getEnvironmentVariable('themeV2Description');",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    const jsonData = JSON.parse(responseBody);",
+                  "    tests[\"A new TagCategory has been added in v3\"] = typeof(jsonData.id) !== \"undefined\";",
+                  "    tests[`Status is ${expectedStatus}`] = typeof(jsonData.status) !== \"undefined\" ",
+                  "        && jsonData.status === expectedStatus;",
+                  "    tests[`Slug is ${expectedSlug}`] = typeof(jsonData.slug) !== 'undefined'",
+                  "        && json.slug.length",
+                  "        && typeof(json.slug[0]) !== 'undefined'",
+                  "        && typeof(json.slug[0].slug) !== 'undefined'",
+                  "        && json.slug[0].slug.length",
+                  "        && json.slug[0].slug === expectedSlug;",
+                  "    tests[`Title is ${expectedTitle}`] = typeof(jsonData.title) !== 'undefined'",
+                  "        && json.title.length",
+                  "        && typeof(json.title[0]) !== 'undefined'",
+                  "        && typeof(json.title[0].text) !== 'undefined'",
+                  "        && json.title[0].text.length",
+                  "        && json.title[0].text === expectedTitle;",
+                  "    tests[`ShortDescription is ${expectedShortDescription}`] = typeof(jsonData.shortDescription) !== 'undefined'",
+                  "        && json.shortDescription.length",
+                  "        && typeof(json.shortDescription[0]) !== 'undefined'",
+                  "        && typeof(json.shortDescription[0].text) !== 'undefined'",
+                  "        && json.shortDescription[0].text.length",
+                  "        && json.shortDescription[0].text === expectedShortDescription;",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Delete Theme v2\");",
+                  "    } else {",
+                  "       postman.setNextRequest(\"Delete Theme v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?filter={\"where\":{\"v2Id\":\"{{themeV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{themeV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
             "description": null
           },
           "response": []
