@@ -4533,7 +4533,7 @@
         },
         {
           "_postman_id": "fe86686e-4688-a9c9-326d-e7b1d687d997",
-          "name": "Add properties to New Mission v3",
+          "name": "Add Images to New Mission v3",
           "event": [
             {
               "listen": "prerequest",
