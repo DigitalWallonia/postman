@@ -4331,15 +4331,17 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}"
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
+                  "equals": true
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
-            "description": null
+            "description": ""
           },
           "response": []
         }
