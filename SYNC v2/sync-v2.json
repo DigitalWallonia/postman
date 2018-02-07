@@ -4812,7 +4812,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2a5ae63d-bd55-43f4-94a7-863b9daa17cd",
+                "id": "6419f25f-74e7-429e-97f6-0979897f8ee5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4828,7 +4828,7 @@
                   "        postman.setNextRequest(\"Delete Tag Mission v2\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
                   "    }",
                   "}"
                 ]
