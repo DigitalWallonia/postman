@@ -4236,7 +4236,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
+                "id": "81c90306-cc7e-4086-bb17-7ac0934e6590",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4244,7 +4244,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
+                  "    tests[\"La mission est supprimé\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"postv3Id\");",
                   "    postman.setNextRequest(\"Auth WP\");",
                   "}",
