@@ -4382,12 +4382,12 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "c5615d55-d9d7-4035-86f5-aebf4629cea1",
+                "id": "cf1276f6-062d-4dad-a142-019de769378c",
                 "type": "text/javascript",
                 "exec": [
-                  "postman.setEnvironmentVariable(\"themeV2Label\", `automatedTest.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"themeV2Intitule\", `automatedTest.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"themeV2Description\", `automatedTest.${Math.random().toString(36).substring(2)}`);"
+                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestMission.${Math.random().toString(36).substring(2)}`);"
                 ]
               }
             }
