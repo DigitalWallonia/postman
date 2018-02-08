@@ -4958,7 +4958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a2ae07b4-02c9-434e-b5a2-be1ebaaff098",
+                "id": "07723f79-3b57-4c6f-a14e-e8bcdfaf7705",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -4975,7 +4975,7 @@
                   "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
                   "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
                   "        tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
-                  "        postman.setNextRequest(\"Find New PresseReview v3\");",
+                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
