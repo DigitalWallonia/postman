@@ -2760,6 +2760,59 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "88a41233-ad43-944c-2707-5d1a11977188",
+          "name": "Add Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "84066367-f923-4d99-9640-e35947e922ff",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.presse.id !== \"undefined\";",
+                  "    if (jsonData.response.presse.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"presseV2Id\", jsonData.response.presse.id);",
+                  "        postman.setNextRequest(\"Batch Infos de base PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "dateParution",
+                  "value": "2018-02-01T00:00:00+0100",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/presse/add",
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
