@@ -4958,7 +4958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "07723f79-3b57-4c6f-a14e-e8bcdfaf7705",
+                "id": "f34e8277-527e-4b77-9aca-1cf6e9e9c625",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -4978,7 +4978,7 @@
                   "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
                   "    }",
                   "    else{",
-                  "        postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
                   "    }",
                   "}",
                   ""
