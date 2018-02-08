@@ -5144,7 +5144,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b0199054-840f-439c-9317-31753716e76d",
+                "id": "40bce9b4-5331-4745-8876-c2d4efb519c1",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5153,7 +5153,6 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
                   "    tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
                   "} else {",
                   "    postman.setNextRequest(null);",
