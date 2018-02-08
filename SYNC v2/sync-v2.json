@@ -1863,7 +1863,7 @@
         },
         {
           "_postman_id": "c24b7d5a-a85d-3791-98e0-f0dde6548d1c",
-          "name": "Delete Event Tag Mission v2 copy",
+          "name": "Delete Event v2",
           "event": [
             {
               "listen": "test",
