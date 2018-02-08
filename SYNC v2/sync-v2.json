@@ -4672,6 +4672,62 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "23d5284c-ded2-9c8f-e200-bdf67e8d475e",
+          "name": "Delete PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3cd787e7-0d39-4d6d-9e22-f03821a63459",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"presseV3Id\");",
+                  "    postman.setNextRequest('Find Artifact from previous tests post');",
+                  "}else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "{{presseV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
