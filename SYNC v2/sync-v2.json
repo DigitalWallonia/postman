@@ -2659,7 +2659,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5de84910-9e0f-4ba2-85dd-70e108d31fb1",
+                "id": "812fa8a2-1bc4-43be-9ed7-91837a976fc2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -2670,7 +2670,7 @@
                   "    postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests contact\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Add contact v2\");",
+                  "    postman.setNextRequest(\"Add Contact v2\");",
                   "}"
                 ]
               }
