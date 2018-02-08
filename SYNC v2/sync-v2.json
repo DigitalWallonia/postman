@@ -4839,7 +4839,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b3b8c32a-748f-4a45-979f-f4568b316ced",
+                "id": "f9834f60-e0cc-462c-bd3d-45d533eb99b4",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4851,7 +4851,7 @@
                   "        postman.setNextRequest(\"Find New PresseReview v3\");",
                   "    }",
                   "    else{",
-                  "        ",
+                  "        postman.setNextRequest(null);",
                   "    }",
                   "}"
                 ]
