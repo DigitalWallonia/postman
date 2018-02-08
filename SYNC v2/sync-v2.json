@@ -5524,7 +5524,7 @@
         },
         {
           "_postman_id": "0481904e-c95b-a829-6f60-e5259545b23d",
-          "name": "Batch Contact Source PresseReview v2",
+          "name": "Batch Contact Journalist PresseReview v2",
           "event": [
             {
               "listen": "test",
