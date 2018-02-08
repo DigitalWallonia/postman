@@ -2821,7 +2821,7 @@
                 }
               ]
             },
-            "url": "{{v2_protocol}}://{{v2_domain}}/presse/add",
+            "url": "{{v2_protocol}}://{{v2_domain}}/contacts/add",
             "description": null
           },
           "response": []
