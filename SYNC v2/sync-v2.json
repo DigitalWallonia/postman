@@ -3162,7 +3162,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "51ce0073-e1a4-4802-a049-ac99e9ad20c6",
+                "id": "2f82a596-3f33-4f24-9336-27fa6919edd5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -3172,7 +3172,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find Photo in Contact v3\");",
+                  "        postman.setNextRequest(\"Find phone&faxNumbers in Contact v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
