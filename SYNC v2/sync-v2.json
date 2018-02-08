@@ -6505,6 +6505,68 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "55388ae9-8752-e554-3cfc-6718340d35bf",
+          "name": "Find New Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f09a22cd-014c-4070-80d9-26d2f021cf0d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"A project is been added in v3\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"The project status is pending\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"projectV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Add Images to New Project v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
