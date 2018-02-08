@@ -6233,6 +6233,34 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "2b0adfec-1a7d-e852-a5b3-d35f8dec186b",
+      "name": "Add New Tag v2 / Project v3",
+      "description": "",
+      "item": [],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "id": "38cfce30-4fe4-47e8-9a4f-628a63677bf9",
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "id": "dd125349-d10c-4eaf-a797-fa4df2371087",
+            "type": "text/javascript"
+          }
+        }
+      ]
     }
   ]
 }
