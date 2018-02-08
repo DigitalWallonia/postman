@@ -1653,6 +1653,79 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "ddd6a82a-4f8e-1f67-7b90-113f96a38ecd",
+          "name": "Add Event Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02785aca-6ac0-4c29-918e-90f84476b385",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A tag has been added to the event\"] = jsonData.response.evenement.tag !== \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setNextRequest(\"Find Event Linked to Mission\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/add?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "tags",
+                "{{tagV2Id}}",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
