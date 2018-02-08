@@ -5265,7 +5265,7 @@
         },
         {
           "_postman_id": "5e365555-51b3-d0e3-5108-11cd9d908d03",
-          "name": "Find Profile in PresseReview v3",
+          "name": "Find Profile Quoted in PresseReview v3",
           "event": [
             {
               "listen": "test",
