@@ -1593,6 +1593,66 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "94739fcd-e0f3-9d18-c3f4-a352da940655",
+          "name": "Find Event Linked to Mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "28b476a5-0fe9-4d31-9c01-051653e3db99",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A mission has been linked to the event\"] = jsonData.missions !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
