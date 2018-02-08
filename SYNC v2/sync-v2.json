@@ -4646,20 +4646,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/Find Artifact from previous tests post/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "Find Artifact from previous tests post",
+                "pressReviews",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
                   "equals": true
                 },
                 {
