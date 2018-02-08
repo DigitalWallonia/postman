@@ -3032,7 +3032,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e7624c9e-d362-4abf-998f-c712399181d5",
+                "id": "f80bae74-29c6-4cb6-a716-af2558c7c7b4",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -3044,7 +3044,7 @@
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
                   "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
-                  "        postman.setNextRequest(\"\");",
+                  "        postman.setNextRequest(\"Batch Photo Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
