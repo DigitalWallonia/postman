@@ -5281,7 +5281,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1e9349d0-95d4-4a51-926a-3616556efab2",
+                "id": "e855eae7-a805-42e7-b1fa-406943dc677d",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5299,8 +5299,7 @@
                   "    else{",
                   "        postman.setNextRequest(\"Delete PresseReview v2\");",
                   "    }",
-                  "}",
-                  ""
+                  "}"
                 ]
               }
             }
