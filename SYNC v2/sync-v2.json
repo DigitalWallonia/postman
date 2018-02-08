@@ -4839,7 +4839,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "bbbaf814-235e-44df-895c-d36cc88579e2",
+                "id": "fd747b56-6948-4fed-951a-1f7b7f3a719f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4847,6 +4847,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
                   "    if (jsonData.response.presse.id && jsonData.response.presse.id === presseV2Id) {",
                   "        postman.setNextRequest(\"Find New PresseReview v3\");",
                   "    }",
