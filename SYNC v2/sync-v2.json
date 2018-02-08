@@ -5335,7 +5335,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "919866cb-323a-4d97-ac59-897a79c0cb90",
+                "id": "b226e33d-b35e-4638-9202-c916e9ce44c3",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5344,7 +5344,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Profile Dogstudio\"] = jsonData.find(p => p.profile.v2Id === 2914).role === \"Quoted\";",
+                  "    tests[\"Profile Dogstudio\"] = jsonData.find(p => p.profile.v2Id === 10317).role === \"Source\";",
                   "} else {",
                   "    postman.setNextRequest(null);",
                   "}",
