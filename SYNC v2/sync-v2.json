@@ -1499,6 +1499,100 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "0faecaff-e3e0-b7fc-1bb5-32215edae460",
+          "name": "Add Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e6aa588a-25cd-4ac3-859f-6e25a64776c3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.evenement.id !== \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"eventV2Id\", jsonData.response.evenement.id);",
+                  "        postman.setNextRequest(\"Add Event Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "90b1bdc0-b32f-43b6-8c5b-46896a06282c",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"eventV2Permalien\", `automatedtestevent-${Math.random().toString(36).substring(2).toLowerCase()}`);",
+                  "postman.setEnvironmentVariable(\"eventV2Intitule\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"eventV2Description\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"eventV2Date\", new Date());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien={{eventV2Permalien}}&dateDebut={{eventV2Date}}&dateFin={{eventV2Date}}&statut=agenda_statut_publie",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "permalien",
+                  "value": "{{eventV2Permalien}}",
+                  "equals": true
+                },
+                {
+                  "key": "dateDebut",
+                  "value": "{{eventV2Date}}",
+                  "equals": true
+                },
+                {
+                  "key": "dateFin",
+                  "value": "{{eventV2Date}}",
+                  "equals": true
+                },
+                {
+                  "key": "statut",
+                  "value": "agenda_statut_publie",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
