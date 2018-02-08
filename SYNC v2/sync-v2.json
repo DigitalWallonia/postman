@@ -1735,7 +1735,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "9419f146-1d5a-419f-903c-33a68adb28d6",
+                "id": "ddd05f21-c212-487e-b731-b3a8a560f1d0",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1744,7 +1744,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A mission has been unlinked to the event\"] = jsonData.missions && jsonData.missions.length > 1;",
+                  "    tests[\"A mission has been unlinked to the event\"] = jsonData.missions && jsonData.missions.length === 0;",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
                   "    }",
