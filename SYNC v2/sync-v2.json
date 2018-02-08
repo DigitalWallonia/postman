@@ -4596,6 +4596,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "2dfb4500-7195-4048-893a-a0f034cf7d54",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -4604,9 +4605,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
+                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
                   "    //Status",
-                  "    tests[\"Status is Pending\"] = jsonData.status === \"Pending\";",
+                  "    /*tests[\"Status is Pending\"] = jsonData.status === \"Pending\";",
                   "    //v2Id",
                   "    tests[\"v2Id\"] = jsonData.v2Id === v2Id;",
                   "    //title",
@@ -4627,11 +4628,10 @@
                   "    tests[\"shortTitle fr is TS1\"] = jsonData.shortTitle[0].text === \"TS1\";",
                   "    tests[\"shortTitle en is TS1\"] = jsonData.shortTitle[1].text === \"TS1\";",
                   "    tests[\"shortTitle nl is TS1\"] = jsonData.shortTitle[2].text === \"TS1\";",
-                  "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle[3].text === \"TS1\";",
+                  "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle[3].text === \"TS1\"; */",
                   "    ",
-                  "    postman.setNextRequest(\"Set Logo to Profile v2\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "    ",
                   "}",
                   ""
                 ]
