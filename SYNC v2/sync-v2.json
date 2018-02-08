@@ -5270,7 +5270,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b0199054-840f-439c-9317-31753716e76d",
+                "id": "91cb54df-3525-47dc-95bf-1593b1eb5dce",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5279,7 +5279,6 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
                   "    tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
                   "} else {",
                   "    postman.setNextRequest(null);",
@@ -5297,20 +5296,25 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"5a7c043bb66b1e700d1ab3da\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pressReviews",
-                "findOne"
+                "xPressReviewProfile",
+                ""
               ],
               "query": [
                 {
+                  "key": "lang",
+                  "value": "fr",
+                  "equals": true
+                },
+                {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"5a7c043bb66b1e700d1ab3da\"}}",
                   "equals": true
                 },
                 {
