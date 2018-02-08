@@ -1139,6 +1139,366 @@
           "response": []
         },
         {
+          "_postman_id": "0faecaff-e3e0-b7fc-1bb5-32215edae460",
+          "name": "Add Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e6aa588a-25cd-4ac3-859f-6e25a64776c3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.evenement.id !== \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"eventV2Id\", jsonData.response.evenement.id);",
+                  "        postman.setNextRequest(\"Add Event Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "90b1bdc0-b32f-43b6-8c5b-46896a06282c",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"eventV2Permalien\", `automatedtestevent-${Math.random().toString(36).substring(2).toLowerCase()}`);",
+                  "postman.setEnvironmentVariable(\"eventV2Intitule\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"eventV2Description\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"eventV2Date\", new Date());"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien={{eventV2Permalien}}&dateDebut={{eventV2Date}}&dateFin={{eventV2Date}}&statut=agenda_statut_publie",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "permalien",
+                  "value": "{{eventV2Permalien}}",
+                  "equals": true
+                },
+                {
+                  "key": "dateDebut",
+                  "value": "{{eventV2Date}}",
+                  "equals": true
+                },
+                {
+                  "key": "dateFin",
+                  "value": "{{eventV2Date}}",
+                  "equals": true
+                },
+                {
+                  "key": "statut",
+                  "value": "agenda_statut_publie",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ddd6a82a-4f8e-1f67-7b90-113f96a38ecd",
+          "name": "Add Event Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "02785aca-6ac0-4c29-918e-90f84476b385",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A tag has been added to the event\"] = jsonData.response.evenement.tag !== \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setNextRequest(\"Find Event Linked to Mission\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/add?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "tags",
+                "{{tagV2Id}}",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "94739fcd-e0f3-9d18-c3f4-a352da940655",
+          "name": "Find Event Linked to Mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bbfa4bd5-e440-43dc-96a5-101556f097c8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A mission has been linked to the event\"] = jsonData.missions && jsonData.missions.length > 0;",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ecef0e67-7dee-fbbe-7ed3-73cb557b9199",
+          "name": "Delete Event Tag Mission v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "tags",
+                "{{tagV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e76c1672-c544-afec-0c25-62b635082cdf",
+          "name": "Find Event Unlinked to Mission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ddd05f21-c212-487e-b731-b3a8a560f1d0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A mission has been unlinked to the event\"] = jsonData.missions && jsonData.missions.length === 0;",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "fc7a8cdd-cc9f-c2b8-f8ee-da7bf1938433",
           "name": "Update Tag Mission v2",
           "event": [
@@ -1395,6 +1755,79 @@
           "response": []
         },
         {
+          "_postman_id": "c24b7d5a-a85d-3791-98e0-f0dde6548d1c",
+          "name": "Delete Event Tag Mission v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "tags",
+                "{{tagV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "8a7200a5-6248-0ea6-0f91-6fc664fb5080",
           "name": "Delete Tag Mission v2",
           "event": [
@@ -1498,439 +1931,6 @@
               ]
             },
             "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0faecaff-e3e0-b7fc-1bb5-32215edae460",
-          "name": "Add Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e6aa588a-25cd-4ac3-859f-6e25a64776c3",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.evenement.id !== \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"eventV2Id\", jsonData.response.evenement.id);",
-                  "        postman.setNextRequest(\"Add Event Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "90b1bdc0-b32f-43b6-8c5b-46896a06282c",
-                "type": "text/javascript",
-                "exec": [
-                  "postman.setEnvironmentVariable(\"eventV2Permalien\", `automatedtestevent-${Math.random().toString(36).substring(2).toLowerCase()}`);",
-                  "postman.setEnvironmentVariable(\"eventV2Intitule\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"eventV2Description\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"eventV2Date\", new Date());"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien={{eventV2Permalien}}&dateDebut={{eventV2Date}}&dateFin={{eventV2Date}}&statut=agenda_statut_publie",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "add"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "permalien",
-                  "value": "{{eventV2Permalien}}",
-                  "equals": true
-                },
-                {
-                  "key": "dateDebut",
-                  "value": "{{eventV2Date}}",
-                  "equals": true
-                },
-                {
-                  "key": "dateFin",
-                  "value": "{{eventV2Date}}",
-                  "equals": true
-                },
-                {
-                  "key": "statut",
-                  "value": "agenda_statut_publie",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "94739fcd-e0f3-9d18-c3f4-a352da940655",
-          "name": "Find Event Linked to Mission",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bbfa4bd5-e440-43dc-96a5-101556f097c8",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A mission has been linked to the event\"] = jsonData.missions && jsonData.missions.length > 0;",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ddd6a82a-4f8e-1f67-7b90-113f96a38ecd",
-          "name": "Add Event Tag Mission v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "02785aca-6ac0-4c29-918e-90f84476b385",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A tag has been added to the event\"] = jsonData.response.evenement.tag !== \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setNextRequest(\"Find Event Linked to Mission\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/add?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "{{eventV2Id}}",
-                "tags",
-                "{{tagV2Id}}",
-                "add"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e76c1672-c544-afec-0c25-62b635082cdf",
-          "name": "Find Event Unlinked to Mission",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ddd05f21-c212-487e-b731-b3a8a560f1d0",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A mission has been unlinked to the event\"] = jsonData.missions && jsonData.missions.length === 0;",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"missions\"}],\"where\":{ \"v2Id\":\"{{eventV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ecef0e67-7dee-fbbe-7ed3-73cb557b9199",
-          "name": "Delete Event Tag Mission v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "{{eventV2Id}}",
-                "tags",
-                "{{tagV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c24b7d5a-a85d-3791-98e0-f0dde6548d1c",
-          "name": "Delete Event Tag Mission v2 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "{{eventV2Id}}",
-                "tags",
-                "{{tagV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
           },
           "response": []
         }
