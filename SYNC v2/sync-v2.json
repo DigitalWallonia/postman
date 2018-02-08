@@ -3092,7 +3092,7 @@
         },
         {
           "_postman_id": "dfe25685-9611-5876-0799-023240de96b5",
-          "name": "Find Tag in Contact v3 copy",
+          "name": "Find Photo in Contact v3",
           "event": [
             {
               "listen": "test",
