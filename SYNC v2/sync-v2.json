@@ -4775,6 +4775,71 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "d9396458-4ab0-e9b2-7ae2-61fd6319729c",
+          "name": "Find Tag in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "01a34abb-df0a-464f-8755-b39b1e0d8076",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
+                  "    tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-02-02T23:00:00.000Z\";",
+                  "    tests[\"status\"] = jsonData.status === \"Published\";",
+                  "    tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
+                  "    tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
+                  "    tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
+                  "} else {",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
