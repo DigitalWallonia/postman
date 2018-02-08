@@ -3195,7 +3195,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -3207,7 +3207,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
