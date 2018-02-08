@@ -2899,7 +2899,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "829cdc31-74fe-4e16-a9d2-4cec2b3b8d53",
+                "id": "50399403-8ea8-4510-874d-1dd3fc5d329a",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -2913,7 +2913,7 @@
                   "        postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
                   "        tests[\"firstName\"] = jsonData.firstName === \"Testfirstnamecontact\";",
                   "        tests[\"lastName\"] = jsonData.lastName === \"Testlastnamecontact\";",
-                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
+                  "        postman.setNextRequest(\"Batch Tag Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
