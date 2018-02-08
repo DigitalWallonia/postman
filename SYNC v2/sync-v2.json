@@ -3097,7 +3097,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3a292a7b-852f-4b5e-8ef8-f902d7724e62",
+                "id": "f745e557-5a01-4d84-b547-038b3a1cf276",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -3109,7 +3109,7 @@
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
                   "        tests[\"photo\"] = jsonData.images.find(i => i.type === 'Photo').name === \"AdN Benoit Hucq 2\";",
-                  "        postman.setNextRequest(\"\");",
+                  "        postman.setNextRequest(\"Batch phone&faxNumbers Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
