@@ -5435,7 +5435,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"3350\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -5447,7 +5447,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"presse\":{\"id\":\"3350\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
