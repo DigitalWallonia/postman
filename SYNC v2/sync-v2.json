@@ -3287,6 +3287,72 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "8e8bf590-407b-6ee3-1b68-dc8ffeba5815",
+          "name": "Batch phone&faxNumbers Contact v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2f82a596-3f33-4f24-9336-27fa6919edd5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find phone&faxNumbers in Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
