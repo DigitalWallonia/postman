@@ -1868,7 +1868,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a06721cd-4613-4ee2-8482-38c19afd6dfb",
+                "id": "2a246fd0-2ad5-4e39-938c-61c5cf594066",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1879,7 +1879,7 @@
                   "    // Si le JSON comporte un paramètre id",
                   "    tests[\"Event was deleted in v2\"] = jsonData.response.deleted === true;",
                   "}",
-                  "    postman.setNextRequest(\"Find Artifact from previous tests project\");"
+                  "postman.setNextRequest(\"Find Artifact from previous tests project\");"
                 ]
               }
             },
