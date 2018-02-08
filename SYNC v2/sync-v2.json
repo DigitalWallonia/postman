@@ -5590,7 +5590,7 @@
         },
         {
           "_postman_id": "eef24b95-255b-73ba-9bb3-462423be576e",
-          "name": "Find Contact Source in PresseReview v3",
+          "name": "Find Contact Journalist in PresseReview v3",
           "event": [
             {
               "listen": "test",
