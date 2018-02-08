@@ -5397,7 +5397,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "94777b0c-b09b-4720-b485-2a0ef6b201e8",
+                "id": "1b4db257-f328-4837-8edb-bf36290de1bd",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5407,6 +5407,9 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"pressev3Id\");",
+                  "    postman.setNextRequest(\"Add PresseReview v2\");",
+                  "}",
+                  "else {",
                   "    postman.setNextRequest(\"Add PresseReview v2\");",
                   "}",
                   ""
