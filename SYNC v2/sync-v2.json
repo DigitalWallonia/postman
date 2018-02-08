@@ -5351,7 +5351,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d4c25f53-6c4c-43fa-8537-cd20f07be9ed",
+                "id": "216afbbe-9510-4035-9320-bff379cdfe90",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5360,12 +5360,16 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Profile Source\"] = jsonData.find(p => p.profile.v2Id === 10317).role === \"Source\";",
-                  "    tests[\"Profile Le Soir\"] = jsonData.find(p => p.profile.v2Id === 10317).profile.title[0].text === \"Le Soir\";",
-                  "} else {",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"Profile Source\"] = jsonData.find(p => p.profile.v2Id === 10317).role === \"Source\";",
+                  "        tests[\"Profile Le Soir\"] = jsonData.find(p => p.profile.v2Id === 10317).profile.title[0].text === \"Le Soir\";",
+                  "        postman.setNextRequest(\"Batch Contact Quoted PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
                 ]
               }
             }
