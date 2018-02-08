@@ -2999,7 +2999,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"37793\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -3011,7 +3011,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"contact\":{\"id\":\"37793\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
