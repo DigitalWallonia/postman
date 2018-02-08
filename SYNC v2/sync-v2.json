@@ -4958,7 +4958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f4f6f162-5dbe-4454-be62-cc80523011e1",
+                "id": "b241dd1f-02d3-4063-9ece-ba15620fd1f5",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -4969,7 +4969,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    if (jsonData.v2Id && jsonData.v2Id === presseV2Id) {",
                   "        postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
-                  "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-02-02T23:00:00.000Z\";",
+                  "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-02-01T00:00:00+0100\";",
                   "        tests[\"status\"] = jsonData.status === \"Published\";",
                   "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
                   "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
