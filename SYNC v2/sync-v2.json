@@ -2833,7 +2833,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "39042de4-d9f1-4717-b6f2-e3eb5391a81c",
+                "id": "13904d4c-9038-4ab8-a398-57a4373dce5d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2841,9 +2841,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
-                  "        postman.setNextRequest(\"Find New PresseReview v3\");",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find New Contact v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
@@ -2866,7 +2866,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":{{presseV2Id}},\"titre\":{\"label\":\"labelTitrePresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le cours du bitcoin\",\"fr\":\"Le cours du bitcoin\"},\"description\":{\"label\":\"labelDescriptionPresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\",\"fr\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\"},\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"add\"},\"cibles\":{\"0\":{\"id\":\"1\"}},\"visibleFront\":true,\"profils\":{},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":37791,\"emails\":{\"0\":{\"id\":\"49838\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -2878,7 +2878,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"presse\":{\"id\":{{presseV2Id}},\"titre\":{\"label\":\"labelTitrePresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le cours du bitcoin\",\"fr\":\"Le cours du bitcoin\"},\"description\":{\"label\":\"labelDescriptionPresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\",\"fr\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\"},\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"add\"},\"cibles\":{\"0\":{\"id\":\"1\"}},\"visibleFront\":true,\"profils\":{},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"contact\":{\"id\":37791,\"emails\":{\"0\":{\"id\":\"49838\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
