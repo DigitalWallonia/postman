@@ -804,6 +804,725 @@
       "item": []
     },
     {
+      "_postman_id": "2b0adfec-1a7d-e852-a5b3-d35f8dec186b",
+      "name": "Add New Tag v2 / Project v3",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
+          "name": "Update Status Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4277cd26-0477-47a2-ab91-0f95e8bd1493",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.visibleFront === true;",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag) {",
+                  "        postman.setNextRequest(\"Find Updated Status Project v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"28\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":true,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "475320bf-782d-a1a9-5ac4-f392eefa0523",
+          "name": "Delete Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "86a03d0d-acf4-4872-83e6-a5a8312fc0f4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Tag project was deleted in v2\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"projectV2Id\");",
+                  "    postman.setNextRequest(\"Delete Project v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "tags",
+                "{{tagV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "55388ae9-8752-e554-3cfc-6718340d35bf",
+          "name": "Find New Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f09a22cd-014c-4070-80d9-26d2f021cf0d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"A project is been added in v3\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"The project status is pending\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"projectV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Add Images to New Project v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "597d0c44-c121-1df7-a234-2f51dc6c19cb",
+          "name": "Add Images to New Project v3",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
+                "type": "text/javascript",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "0afc29fb-d44e-4ed5-9a7b-e3c92d3ea3dd",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The project has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The project has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Update Tag Project v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ac195b9a-1cef-85bf-ed0f-024647953613",
+          "name": "Add Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a8463d96-32e9-47ce-9a6a-0ec0fd87d870",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag was added in v2\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.id;",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"tagV2Id\", jsonData.response.tag.id);",
+                  "        postman.setNextRequest(\"Find New Project v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "86d17ce8-2bee-4b2d-b2b1-edbf4ecf5f82",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestproject-${Math.random().toString(36).substring(2).toLowerCase()}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestProject.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestProject.${Math.random().toString(36).substring(2)}`);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"themeId\":\"10\",\"bundleId\":\"28\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "be5216de-93a1-df3f-df2e-56b998bd6702",
+          "name": "Update Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "197efbce-5f85-4397-8487-2ae0b0e3b353",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag) {",
+                  "        postman.setNextRequest(\"Find Updated Project v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"28\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "cf95db01-ac65-3b91-938e-c6cbc31b33fd",
+          "name": "Delete Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "402dfc2d-c640-4cf2-ba24-33bc32d8f31e",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"projectv3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e0bb0903-ea39-2ddd-3ce8-4cc7242131ae",
+          "name": "Find Updated Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6dadc272-6975-45b6-b703-094b8b8c4bb0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The project status is published\"] = jsonData.status === \"Hidden\";",
+                  "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Update Status Tag Project v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e34555fd-5e74-a26e-c764-1a40f1770fb1",
+          "name": "Delete Artifact from previous tests project",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ebfbb7f-ece9-4795-ab4b-096fa20d3395",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Project is deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"projectv3Id\");",
+                  "    postman.setNextRequest(\"Add Tag Project v2\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectv3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ee354a06-864a-b365-c525-d9bbe2d803a6",
+          "name": "Find Artifact from previous tests project",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "29c6f3f1-dc14-40b1-a34c-de2c40cd6099",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"projectv3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests project\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Tag Project v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fe1a89be-b18c-ada5-852f-03cccaa2195a",
+          "name": "Find Updated Status Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "193360c6-471d-46ee-9dc3-9b4c58de625f",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The project status is published\"] = jsonData.status === \"Published\";",
+                  "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "id": "38cfce30-4fe4-47e8-9a4f-628a63677bf9",
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "id": "dd125349-d10c-4eaf-a797-fa4df2371087",
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
       "_postman_id": "c0cd73f0-d15e-1e19-e31d-2521cfece7d8",
       "name": "Add New Tag v2 / Mission v3",
       "description": "",
@@ -7243,725 +7962,6 @@
             "description": null
           },
           "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "2b0adfec-1a7d-e852-a5b3-d35f8dec186b",
-      "name": "Add New Tag v2 / Project v3",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
-          "name": "Update Status Tag Project v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4277cd26-0477-47a2-ab91-0f95e8bd1493",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.visibleFront === true;",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag) {",
-                  "        postman.setNextRequest(\"Find Updated Status Project v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"28\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":true,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "475320bf-782d-a1a9-5ac4-f392eefa0523",
-          "name": "Delete Tag Project v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "86a03d0d-acf4-4872-83e6-a5a8312fc0f4",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Tag project was deleted in v2\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"projectV2Id\");",
-                  "    postman.setNextRequest(\"Delete Project v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "tags",
-                "{{tagV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "55388ae9-8752-e554-3cfc-6718340d35bf",
-          "name": "Find New Project v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f09a22cd-014c-4070-80d9-26d2f021cf0d",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"A project is been added in v3\"] = jsonData.id !== \"undefined\";",
-                  "    tests[\"The project status is pending\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"projectV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Add Images to New Project v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "597d0c44-c121-1df7-a234-2f51dc6c19cb",
-          "name": "Add Images to New Project v3",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "770f5362-abf2-4666-bb9c-3440d47c8a7e",
-                "type": "text/javascript",
-                "exec": [
-                  "function uuidv4() {",
-                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
-                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
-                  "    return v.toString(16);",
-                  "  });",
-                  "}",
-                  "pm.environment.set(\"uniqId1\", uuidv4());",
-                  "pm.environment.set(\"uniqId2\", uuidv4());"
-                ]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "0afc29fb-d44e-4ed5-9a7b-e3c92d3ea3dd",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The project has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The project has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update Tag Project v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Banner.jpg\",\n      \"name\": \"Banner\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://test-image/Logo.jpg\",\n      \"name\": \"Logo\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "{{projectV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ac195b9a-1cef-85bf-ed0f-024647953613",
-          "name": "Add Tag Project v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a8463d96-32e9-47ce-9a6a-0ec0fd87d870",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag was added in v2\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.id;",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"tagV2Id\", jsonData.response.tag.id);",
-                  "        postman.setNextRequest(\"Find New Project v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "86d17ce8-2bee-4b2d-b2b1-edbf4ecf5f82",
-                "type": "text/javascript",
-                "exec": [
-                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestproject-${Math.random().toString(36).substring(2).toLowerCase()}`);",
-                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestProject.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestProject.${Math.random().toString(36).substring(2)}`);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"themeId\":\"10\",\"bundleId\":\"28\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "be5216de-93a1-df3f-df2e-56b998bd6702",
-          "name": "Update Tag Project v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "197efbce-5f85-4397-8487-2ae0b0e3b353",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag) {",
-                  "        postman.setNextRequest(\"Find Updated Project v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"28\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "cf95db01-ac65-3b91-938e-c6cbc31b33fd",
-          "name": "Delete Project v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "402dfc2d-c640-4cf2-ba24-33bc32d8f31e",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"projectv3Id\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "{{projectV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e0bb0903-ea39-2ddd-3ce8-4cc7242131ae",
-          "name": "Find Updated Project v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6dadc272-6975-45b6-b703-094b8b8c4bb0",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The project status is published\"] = jsonData.status === \"Hidden\";",
-                  "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update Status Tag Project v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e34555fd-5e74-a26e-c764-1a40f1770fb1",
-          "name": "Delete Artifact from previous tests project",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2ebfbb7f-ece9-4795-ab4b-096fa20d3395",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Project is deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"projectv3Id\");",
-                  "    postman.setNextRequest(\"Add Tag Project v2\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectv3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "{{projectv3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ee354a06-864a-b365-c525-d9bbe2d803a6",
-          "name": "Find Artifact from previous tests project",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "29c6f3f1-dc14-40b1-a34c-de2c40cd6099",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"projectv3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests project\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Tag Project v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fe1a89be-b18c-ada5-852f-03cccaa2195a",
-          "name": "Find Updated Status Project v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "193360c6-471d-46ee-9dc3-9b4c58de625f",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The project status is published\"] = jsonData.status === \"Published\";",
-                  "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "exec": [
-              ""
-            ],
-            "id": "38cfce30-4fe4-47e8-9a4f-628a63677bf9",
-            "type": "text/javascript"
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "exec": [
-              ""
-            ],
-            "id": "dd125349-d10c-4eaf-a797-fa4df2371087",
-            "type": "text/javascript"
-          }
         }
       ]
     }
