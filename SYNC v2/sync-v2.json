@@ -5150,7 +5150,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "40bce9b4-5331-4745-8876-c2d4efb519c1",
+                "id": "333988e9-5977-448c-949d-41e4ddfa894b",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5158,10 +5158,14 @@
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
-                  "} else {",
-                  "    postman.setNextRequest(null);",
+                  "    let jsonData = JSON.parse(responseBody);let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
+                  "        postman.setNextRequest(\"Batch Profile Quoted PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
                   "}",
                   ""
                 ]
