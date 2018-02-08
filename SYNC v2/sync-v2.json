@@ -2768,7 +2768,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "84066367-f923-4d99-9640-e35947e922ff",
+                "id": "2462e2cf-bd67-461d-9908-a9a95da1fa58",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2777,11 +2777,11 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.presse.id !== \"undefined\";",
-                  "    if (jsonData.response.presse.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"presseV2Id\", jsonData.response.presse.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base PresseReview v2\");",
+                  "    tests[\"Un contact été ajouté\"] = jsonData.response.contact.id !== \"undefined\";",
+                  "    if (jsonData.response.contact.id) {",
+                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"contactV2Id\", jsonData.response.contact.id);",
+                  "        postman.setNextRequest(\"Batch Infos de base contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
@@ -2803,8 +2803,20 @@
                   "type": "text"
                 },
                 {
-                  "key": "dateParution",
-                  "value": "2018-02-01T00:00:00+0100",
+                  "key": "nom",
+                  "value": "Testlastnamecontact",
+                  "type": "text"
+                },
+                {
+                  "key": "prenom",
+                  "value": "Testfirstnamecontact",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "lg",
+                  "value": "FRE",
+                  "description": "",
                   "type": "text"
                 }
               ]
