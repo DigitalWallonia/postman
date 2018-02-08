@@ -4964,59 +4964,6 @@
           "response": []
         },
         {
-          "_postman_id": "88aad640-d0e6-7331-66b0-fe21f1ca9b63",
-          "name": "Delete PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "de775aee-0f12-4221-bc1b-ea0dcf3e9a44",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"L'article de presse a été supprimé\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"presseV2Id\");",
-                  "    postman.setNextRequest(\"Delete PresseReview v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/presse/{{presseV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "presse",
-                "{{presseV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e557147f-9a3b-652a-51d2-24e9e4a90812",
           "name": "Find New PresseReview v3",
           "event": [
@@ -5732,6 +5679,59 @@
                   "key": "access_token",
                   "value": "{{v3_token}}",
                   "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "88aad640-d0e6-7331-66b0-fe21f1ca9b63",
+          "name": "Delete PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "de775aee-0f12-4221-bc1b-ea0dcf3e9a44",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"L'article de presse a été supprimé\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"presseV2Id\");",
+                  "    postman.setNextRequest(\"Delete PresseReview v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/presse/{{presseV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "presse",
+                "{{presseV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}"
                 }
               ]
             },
