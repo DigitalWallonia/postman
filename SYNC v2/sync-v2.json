@@ -3154,6 +3154,72 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "1d52a0f9-d4d4-5c4c-59d8-f9dedff92fae",
+          "name": "Batch Photo Contact v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "51ce0073-e1a4-4802-a049-ac99e9ad20c6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find Photo in Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
