@@ -2659,7 +2659,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ce12dfa6-3b07-4760-9448-1b4e36884a98",
+                "id": "5de84910-9e0f-4ba2-85dd-70e108d31fb1",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -2667,10 +2667,10 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests pressreview\");",
+                  "    postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests contact\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Add PresseReview v2\");",
+                  "    postman.setNextRequest(\"Add contact v2\");",
                   "}"
                 ]
               }
@@ -2681,20 +2681,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"title.text\":\"Le cours du bitcoin\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"lastName\":\"Testlastnamecontact\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pressReviews",
+                "contacts",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"title.text\":\"Le cours du bitcoin\"}}",
+                  "value": "{\"where\":{ \"lastName\":\"Testlastnamecontact\"}}",
                   "equals": true
                 },
                 {
