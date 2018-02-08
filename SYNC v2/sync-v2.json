@@ -2715,7 +2715,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e05d095d-25b8-412d-acb5-7e57a6010c90",
+                "id": "8cc47e35-891c-42a2-9f9a-96afeb81c570",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2723,10 +2723,10 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"pressev3Id\");",
+                  "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"contactV3Id\");",
                   "}",
-                  "postman.setNextRequest(\"Add PresseReview v2\");",
+                  "postman.setNextRequest(\"Add Contact v2\");",
                   ""
                 ]
               }
@@ -2740,21 +2740,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/contacts/{{contactV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pressReviews",
-                "{{presseV3Id}}"
+                "contacts",
+                "{{contactV3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
