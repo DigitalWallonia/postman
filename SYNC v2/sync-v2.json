@@ -5215,7 +5215,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6ba5e2f0-adf0-44a1-90c0-da7c87ee54c4",
+                "id": "656105ba-e7ce-4b2e-a395-0aeca8099efc",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5224,7 +5224,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id === presseV2Id) {",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
                   "        postman.setNextRequest(\"Find Profile Quoted in PresseReview v3\");",
                   "    }",
                   "    else{",
