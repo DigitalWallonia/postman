@@ -3228,7 +3228,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3a292a7b-852f-4b5e-8ef8-f902d7724e62",
+                "id": "e092d00d-9d9e-41fb-9cbd-951b2f335b3b",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -3239,7 +3239,9 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"photo\"] = jsonData.images.find(i => i.type === 'Photo').name === \"AdN Benoit Hucq 2\";",
+                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800785\";",
+                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800563\";",
+                  "        tests[\"faxNumbers 2\"] = jsonData.faxNumbers[1] = \"32478968596\";",
                   "        postman.setNextRequest(\"\");",
                   "    }",
                   "    else{",
