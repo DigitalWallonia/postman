@@ -4839,7 +4839,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "fd747b56-6948-4fed-951a-1f7b7f3a719f",
+                "id": "59a04153-6ac2-443f-bb85-9907510a339b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
