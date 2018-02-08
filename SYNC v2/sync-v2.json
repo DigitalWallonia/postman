@@ -2899,7 +2899,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f34e8277-527e-4b77-9aca-1cf6e9e9c625",
+                "id": "e17f9b9d-c31c-4854-b3a7-079cd85e0c6c",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -2908,18 +2908,19 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
+                  "        /*",
                   "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-01-31T23:00:00.000Z\";",
                   "        tests[\"status\"] = jsonData.status === \"Published\";",
                   "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
                   "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
                   "        tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
-                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
+                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");*/",
                   "    }",
                   "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
                   "    }",
                   "}",
                   ""
@@ -2935,20 +2936,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pressReviews",
+                "contacts",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
                   "equals": true
                 },
                 {
