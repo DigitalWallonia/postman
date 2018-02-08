@@ -3220,6 +3220,71 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "1f27c8d0-182f-0f21-8d42-286aa055b67c",
+          "name": "Find Photo in Contact v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3a292a7b-852f-4b5e-8ef8-f902d7724e62",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        tests[\"photo\"] = jsonData.images.find(i => i.type === 'Photo').name === \"AdN Benoit Hucq 2\";",
+                  "        postman.setNextRequest(\"\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
