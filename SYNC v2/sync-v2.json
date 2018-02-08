@@ -2891,6 +2891,76 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "694a743f-f4a5-b54c-de07-7971dd0e86e3",
+          "name": "Find New Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f34e8277-527e-4b77-9aca-1cf6e9e9c625",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
+                  "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-01-31T23:00:00.000Z\";",
+                  "        tests[\"status\"] = jsonData.status === \"Published\";",
+                  "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
+                  "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
+                  "        tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
+                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
