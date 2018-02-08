@@ -6708,6 +6708,76 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "ac195b9a-1cef-85bf-ed0f-024647953613",
+          "name": "Add Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a8463d96-32e9-47ce-9a6a-0ec0fd87d870",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag was added in v2\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.id;",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"tagV2Id\", jsonData.response.tag.id);",
+                  "        postman.setNextRequest(\"Find New Project v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "86d17ce8-2bee-4b2d-b2b1-edbf4ecf5f82",
+                "type": "text/javascript",
+                "exec": [
+                  "postman.setEnvironmentVariable(\"tagV2Label\", `automatedtestproject-${Math.random().toString(36).substring(2).toLowerCase()}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Intitule\", `automatedTestProject.${Math.random().toString(36).substring(2)}`);",
+                  "postman.setEnvironmentVariable(\"tagV2Description\", `automatedTestProject.${Math.random().toString(36).substring(2)}`);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"action\":\"add\",\"label\":\"{{tagV2Label}}\",\"themeId\":\"10\",\"bundleId\":\"28\",\"intitule\":{\"court\":{\"label\":\"labelIntituleTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionTagId{{tagV2Label}}\",\"fr\":\"{{tagV2Description}}\"}},\"statut\":{\"label\":\"tag_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
