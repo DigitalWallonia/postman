@@ -1082,7 +1082,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "317450db-cab8-4f61-90e8-d6c082e0cf33",
+                "id": "bcc764db-110b-45e2-894f-8ae77456fdf5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1094,7 +1094,7 @@
                   "    tests[\"The mission has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The mission has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
+                  "        postman.setNextRequest(\"Add Event v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Tag Mission v2\");",
@@ -1130,11 +1130,12 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
-            "description": null
+            "description": ""
           },
           "response": []
         },
