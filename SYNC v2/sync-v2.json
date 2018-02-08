@@ -4958,7 +4958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "40d63f9d-8e2a-424a-8990-2d29f2b060a8",
+                "id": "f4f6f162-5dbe-4454-be62-cc80523011e1",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -4967,7 +4967,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id === presseV2Id) {",
+                  "    if (jsonData.v2Id && jsonData.v2Id === presseV2Id) {",
                   "        postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
                   "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-02-02T23:00:00.000Z\";",
                   "        tests[\"status\"] = jsonData.status === \"Published\";",
