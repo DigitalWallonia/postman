@@ -1868,7 +1868,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
+                "id": "c327bedb-15fe-4e84-9665-9070690ea3cb",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1877,14 +1877,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
+                  "    tests[\"Event was deleted in v2\"] = jsonData.response.deleted === true;",
                   "}"
                 ]
               }
