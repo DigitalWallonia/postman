@@ -3223,7 +3223,7 @@
         },
         {
           "_postman_id": "1f27c8d0-182f-0f21-8d42-286aa055b67c",
-          "name": "Find Photo in Contact v3",
+          "name": "Find phone&faxNumbers in Contact v3",
           "event": [
             {
               "listen": "test",
