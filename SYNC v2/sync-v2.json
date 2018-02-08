@@ -4596,7 +4596,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "0a017479-ceff-46e8-8fb9-5a8307790a17",
+                "id": "01a34abb-df0a-464f-8755-b39b1e0d8076",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -4607,6 +4607,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
                   "    tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-02-02T23:00:00.000Z\";",
+                  "    tests[\"status\"] = jsonData.status === \"Published\";",
                   "    tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
                   "    tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
                   "    tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
