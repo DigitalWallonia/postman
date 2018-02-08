@@ -4786,7 +4786,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "9962556f-f70d-45e4-9568-7c80df792efe",
+                "id": "f7c558f0-0ca9-42c7-b5df-6d50b6d1ba62",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4799,7 +4799,7 @@
                   "    if (jsonData.response.presse.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"presseV2Id\", jsonData.response.presse.id);",
-                  "        postman.setNextRequest(\"Find New PressReview v3\");",
+                  "        postman.setNextRequest(\"Batch Infos de base PresseReview v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
