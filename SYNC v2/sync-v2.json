@@ -1755,79 +1755,6 @@
           "response": []
         },
         {
-          "_postman_id": "c24b7d5a-a85d-3791-98e0-f0dde6548d1c",
-          "name": "Delete Event Tag Mission v2 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "{{eventV2Id}}",
-                "tags",
-                "{{tagV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "8a7200a5-6248-0ea6-0f91-6fc664fb5080",
           "name": "Delete Tag Mission v2",
           "event": [
@@ -1931,6 +1858,79 @@
               ]
             },
             "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c24b7d5a-a85d-3791-98e0-f0dde6548d1c",
+          "name": "Delete Event Tag Mission v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b5432b2c-b81a-46aa-9e70-c3ac86e65893",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"A tag has been deleted to the event\"] = typeof(jsonData.response.evenement.tag) === \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setNextRequest(\"Update Tag Mission v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Mission v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "68a6e46e-bfde-414a-bc6f-f608f3b078fc",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "tags",
+                "{{tagV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
           },
           "response": []
         }
