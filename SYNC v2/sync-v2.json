@@ -4504,6 +4504,90 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "958a32c0-5b4c-4619-e67e-335d5a32a16a",
+          "name": "Find New PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
+                  "    //Status",
+                  "    tests[\"Status is Pending\"] = jsonData.status === \"Pending\";",
+                  "    //v2Id",
+                  "    tests[\"v2Id\"] = jsonData.v2Id === v2Id;",
+                  "    //title",
+                  "    tests[\"title fr is Test Synchro 1\"] = jsonData.title[0].text === \"Test Synchro 1\";",
+                  "    tests[\"title en is Test Synchro 1\"] = jsonData.title[1].text === \"Test Synchro 1\";",
+                  "    tests[\"title nl is Test Synchro 1\"] = jsonData.title[2].text === \"Test Synchro 1\";",
+                  "    tests[\"title de is Test Synchro 1\"] = jsonData.title[3].text === \"Test Synchro 1\";",
+                  "    //slug",
+                  "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug[0].slug === \"test-synchro-1\";",
+                  "    tests[\"slug en is test-synchro-1\"] = jsonData.slug[1].slug === \"test-synchro-1\";",
+                  "    tests[\"slug nl is test-synchro-1\"] = jsonData.slug[2].slug === \"test-synchro-1\";",
+                  "    tests[\"slug de is test-synchro-1\"] = jsonData.slug[3].slug === \"test-synchro-1\";",
+                  "    tests[\"slug fr status is Published\"] = jsonData.slug[0].status === \"Published\";",
+                  "    tests[\"slug en status is Published\"] = jsonData.slug[1].status === \"Published\";",
+                  "    tests[\"slug nl status is Published\"] = jsonData.slug[2].status === \"Published\";",
+                  "    tests[\"slug de status is Published\"] = jsonData.slug[3].status === \"Published\";",
+                  "    //shortTitle",
+                  "    tests[\"shortTitle fr is TS1\"] = jsonData.shortTitle[0].text === \"TS1\";",
+                  "    tests[\"shortTitle en is TS1\"] = jsonData.shortTitle[1].text === \"TS1\";",
+                  "    tests[\"shortTitle nl is TS1\"] = jsonData.shortTitle[2].text === \"TS1\";",
+                  "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle[3].text === \"TS1\";",
+                  "    ",
+                  "    postman.setNextRequest(\"Set Logo to Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/Find Artifact from previous tests post/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "Find Artifact from previous tests post",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
