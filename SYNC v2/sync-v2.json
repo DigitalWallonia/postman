@@ -5595,7 +5595,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d0d37377-c922-43d0-af19-bd40bc8953fc",
+                "id": "7f30b71c-c501-4c96-9317-9c06ec8d5585",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5604,8 +5604,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Contact Myrto\"] = jsonData.contacts.find(c => c.v2Id === 2525).firstName === \"Myrto\";",
-                  "    tests[\"Contact Melard\"] = jsonData.contacts.find(c => c.v2Id === 2525).lastName === \"Melard\";",
+                  "    tests[\"Contact Journalist\"] = jsonData.contacts.find(c => c.v2Id === 1873).role === \"Journalist\";",
+                  "    tests[\"Contact Brigitte\"] = jsonData.contacts.find(c => c.v2Id === 1873, c =>  c.role === Journalist).firstName === \"Brigitte\";",
+                  "    tests[\"Contact Doucet\"] = jsonData.contacts.find(c => c.v2Id === 1873, c =>  c.role === Journalist).lastName === \"Doucet\";",
                   "} else {",
                   "    postman.setNextRequest(null);",
                   "}",
