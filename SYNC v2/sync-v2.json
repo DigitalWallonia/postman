@@ -5197,6 +5197,72 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "ec321ed8-b297-dea0-ee3d-c3b4a80884ca",
+          "name": "Batch Profile PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "73ee488c-1fca-43c6-aa41-382191e68edc",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id === presseV2Id) {",
+                  "        postman.setNextRequest(\"\");",
+                  "    }",
+                  "    else{",
+                  "        ",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
