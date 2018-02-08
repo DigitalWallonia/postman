@@ -5552,7 +5552,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b5daa30f-fae9-4094-be20-73cd06f0d6d6",
+                "id": "a326a38a-7967-46dd-af1a-dbf16c94c1d4",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5561,7 +5561,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id === presseV2Id) {",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
                   "        postman.setNextRequest(\"Find Contact Journalist in PresseReview v3\");",
                   "    }",
                   "    else{",
