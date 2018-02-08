@@ -5397,6 +5397,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "94777b0c-b09b-4720-b485-2a0ef6b201e8",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5404,9 +5405,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest(\"Add Profile v2\");",
+                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"pressev3Id\");",
+                  "    postman.setNextRequest(\"Add PresseReview v2\");",
                   "}",
                   ""
                 ]
@@ -5421,21 +5422,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles",
-                "{{profileV3Id}}"
+                "pressReviews",
+                "{{presseV3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
