@@ -5199,7 +5199,7 @@
         },
         {
           "_postman_id": "ec321ed8-b297-dea0-ee3d-c3b4a80884ca",
-          "name": "Batch Profile PresseReview v2",
+          "name": "Batch Profile Quoted PresseReview v2",
           "event": [
             {
               "listen": "test",
