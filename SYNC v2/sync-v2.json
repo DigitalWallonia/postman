@@ -3097,7 +3097,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e7624c9e-d362-4abf-998f-c712399181d5",
+                "id": "3a292a7b-852f-4b5e-8ef8-f902d7724e62",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -3108,7 +3108,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
+                  "        tests[\"photo\"] = jsonData.images.find(i => i.type === 'Photo').name === \"AdN Benoit Hucq 2\";",
                   "        postman.setNextRequest(\"\");",
                   "    }",
                   "    else{",
