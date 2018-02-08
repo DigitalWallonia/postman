@@ -5466,7 +5466,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "919866cb-323a-4d97-ac59-897a79c0cb90",
+                "id": "d0d37377-c922-43d0-af19-bd40bc8953fc",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5475,7 +5475,8 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Profile Dogstudio\"] = jsonData.find(p => p.profile.v2Id === 2914).role === \"Quoted\";",
+                  "    tests[\"Contact Myrto\"] = jsonData.contacts.find(c => c.v2Id === 2525).firstName === \"Myrto\";",
+                  "    tests[\"Contact Melard\"] = jsonData.contacts.find(c => c.v2Id === 2525).lastName === \"Melard\";",
                   "} else {",
                   "    postman.setNextRequest(null);",
                   "}",
@@ -5492,25 +5493,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "xPressReviewProfile",
-                ""
+                "pressReviews",
+                "findOne"
               ],
               "query": [
                 {
-                  "key": "lang",
-                  "value": "fr",
-                  "equals": true
-                },
-                {
                   "key": "filter",
-                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
                   "equals": true
                 },
                 {
