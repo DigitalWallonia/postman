@@ -5487,7 +5487,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d0d37377-c922-43d0-af19-bd40bc8953fc",
+                "id": "37c44c3c-d964-4eae-a89f-c64dfed6d2a8",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5496,12 +5496,16 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Contact Myrto\"] = jsonData.contacts.find(c => c.v2Id === 2525).firstName === \"Myrto\";",
-                  "    tests[\"Contact Melard\"] = jsonData.contacts.find(c => c.v2Id === 2525).lastName === \"Melard\";",
-                  "} else {",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"Contact Myrto\"] = jsonData.contacts.find(c => c.v2Id === 2525).firstName === \"Myrto\";",
+                  "        tests[\"Contact Melard\"] = jsonData.contacts.find(c => c.v2Id === 2525).lastName === \"Melard\";",
+                  "        postman.setNextRequest(\"Batch Contact Journalist PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
                 ]
               }
             }
