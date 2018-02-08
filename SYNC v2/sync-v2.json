@@ -2768,7 +2768,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2462e2cf-bd67-461d-9908-a9a95da1fa58",
+                "id": "4cd347ff-6c37-4332-9386-7b95e97ceaf2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2781,7 +2781,7 @@
                   "    if (jsonData.response.contact.id) {",
                   "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"contactV2Id\", jsonData.response.contact.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base contact v2\");",
+                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
