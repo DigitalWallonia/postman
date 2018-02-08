@@ -5458,6 +5458,71 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "fc540c80-0094-e3eb-e174-1211cad269a7",
+          "name": "Find Contact in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "919866cb-323a-4d97-ac59-897a79c0cb90",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Profile Dogstudio\"] = jsonData.find(p => p.profile.v2Id === 2914).role === \"Quoted\";",
+                  "} else {",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "xPressReviewProfile",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "fr",
+                  "equals": true
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
