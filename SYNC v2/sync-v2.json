@@ -3290,7 +3290,7 @@
         },
         {
           "_postman_id": "8e8bf590-407b-6ee3-1b68-dc8ffeba5815",
-          "name": "Batch autresInfos Contact v2",
+          "name": "Batch Urls Contact v2",
           "event": [
             {
               "listen": "test",
