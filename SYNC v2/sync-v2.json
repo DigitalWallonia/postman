@@ -3089,72 +3089,6 @@
             "description": null
           },
           "response": []
-        },
-        {
-          "_postman_id": "f14aca2b-8487-e110-403d-212011acc2a0",
-          "name": "Batch Tag Contact v2 copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a304a93c-407f-42d6-923c-8001d7467134",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find Tag in Contact v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
         }
       ],
       "event": [
@@ -5839,6 +5773,72 @@
       "name": "Add New Presse v2 / PressReview v3",
       "description": "",
       "item": [
+        {
+          "_postman_id": "f14aca2b-8487-e110-403d-212011acc2a0",
+          "name": "Batch Tag Contact v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a304a93c-407f-42d6-923c-8001d7467134",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find Tag in Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
         {
           "_postman_id": "e2af44aa-37b3-788e-3e62-dbcc555b4c54",
           "name": "Find Artifact previous tests pressreview",
