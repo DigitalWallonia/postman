@@ -3024,6 +3024,71 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "67857d7c-4541-daa4-35a4-0041a7000e05",
+          "name": "Find Tag in Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0ab3e901-e5a3-4637-aa64-58d21eafcc13",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
+                  "        postman.setNextRequest(\"Batch Profile Quoted PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
