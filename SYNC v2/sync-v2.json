@@ -9398,7 +9398,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "789bd68f-ce4d-4dcb-aff5-a2ae468175c7",
+                "id": "73a2faf5-558b-4315-8611-0ff6fea579a9",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -9408,7 +9408,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
+                  "    tests[\"Status is draft\"] = jsonData.status === \"Pending\";",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Find Page v3 To Check Status EN Pending\");",
                   "    }",
