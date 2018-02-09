@@ -3356,7 +3356,7 @@
         },
         {
           "_postman_id": "400d0b2f-f0e4-8818-57dc-1e6850de6099",
-          "name": "Find phone&faxNumbers in Contact v3 copy",
+          "name": "Find Urls in Contact v3",
           "event": [
             {
               "listen": "test",
