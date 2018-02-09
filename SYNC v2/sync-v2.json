@@ -8789,7 +8789,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "feb225b1-3bdf-4f4b-bd1a-720ff3ebff4a",
+                "id": "a428795f-170e-4f2d-9813-ff9c18d86b5d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -8798,7 +8798,7 @@
                   "console.log(JSON.parse(responseBody));",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.unset(\"page2IdEN\");",
+                  "    pm.environment.unset(\"post2IdEN\");",
                   "}"
                 ]
               }
@@ -8815,7 +8815,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdEN}}?force=true",
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}?force=true",
               "protocol": "{{v2_wp_protocol}}",
               "host": [
                 "{{v2_wp_domain}}"
@@ -8823,14 +8823,13 @@
               "path": [
                 "wp",
                 "v2",
-                "pages",
-                "{{pageV2IdEN}}"
+                "posts",
+                "{{postV2IdEN}}"
               ],
               "query": [
                 {
                   "key": "force",
-                  "value": "true",
-                  "equals": true
+                  "value": "true"
                 }
               ]
             },
