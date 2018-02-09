@@ -3361,7 +3361,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e092d00d-9d9e-41fb-9cbd-951b2f335b3b",
+                "id": "4f9c42de-d4a6-4979-90de-bc845b664521",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -3372,9 +3372,9 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800785\";",
-                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800563\";",
-                  "        tests[\"faxNumbers 2\"] = jsonData.faxNumbers[1] = \"32478968596\";",
+                  "        tests[\"Urls Facebook\"] = jsonData.urls.find(u => u.type === 'Facebook').address === \"https://www.facebook.com/Testlastnamecontact\";",
+                  "        tests[\"Urls Twitter\"] = jsonData.urls.find(u => u.type === 'Twitter').address === \"https://twitter.com/Testlastnamecontact\";",
+                  "        tests[\"Urls Pinterest\"] = jsonData.urls.find(u => u.type === 'Pinterest').address === \"ttps://www.pinterest.com/Testlastnamecontact\";",
                   "        postman.setNextRequest(\"\");",
                   "    }",
                   "    else{",
