@@ -9008,6 +9008,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "e17461ab-ef3b-46da-aeca-1f200d63a911",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9016,18 +9018,16 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV3Id\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"pageV3Id\", jsonData.id);",
                   "        postman.setNextRequest(\"Find Slug FR v3\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "90b200dd-e029-40a5-b949-c11b07b46354",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9036,20 +9036,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
                   "equals": true
                 },
                 {
