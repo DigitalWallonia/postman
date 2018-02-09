@@ -9381,6 +9381,81 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "5a3f9eca-5688-575d-9f71-ed2426c1ca9a",
+          "name": "Add Page EN v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV2IdEN\", jsonData.id);",
+                  "        console.log(jsonData.slug.slug);",
+                  "        postman.setEnvironmentVariable(\"postV2SlugEN\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Add Post liaison FR-EN v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ],
+                "id": "7d310de7-24e0-4696-8475-caf5451ab043",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Post EN\",\n  \"slug\": \"test-post-EN\",\n  \"content\": \"Ceci est un post de test EN\",\n  \"status\": \"publish\"\n}"
+            },
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "posts",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
