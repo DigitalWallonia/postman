@@ -2583,7 +2583,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "09e5f152-c464-4536-bc08-5d0b43e34342",
+                "id": "6173efeb-14f9-46ca-815f-d6dcf9886ca9",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2595,7 +2595,7 @@
                   "    tests[\"Event was deleted in v2\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"eventV2Id\");",
                   "}",
-                  "postman.setNextRequest(\"Find Artifact from previous tests project\");"
+                  "postman.setNextRequest(\"Find Artifact previous tests contact\");"
                 ]
               }
             },
@@ -2633,7 +2633,8 @@
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}"
+                  "value": "{{v2_token}}",
+                  "equals": true
                 }
               ]
             },
