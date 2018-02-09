@@ -80,7 +80,7 @@
       "item": [
         {
           "_postman_id": "a7ab0462-afa9-356d-373f-0f242d24ccc9",
-          "name": "Find Artifact from previous tests (TagCategory) copy copy",
+          "name": "Find Artifact from previous tests (TagCategory)",
           "event": [
             {
               "listen": "test",
