@@ -9688,6 +9688,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "f6617621-13a2-432c-baed-396b1148561f",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9698,15 +9700,13 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Status is draft\"] = jsonData.status === \"Pending\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Pending\");",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status EN Pending\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "71416080-1088-4a66-9f70-bd0384092a59",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9715,20 +9715,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
                   "equals": true
                 },
                 {
