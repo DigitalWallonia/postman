@@ -8945,6 +8945,61 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "7914232e-aed7-352f-d0b4-d8bbad0fb8bb",
+          "name": "Add Page FR v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Find New Post v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ],
+                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/",
+            "description": null
+          },
+          "response": []
         }
       ]
     }
