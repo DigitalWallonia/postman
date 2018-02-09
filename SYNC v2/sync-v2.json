@@ -720,7 +720,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1e8697bb-7e2d-430a-b392-681c3fa4b1ab",
+                "id": "b861b149-acd0-4075-8274-c9e94764730e",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -732,7 +732,8 @@
                   "        && jsonData.count === 1;",
                   "    pm.environment.unset(\"tagCategoryV3Id\");",
                   "}",
-                  ""
+                  "",
+                  "postman.setNextRequest(\"Find Artifact from previous tests project\");"
                 ]
               }
             }
