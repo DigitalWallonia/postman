@@ -3295,7 +3295,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2f82a596-3f33-4f24-9336-27fa6919edd5",
+                "id": "fb109924-0f5c-4237-9ddf-660e48f3f46c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -3305,7 +3305,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find phone&faxNumbers in Contact v3\");",
+                  "        postman.setNextRequest(\"Find Urls in Contact v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
