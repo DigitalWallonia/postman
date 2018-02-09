@@ -8901,6 +8901,50 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "38a136ee-31ac-9fc8-2e40-15a7577921c8",
+          "name": "Auth WP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
+                  "    postman.setNextRequest(\"Add Post FR v2\");",
+                  "}else{",
+                  "    console.log('No token');",
+                  "}"
+                ],
+                "id": "f1f8016d-ce3e-44d2-a490-cd992a0ead4f",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "type": "text",
+                  "value": "testv2"
+                },
+                {
+                  "key": "password",
+                  "type": "text",
+                  "value": "v6]G(uk.NUGVohei{Ai?e2bn"
+                }
+              ]
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/jwt-auth/v1/token",
+            "description": null
+          },
+          "response": []
         }
       ]
     }
