@@ -3328,7 +3328,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"urls\":{\"0\":{\"type\":{\"id\":\"1\"},\"adresse\":\"https://www.facebook.com/Testlastnamecontact\",\"action\":\"add\"},\"1\":{\"type\":{\"id\":\"2\"},\"adresse\":\"https://twitter.com/Testlastnamecontact\",\"action\":\"add\"},\"2\":{\"type\":{\"id\":\"6\"},\"adresse\":\"https://www.pinterest.com/Testlastnamecontact\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -3340,7 +3340,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"urls\":{\"0\":{\"type\":{\"id\":\"1\"},\"adresse\":\"https://www.facebook.com/Testlastnamecontact\",\"action\":\"add\"},\"1\":{\"type\":{\"id\":\"2\"},\"adresse\":\"https://twitter.com/Testlastnamecontact\",\"action\":\"add\"},\"2\":{\"type\":{\"id\":\"6\"},\"adresse\":\"https://www.pinterest.com/Testlastnamecontact\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
