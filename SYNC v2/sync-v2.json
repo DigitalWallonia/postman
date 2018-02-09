@@ -8909,17 +8909,17 @@
             {
               "listen": "test",
               "script": {
+                "id": "1679d0d8-b9a0-474a-b4bf-83fa468a8fb1",
+                "type": "text/javascript",
                 "exec": [
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
-                  "    postman.setNextRequest(\"Add Post FR v2\");",
+                  "    postman.setNextRequest(\"Add Page FR v2\");",
                   "}else{",
                   "    console.log('No token');",
                   "}"
-                ],
-                "id": "f1f8016d-ce3e-44d2-a490-cd992a0ead4f",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
