@@ -3353,6 +3353,73 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "400d0b2f-f0e4-8818-57dc-1e6850de6099",
+          "name": "Find phone&faxNumbers in Contact v3 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e092d00d-9d9e-41fb-9cbd-951b2f335b3b",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800785\";",
+                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800563\";",
+                  "        tests[\"faxNumbers 2\"] = jsonData.faxNumbers[1] = \"32478968596\";",
+                  "        postman.setNextRequest(\"\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ],
       "event": [
