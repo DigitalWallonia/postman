@@ -9518,7 +9518,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "45fb727f-f91a-42ee-acc5-c49415637f78",
+                "id": "feb225b1-3bdf-4f4b-bd1a-720ff3ebff4a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9527,8 +9527,7 @@
                   "console.log(JSON.parse(responseBody));",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.unset(\"page2IdFR\");",
-                  "    postman.setNextRequest(\"Delete Page v2 EN\");",
+                  "    pm.environment.unset(\"page2IdEN\");",
                   "}"
                 ]
               }
