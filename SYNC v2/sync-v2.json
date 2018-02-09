@@ -9635,6 +9635,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "9115351a-2e8e-429c-9569-f8a72b369471",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9646,15 +9648,13 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status Draft\");",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status Draft\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "5b8b3212-c264-4be1-907c-00071252e589",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9676,7 +9676,7 @@
               "mode": "raw",
               "raw": "{\n  \"status\": \"draft\"\n}"
             },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}",
             "description": null
           },
           "response": []
