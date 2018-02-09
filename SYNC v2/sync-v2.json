@@ -403,7 +403,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "721edbac-083d-4656-b169-3abe05354b77",
+                "id": "09e49d31-580c-410e-8eee-7c281dd6c94c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -415,7 +415,7 @@
                   "        && jsonData.count === 1;",
                   "    pm.environment.unset(\"tagCategoryV3Id\");",
                   "}",
-                  "postman.setNextRequest(\"Find Artifact from previous tests (TagCategory) copy\");"
+                  "postman.setNextRequest(\"Find Artifact from previous tests (TagBundle)\");"
                 ]
               }
             }
