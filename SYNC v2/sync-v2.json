@@ -9565,6 +9565,68 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "67b97bfa-4c9b-6931-f6ce-3980660bcef5",
+          "name": "Add Page liaison FR-EN v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    postman.setNextRequest(\"Update post Status Draft v2\");",
+                  "}"
+                ],
+                "id": "4a80df38-7696-49bd-80b3-1d80e0dd4c44",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "posts",
+                "{{postV2IdFR}}"
+              ],
+              "query": [
+                {
+                  "key": "translations[en]",
+                  "value": "{{postV2IdEN}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
