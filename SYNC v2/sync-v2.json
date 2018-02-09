@@ -9753,6 +9753,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "7cf39b94-7871-493b-9c2c-5e27d70c547a",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9761,17 +9763,15 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Post EN is Pending\"] = jsonData.status === \"Pending\";",
+                  "    tests[\"Status Page EN is Pending\"] = jsonData.status === \"Pending\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update post Status Publish v2\");",
+                  "        postman.setNextRequest(\"Update Page Status Publish v2\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "9fdbb0b0-8a8f-4284-a924-35d4e81dda15",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9780,14 +9780,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{postV2SlugEN}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{pageV2SlugEN}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
@@ -9803,7 +9803,7 @@
                 },
                 {
                   "key": "filter[where][slug.slug]",
-                  "value": "{{postV2SlugEN}}",
+                  "value": "{{pageV2SlugEN}}",
                   "equals": true
                 }
               ]
