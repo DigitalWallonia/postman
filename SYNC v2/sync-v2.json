@@ -9510,6 +9510,63 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "b71b79e1-2027-29cc-3fc5-289990048551",
+          "name": "Delete Page v2 copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6c1db212-6d23-4993-b8d2-d53c05cd1ac1",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "console.log(JSON.parse(responseBody));",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.unset(\"postV2IdFR\");",
+                  "    postman.setNextRequest(\"Delete Post v2 EN\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}?force=true",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "pages",
+                "{{pageV2IdFR}}"
+              ],
+              "query": [
+                {
+                  "key": "force",
+                  "value": "true",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
