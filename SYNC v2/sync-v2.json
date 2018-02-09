@@ -1386,59 +1386,6 @@
           "response": []
         },
         {
-          "_postman_id": "cf95db01-ac65-3b91-938e-c6cbc31b33fd",
-          "name": "Delete Project v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "402dfc2d-c640-4cf2-ba24-33bc32d8f31e",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"projectv3Id\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "{{projectV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
           "_postman_id": "475320bf-782d-a1a9-5ac4-f392eefa0523",
           "name": "Delete Tag Project v2",
           "event": [
@@ -1484,6 +1431,59 @@
                 {
                   "key": "oauth_token",
                   "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "cf95db01-ac65-3b91-938e-c6cbc31b33fd",
+          "name": "Delete Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "402dfc2d-c640-4cf2-ba24-33bc32d8f31e",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"projectv3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
