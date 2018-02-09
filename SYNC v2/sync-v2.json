@@ -862,6 +862,63 @@
           "response": []
         },
         {
+          "_postman_id": "e34555fd-5e74-a26e-c764-1a40f1770fb1",
+          "name": "Delete Artifact from previous tests project",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2ebfbb7f-ece9-4795-ab4b-096fa20d3395",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Project is deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"projectv3Id\");",
+                  "    postman.setNextRequest(\"Add Tag Project v2\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectv3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
           "name": "Update Status Tag Project v2",
           "event": [
@@ -1362,63 +1419,6 @@
                   "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
                   "equals": true
                 },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e34555fd-5e74-a26e-c764-1a40f1770fb1",
-          "name": "Delete Artifact from previous tests project",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2ebfbb7f-ece9-4795-ab4b-096fa20d3395",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Project is deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"projectv3Id\");",
-                  "    postman.setNextRequest(\"Add Tag Project v2\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectv3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "{{projectv3Id}}"
-              ],
-              "query": [
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
