@@ -1197,6 +1197,68 @@
           "response": []
         },
         {
+          "_postman_id": "e0bb0903-ea39-2ddd-3ce8-4cc7242131ae",
+          "name": "Find Updated Project v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6dadc272-6975-45b6-b703-094b8b8c4bb0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"The project status is published\"] = jsonData.status === \"Hidden\";",
+                  "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
+                  "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Update Status Tag Project v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
           "name": "Update Status Tag Project v2",
           "event": [
@@ -1282,68 +1344,6 @@
                   "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"{{tagV2Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e0bb0903-ea39-2ddd-3ce8-4cc7242131ae",
-          "name": "Find Updated Project v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6dadc272-6975-45b6-b703-094b8b8c4bb0",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"The project status is published\"] = jsonData.status === \"Hidden\";",
-                  "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
-                  "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update Status Tag Project v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Tag Project v2\");",
