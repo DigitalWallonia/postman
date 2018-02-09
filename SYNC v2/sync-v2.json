@@ -9263,6 +9263,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "3b2fb225-5cfb-4d1f-a6ff-2eab0789b1f6",
+                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
@@ -9271,15 +9273,13 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Status",
                   "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
-                  "    postman.setNextRequest(\"Find publicationDate Post v3\");",
+                  "    postman.setNextRequest(\"Find publicationDate Page v3\");",
                   "}",
                   "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
                   "}",
                   ""
-                ],
-                "id": "ff825b4b-f26c-43b5-ab80-f342b0381ef6",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9288,20 +9288,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
                   "equals": true
                 },
                 {
