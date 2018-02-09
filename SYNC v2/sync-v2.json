@@ -9024,7 +9024,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a4be7468-3aba-41cb-b380-888abd84e924",
+                "id": "aa94732f-e853-4533-b3e8-db70caec2ca5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -9034,7 +9034,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    //title",
                   "    tests[\"title fr\"] = jsonData.title.find(t => t.language === 'fre').text === \"Test Page\";",
-                  "    postman.setNextRequest(\"Find Content Page v3\");",
+                  "    postman.setNextRequest(\"Find Content FR Page v3\");",
                   "}",
                   "else{",
                   "    postman.setNextRequest(\"Delete Page v2\");",
