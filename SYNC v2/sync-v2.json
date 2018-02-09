@@ -9864,6 +9864,71 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "0cabfc49-ce77-1bb4-75ec-d206531fed35",
+          "name": "Find Page v3 To Check Status Published",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Published\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ],
+                "id": "72d86548-e5d0-4139-8ecd-20c3792be557",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
