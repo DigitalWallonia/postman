@@ -3478,7 +3478,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "id": "f0201cac-7378-4c01-9ee9-a87860f5187d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -3486,9 +3486,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest('Find Artifact from previous tests event');",
+                  "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"contactV3Id\");",
+                  "    postman.setNextRequest('Find Artifact from previous tests profile');",
                   "}else{",
                   "    postman.setNextRequest(null);",
                   "}",
@@ -3505,7 +3505,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{contactV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3513,13 +3513,12 @@
               "path": [
                 "api",
                 "profiles",
-                "{{profileV3Id}}"
+                "{{contactV3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
