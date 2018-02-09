@@ -3425,6 +3425,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "39f50ce0-a73d-4c26-b319-6ee6b667c7ce",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -3433,9 +3434,9 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "",
-                  "    tests[\"Le profil a été supprimée\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"profileV2Id\");",
-                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "    tests[\"Le contact a été supprimée\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"contactV2Id\");",
+                  "    postman.setNextRequest(\"Delete Contact v3\");",
                   "}"
                 ]
               }
@@ -3449,21 +3450,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/{{contactV2Id}}/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
               ],
               "path": [
-                "profils",
-                "{{profileV2Id}}",
+                "contacts",
+                "{{contactV2Id}}",
                 "delete"
               ],
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
+                  "value": "{{v2_token}}"
                 }
               ]
             },
