@@ -8996,7 +8996,7 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Test Page\",\n  \"slug\": \"test-page\",\n  \"content\": \"Ceci est une page de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
             },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/",
             "description": null
           },
           "response": []
