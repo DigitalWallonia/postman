@@ -9819,6 +9819,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "bd85fa28-785c-44ff-9278-b7bb54fa9f1b",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9830,15 +9832,13 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Status is publish\"] = jsonData.status === \"publish\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status Published\");",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status Published\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "c59cb122-a189-44da-922c-79fe1ac42fb5",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9860,7 +9860,7 @@
               "mode": "raw",
               "raw": "{\n  \"status\": \"publish\"\n}"
             },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}",
             "description": null
           },
           "response": []
