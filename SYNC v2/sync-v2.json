@@ -803,6 +803,65 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "ee354a06-864a-b365-c525-d9bbe2d803a6",
+          "name": "Find Artifact from previous tests project",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "29c6f3f1-dc14-40b1-a34c-de2c40cd6099",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"projectv3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests project\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Tag Project v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
           "name": "Update Status Tag Project v2",
           "event": [
@@ -1360,65 +1419,6 @@
                 "{{projectv3Id}}"
               ],
               "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ee354a06-864a-b365-c525-d9bbe2d803a6",
-          "name": "Find Artifact from previous tests project",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "29c6f3f1-dc14-40b1-a34c-de2c40cd6099",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"projectv3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests project\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Tag Project v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedtestproject\"}}}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
