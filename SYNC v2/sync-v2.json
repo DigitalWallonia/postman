@@ -9573,6 +9573,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "45a25b02-94af-4271-bcbc-13ac50944f0f",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9581,11 +9583,9 @@
                   "});",
                   "",
                   "if (code == 200 || code == 201 || code == 202) {",
-                  "    postman.setNextRequest(\"Update post Status Draft v2\");",
+                  "    postman.setNextRequest(\"Update Page Status Draft v2\");",
                   "}"
-                ],
-                "id": "4a80df38-7696-49bd-80b3-1d80e0dd4c44",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9605,7 +9605,7 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}?translations[en]={{pageV2IdEN}}",
               "protocol": "{{v2_wp_protocol}}",
               "host": [
                 "{{v2_wp_domain}}"
@@ -9613,13 +9613,13 @@
               "path": [
                 "wp",
                 "v2",
-                "posts",
-                "{{postV2IdFR}}"
+                "pages",
+                "{{pageV2IdFR}}"
               ],
               "query": [
                 {
                   "key": "translations[en]",
-                  "value": "{{postV2IdEN}}",
+                  "value": "{{pageV2IdEN}}",
                   "equals": true
                 }
               ]
