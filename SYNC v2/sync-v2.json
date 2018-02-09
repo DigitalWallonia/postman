@@ -3575,16 +3575,18 @@
                 {
                   "key": "prenom",
                   "value": "Testfirstnamecontact",
+                  "description": "",
                   "type": "text"
                 },
                 {
                   "key": "lg",
                   "value": "FRE",
+                  "description": "",
                   "type": "text"
                 }
               ]
             },
-            "url": "{{v2_protocol}}://{{v2_domain}}/contacts/add",
+            "url": "{{v2_protocol}}://{{v2_domain}}/emails/add",
             "description": null
           },
           "response": []
