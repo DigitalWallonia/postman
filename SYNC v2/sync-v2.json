@@ -8853,23 +8853,23 @@
             {
               "listen": "test",
               "script": {
+                "id": "3119157e-25d6-4d5a-be03-433e4df6b297",
+                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postv3Id\");",
+                  "    tests[\"La page est supprimée\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"pagev3Id\");",
                   "    postman.setNextRequest(\"Auth WP\");",
                   "}",
                   "else{",
                   "    postman.setNextRequest(\"Auth WP\");",
                   "}",
                   ""
-                ],
-                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -8881,21 +8881,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/{{pagev3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
-                "{{postv3Id}}"
+                "pages",
+                "{{pagev3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
