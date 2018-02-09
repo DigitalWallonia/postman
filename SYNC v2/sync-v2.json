@@ -459,7 +459,7 @@
       "item": [
         {
           "_postman_id": "2243ffc3-bbd1-1778-f7c9-c3cca4f8ed7d",
-          "name": "Find Artifact from previous tests (TagCategory) copy",
+          "name": "Find Artifact from previous tests (TagCategory) cop",
           "event": [
             {
               "listen": "test",
