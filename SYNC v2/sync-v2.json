@@ -9872,6 +9872,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "892de871-2ad7-431b-9c10-6f4c840d9ffa",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9882,15 +9884,13 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Published\");",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status EN Published\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "72d86548-e5d0-4139-8ecd-20c3792be557",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9899,20 +9899,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
                   "equals": true
                 },
                 {
