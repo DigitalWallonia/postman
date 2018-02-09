@@ -3528,7 +3528,7 @@
         },
         {
           "_postman_id": "57e0ba21-a1a0-c95e-bd06-d6c60fc7a6d2",
-          "name": "Add Contact v2 copy",
+          "name": "Add Eamil to Contact v2",
           "event": [
             {
               "listen": "test",
