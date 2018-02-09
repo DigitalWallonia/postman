@@ -9627,6 +9627,59 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "7e424926-4a34-e6e5-aaa9-1d1550ea75b5",
+          "name": "Update Page Status Draft v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Post v3 To Check Status Draft\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ],
+                "id": "5b8b3212-c264-4be1-907c-00071252e589",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"draft\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "description": null
+          },
+          "response": []
         }
       ]
     }
