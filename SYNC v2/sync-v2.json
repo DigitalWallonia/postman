@@ -8953,6 +8953,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "9ca2259b-c656-4640-b2ec-67157206125b",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -8962,19 +8964,17 @@
                   "",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Find New Post v3\");",
+                  "        postman.setEnvironmentVariable(\"pageV2IdFR\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"pageV2Slug\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Find New Page v3\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -8994,7 +8994,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+              "raw": "{\n  \"title\": \"Test Page\",\n  \"slug\": \"test-page\",\n  \"content\": \"Ceci est une page de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
             },
             "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/",
             "description": null
