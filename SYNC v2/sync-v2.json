@@ -2768,7 +2768,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4cd347ff-6c37-4332-9386-7b95e97ceaf2",
+                "id": "b0247514-55f1-412f-81fa-a3f29a003960",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2781,7 +2781,7 @@
                   "    if (jsonData.response.contact.id) {",
                   "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"contactV2Id\", jsonData.response.contact.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
+                  "        postman.setNextRequest(\"Add Eamil to Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
