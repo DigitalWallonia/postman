@@ -1051,6 +1051,60 @@
           "response": []
         },
         {
+          "_postman_id": "475320bf-782d-a1a9-5ac4-f392eefa0523",
+          "name": "Delete Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "86a03d0d-acf4-4872-83e6-a5a8312fc0f4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Tag project was deleted in v2\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"projectV2Id\");",
+                  "    postman.setNextRequest(\"Delete Project v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "tags",
+                "{{tagV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
           "name": "Update Status Tag Project v2",
           "event": [
@@ -1111,60 +1165,6 @@
               ]
             },
             "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "475320bf-782d-a1a9-5ac4-f392eefa0523",
-          "name": "Delete Tag Project v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "86a03d0d-acf4-4872-83e6-a5a8312fc0f4",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Tag project was deleted in v2\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"projectV2Id\");",
-                  "    postman.setNextRequest(\"Delete Project v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "tags",
-                "{{tagV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
             "description": null
           },
           "response": []
