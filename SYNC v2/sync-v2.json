@@ -1132,6 +1132,71 @@
           "response": []
         },
         {
+          "_postman_id": "be5216de-93a1-df3f-df2e-56b998bd6702",
+          "name": "Update Tag Project v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "197efbce-5f85-4397-8487-2ae0b0e3b353",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", () => {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag",
+                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
+                  "    if (jsonData",
+                  "        && jsonData.response",
+                  "        && jsonData.response.tag) {",
+                  "        postman.setNextRequest(\"Find Updated Project v3\");",
+                  "    } else{",
+                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "json",
+                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"28\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "052b3299-1a2e-37ab-e826-038e4f006706",
           "name": "Update Status Tag Project v2",
           "event": [
@@ -1254,71 +1319,6 @@
                 }
               ]
             },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "be5216de-93a1-df3f-df2e-56b998bd6702",
-          "name": "Update Tag Project v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "197efbce-5f85-4397-8487-2ae0b0e3b353",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", () => {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Tag Status v2 is Published\"] = jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag",
-                  "        && jsonData.response.tag.statut.label === 'tag_statut_publie';",
-                  "    if (jsonData",
-                  "        && jsonData.response",
-                  "        && jsonData.response.tag) {",
-                  "        postman.setNextRequest(\"Find Updated Project v3\");",
-                  "    } else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "2c4eea6c-00a0-4b00-91bd-5e0d504faa2c",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"tag\":{\"id\":{{tagV2Id}},\"action\":\"update\",\"themeId\":\"10\",\"bundleId\":\"28\",\"label\":\"{{tagV2Label}}\",\"statut\":{\"label\":\"tag_statut_publie\",\"langue\":\"FRE\",\"original\":\"publié\",\"fr\":\"publié\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
             "description": null
           },
           "response": []
