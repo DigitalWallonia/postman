@@ -3533,7 +3533,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4cd347ff-6c37-4332-9386-7b95e97ceaf2",
+                "id": "1fb66f7a-8c74-438c-9f89-105ccb69ae7c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -3542,10 +3542,10 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un contact été ajouté\"] = jsonData.response.contact.id !== \"undefined\";",
-                  "    if (jsonData.response.contact.id) {",
+                  "    tests[\"Un email au contact été ajouté\"] = jsonData.response.email.id !== \"undefined\";",
+                  "    if (jsonData.response.email.id) {",
                   "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"contactV2Id\", jsonData.response.contact.id);",
+                  "        postman.setEnvironmentVariable(\"emailContactV2Id\", jsonData.response.email.id);",
                   "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
                   "    }",
                   "    else{",
@@ -3568,20 +3568,8 @@
                   "type": "text"
                 },
                 {
-                  "key": "nom",
-                  "value": "Testlastnamecontact",
-                  "type": "text"
-                },
-                {
-                  "key": "prenom",
-                  "value": "Testfirstnamecontact",
-                  "description": "",
-                  "type": "text"
-                },
-                {
-                  "key": "lg",
-                  "value": "FRE",
-                  "description": "",
+                  "key": "adresse",
+                  "value": "testlastnamecontact{{$timestamp}}@Testlastnamecontact.be",
                   "type": "text"
                 }
               ]
