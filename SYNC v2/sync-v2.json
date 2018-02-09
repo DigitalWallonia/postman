@@ -9213,6 +9213,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "ff6c49f2-8761-47c7-be6a-cbde651eb4ea",
+                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
@@ -9220,16 +9222,14 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Status",
-                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T14:38:36.000Z\";",
-                  "    postman.setNextRequest(\"Add Post EN v2\");",
+                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T15:38:36.000Z\";",
+                  "    postman.setNextRequest(\"Add Page EN v2\");",
                   "}",
                   "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
                   "}",
                   ""
-                ],
-                "id": "22848d6d-9d45-4a8d-a1d9-4c7ce4defc19",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9238,20 +9238,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
                   "equals": true
                 },
                 {
