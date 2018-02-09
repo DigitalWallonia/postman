@@ -9389,6 +9389,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "9529f70e-e16a-4bb4-b449-bac603c9fc2a",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9398,20 +9400,17 @@
                   "",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdEN\", jsonData.id);",
-                  "        console.log(jsonData.slug.slug);",
-                  "        postman.setEnvironmentVariable(\"postV2SlugEN\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Add Post liaison FR-EN v2\");",
+                  "        postman.setEnvironmentVariable(\"pageV2IdEN\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"pageV2SlugEN\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Add Page liaison FR-EN v2\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "7d310de7-24e0-4696-8475-caf5451ab043",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9431,10 +9430,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Post EN\",\n  \"slug\": \"test-post-EN\",\n  \"content\": \"Ceci est un post de test EN\",\n  \"status\": \"publish\"\n}"
+              "raw": "{\n  \"title\": \"Test Page EN\",\n  \"slug\": \"test-page-EN\",\n  \"content\": \"Ceci est une page de test EN\",\n  \"status\": \"publish\"\n}"
             },
             "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/?lang=en",
               "protocol": "{{v2_wp_protocol}}",
               "host": [
                 "{{v2_wp_domain}}"
@@ -9442,14 +9441,13 @@
               "path": [
                 "wp",
                 "v2",
-                "posts",
+                "pages",
                 ""
               ],
               "query": [
                 {
                   "key": "lang",
-                  "value": "en",
-                  "equals": true
+                  "value": "en"
                 }
               ]
             },
