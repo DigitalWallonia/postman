@@ -9129,6 +9129,69 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "3e283855-7a71-8417-4af2-b0583d4d1a56",
+          "name": "Find Title FR Page v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    //title",
+                  "    tests[\"title fr is Test\"] = jsonData.title[0].text === \"Test Post\";",
+                  "    postman.setNextRequest(\"Find Description FR Post v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ],
+                "id": "665c1fb6-854d-455f-84ad-c7b7af58cd55",
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
