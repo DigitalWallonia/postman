@@ -8796,20 +8796,20 @@
             {
               "listen": "test",
               "script": {
+                "id": "239fb025-78b6-4eae-a638-498cef7b0ab4",
+                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"postv3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests post\");",
+                  "    postman.setEnvironmentVariable(\"pagev3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests page\");",
                   "}else{",
                   "    postman.setNextRequest(\"Auth WP\");",
                   "}"
-                ],
-                "id": "c1374e34-1602-4fb2-9f83-9789f2e492ee",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -8821,26 +8821,24 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
