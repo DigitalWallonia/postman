@@ -403,7 +403,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1e8697bb-7e2d-430a-b392-681c3fa4b1ab",
+                "id": "721edbac-083d-4656-b169-3abe05354b77",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -415,7 +415,7 @@
                   "        && jsonData.count === 1;",
                   "    pm.environment.unset(\"tagCategoryV3Id\");",
                   "}",
-                  ""
+                  "postman.setNextRequest(\"Find Artifact from previous tests (TagCategory) copy\");"
                 ]
               }
             }
@@ -441,7 +441,8 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
