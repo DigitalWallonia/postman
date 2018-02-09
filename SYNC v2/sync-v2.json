@@ -9937,6 +9937,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "f27a090d-291d-49b9-8c00-67e1830929f7",
+                "type": "text/javascript",
                 "exec": [
                   "var code;",
                   "pm.test(\"Successful POST request\", function () {",
@@ -9945,17 +9947,15 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Post EN is Published\"] = jsonData.status === \"Published\";",
+                  "    tests[\"Status Page EN is Published\"] = jsonData.status === \"Published\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Post v2\");",
+                  "        postman.setNextRequest(\"Delete Page v2\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "id": "18733360-53c3-4014-88c6-6acaecb77b0a",
-                "type": "text/javascript"
+                ]
               }
             }
           ],
@@ -9964,14 +9964,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{postV2SlugEN}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{pageV2SlugEN}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "pages",
                 "findOne"
               ],
               "query": [
@@ -9987,7 +9987,7 @@
                 },
                 {
                   "key": "filter[where][slug.slug]",
-                  "value": "{{postV2SlugEN}}",
+                  "value": "{{pageV2SlugEN}}",
                   "equals": true
                 }
               ]
