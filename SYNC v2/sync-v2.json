@@ -85,7 +85,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7f9d23bf-fc61-4bd1-a1dc-c8aa8e042e8d",
+                "id": "cc59eef3-96a3-4eca-a1c8-7bea8c0c3fdb",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -93,7 +93,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"tagBundleV3Id\", jsonData.id);",
+                  "    postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests (TagCategory)\");",
                   "}else{",
                   "    postman.setNextRequest(\"Auth WP\");",
