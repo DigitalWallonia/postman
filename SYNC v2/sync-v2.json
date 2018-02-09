@@ -389,6 +389,63 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "a7ab0462-afa9-356d-373f-0f242d24ccc9",
+          "name": "Find Artifact from previous tests (TagCategory) copy copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "64cd2ad0-8c83-4863-9017-2c492a58c3fe",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"tagBundleV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests (TagBundle)\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagBundles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
@@ -761,63 +818,6 @@
                   "key": "access_token",
                   "value": "{{v3_token}}",
                   "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a7ab0462-afa9-356d-373f-0f242d24ccc9",
-          "name": "Find Artifact from previous tests (TagCategory) copy copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "64cd2ad0-8c83-4863-9017-2c492a58c3fe",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"tagBundleV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests (TagBundle)\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagBundles/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tagBundles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}"
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
                 }
               ]
             },
