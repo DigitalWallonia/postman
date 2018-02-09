@@ -3505,14 +3505,14 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{contactV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/contacts/{{contactV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles",
+                "contacts",
                 "{{contactV3Id}}"
               ],
               "query": [
