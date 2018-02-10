@@ -7258,7 +7258,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4fc27489-3ac5-4daf-8f04-a86bbf1bd9fd",
+                "id": "395cd6f2-3d7d-4003-a5e8-f4dfa012983f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -7268,7 +7268,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"contactV3Id\");",
-                  "    postman.setNextRequest('Find Artifact from previous tests profile');",
+                  "    postman.setNextRequest('Find Artifact from previous tests (TagCategory)');",
                   "}else{",
                   "    postman.setNextRequest(null);",
                   "}",
@@ -7298,7 +7298,8 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
