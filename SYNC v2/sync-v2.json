@@ -5297,963 +5297,6 @@
       ]
     },
     {
-      "_postman_id": "3018c690-6232-c106-11c5-f6276326c440",
-      "name": "Add New Contact",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "292fca9f-4f7e-8aa2-ca66-97db3cd10959",
-          "name": "Find Artifact previous tests contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "812fa8a2-1bc4-43be-9ed7-91837a976fc2",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests contact\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Contact v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"lastName\":\"Testlastnamecontact\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"lastName\":\"Testlastnamecontact\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "073ec519-bdb8-3285-d120-d928f72cb0a2",
-          "name": "Delete Artifact from previous tests contact",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8cc47e35-891c-42a2-9f9a-96afeb81c570",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"contactV3Id\");",
-                  "}",
-                  "postman.setNextRequest(\"Add Contact v2\");",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/{{contactV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "{{contactV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "88a41233-ad43-944c-2707-5d1a11977188",
-          "name": "Add Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4b4650fb-4a8d-4911-acdf-3dea0ee1ac00",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un contact été ajouté\"] = jsonData.response.contact.id !== \"undefined\";",
-                  "    if (jsonData.response.contact.id) {",
-                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"contactV2Id\", jsonData.response.contact.id);",
-                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "nom",
-                  "value": "Testlastnamecontact",
-                  "type": "text"
-                },
-                {
-                  "key": "prenom",
-                  "value": "Testfirstnamecontact",
-                  "description": "",
-                  "type": "text"
-                },
-                {
-                  "key": "lg",
-                  "value": "FRE",
-                  "description": "",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/contacts/add",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d9766b8a-bbb9-008c-e8ab-36dfa8716a6d",
-          "name": "Batch Infos de base Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "13904d4c-9038-4ab8-a398-57a4373dce5d",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find New Contact v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":{{contactV2Id}},\"emails\":{\"0\":{\"id\":\"{{emailContactV2Id}}\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":{{contactV2Id}},\"emails\":{\"0\":{\"id\":\"{{emailContactV2Id}}\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "694a743f-f4a5-b54c-de07-7971dd0e86e3",
-          "name": "Find New Contact v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "50399403-8ea8-4510-874d-1dd3fc5d329a",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
-                  "        tests[\"firstName\"] = jsonData.firstName === \"Testfirstnamecontact\";",
-                  "        tests[\"lastName\"] = jsonData.lastName === \"Testlastnamecontact\";",
-                  "        postman.setNextRequest(\"Batch Tag Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7731000b-3809-1e2e-cabd-723413234bf1",
-          "name": "Batch Tag Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a304a93c-407f-42d6-923c-8001d7467134",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find Tag in Contact v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "67857d7c-4541-daa4-35a4-0041a7000e05",
-          "name": "Find Tag in Contact v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f80bae74-29c6-4cb6-a716-af2558c7c7b4",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
-                  "        postman.setNextRequest(\"Batch Photo Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "dfe25685-9611-5876-0799-023240de96b5",
-          "name": "Find Photo in Contact v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f745e557-5a01-4d84-b547-038b3a1cf276",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"photo\"] = jsonData.images.find(i => i.type === 'Photo').name === \"AdN Benoit Hucq 2\";",
-                  "        postman.setNextRequest(\"Batch phone&faxNumbers Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1d52a0f9-d4d4-5c4c-59d8-f9dedff92fae",
-          "name": "Batch phone&faxNumbers Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2f82a596-3f33-4f24-9336-27fa6919edd5",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find phone&faxNumbers in Contact v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1f27c8d0-182f-0f21-8d42-286aa055b67c",
-          "name": "Find phone&faxNumbers in Contact v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e092d00d-9d9e-41fb-9cbd-951b2f335b3b",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800785\";",
-                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800563\";",
-                  "        tests[\"faxNumbers 2\"] = jsonData.faxNumbers[1] = \"32478968596\";",
-                  "        postman.setNextRequest(\"\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8e8bf590-407b-6ee3-1b68-dc8ffeba5815",
-          "name": "Batch Urls Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "fb109924-0f5c-4237-9ddf-660e48f3f46c",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find Urls in Contact v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Contact v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"urls\":{\"0\":{\"type\":{\"id\":\"1\"},\"adresse\":\"https://www.facebook.com/Testlastnamecontact\",\"action\":\"add\"},\"1\":{\"type\":{\"id\":\"2\"},\"adresse\":\"https://twitter.com/Testlastnamecontact\",\"action\":\"add\"},\"2\":{\"type\":{\"id\":\"6\"},\"adresse\":\"https://www.pinterest.com/Testlastnamecontact\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"urls\":{\"0\":{\"type\":{\"id\":\"1\"},\"adresse\":\"https://www.facebook.com/Testlastnamecontact\",\"action\":\"add\"},\"1\":{\"type\":{\"id\":\"2\"},\"adresse\":\"https://twitter.com/Testlastnamecontact\",\"action\":\"add\"},\"2\":{\"type\":{\"id\":\"6\"},\"adresse\":\"https://www.pinterest.com/Testlastnamecontact\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "400d0b2f-f0e4-8818-57dc-1e6850de6099",
-          "name": "Find Urls in Contact v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bdfdd2f7-0110-4660-97fa-fc9ecfe9ba57",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"Urls Facebook\"] = jsonData.urls.find(u => u.type === 'Facebook').address === \"https://www.facebook.com/Testlastnamecontact\";",
-                  "        tests[\"Urls Twitter\"] = jsonData.urls.find(u => u.type === 'Twitter').address === \"https://twitter.com/Testlastnamecontact\";",
-                  "        tests[\"Urls Pinterest\"] = jsonData.urls.find(u => u.type === 'Pinterest').address === \"https://www.pinterest.com/Testlastnamecontact\";",
-                  "    }",
-                  "    postman.setNextRequest(\"Delete Contact v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "eaab0be6-bee6-2aaf-7f7f-7e77af6c1ee9",
-          "name": "Delete Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "88c852b7-0090-40cd-875a-d40dbc6ed444",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Le contact a été supprimée\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"contactV2Id\");",
-                  "    pm.environment.unset(\"emailContactV2Id\");",
-                  "    postman.setNextRequest(\"Delete Contact v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/{{contactV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "contacts",
-                "{{contactV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "87282886-be5b-2738-a506-438b33b9a7c9",
-          "name": "Delete Contact v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4fc27489-3ac5-4daf-8f04-a86bbf1bd9fd",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"contactV3Id\");",
-                  "    postman.setNextRequest('Find Artifact from previous tests profile');",
-                  "}else{",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts/{{contactV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts",
-                "{{contactV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "57e0ba21-a1a0-c95e-bd06-d6c60fc7a6d2",
-          "name": "Add Email to Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1fb66f7a-8c74-438c-9f89-105ccb69ae7c",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un email au contact été ajouté\"] = jsonData.response.email.id !== \"undefined\";",
-                  "    if (jsonData.response.email.id) {",
-                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"emailContactV2Id\", jsonData.response.email.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "adresse",
-                  "value": "testlastnamecontact{{$timestamp}}@Testlastnamecontact.be",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/emails/add",
-            "description": null
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "8c36f4dd-ad3c-49b6-9fec-00793f0cbe5a",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "296c0d0e-fa1a-419d-82f5-196228c50005",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
       "_postman_id": "781c3dec-a576-8854-7ade-147da8d91385",
       "name": "Add New Presse v2 / PressReview v3",
       "description": "",
@@ -7261,6 +6304,963 @@
             "description": null
           },
           "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "3018c690-6232-c106-11c5-f6276326c440",
+      "name": "Add New Contact",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "292fca9f-4f7e-8aa2-ca66-97db3cd10959",
+          "name": "Find Artifact previous tests contact",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "812fa8a2-1bc4-43be-9ed7-91837a976fc2",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests contact\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Contact v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"lastName\":\"Testlastnamecontact\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"lastName\":\"Testlastnamecontact\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "073ec519-bdb8-3285-d120-d928f72cb0a2",
+          "name": "Delete Artifact from previous tests contact",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8cc47e35-891c-42a2-9f9a-96afeb81c570",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"contactV3Id\");",
+                  "}",
+                  "postman.setNextRequest(\"Add Contact v2\");",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/{{contactV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "{{contactV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "88a41233-ad43-944c-2707-5d1a11977188",
+          "name": "Add Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4b4650fb-4a8d-4911-acdf-3dea0ee1ac00",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un contact été ajouté\"] = jsonData.response.contact.id !== \"undefined\";",
+                  "    if (jsonData.response.contact.id) {",
+                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"contactV2Id\", jsonData.response.contact.id);",
+                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "nom",
+                  "value": "Testlastnamecontact",
+                  "type": "text"
+                },
+                {
+                  "key": "prenom",
+                  "value": "Testfirstnamecontact",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "lg",
+                  "value": "FRE",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/contacts/add",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d9766b8a-bbb9-008c-e8ab-36dfa8716a6d",
+          "name": "Batch Infos de base Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "13904d4c-9038-4ab8-a398-57a4373dce5d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find New Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":{{contactV2Id}},\"emails\":{\"0\":{\"id\":\"{{emailContactV2Id}}\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":{{contactV2Id}},\"emails\":{\"0\":{\"id\":\"{{emailContactV2Id}}\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "694a743f-f4a5-b54c-de07-7971dd0e86e3",
+          "name": "Find New Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "50399403-8ea8-4510-874d-1dd3fc5d329a",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
+                  "        tests[\"firstName\"] = jsonData.firstName === \"Testfirstnamecontact\";",
+                  "        tests[\"lastName\"] = jsonData.lastName === \"Testlastnamecontact\";",
+                  "        postman.setNextRequest(\"Batch Tag Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7731000b-3809-1e2e-cabd-723413234bf1",
+          "name": "Batch Tag Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a304a93c-407f-42d6-923c-8001d7467134",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find Tag in Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "67857d7c-4541-daa4-35a4-0041a7000e05",
+          "name": "Find Tag in Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f80bae74-29c6-4cb6-a716-af2558c7c7b4",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
+                  "        postman.setNextRequest(\"Batch Photo Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "dfe25685-9611-5876-0799-023240de96b5",
+          "name": "Find Photo in Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f745e557-5a01-4d84-b547-038b3a1cf276",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        tests[\"photo\"] = jsonData.images.find(i => i.type === 'Photo').name === \"AdN Benoit Hucq 2\";",
+                  "        postman.setNextRequest(\"Batch phone&faxNumbers Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1d52a0f9-d4d4-5c4c-59d8-f9dedff92fae",
+          "name": "Batch phone&faxNumbers Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2f82a596-3f33-4f24-9336-27fa6919edd5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find phone&faxNumbers in Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1f27c8d0-182f-0f21-8d42-286aa055b67c",
+          "name": "Find phone&faxNumbers in Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e092d00d-9d9e-41fb-9cbd-951b2f335b3b",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800785\";",
+                  "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800563\";",
+                  "        tests[\"faxNumbers 2\"] = jsonData.faxNumbers[1] = \"32478968596\";",
+                  "        postman.setNextRequest(\"\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8e8bf590-407b-6ee3-1b68-dc8ffeba5815",
+          "name": "Batch Urls Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "fb109924-0f5c-4237-9ddf-660e48f3f46c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
+                  "        postman.setNextRequest(\"Find Urls in Contact v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"urls\":{\"0\":{\"type\":{\"id\":\"1\"},\"adresse\":\"https://www.facebook.com/Testlastnamecontact\",\"action\":\"add\"},\"1\":{\"type\":{\"id\":\"2\"},\"adresse\":\"https://twitter.com/Testlastnamecontact\",\"action\":\"add\"},\"2\":{\"type\":{\"id\":\"6\"},\"adresse\":\"https://www.pinterest.com/Testlastnamecontact\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"urls\":{\"0\":{\"type\":{\"id\":\"1\"},\"adresse\":\"https://www.facebook.com/Testlastnamecontact\",\"action\":\"add\"},\"1\":{\"type\":{\"id\":\"2\"},\"adresse\":\"https://twitter.com/Testlastnamecontact\",\"action\":\"add\"},\"2\":{\"type\":{\"id\":\"6\"},\"adresse\":\"https://www.pinterest.com/Testlastnamecontact\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "400d0b2f-f0e4-8818-57dc-1e6850de6099",
+          "name": "Find Urls in Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bdfdd2f7-0110-4660-97fa-fc9ecfe9ba57",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
+                  "        tests[\"Urls Facebook\"] = jsonData.urls.find(u => u.type === 'Facebook').address === \"https://www.facebook.com/Testlastnamecontact\";",
+                  "        tests[\"Urls Twitter\"] = jsonData.urls.find(u => u.type === 'Twitter').address === \"https://twitter.com/Testlastnamecontact\";",
+                  "        tests[\"Urls Pinterest\"] = jsonData.urls.find(u => u.type === 'Pinterest').address === \"https://www.pinterest.com/Testlastnamecontact\";",
+                  "    }",
+                  "    postman.setNextRequest(\"Delete Contact v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{contactV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "eaab0be6-bee6-2aaf-7f7f-7e77af6c1ee9",
+          "name": "Delete Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "88c852b7-0090-40cd-875a-d40dbc6ed444",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Le contact a été supprimée\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"contactV2Id\");",
+                  "    pm.environment.unset(\"emailContactV2Id\");",
+                  "    postman.setNextRequest(\"Delete Contact v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/{{contactV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "contacts",
+                "{{contactV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "87282886-be5b-2738-a506-438b33b9a7c9",
+          "name": "Delete Contact v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4fc27489-3ac5-4daf-8f04-a86bbf1bd9fd",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le contact est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"contactV3Id\");",
+                  "    postman.setNextRequest('Find Artifact from previous tests profile');",
+                  "}else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/{{contactV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "{{contactV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "57e0ba21-a1a0-c95e-bd06-d6c60fc7a6d2",
+          "name": "Add Email to Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1fb66f7a-8c74-438c-9f89-105ccb69ae7c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un email au contact été ajouté\"] = jsonData.response.email.id !== \"undefined\";",
+                  "    if (jsonData.response.email.id) {",
+                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"emailContactV2Id\", jsonData.response.email.id);",
+                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "adresse",
+                  "value": "testlastnamecontact{{$timestamp}}@Testlastnamecontact.be",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/emails/add",
+            "description": null
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "8c36f4dd-ad3c-49b6-9fec-00793f0cbe5a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "296c0d0e-fa1a-419d-82f5-196228c50005",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     },
