@@ -1277,6 +1277,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "4709049c-ced4-4cf9-ad66-77d9ed58c027",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1285,13 +1286,10 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
+                  "    postman.setEnvironmentVariable(\"eventTitreFRV2Id\", jsonData.response.evenement.titre.fr);",
+                  "    postman.setEnvironmentVariable(\"eventTitreENV2Id\", jsonData.response.evenement.titre.en);",
+                  "    postman.setEnvironmentVariable(\"eventTitreNLV2Id\", jsonData.response.evenement.titre.nl);",
+                  "    postman.setEnvironmentVariable(\"eventTitreDEV2Id\", jsonData.response.evenement.titre.de);",
                   "    postman.setNextRequest(\"Find Batch Titre Event v3\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Event v2\");",
@@ -1313,7 +1311,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français\",\"en\":\"Sensibilisation à la facturation électronique en anglais\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais\",\"de\":\"Sensibilisation à la facturation électronique en allemand\",\"original\":\"Sensibilisation à la facturation électronique en français\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français{{$timestamp}}\",\"en\":\"Sensibilisation à la facturation électronique en anglais{{$timestamp}}\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais{{$timestamp}}\",\"de\":\"Sensibilisation à la facturation électronique en allemand{{$timestamp}}\",\"original\":\"Sensibilisation à la facturation électronique en français{{$timestamp}}\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -1325,7 +1323,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français\",\"en\":\"Sensibilisation à la facturation électronique en anglais\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais\",\"de\":\"Sensibilisation à la facturation électronique en allemand\",\"original\":\"Sensibilisation à la facturation électronique en français\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français{{$timestamp}}\",\"en\":\"Sensibilisation à la facturation électronique en anglais{{$timestamp}}\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais{{$timestamp}}\",\"de\":\"Sensibilisation à la facturation électronique en allemand{{$timestamp}}\",\"original\":\"Sensibilisation à la facturation électronique en français{{$timestamp}}\"},\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
