@@ -7784,14 +7784,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "2fb50249-6741-4a66-a2a2-166c348ce8a4",
+                "id": "9b1797ce-0883-474b-8d0b-4cbdbb8330ea",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful DELETE Request\", () => {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
-                  "    pm.environment.unset(\"tagCategoryV3Id\");",
+                  "    pm.environment.unset(\"tagBundleV3Id\");",
                   "}",
                   "postman.setNextRequest(\"Add Bundle v2\");",
                   ""
