@@ -1206,7 +1206,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a6415bea-bc23-47f2-a136-9d66853f2fbc",
+                "id": "d596c09a-5a4b-4c7f-9be7-5d5248583dea",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"eventV2Id\"));",
@@ -1223,8 +1223,6 @@
                   "    tests.v2Id = jsonData.v2Id === v2Id;",
                   "    //title",
                   "    tests[\"title fr is Test\"] = jsonData.title[0].text === \"Test\";",
-                  "    //slug",
-                  "    tests[\"slug fr is ajout-event-postman\"] = jsonData.slug[0].slug === \"ajout-event-postman\";",
                   "    //startDate & endDate",
                   "    tests[\"startDate < endDate\"] = jsonData.startDate < jsonData.endDate;",
                   "    ",
