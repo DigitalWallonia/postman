@@ -8022,21 +8022,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/themes/{{themeV2Id}}/delete?oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/bundles/{{bundleV2Id}}/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
               ],
               "path": [
-                "themes",
-                "{{themeV2Id}}",
+                "bundles",
+                "{{bundleV2Id}}",
                 "delete"
               ],
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
+                  "value": "{{v2_token}}"
                 }
               ]
             },
