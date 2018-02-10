@@ -4368,7 +4368,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "730ef166-d27a-474d-8d79-e6e786627318",
+                "id": "09ff8ae8-5242-446d-a365-a633a6a72361",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -4377,7 +4377,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Description",
-                  "    tests[\"slug FR is test-page\"] = jsonData.slug.find(s => s.language === 'fre').slug === \"test-page\";",
+                  "    tests[\"slug FR is test-page\"] = jsonData.slug.find(s => s.language === 'fre').slug === `${pm.environment.get(\"pageV2Slug\")}`;",
                   "    postman.setNextRequest(\"Find Title FR Page v3\");",
                   "}",
                   "else{",
