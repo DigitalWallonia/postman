@@ -4079,6 +4079,1220 @@
       ]
     },
     {
+      "_postman_id": "8810ee7d-5c8c-8692-8557-4b0c53592b2e",
+      "name": "Add New Page v2",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "1bada594-00ef-51bf-840f-85767cdd8526",
+          "name": "Find Artifact from previous tests page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "239fb025-78b6-4eae-a638-498cef7b0ab4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"pagev3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests page\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "121b7c90-4dda-5b44-4b71-58b93c325c03",
+          "name": "Delete Artifact from previous tests page",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3119157e-25d6-4d5a-be03-433e4df6b297",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"La page est supprimée\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"pagev3Id\");",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/{{pagev3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "{{pagev3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "38a136ee-31ac-9fc8-2e40-15a7577921c8",
+          "name": "Auth WP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1679d0d8-b9a0-474a-b4bf-83fa468a8fb1",
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
+                  "    postman.setNextRequest(\"Add Page FR v2\");",
+                  "}else{",
+                  "    console.log('No token');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "type": "text",
+                  "value": "testv2"
+                },
+                {
+                  "key": "password",
+                  "type": "text",
+                  "value": "v6]G(uk.NUGVohei{Ai?e2bn"
+                }
+              ]
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/jwt-auth/v1/token",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7914232e-aed7-352f-d0b4-d8bbad0fb8bb",
+          "name": "Add Page FR v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9ca2259b-c656-4640-b2ec-67157206125b",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"pageV2IdFR\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"pageV2Slug\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Find New Page v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Page\",\n  \"slug\": \"test-page\",\n  \"content\": \"Ceci est une page de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a2af0a54-39a6-5bbd-409f-94a1ad00fac7",
+          "name": "Find New Page v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "627ac595-0ff5-4b65-a1bf-a0ee5370ecd3",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"pageV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "18a6ac37-64a5-fce6-5b5c-2c22d32e96d0",
+          "name": "Find Slug FR v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "730ef166-d27a-474d-8d79-e6e786627318",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Description",
+                  "    tests[\"slug FR is test-page\"] = jsonData.slug.find(s => s.language === 'fre').slug === \"test-page\";",
+                  "    postman.setNextRequest(\"Find Title FR Page v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3e283855-7a71-8417-4af2-b0583d4d1a56",
+          "name": "Find Title FR Page v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "aa94732f-e853-4533-b3e8-db70caec2ca5",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    //title",
+                  "    tests[\"title fr\"] = jsonData.title.find(t => t.language === 'fre').text === \"Test Page\";",
+                  "    postman.setNextRequest(\"Find Content FR Page v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "365e692d-672a-56fe-2211-797dae3dbffd",
+          "name": "Find Content FR Page v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2dc8b0e6-9109-4834-9043-093643935395",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Description",
+                  "    tests[\"content FR\"] = jsonData.content.find(c => c.language === 'fre').text === \"<p>Ceci est une page de test FR</p>\";",
+                  "    postman.setNextRequest(\"Find Status Page v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "296fc8ae-f948-bccd-cd86-122503f78aed",
+          "name": "Find Status Page v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3b2fb225-5cfb-4d1f-a6ff-2eab0789b1f6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Status",
+                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
+                  "    postman.setNextRequest(\"Find publicationDate Page v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "72815d8f-32b7-bbcd-e545-3502c984ed90",
+          "name": "Find publicationDate Page v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ff6c49f2-8761-47c7-be6a-cbde651eb4ea",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Status",
+                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T15:38:36.000Z\";",
+                  "    postman.setNextRequest(\"Add Page EN v2\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Page v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5a3f9eca-5688-575d-9f71-ed2426c1ca9a",
+          "name": "Add Page EN v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9529f70e-e16a-4bb4-b449-bac603c9fc2a",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"pageV2IdEN\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"pageV2SlugEN\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Add Page liaison FR-EN v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Page EN\",\n  \"slug\": \"test-page-EN\",\n  \"content\": \"Ceci est une page de test EN\",\n  \"status\": \"publish\"\n}"
+            },
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/?lang=en",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "pages",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "67b97bfa-4c9b-6931-f6ce-3980660bcef5",
+          "name": "Add Page liaison FR-EN v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "45a25b02-94af-4271-bcbc-13ac50944f0f",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    postman.setNextRequest(\"Update Page Status Draft v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}?translations[en]={{pageV2IdEN}}",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "pages",
+                "{{pageV2IdFR}}"
+              ],
+              "query": [
+                {
+                  "key": "translations[en]",
+                  "value": "{{pageV2IdEN}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7e424926-4a34-e6e5-aaa9-1d1550ea75b5",
+          "name": "Update Page Status Draft v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9115351a-2e8e-429c-9569-f8a72b369471",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status Draft\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"draft\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3848f917-ed60-4692-ccb2-d18b62b08039",
+          "name": "Find Page v3 To Check Status Draft",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "73a2faf5-558b-4315-8611-0ff6fea579a9",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is draft\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status EN Pending\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3e680d57-266a-1ffe-6a79-1c7034d3fd6f",
+          "name": "Find Page v3 To Check Status EN Pending",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7cf39b94-7871-493b-9c2c-5e27d70c547a",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status Page EN is Pending\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Update Page Status Publish v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{pageV2SlugEN}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "{{pageV2SlugEN}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "94076b3b-faf7-ec72-be4c-6b92851f92cb",
+          "name": "Update Page Status Publish v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bd85fa28-785c-44ff-9278-b7bb54fa9f1b",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is publish\"] = jsonData.status === \"publish\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status Published\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"publish\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0cabfc49-ce77-1bb4-75ec-d206531fed35",
+          "name": "Find Page v3 To Check Status Published",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "892de871-2ad7-431b-9c10-6f4c840d9ffa",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Page v3 To Check Status EN Published\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ba267fc7-4c64-9fc7-8676-2e3903f12c08",
+          "name": "Find Page v3 To Check Status EN Published",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f27a090d-291d-49b9-8c00-67e1830929f7",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status Page EN is Published\"] = jsonData.status === \"Published\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Page v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{pageV2SlugEN}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "{{pageV2SlugEN}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "10cc3901-6253-79c7-3974-19e4e29d2c17",
+          "name": "Delete Page v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2019d10a-5d2f-4d56-8449-1ae2a4157f60",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "console.log(JSON.parse(responseBody));",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.unset(\"pageV2IdFR\");",
+                  "    postman.setNextRequest(\"Delete Page v2 EN\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}?force=true",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "pages",
+                "{{pageV2IdFR}}"
+              ],
+              "query": [
+                {
+                  "key": "force",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "b71b79e1-2027-29cc-3fc5-289990048551",
+          "name": "Delete Page v2 EN",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "feb225b1-3bdf-4f4b-bd1a-720ff3ebff4a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "console.log(JSON.parse(responseBody));",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.unset(\"page2IdEN\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdEN}}?force=true",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "pages",
+                "{{pageV2IdEN}}"
+              ],
+              "query": [
+                {
+                  "key": "force",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "0d07bce7-8488-1ad2-6044-8f43fcc7a46f",
       "name": "Add New Theme v2 / TagCategory v3",
       "description": "",
@@ -8640,1220 +9854,6 @@
                   "key": "access_token",
                   "value": "{{v3_token}}",
                   "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "8810ee7d-5c8c-8692-8557-4b0c53592b2e",
-      "name": "Add New Page v2",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "1bada594-00ef-51bf-840f-85767cdd8526",
-          "name": "Find Artifact from previous tests page",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "239fb025-78b6-4eae-a638-498cef7b0ab4",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"pagev3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests page\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}"
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "121b7c90-4dda-5b44-4b71-58b93c325c03",
-          "name": "Delete Artifact from previous tests page",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3119157e-25d6-4d5a-be03-433e4df6b297",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"La page est supprimée\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"pagev3Id\");",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/{{pagev3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "{{pagev3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "38a136ee-31ac-9fc8-2e40-15a7577921c8",
-          "name": "Auth WP",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1679d0d8-b9a0-474a-b4bf-83fa468a8fb1",
-                "type": "text/javascript",
-                "exec": [
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
-                  "    postman.setNextRequest(\"Add Page FR v2\");",
-                  "}else{",
-                  "    console.log('No token');",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "username",
-                  "type": "text",
-                  "value": "testv2"
-                },
-                {
-                  "key": "password",
-                  "type": "text",
-                  "value": "v6]G(uk.NUGVohei{Ai?e2bn"
-                }
-              ]
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/jwt-auth/v1/token",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7914232e-aed7-352f-d0b4-d8bbad0fb8bb",
-          "name": "Add Page FR v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9ca2259b-c656-4640-b2ec-67157206125b",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"pageV2IdFR\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"pageV2Slug\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Find New Page v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Page\",\n  \"slug\": \"test-page\",\n  \"content\": \"Ceci est une page de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a2af0a54-39a6-5bbd-409f-94a1ad00fac7",
-          "name": "Find New Page v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "627ac595-0ff5-4b65-a1bf-a0ee5370ecd3",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"pageV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "18a6ac37-64a5-fce6-5b5c-2c22d32e96d0",
-          "name": "Find Slug FR v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "730ef166-d27a-474d-8d79-e6e786627318",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Description",
-                  "    tests[\"slug FR is test-page\"] = jsonData.slug.find(s => s.language === 'fre').slug === \"test-page\";",
-                  "    postman.setNextRequest(\"Find Title FR Page v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Page v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3e283855-7a71-8417-4af2-b0583d4d1a56",
-          "name": "Find Title FR Page v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "aa94732f-e853-4533-b3e8-db70caec2ca5",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    //title",
-                  "    tests[\"title fr\"] = jsonData.title.find(t => t.language === 'fre').text === \"Test Page\";",
-                  "    postman.setNextRequest(\"Find Content FR Page v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Page v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "365e692d-672a-56fe-2211-797dae3dbffd",
-          "name": "Find Content FR Page v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2dc8b0e6-9109-4834-9043-093643935395",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Description",
-                  "    tests[\"content FR\"] = jsonData.content.find(c => c.language === 'fre').text === \"<p>Ceci est une page de test FR</p>\";",
-                  "    postman.setNextRequest(\"Find Status Page v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Page v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "296fc8ae-f948-bccd-cd86-122503f78aed",
-          "name": "Find Status Page v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3b2fb225-5cfb-4d1f-a6ff-2eab0789b1f6",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Status",
-                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
-                  "    postman.setNextRequest(\"Find publicationDate Page v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Page v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "72815d8f-32b7-bbcd-e545-3502c984ed90",
-          "name": "Find publicationDate Page v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ff6c49f2-8761-47c7-be6a-cbde651eb4ea",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Status",
-                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T15:38:36.000Z\";",
-                  "    postman.setNextRequest(\"Add Page EN v2\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Page v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "5a3f9eca-5688-575d-9f71-ed2426c1ca9a",
-          "name": "Add Page EN v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9529f70e-e16a-4bb4-b449-bac603c9fc2a",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"pageV2IdEN\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"pageV2SlugEN\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Add Page liaison FR-EN v2\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Page EN\",\n  \"slug\": \"test-page-EN\",\n  \"content\": \"Ceci est une page de test EN\",\n  \"status\": \"publish\"\n}"
-            },
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/?lang=en",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "pages",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "en"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "67b97bfa-4c9b-6931-f6ce-3980660bcef5",
-          "name": "Add Page liaison FR-EN v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "45a25b02-94af-4271-bcbc-13ac50944f0f",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    postman.setNextRequest(\"Update Page Status Draft v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}?translations[en]={{pageV2IdEN}}",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "pages",
-                "{{pageV2IdFR}}"
-              ],
-              "query": [
-                {
-                  "key": "translations[en]",
-                  "value": "{{pageV2IdEN}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7e424926-4a34-e6e5-aaa9-1d1550ea75b5",
-          "name": "Update Page Status Draft v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9115351a-2e8e-429c-9569-f8a72b369471",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Page v3 To Check Status Draft\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"status\": \"draft\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3848f917-ed60-4692-ccb2-d18b62b08039",
-          "name": "Find Page v3 To Check Status Draft",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "73a2faf5-558b-4315-8611-0ff6fea579a9",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Page v3 To Check Status EN Pending\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3e680d57-266a-1ffe-6a79-1c7034d3fd6f",
-          "name": "Find Page v3 To Check Status EN Pending",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7cf39b94-7871-493b-9c2c-5e27d70c547a",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Page EN is Pending\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update Page Status Publish v2\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{pageV2SlugEN}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "en",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "filter[where][slug.slug]",
-                  "value": "{{pageV2SlugEN}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "94076b3b-faf7-ec72-be4c-6b92851f92cb",
-          "name": "Update Page Status Publish v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "bd85fa28-785c-44ff-9278-b7bb54fa9f1b",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is publish\"] = jsonData.status === \"publish\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Page v3 To Check Status Published\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"status\": \"publish\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0cabfc49-ce77-1bb4-75ec-d206531fed35",
-          "name": "Find Page v3 To Check Status Published",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "892de871-2ad7-431b-9c10-6f4c840d9ffa",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Page v3 To Check Status EN Published\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{pageV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ba267fc7-4c64-9fc7-8676-2e3903f12c08",
-          "name": "Find Page v3 To Check Status EN Published",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f27a090d-291d-49b9-8c00-67e1830929f7",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Page EN is Published\"] = jsonData.status === \"Published\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Page v2\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{pageV2SlugEN}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pages",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "en",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "filter[where][slug.slug]",
-                  "value": "{{pageV2SlugEN}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "10cc3901-6253-79c7-3974-19e4e29d2c17",
-          "name": "Delete Page v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "2019d10a-5d2f-4d56-8449-1ae2a4157f60",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "console.log(JSON.parse(responseBody));",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.unset(\"pageV2IdFR\");",
-                  "    postman.setNextRequest(\"Delete Page v2 EN\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdFR}}?force=true",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "pages",
-                "{{pageV2IdFR}}"
-              ],
-              "query": [
-                {
-                  "key": "force",
-                  "value": "true"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b71b79e1-2027-29cc-3fc5-289990048551",
-          "name": "Delete Page v2 EN",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "feb225b1-3bdf-4f4b-bd1a-720ff3ebff4a",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "console.log(JSON.parse(responseBody));",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.unset(\"page2IdEN\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/{{pageV2IdEN}}?force=true",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "pages",
-                "{{pageV2IdEN}}"
-              ],
-              "query": [
-                {
-                  "key": "force",
-                  "value": "true"
                 }
               ]
             },
