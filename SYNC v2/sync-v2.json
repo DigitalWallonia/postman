@@ -2611,7 +2611,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "953b08c7-d3a2-4665-9f72-7584273f8a27",
+                "id": "ccc1629a-0798-4085-9b7b-5df5445c8a7c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2623,6 +2623,10 @@
                   "    tests[\"L'événement a été supprimé en v2\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"eventV2Id\");",
                   "    pm.environment.unset(\"eventPermalienV2Id\");",
+                  "    pm.environment.unset(\"eventTitreFRV2Id\");",
+                  "    pm.environment.unset(\"eventTitreENV2Id\");",
+                  "    pm.environment.unset(\"eventTitreNLV2Id\");",
+                  "    pm.environment.unset(\"eventTitreDEV2Id\");",
                   "    postman.setNextRequest(\"Delete Event v3\");",
                   "}"
                 ]
