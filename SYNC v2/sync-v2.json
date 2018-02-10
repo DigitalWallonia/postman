@@ -2953,7 +2953,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"title\": \"Test Post\",\n\t\"slug\": \"test-post\",\n\t\"content\": \"Ceci est un post de test FR\",\n\t\"status\": \"publish\",\n\t\"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
             },
             "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/",
             "description": null
