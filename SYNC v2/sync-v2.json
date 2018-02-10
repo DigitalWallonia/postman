@@ -8041,7 +8041,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "178bed76-b9d8-49cf-bebb-36c978451f9a",
+                "id": "61dc37cd-173f-4e89-8e39-e34ecba8ac89",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -8049,7 +8049,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"TagCategory was deleted in v3\"] = jsonData.count ",
+                  "    tests[\"TagBundle was deleted in v3\"] = jsonData.count ",
                   "        && jsonData.count === 1;",
                   "    pm.environment.unset(\"tagBundleV3Id\");",
                   "}",
