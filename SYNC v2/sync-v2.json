@@ -7836,7 +7836,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "635ab896-597a-4c40-9ba4-1d63b1678f0d",
+                "id": "9aa49983-d75e-4263-ab4a-40d78940da56",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", () => {",
@@ -7855,7 +7855,9 @@
                   "        && jsonData.response.bundle.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"bundleV2Id\", jsonData.response.bundle.id);",
-                  "        postman.setNextRequest(\"Find New TagBundle v3\");",
+                  "        postman.setEnvironmentVariable(\"bundleIntituleV2Id\", jsonData.response.bundle.intitule.fr);",
+                  "        postman.setEnvironmentVariable(\"bundleDescriptionV2Id\", jsonData.response.bundle.description.fr);",
+                  "        postman.setEnvironmentVariable(\"bundleLabelV2Id\", jsonData.response.bundle.label);",
                   "    } else{",
                   "        postman.setNextRequest(null);",
                   "    }",
@@ -7881,7 +7883,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"bundle\":{\"action\":\"add\",\"theme\":\"2\",\"label\":\"testbundlelabel{{$timestamp}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleBundleIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundleintitule{{$timestamp}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundledescription{{$timestamp}}\"}},\"visibleFront\":true,\"actif\":true,\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"bundle\":{\"action\":\"add\",\"theme\":\"2\",\"label\":\"testbundlelabel{{$timestamp}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleBundleIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundleintitule{{$timestamp}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundledescription{{$timestamp}}\"}},\"statut\":{\"label\":\"bundle_statut_masque\",\"langue\":\"FRE\",\"original\":\"masqué\",\"fr\":\"masqué\"},\"visibleFront\":true,\"actif\":true,\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -7893,7 +7895,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"bundle\":{\"action\":\"add\",\"theme\":\"2\",\"label\":\"testbundlelabel{{$timestamp}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleBundleIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundleintitule{{$timestamp}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundledescription{{$timestamp}}\"}},\"visibleFront\":true,\"actif\":true,\"user\":\"Cédric Waxweiler\"}}",
+                  "value": "{\"bundle\":{\"action\":\"add\",\"theme\":\"2\",\"label\":\"testbundlelabel{{$timestamp}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleBundleIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundleintitule{{$timestamp}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundledescription{{$timestamp}}\"}},\"statut\":{\"label\":\"bundle_statut_masque\",\"langue\":\"FRE\",\"original\":\"masqué\",\"fr\":\"masqué\"},\"visibleFront\":true,\"actif\":true,\"user\":\"Cédric Waxweiler\"}}",
                   "equals": true
                 },
                 {
