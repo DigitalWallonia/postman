@@ -7345,7 +7345,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "cc59eef3-96a3-4eca-a1c8-7bea8c0c3fdb",
+                "id": "b733d429-915c-4af9-a029-b0640a2c7ce6",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -7356,7 +7356,7 @@
                   "    postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests (TagCategory)\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
+                  "    postman.setNextRequest(\"Add Theme v2\");",
                   "}"
                 ]
               }
