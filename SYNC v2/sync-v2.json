@@ -7836,7 +7836,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3175fbbb-cfc4-411d-9d14-5247896f13e9",
+                "id": "1f576ec8-7ac9-4366-9083-09f49ae4ddcd",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", () => {",
@@ -7855,7 +7855,7 @@
                   "        && jsonData.response.theme.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"themeV2Id\", jsonData.response.theme.id);",
-                  "        postman.setNextRequest(\"Find New TagCategory v3\");",
+                  "        postman.setNextRequest(\"Find New TagBundle v3\");",
                   "    } else{",
                   "        postman.setNextRequest(null);",
                   "    }",
