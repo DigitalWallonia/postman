@@ -191,7 +191,6 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
@@ -209,7 +208,8 @@
                   "        postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -221,28 +221,28 @@
               "formdata": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
+                  "type": "text",
+                  "value": "{{v2_token}}"
                 },
                 {
                   "key": "nom",
-                  "value": "Test Synchro 1",
-                  "type": "text"
+                  "type": "text",
+                  "value": "Test Synchro 1"
                 },
                 {
                   "key": "permalien",
-                  "value": "test-synchro-1",
-                  "type": "text"
+                  "type": "text",
+                  "value": "test-synchro-1{{$timestamp}}"
                 },
                 {
                   "key": "statut",
-                  "value": "profil_statut_redaction",
-                  "type": "text"
+                  "type": "text",
+                  "value": "profil_statut_redaction"
                 },
                 {
                   "key": "acronyme",
-                  "value": "TS1",
-                  "type": "text"
+                  "type": "text",
+                  "value": "TS1"
                 }
               ]
             },
