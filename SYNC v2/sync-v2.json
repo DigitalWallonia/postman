@@ -2741,6 +2741,1342 @@
       ]
     },
     {
+      "_postman_id": "aac56e90-4f1a-0229-fc4e-3c1aaa81682a",
+      "name": "Add New Post v2",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "5d9b4a16-a690-9359-471b-6bace03f23a8",
+          "name": "Find Artifact from previous tests post",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c1374e34-1602-4fb2-9f83-9789f2e492ee",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"postv3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests post\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8addf732-263a-7c33-4e03-ad8f9006b61e",
+          "name": "Delete Artifact from previous tests post",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"postv3Id\");",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Auth WP\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postv3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f8c38e29-b612-9fc5-2488-896d05e0d060",
+          "name": "Auth WP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f1f8016d-ce3e-44d2-a490-cd992a0ead4f",
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
+                  "    postman.setNextRequest(\"Add Post FR v2\");",
+                  "}else{",
+                  "    console.log('No token');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "username",
+                  "value": "testv2",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "v6]G(uk.NUGVohei{Ai?e2bn",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/jwt-auth/v1/token",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7d1ea3ad-23ce-5ea6-e7c6-3e158b11b0ce",
+          "name": "Add Post FR v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Find New Post v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"title\": \"Test Post\",\n\t\"slug\": \"test-post\",\n\t\"content\": \"Ceci est un post de test FR\",\n\t\"status\": \"publish\",\n\t\"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "45edc7c2-f4ab-82a1-2557-ea304e7d8f37",
+          "name": "Find New Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "90b200dd-e029-40a5-b949-c11b07b46354",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV3Id\", jsonData.id);",
+                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fe7ad819-72f0-0385-2f83-22ea16ca508f",
+          "name": "Find Slug FR v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6cc2af07-0552-4146-9a48-2dbf4a49edfb",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Description",
+                  "    tests[\"slug FR is test-post\"] = jsonData.slug.find(shortD => shortD.language === 'fre').slug === \"test-post\";",
+                  "    postman.setNextRequest(\"Find Title FR Post v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "113cd90c-86ea-853a-489b-7da22b0977e8",
+          "name": "Find Title FR Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "665c1fb6-854d-455f-84ad-c7b7af58cd55",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    //title",
+                  "    tests[\"title fr is Test\"] = jsonData.title[0].text === \"Test Post\";",
+                  "    postman.setNextRequest(\"Find Description FR Post v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "53223517-aac3-a269-c149-e4c1f4a8c2a1",
+          "name": "Find Description FR Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0fe578f4-a162-4019-9b25-658f1f4cac1b",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Description",
+                  "    tests[\"description FR is <p>Ceci est un post de test FR</p>\"] = jsonData.shortDescription.find(shortD => shortD.language === 'fre').text === \"<p>Ceci est un post de test FR</p>\";",
+                  "    postman.setNextRequest(\"Find Content FR Post v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "dbb7ace5-f731-e27c-c563-e8bd165f7adb",
+          "name": "Find Content FR Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "79d0b5eb-bda7-48ec-bcdc-8d1fd5cdc0d8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Description",
+                  "    tests[\"content FR is <p>Ceci est un post de test FR</p>\"] = jsonData.content.find(shortD => shortD.language === 'fre').text === \"<p>Ceci est un post de test FR</p>\";",
+                  "    postman.setNextRequest(\"Find Status Post v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "949980d1-b02e-0cbd-d88c-566c6ded3432",
+          "name": "Find Status Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ff825b4b-f26c-43b5-ab80-f342b0381ef6",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Status",
+                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
+                  "    postman.setNextRequest(\"Find publicationDate Post v3\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "038049a4-7190-60ef-7431-37d9138271a9",
+          "name": "Find publicationDate Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "22848d6d-9d45-4a8d-a1d9-4c7ce4defc19",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Status",
+                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T14:38:36.000Z\";",
+                  "    postman.setNextRequest(\"Add Post EN v2\");",
+                  "}",
+                  "else{",
+                  "    postman.setNextRequest(\"Delete Post v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ab02af6b-8d3b-c851-7489-a4ade27326c9",
+          "name": "Add Post EN v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7d310de7-24e0-4696-8475-caf5451ab043",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV2IdEN\", jsonData.id);",
+                  "        console.log(jsonData.slug.slug);",
+                  "        postman.setEnvironmentVariable(\"postV2SlugEN\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Add Post liaison FR-EN v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"title\": \"Test Post EN\",\n\t\"slug\": \"test-post-EN\",\n\t\"content\": \"Ceci est un post de test EN\",\n\t\"status\": \"publish\"\n}"
+            },
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "posts",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0dfe602c-f314-ed7f-f70f-4a8aae78d02b",
+          "name": "Add Post liaison FR-EN v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4a80df38-7696-49bd-80b3-1d80e0dd4c44",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    postman.setNextRequest(\"Update post Status Draft v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "posts",
+                "{{postV2IdFR}}"
+              ],
+              "query": [
+                {
+                  "key": "translations[en]",
+                  "value": "{{postV2IdEN}}"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "496a19cb-dda3-3337-cd14-0882b9c7d192",
+          "name": "Update post Status Draft v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5b8b3212-c264-4be1-907c-00071252e589",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Post v3 To Check Status Draft\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"status\": \"draft\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c3f3720c-87b3-f898-1e6c-3575df015c22",
+          "name": "Find Post v3 To Check Status Draft",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "71416080-1088-4a66-9f70-bd0384092a59",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is draft\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Pending\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2b30e75b-337b-846d-9c6d-aee98fb3eb5e",
+          "name": "Find Post v3 To Check Status EN Pending",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9fdbb0b0-8a8f-4284-a924-35d4e81dda15",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status Post EN is Pending\"] = jsonData.status === \"Pending\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Update post Status Publish v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{postV2SlugEN}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "{{postV2SlugEN}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8e07ee7c-0aa4-00c1-8afd-f9df5ba188ad",
+          "name": "Update post Status Publish v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c59cb122-a189-44da-922c-79fe1ac42fb5",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is publish\"] = jsonData.status === \"publish\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Post v3 To Check Status Published\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"status\": \"publish\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d940018f-f251-6433-5477-f7bf1fcd2b3c",
+          "name": "Find Post v3 To Check Status Published",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "72d86548-e5d0-4139-8ecd-20c3792be557",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Published\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": null,
+                  "value": null
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d77bd01d-e9ae-3aaa-94db-eb8d26a1cae2",
+          "name": "Find Post v3 To Check Status EN Published",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "18733360-53c3-4014-88c6-6acaecb77b0a",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Status Post EN is Published\"] = jsonData.status === \"Published\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setNextRequest(\"Delete Post v2\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{postV2SlugEN}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "{{postV2SlugEN}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "dcf50743-238d-156e-b21d-4be9107c26b3",
+          "name": "Delete Post v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6c1db212-6d23-4993-b8d2-d53c05cd1ac1",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "console.log(JSON.parse(responseBody));",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.unset(\"postV2IdFR\");",
+                  "    postman.setNextRequest(\"Delete Post v2 EN\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?force=true",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "posts",
+                "{{postV2IdFR}}"
+              ],
+              "query": [
+                {
+                  "key": "force",
+                  "value": "true",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8bdd966b-8953-74b6-f1e5-eb64bad55356",
+          "name": "Delete Post v2 EN",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c137dc88-ab98-43b1-857c-c238ff042edc",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "console.log(JSON.parse(responseBody));",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    pm.environment.unset(\"postV2IdEN\");",
+                  "    postman.setNextRequest(\"Delete Post v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}?force=true",
+              "protocol": "{{v2_wp_protocol}}",
+              "host": [
+                "{{v2_wp_domain}}"
+              ],
+              "path": [
+                "wp",
+                "v2",
+                "posts",
+                "{{postV2IdEN}}"
+              ],
+              "query": [
+                {
+                  "key": "force",
+                  "value": "true",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "23d9617e-4141-76ff-1e93-e8e90d80e42c",
+          "name": "Delete Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "371b13f0-3b05-4978-a950-3635200914db",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le post a été supprimé en v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"postV3Id\");",
+                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
+                  "}",
+                  "postman.setNextRequest(null);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "0d07bce7-8488-1ad2-6044-8f43fcc7a46f",
       "name": "Add New Theme v2 / TagCategory v3",
       "description": "",
@@ -7296,1342 +8632,6 @@
                 "api",
                 "pressReviews",
                 "{{presseV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "aac56e90-4f1a-0229-fc4e-3c1aaa81682a",
-      "name": "Add New Post v2",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "5d9b4a16-a690-9359-471b-6bace03f23a8",
-          "name": "Find Artifact from previous tests post",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c1374e34-1602-4fb2-9f83-9789f2e492ee",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"postv3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests post\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8addf732-263a-7c33-4e03-ad8f9006b61e",
-          "name": "Delete Artifact from previous tests post",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postv3Id\");",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "{{postv3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f8c38e29-b612-9fc5-2488-896d05e0d060",
-          "name": "Auth WP",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f1f8016d-ce3e-44d2-a490-cd992a0ead4f",
-                "type": "text/javascript",
-                "exec": [
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
-                  "    postman.setNextRequest(\"Add Post FR v2\");",
-                  "}else{",
-                  "    console.log('No token');",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "username",
-                  "value": "testv2",
-                  "type": "text"
-                },
-                {
-                  "key": "password",
-                  "value": "v6]G(uk.NUGVohei{Ai?e2bn",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/jwt-auth/v1/token",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7d1ea3ad-23ce-5ea6-e7c6-3e158b11b0ce",
-          "name": "Add Post FR v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Find New Post v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"title\": \"Test Post\",\n\t\"slug\": \"test-post\",\n\t\"content\": \"Ceci est un post de test FR\",\n\t\"status\": \"publish\",\n\t\"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "45edc7c2-f4ab-82a1-2557-ea304e7d8f37",
-          "name": "Find New Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "90b200dd-e029-40a5-b949-c11b07b46354",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fe7ad819-72f0-0385-2f83-22ea16ca508f",
-          "name": "Find Slug FR v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6cc2af07-0552-4146-9a48-2dbf4a49edfb",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Description",
-                  "    tests[\"slug FR is test-post\"] = jsonData.slug.find(shortD => shortD.language === 'fre').slug === \"test-post\";",
-                  "    postman.setNextRequest(\"Find Title FR Post v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "113cd90c-86ea-853a-489b-7da22b0977e8",
-          "name": "Find Title FR Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "665c1fb6-854d-455f-84ad-c7b7af58cd55",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    //title",
-                  "    tests[\"title fr is Test\"] = jsonData.title[0].text === \"Test Post\";",
-                  "    postman.setNextRequest(\"Find Description FR Post v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "53223517-aac3-a269-c149-e4c1f4a8c2a1",
-          "name": "Find Description FR Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0fe578f4-a162-4019-9b25-658f1f4cac1b",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Description",
-                  "    tests[\"description FR is <p>Ceci est un post de test FR</p>\"] = jsonData.shortDescription.find(shortD => shortD.language === 'fre').text === \"<p>Ceci est un post de test FR</p>\";",
-                  "    postman.setNextRequest(\"Find Content FR Post v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "dbb7ace5-f731-e27c-c563-e8bd165f7adb",
-          "name": "Find Content FR Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "79d0b5eb-bda7-48ec-bcdc-8d1fd5cdc0d8",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Description",
-                  "    tests[\"content FR is <p>Ceci est un post de test FR</p>\"] = jsonData.content.find(shortD => shortD.language === 'fre').text === \"<p>Ceci est un post de test FR</p>\";",
-                  "    postman.setNextRequest(\"Find Status Post v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "949980d1-b02e-0cbd-d88c-566c6ded3432",
-          "name": "Find Status Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ff825b4b-f26c-43b5-ab80-f342b0381ef6",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Status",
-                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
-                  "    postman.setNextRequest(\"Find publicationDate Post v3\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "038049a4-7190-60ef-7431-37d9138271a9",
-          "name": "Find publicationDate Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "22848d6d-9d45-4a8d-a1d9-4c7ce4defc19",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Status",
-                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T14:38:36.000Z\";",
-                  "    postman.setNextRequest(\"Add Post EN v2\");",
-                  "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Delete Post v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ab02af6b-8d3b-c851-7489-a4ade27326c9",
-          "name": "Add Post EN v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7d310de7-24e0-4696-8475-caf5451ab043",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a été ajouté\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdEN\", jsonData.id);",
-                  "        console.log(jsonData.slug.slug);",
-                  "        postman.setEnvironmentVariable(\"postV2SlugEN\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Add Post liaison FR-EN v2\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"title\": \"Test Post EN\",\n\t\"slug\": \"test-post-EN\",\n\t\"content\": \"Ceci est un post de test EN\",\n\t\"status\": \"publish\"\n}"
-            },
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "posts",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "en"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0dfe602c-f314-ed7f-f70f-4a8aae78d02b",
-          "name": "Add Post liaison FR-EN v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "4a80df38-7696-49bd-80b3-1d80e0dd4c44",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    postman.setNextRequest(\"Update post Status Draft v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {},
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?translations[en]={{postV2IdEN}}",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "posts",
-                "{{postV2IdFR}}"
-              ],
-              "query": [
-                {
-                  "key": "translations[en]",
-                  "value": "{{postV2IdEN}}"
-                }
-              ]
-            },
-            "description": ""
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "496a19cb-dda3-3337-cd14-0882b9c7d192",
-          "name": "Update post Status Draft v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "5b8b3212-c264-4be1-907c-00071252e589",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"draft\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status Draft\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"status\": \"draft\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c3f3720c-87b3-f898-1e6c-3575df015c22",
-          "name": "Find Post v3 To Check Status Draft",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "71416080-1088-4a66-9f70-bd0384092a59",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is draft\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Pending\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "2b30e75b-337b-846d-9c6d-aee98fb3eb5e",
-          "name": "Find Post v3 To Check Status EN Pending",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9fdbb0b0-8a8f-4284-a924-35d4e81dda15",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Post EN is Pending\"] = jsonData.status === \"Pending\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Update post Status Publish v2\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{postV2SlugEN}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "en",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "filter[where][slug.slug]",
-                  "value": "{{postV2SlugEN}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8e07ee7c-0aa4-00c1-8afd-f9df5ba188ad",
-          "name": "Update post Status Publish v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c59cb122-a189-44da-922c-79fe1ac42fb5",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is publish\"] = jsonData.status === \"publish\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status Published\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"status\": \"publish\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d940018f-f251-6433-5477-f7bf1fcd2b3c",
-          "name": "Find Post v3 To Check Status Published",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "72d86548-e5d0-4139-8ecd-20c3792be557",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Find Post v3 To Check Status EN Published\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": null,
-                  "value": null
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d77bd01d-e9ae-3aaa-94db-eb8d26a1cae2",
-          "name": "Find Post v3 To Check Status EN Published",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "18733360-53c3-4014-88c6-6acaecb77b0a",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Status Post EN is Published\"] = jsonData.status === \"Published\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Post v2\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?lang=en&access_token={{v3_token}}&filter[where][slug.slug]={{postV2SlugEN}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "en",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "filter[where][slug.slug]",
-                  "value": "{{postV2SlugEN}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "dcf50743-238d-156e-b21d-4be9107c26b3",
-          "name": "Delete Post v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6c1db212-6d23-4993-b8d2-d53c05cd1ac1",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "console.log(JSON.parse(responseBody));",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.unset(\"postV2IdFR\");",
-                  "    postman.setNextRequest(\"Delete Post v2 EN\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}?force=true",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "posts",
-                "{{postV2IdFR}}"
-              ],
-              "query": [
-                {
-                  "key": "force",
-                  "value": "true",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8bdd966b-8953-74b6-f1e5-eb64bad55356",
-          "name": "Delete Post v2 EN",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c137dc88-ab98-43b1-857c-c238ff042edc",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "console.log(JSON.parse(responseBody));",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    pm.environment.unset(\"postV2IdEN\");",
-                  "    postman.setNextRequest(\"Delete Post v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdEN}}?force=true",
-              "protocol": "{{v2_wp_protocol}}",
-              "host": [
-                "{{v2_wp_domain}}"
-              ],
-              "path": [
-                "wp",
-                "v2",
-                "posts",
-                "{{postV2IdEN}}"
-              ],
-              "query": [
-                {
-                  "key": "force",
-                  "value": "true",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "23d9617e-4141-76ff-1e93-e8e90d80e42c",
-          "name": "Delete Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "371b13f0-3b05-4978-a950-3635200914db",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post a été supprimé en v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postV3Id\");",
-                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
-                  "}",
-                  "postman.setNextRequest(null);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "{{postV3Id}}"
               ],
               "query": [
                 {
