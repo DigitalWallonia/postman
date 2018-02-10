@@ -1245,7 +1245,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"{{eventPermalienV2Id}}\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1258,7 +1258,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}",
+                  "value": "{\"where\":{ \"slug.slug\":\"{{eventPermalienV2Id}}\"}}",
                   "equals": true
                 },
                 {
