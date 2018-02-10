@@ -1010,6 +1010,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "5d483f19-9ebc-441f-9580-cbd3b299e1c3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -1018,9 +1019,9 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    postman.setEnvironmentVariable(\"eventV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests event\");",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests event v2/v3\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Add Event v2\");",
+                  "    postman.setNextRequest(\"Add Event in v2\");",
                   "}"
                 ]
               }
