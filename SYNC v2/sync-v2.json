@@ -9096,7 +9096,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "624d2ace-9432-4403-b0ff-94f3373c513d",
+                "id": "b3176322-2e61-4fb1-a700-6b1ec7229381",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9108,7 +9108,7 @@
                   "    tests[\"The mission has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The mission has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Add Event v2 Mission\");",
+                  "        postman.setNextRequest(\"Add Event v2 Mission v2/v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Tag Mission v2\");",
