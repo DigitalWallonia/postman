@@ -7725,7 +7725,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "64cd2ad0-8c83-4863-9017-2c492a58c3fe",
+                "id": "8e0ef9e2-6a31-47b1-a4b7-0dcb4eb6a02c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -7736,7 +7736,7 @@
                   "    postman.setEnvironmentVariable(\"tagBundleV3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests (TagBundle)\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
+                  "    postman.setNextRequest(\"Add Bundle v2\");",
                   "}"
                 ]
               }
@@ -7763,11 +7763,13 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}"
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}",
+                  "equals": true
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
