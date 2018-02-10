@@ -1064,7 +1064,7 @@
         },
         {
           "_postman_id": "7d847a3a-c04d-2002-9ad4-173255e3fba6",
-          "name": "Delete Artifact from previous tests event",
+          "name": "Delete Artifact from previous tests event v2/v3",
           "event": [
             {
               "listen": "test",
