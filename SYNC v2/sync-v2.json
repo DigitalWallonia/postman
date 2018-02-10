@@ -68,6 +68,923 @@
       ]
     },
     {
+      "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
+      "name": "Add New Profil v2 / Profile v3",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "c1d7950a-c443-0c2c-b7a8-c88066c283f4",
+          "name": "Find Artifact from previous tests profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cbe7171e-5e9b-426d-bd54-5293aab606a1",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests profile\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Profile v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\":\"test-synchro-1\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"test-synchro-1\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "bb7bfb3d-7300-acd3-e6b6-18bc0ba1b140",
+          "name": "Delete Artifact from previous tests profile",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"profilev3Id\");",
+                  "    postman.setNextRequest(\"Add Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1b1e596e-496a-cfba-fdee-069c1d50ee39",
+          "name": "Add Profile v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un profil a été ajouté\"] = jsonData.response.profil.id !== \"undefined\";",
+                  "    if (jsonData.response.profil.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
+                  "        postman.setNextRequest(\"Find New Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "nom",
+                  "value": "Test Synchro 1",
+                  "type": "text"
+                },
+                {
+                  "key": "permalien",
+                  "value": "test-synchro-1",
+                  "type": "text"
+                },
+                {
+                  "key": "statut",
+                  "value": "profil_statut_redaction",
+                  "type": "text"
+                },
+                {
+                  "key": "acronyme",
+                  "value": "TS1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/profils/add",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fcccacca-d1be-686b-eb7d-bf949e815a6e",
+          "name": "Find New Profile v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
+                  "    //Status",
+                  "    tests[\"Status is Pending\"] = jsonData.status === \"Pending\";",
+                  "    //v2Id",
+                  "    tests[\"v2Id\"] = jsonData.v2Id === v2Id;",
+                  "    //title",
+                  "    tests[\"title fr is Test Synchro 1\"] = jsonData.title[0].text === \"Test Synchro 1\";",
+                  "    tests[\"title en is Test Synchro 1\"] = jsonData.title[1].text === \"Test Synchro 1\";",
+                  "    tests[\"title nl is Test Synchro 1\"] = jsonData.title[2].text === \"Test Synchro 1\";",
+                  "    tests[\"title de is Test Synchro 1\"] = jsonData.title[3].text === \"Test Synchro 1\";",
+                  "    //slug",
+                  "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug[0].slug === \"test-synchro-1\";",
+                  "    tests[\"slug en is test-synchro-1\"] = jsonData.slug[1].slug === \"test-synchro-1\";",
+                  "    tests[\"slug nl is test-synchro-1\"] = jsonData.slug[2].slug === \"test-synchro-1\";",
+                  "    tests[\"slug de is test-synchro-1\"] = jsonData.slug[3].slug === \"test-synchro-1\";",
+                  "    tests[\"slug fr status is Published\"] = jsonData.slug[0].status === \"Published\";",
+                  "    tests[\"slug en status is Published\"] = jsonData.slug[1].status === \"Published\";",
+                  "    tests[\"slug nl status is Published\"] = jsonData.slug[2].status === \"Published\";",
+                  "    tests[\"slug de status is Published\"] = jsonData.slug[3].status === \"Published\";",
+                  "    //shortTitle",
+                  "    tests[\"shortTitle fr is TS1\"] = jsonData.shortTitle[0].text === \"TS1\";",
+                  "    tests[\"shortTitle en is TS1\"] = jsonData.shortTitle[1].text === \"TS1\";",
+                  "    tests[\"shortTitle nl is TS1\"] = jsonData.shortTitle[2].text === \"TS1\";",
+                  "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle[3].text === \"TS1\";",
+                  "    ",
+                  "    postman.setNextRequest(\"Set Logo to Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d463eba8-1ac0-bfa1-2565-baee1ac52d4c",
+          "name": "Set Logo to Profile v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.logo) {",
+                  "        console.log(jsonData.response.profil.logo);",
+                  "        postman.setNextRequest(\"Find Logo in Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas de logo\");",
+                  "    }",
+                  "    tests[\"Le logo a été ajouté\"] = jsonData.response.profil.logo !== \"undefined\";",
+                  "}else{",
+                  "    pm.environment.unset(\"profileV2Id\");",
+                  "    postman.setNextRequest(null);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/logo/23213/set?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "profils",
+                "{{profileV2Id}}",
+                "logo",
+                "23213",
+                "set"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e1dcfd59-1d21-43c4-e81b-e613585aab55",
+          "name": "Find Logo in Profile v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    tests[`images url is ${baseUrl}/ressources/23213/logo-agence-du-numerique`] = jsonData.images[0].url === `${baseUrl}/ressources/23213/logo-agence-du-numerique`;",
+                  "    tests[\"images type is Logo\"] = jsonData.images[0].type === \"Logo\";",
+                  "    postman.setNextRequest(\"Batch Descriptions Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "64484b39-594a-941a-65b9-9834935a92d2",
+          "name": "Batch Descriptions Profile v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
+                  "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Descriptions Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a57f404d-6819-61ff-cdd9-cb3b749d0b74",
+          "name": "Find Batch Descriptions Profile v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //shortDescription",
+                  "    tests[\"shortDescription fr is Test Synchro 1 Description\"] = jsonData.shortDescription.find(shortD => shortD.language === 'fre').text === \"Test Synchro 1 Description\";",
+                  "    tests[\"shortDescription en is Synchro Test 1 Description\"] = jsonData.shortDescription.find(shortD => shortD.language === 'eng').text === \"Synchro Test 1 Description\";",
+                  "    tests[\"shortDescription nl is Synchro Test 1 Beschrijving\"] = jsonData.shortDescription.find(shortD => shortD.language === 'dut').text === \"Synchro Test 1 Beschrijving\";",
+                  "    tests[\"shortDescription de is Synchro Test 1 Beschreibung\"] = jsonData.shortDescription.find(shortD => shortD.language === 'ger').text === \"Synchro Test 1 Beschreibung\";",
+                  "    //longDescription",
+                  "    tests[\"longDescription fr is Test Synchro 1 Description Longue\"] = jsonData.longDescription.find(shortD => shortD.language === 'fre').text === \"Test Synchro 1 Description Longue\";",
+                  "    tests[\"longDescription en is Synchro Test 1 Description Long\"] = jsonData.longDescription.find(shortD => shortD.language === 'eng').text === \"Synchro Test 1 Description Long\";",
+                  "    tests[\"longDescription nl is Synchro Test 1 Beschrijving Lang\"] = jsonData.longDescription.find(shortD => shortD.language === 'dut').text === \"Synchro Test 1 Beschrijving Lang\";",
+                  "    tests[\"longDescription de is Synchro Test 1 Beschreibung Lang\"] = jsonData.longDescription.find(shortD => shortD.language === 'ger').text === \"Synchro Test 1 Beschreibung Lang\";",
+                  "    postman.setNextRequest(\"Batch Infos Obligatoires Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1b1848fc-8802-8bec-36dd-2e779f788b3a",
+          "name": "Batch Infos Obligatoires Profile v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
+                  "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Infos Obligatoires Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(\"Find Batch Infos Obligatoires Profile v3\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Myrto Melard\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "858bd40b-2953-80c4-14f1-469b63ce3d07",
+          "name": "Find Batch Infos Obligatoires Profile v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    let enterpriseFounder = jsonData.enterprises.find(enterprise => enterprise.v2Id === 8336);",
+                  "    console.log(enterpriseFounder);",
+                  "    tests[\"enterprise Founder Role is Founder\"] = enterpriseFounder.role === \"Founder\";",
+                  "    tests[\"enterprise Founder countryCode is BE\"] = enterpriseFounder.countryCode === \"BE\";",
+                  "    tests[\"enterprise Founder enterpriseNumber is 0568575002\"] = enterpriseFounder.enterpriseNumber === \"0568575002\";",
+                  "    tests[\"enterprise Founder startDatee is 2015-01-07\"] = enterpriseFounder.startDate === \"2015-01-07T23:00:00.000Z\";",
+                  "    tests[\"enterprise Founder vatNumber is empty\"] = enterpriseFounder.vatNumber === null;",
+                  "    tests[\"enterprise Founder authorizedCapital is empty\"] = enterpriseFounder.authorizedCapital === null;",
+                  "    tests[\"enterprise Founder LegalForm name fr is Société Anonyme de droit public\"] = enterpriseFounder.legalForm.name.find(item => item.language === 'fre').text === \"Société Anonyme de droit public\";",
+                  "    tests[\"enterprise Founder LegalForm abbreviation fr is SA de droit public\"] = enterpriseFounder.legalForm.abbreviation.find(item => item.language === 'fre').text === \"SA de droit public\";",
+                  "        console.log(enterpriseFounder.legalName.find(item => item.language === 'fre'));",
+                  "    tests[\"enterprise Founder legalName fr is Agence du Numérique\"] = enterpriseFounder.legalName.find(item => item.language === 'fre').text === \"Agence du Numérique\";",
+                  "    tests[\"enterprise Founder abbreviation fr is AdN\"] = enterpriseFounder.abbreviation.find(item => item.language === 'fre').text === \"AdN\";",
+                  "    postman.setNextRequest(\"Batch contacts Profil v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{\"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1f7fe04e-02a4-95ab-6f18-d39d7bcdb697",
+          "name": "Batch contacts Profil v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.profil.id) {",
+                  "        console.log(\"jsonData a un id \" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Contacts Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"langue\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"langue\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"langue\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"langue\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f91c2c5c-a348-79b5-e7c6-8e6c2ef5a642",
+          "name": "Find Batch Contacts Profile v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "d3fa582b-979f-493c-88cd-0a1156c09625",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //contact",
+                  "    tests[\"contact 2525 firstName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).firstName === \"Myrto\";",
+                  "    tests[\"contact 2525 lastName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).lastName === \"Melard\";",
+                  "    tests[\"contact 2525 email is myrto.melard@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).emailAddresses[0] === \"myrto.melard@adn.be\";",
+                  "    tests[\"contact 2525 fonction is TestRole 1\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).occupation[0].text === \"TestRole 1\";",
+                  "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
+                  "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
+                  "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
+                  "    tests[\"contact 10972 fonction is TestRole 2\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).occupation[0].text === \"TestRole 2\";",
+                  "    ",
+                  "    for(var i = 0; i < jsonData.contacts.length; i++) {",
+                  "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
+                  "        tests[`Le contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has only one email`] = testCountEmail === 1;",
+                  "    }",
+                  "    ",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "507b249c-410b-fe7c-89b9-3454cc8ca385",
+          "name": "Delete Profile v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"Le profil a été supprimée\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"profileV2Id\");",
+                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "profils",
+                "{{profileV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "861c019c-6eed-9b08-ef29-e6a45d6ae26a",
+          "name": "Delete Profile v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"profilev3Id\");",
+                  "    postman.setNextRequest('Find Artifact from previous tests event');",
+                  "}else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "09f70665-0a3f-c57a-0cb9-0c0bb7b21112",
       "name": "Add New Cible v2 / Theme v3",
       "description": "",
@@ -3664,923 +4581,6 @@
               ""
             ]
           }
-        }
-      ]
-    },
-    {
-      "_postman_id": "cd52e129-8491-2ab2-104f-c0285a7a0fed",
-      "name": "Add New Profil v2 / Profile v3",
-      "description": null,
-      "item": [
-        {
-          "_postman_id": "c1d7950a-c443-0c2c-b7a8-c88066c283f4",
-          "name": "Find Artifact from previous tests profile",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cbe7171e-5e9b-426d-bd54-5293aab606a1",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests profile\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Profile v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\":\"test-synchro-1\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"test-synchro-1\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "bb7bfb3d-7300-acd3-e6b6-18bc0ba1b140",
-          "name": "Delete Artifact from previous tests profile",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest(\"Add Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "{{profileV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1b1e596e-496a-cfba-fdee-069c1d50ee39",
-          "name": "Add Profile v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un profil a été ajouté\"] = jsonData.response.profil.id !== \"undefined\";",
-                  "    if (jsonData.response.profil.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
-                  "        postman.setNextRequest(\"Find New Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "nom",
-                  "value": "Test Synchro 1",
-                  "type": "text"
-                },
-                {
-                  "key": "permalien",
-                  "value": "test-synchro-1",
-                  "type": "text"
-                },
-                {
-                  "key": "statut",
-                  "value": "profil_statut_redaction",
-                  "type": "text"
-                },
-                {
-                  "key": "acronyme",
-                  "value": "TS1",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/profils/add",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fcccacca-d1be-686b-eb7d-bf949e815a6e",
-          "name": "Find New Profile v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
-                  "    //Status",
-                  "    tests[\"Status is Pending\"] = jsonData.status === \"Pending\";",
-                  "    //v2Id",
-                  "    tests[\"v2Id\"] = jsonData.v2Id === v2Id;",
-                  "    //title",
-                  "    tests[\"title fr is Test Synchro 1\"] = jsonData.title[0].text === \"Test Synchro 1\";",
-                  "    tests[\"title en is Test Synchro 1\"] = jsonData.title[1].text === \"Test Synchro 1\";",
-                  "    tests[\"title nl is Test Synchro 1\"] = jsonData.title[2].text === \"Test Synchro 1\";",
-                  "    tests[\"title de is Test Synchro 1\"] = jsonData.title[3].text === \"Test Synchro 1\";",
-                  "    //slug",
-                  "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug[0].slug === \"test-synchro-1\";",
-                  "    tests[\"slug en is test-synchro-1\"] = jsonData.slug[1].slug === \"test-synchro-1\";",
-                  "    tests[\"slug nl is test-synchro-1\"] = jsonData.slug[2].slug === \"test-synchro-1\";",
-                  "    tests[\"slug de is test-synchro-1\"] = jsonData.slug[3].slug === \"test-synchro-1\";",
-                  "    tests[\"slug fr status is Published\"] = jsonData.slug[0].status === \"Published\";",
-                  "    tests[\"slug en status is Published\"] = jsonData.slug[1].status === \"Published\";",
-                  "    tests[\"slug nl status is Published\"] = jsonData.slug[2].status === \"Published\";",
-                  "    tests[\"slug de status is Published\"] = jsonData.slug[3].status === \"Published\";",
-                  "    //shortTitle",
-                  "    tests[\"shortTitle fr is TS1\"] = jsonData.shortTitle[0].text === \"TS1\";",
-                  "    tests[\"shortTitle en is TS1\"] = jsonData.shortTitle[1].text === \"TS1\";",
-                  "    tests[\"shortTitle nl is TS1\"] = jsonData.shortTitle[2].text === \"TS1\";",
-                  "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle[3].text === \"TS1\";",
-                  "    ",
-                  "    postman.setNextRequest(\"Set Logo to Profile v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d463eba8-1ac0-bfa1-2565-baee1ac52d4c",
-          "name": "Set Logo to Profile v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.profil.id && jsonData.response.profil.logo) {",
-                  "        console.log(jsonData.response.profil.logo);",
-                  "        postman.setNextRequest(\"Find Logo in Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas de logo\");",
-                  "    }",
-                  "    tests[\"Le logo a été ajouté\"] = jsonData.response.profil.logo !== \"undefined\";",
-                  "}else{",
-                  "    pm.environment.unset(\"profileV2Id\");",
-                  "    postman.setNextRequest(null);",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/logo/23213/set?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "profils",
-                "{{profileV2Id}}",
-                "logo",
-                "23213",
-                "set"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e1dcfd59-1d21-43c4-e81b-e613585aab55",
-          "name": "Find Logo in Profile v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    tests[`images url is ${baseUrl}/ressources/23213/logo-agence-du-numerique`] = jsonData.images[0].url === `${baseUrl}/ressources/23213/logo-agence-du-numerique`;",
-                  "    tests[\"images type is Logo\"] = jsonData.images[0].type === \"Logo\";",
-                  "    postman.setNextRequest(\"Batch Descriptions Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "64484b39-594a-941a-65b9-9834935a92d2",
-          "name": "Batch Descriptions Profile v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
-                  "        console.log(\"jsonData a un id\" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Descriptions Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a57f404d-6819-61ff-cdd9-cb3b749d0b74",
-          "name": "Find Batch Descriptions Profile v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //shortDescription",
-                  "    tests[\"shortDescription fr is Test Synchro 1 Description\"] = jsonData.shortDescription.find(shortD => shortD.language === 'fre').text === \"Test Synchro 1 Description\";",
-                  "    tests[\"shortDescription en is Synchro Test 1 Description\"] = jsonData.shortDescription.find(shortD => shortD.language === 'eng').text === \"Synchro Test 1 Description\";",
-                  "    tests[\"shortDescription nl is Synchro Test 1 Beschrijving\"] = jsonData.shortDescription.find(shortD => shortD.language === 'dut').text === \"Synchro Test 1 Beschrijving\";",
-                  "    tests[\"shortDescription de is Synchro Test 1 Beschreibung\"] = jsonData.shortDescription.find(shortD => shortD.language === 'ger').text === \"Synchro Test 1 Beschreibung\";",
-                  "    //longDescription",
-                  "    tests[\"longDescription fr is Test Synchro 1 Description Longue\"] = jsonData.longDescription.find(shortD => shortD.language === 'fre').text === \"Test Synchro 1 Description Longue\";",
-                  "    tests[\"longDescription en is Synchro Test 1 Description Long\"] = jsonData.longDescription.find(shortD => shortD.language === 'eng').text === \"Synchro Test 1 Description Long\";",
-                  "    tests[\"longDescription nl is Synchro Test 1 Beschrijving Lang\"] = jsonData.longDescription.find(shortD => shortD.language === 'dut').text === \"Synchro Test 1 Beschrijving Lang\";",
-                  "    tests[\"longDescription de is Synchro Test 1 Beschreibung Lang\"] = jsonData.longDescription.find(shortD => shortD.language === 'ger').text === \"Synchro Test 1 Beschreibung Lang\";",
-                  "    postman.setNextRequest(\"Batch Infos Obligatoires Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1b1848fc-8802-8bec-36dd-2e779f788b3a",
-          "name": "Batch Infos Obligatoires Profile v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
-                  "        console.log(\"jsonData a un id\" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Infos Obligatoires Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(\"Find Batch Infos Obligatoires Profile v3\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Myrto Melard\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "858bd40b-2953-80c4-14f1-469b63ce3d07",
-          "name": "Find Batch Infos Obligatoires Profile v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    let enterpriseFounder = jsonData.enterprises.find(enterprise => enterprise.v2Id === 8336);",
-                  "    console.log(enterpriseFounder);",
-                  "    tests[\"enterprise Founder Role is Founder\"] = enterpriseFounder.role === \"Founder\";",
-                  "    tests[\"enterprise Founder countryCode is BE\"] = enterpriseFounder.countryCode === \"BE\";",
-                  "    tests[\"enterprise Founder enterpriseNumber is 0568575002\"] = enterpriseFounder.enterpriseNumber === \"0568575002\";",
-                  "    tests[\"enterprise Founder startDatee is 2015-01-07\"] = enterpriseFounder.startDate === \"2015-01-07T23:00:00.000Z\";",
-                  "    tests[\"enterprise Founder vatNumber is empty\"] = enterpriseFounder.vatNumber === null;",
-                  "    tests[\"enterprise Founder authorizedCapital is empty\"] = enterpriseFounder.authorizedCapital === null;",
-                  "    tests[\"enterprise Founder LegalForm name fr is Société Anonyme de droit public\"] = enterpriseFounder.legalForm.name.find(item => item.language === 'fre').text === \"Société Anonyme de droit public\";",
-                  "    tests[\"enterprise Founder LegalForm abbreviation fr is SA de droit public\"] = enterpriseFounder.legalForm.abbreviation.find(item => item.language === 'fre').text === \"SA de droit public\";",
-                  "        console.log(enterpriseFounder.legalName.find(item => item.language === 'fre'));",
-                  "    tests[\"enterprise Founder legalName fr is Agence du Numérique\"] = enterpriseFounder.legalName.find(item => item.language === 'fre').text === \"Agence du Numérique\";",
-                  "    tests[\"enterprise Founder abbreviation fr is AdN\"] = enterpriseFounder.abbreviation.find(item => item.language === 'fre').text === \"AdN\";",
-                  "    postman.setNextRequest(\"Batch contacts Profil v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{\"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":{{profileV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1f7fe04e-02a4-95ab-6f18-d39d7bcdb697",
-          "name": "Batch contacts Profil v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.profil.id) {",
-                  "        console.log(\"jsonData a un id \" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Contacts Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "        postman.setNextRequest(\"Delete Profile v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"langue\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"langue\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"fonction\":{\"label\":\"labelFonctionContact2525\",\"langue\":\"FRE\",\"fr\":\"TestRole 1\"},\"principal\":true,\"afficheFront\":false,\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"fonction\":{\"label\":\"labelFonctionContact10972\",\"langue\":\"FRE\",\"fr\":\"TestRole 2\"},\"principal\":false,\"afficheFront\":false,\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f91c2c5c-a348-79b5-e7c6-8e6c2ef5a642",
-          "name": "Find Batch Contacts Profile v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d3fa582b-979f-493c-88cd-0a1156c09625",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //contact",
-                  "    tests[\"contact 2525 firstName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).firstName === \"Myrto\";",
-                  "    tests[\"contact 2525 lastName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).lastName === \"Melard\";",
-                  "    tests[\"contact 2525 email is myrto.melard@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).emailAddresses[0] === \"myrto.melard@adn.be\";",
-                  "    tests[\"contact 2525 fonction is TestRole 1\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).occupation[0].text === \"TestRole 1\";",
-                  "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
-                  "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
-                  "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
-                  "    tests[\"contact 10972 fonction is TestRole 2\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).occupation[0].text === \"TestRole 2\";",
-                  "    ",
-                  "    for(var i = 0; i < jsonData.contacts.length; i++) {",
-                  "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
-                  "        tests[`Le contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has only one email`] = testCountEmail === 1;",
-                  "    }",
-                  "    ",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "507b249c-410b-fe7c-89b9-3454cc8ca385",
-          "name": "Delete Profile v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"Le profil a été supprimée\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"profileV2Id\");",
-                  "    postman.setNextRequest(\"Delete Profile v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "profils",
-                "{{profileV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "861c019c-6eed-9b08-ef29-e6a45d6ae26a",
-          "name": "Delete Profile v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le profil est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest('Find Artifact from previous tests event');",
-                  "}else{",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "{{profileV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
         }
       ]
     },
