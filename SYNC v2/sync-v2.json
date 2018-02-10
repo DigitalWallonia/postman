@@ -1069,6 +1069,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "16025505-84d0-4618-8f83-9899934a72b5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1078,7 +1079,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"L'événement est supprimé\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"eventv3Id\");",
-                  "    postman.setNextRequest(\"Add Event v2\");",
+                  "    postman.setNextRequest(\"Add Event in v2\");",
                   "}",
                   ""
                 ]
