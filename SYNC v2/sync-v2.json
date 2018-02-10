@@ -6810,7 +6810,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a304a93c-407f-42d6-923c-8001d7467134",
+                "id": "19a99cc2-fa0d-44ef-a9e8-88e1225cced1",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -6820,7 +6820,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
-                  "        postman.setNextRequest(\"Find Tag in Contact v3\");",
+                  "        postman.setNextRequest(\"Find Photo in Contact v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
