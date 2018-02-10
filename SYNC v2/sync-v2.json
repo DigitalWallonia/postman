@@ -985,6 +985,1743 @@
       ]
     },
     {
+      "_postman_id": "5006c1e7-04fa-68cb-6d9d-1d688a267a6f",
+      "name": "Add New Evenement v2 / Event v3",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "f2f260d4-1736-1ac1-5e42-bdac86a4e816",
+          "name": "Find Artifact from previous tests event",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"eventV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests event\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7d847a3a-c04d-2002-9ad4-173255e3fba6",
+          "name": "Delete Artifact from previous tests event",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'événement est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"eventv3Id\");",
+                  "    postman.setNextRequest(\"Add Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f9e907f1-d48b-36ab-f1db-ceb3d66ba793",
+          "name": "Add Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.evenement.id !== \"undefined\";",
+                  "    if (jsonData.response.evenement.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"eventV2Id\", jsonData.response.evenement.id);",
+                  "        postman.setNextRequest(\"Find New Event v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=ajout-event-postman&dateDebut=2017-11-28T15:48:42&dateFin=2017-11-30T15:48:42&statut=agenda_statut_archive",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "permalien",
+                  "value": "ajout-event-postman",
+                  "equals": true
+                },
+                {
+                  "key": "dateDebut",
+                  "value": "2017-11-28T15:48:42",
+                  "equals": true
+                },
+                {
+                  "key": "dateFin",
+                  "value": "2017-11-30T15:48:42",
+                  "equals": true
+                },
+                {
+                  "key": "statut",
+                  "value": "agenda_statut_archive",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ad737ad7-e4c4-93ba-932e-088a044af326",
+          "name": "Find New Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a6415bea-bc23-47f2-a136-9d66853f2fbc",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"eventV2Id\"));",
+                  "console.log('event: ', pm.environment, pm.environment.get(\"eventV2Id\"), pm.response.code);",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"eventV3Id\", jsonData.id);",
+                  "    //Status",
+                  "    tests[\"Status is Archived\"] = jsonData.status === \"Archived\";",
+                  "    //v2Id",
+                  "    tests.v2Id = jsonData.v2Id === v2Id;",
+                  "    //title",
+                  "    tests[\"title fr is Test\"] = jsonData.title[0].text === \"Test\";",
+                  "    //slug",
+                  "    tests[\"slug fr is ajout-event-postman\"] = jsonData.slug[0].slug === \"ajout-event-postman\";",
+                  "    //startDate & endDate",
+                  "    tests[\"startDate < endDate\"] = jsonData.startDate < jsonData.endDate;",
+                  "    ",
+                  "    postman.setNextRequest(\"Batch Titre Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "48e7140c-fc3d-c23a-8d30-da20b7306637",
+          "name": "Batch Titre Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Titre Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français\",\"en\":\"Sensibilisation à la facturation électronique en anglais\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais\",\"de\":\"Sensibilisation à la facturation électronique en allemand\",\"original\":\"Sensibilisation à la facturation électronique en français\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français\",\"en\":\"Sensibilisation à la facturation électronique en anglais\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais\",\"de\":\"Sensibilisation à la facturation électronique en allemand\",\"original\":\"Sensibilisation à la facturation électronique en français\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "833cfe69-f068-81b6-ac60-12dc42354c2b",
+          "name": "Find Batch Titre Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //title",
+                  "    tests[\"title fr is Sensibilisation à la facturation électronique en français\"] = jsonData.title.find(titre => titre.language === 'fre').text === \"Sensibilisation à la facturation électronique en français\";",
+                  "    tests[\"title en is Sensibilisation à la facturation électronique en anglais\"] = jsonData.title.find(titre => titre.language === 'eng').text === \"Sensibilisation à la facturation électronique en anglais\";",
+                  "    tests[\"title nl is Sensibilisation à la facturation électronique en néerlandais\"] = jsonData.title.find(titre => titre.language === 'dut').text === \"Sensibilisation à la facturation électronique en néerlandais\";",
+                  "    tests[\"title de is Sensibilisation à la facturation électronique en allemand\"] = jsonData.title.find(titre => titre.language === 'ger').text === \"Sensibilisation à la facturation électronique en allemand\";",
+                  "    postman.setNextRequest(\"Set Vignette to Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "022fbe05-964f-17fa-5642-40dd69c2417c",
+          "name": "Set Vignette to Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.vignette) {",
+                  "        console.log(jsonData.response.evenement.vignette);",
+                  "        postman.setNextRequest(\"Find Vignette in Event v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas de vignette\");",
+                  "    }",
+                  "    tests[\"Le logo a été ajouté\"] = jsonData.response.evenement.vignette !== \"undefined\";",
+                  "    postman.setNextRequest(\"Find Vignette in Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/vignette/23213/set?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "vignette",
+                "23213",
+                "set"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0d1ee6e5-14fe-9010-f0e9-918c5251adcd",
+          "name": "Find Vignette in Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    console.log(jsonData);",
+                  "    tests[`images url is ${baseUrl}/ressources/23213/logo-agence-du-numerique`] = jsonData.images[0].url === `${baseUrl}/ressources/23213/logo-agence-du-numerique`;",
+                  "    tests[\"images type is Thumbnail\"] = jsonData.images[0].type === \"Thumbnail\";",
+                  "    postman.setNextRequest(\"Batch Descriptions Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "6929bd62-7fde-f10e-90b9-7ada99bb93b8",
+          "name": "Batch Descriptions Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Descriptions Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"description\":{\"court\":{\"action\":\"add\",\"label\":\"descriptionEvenementAjout d'une description courte en français d'un événement dans Postman\",\"fr\":\"Ajout d'une description courte en français d'un événement dans Postman\",\"en\":\"Ajout d'une description courte en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description courte en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description courte en allemand d'un événement dans Postman\"},\"longue\":{\"action\":\"add\",\"label\":\"descriptionLongueEvenement\",\"fr\":\"Ajout d'une description longue en français d'un événement dans Postman\",\"en\":\"Ajout d'une description longue en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description longue en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description longue en allemand d'un événement dans Postman\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"description\":{\"court\":{\"action\":\"add\",\"label\":\"descriptionEvenementAjout d'une description courte en français d'un événement dans Postman\",\"fr\":\"Ajout d'une description courte en français d'un événement dans Postman\",\"en\":\"Ajout d'une description courte en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description courte en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description courte en allemand d'un événement dans Postman\"},\"longue\":{\"action\":\"add\",\"label\":\"descriptionLongueEvenement\",\"fr\":\"Ajout d'une description longue en français d'un événement dans Postman\",\"en\":\"Ajout d'une description longue en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description longue en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description longue en allemand d'un événement dans Postman\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1a6f357b-6c6e-575c-a512-a9e4009e22cd",
+          "name": "Find Batch Descriptions Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //shortDescription",
+                  "    tests[\"shortDescription fr is Ajout d'une description courte en français d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'fre').text === \"Ajout d'une description courte en français d'un événement dans Postman\";",
+                  "    tests[\"shortDescription en is Ajout d'une description courte en anglais d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'eng').text === \"Ajout d'une description courte en anglais d'un événement dans Postman\";",
+                  "    tests[\"shortDescription nl is Ajout d'une description courte en néerlandais d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'dut').text === \"Ajout d'une description courte en néerlandais d'un événement dans Postman\";",
+                  "    tests[\"shortDescription de is Ajout d'une description courte en allemand d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'ger').text === \"Ajout d'une description courte en allemand d'un événement dans Postman\";",
+                  "    //longDescription",
+                  "    tests[\"longDescription fr is Ajout d'une description longue en français d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'fre').text === \"Ajout d'une description longue en français d'un événement dans Postman\";",
+                  "    tests[\"longDescription en is Ajout d'une description longue en anglais d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'eng').text === \"Ajout d'une description longue en anglais d'un événement dans Postman\";",
+                  "    tests[\"longDescription nl is Ajout d'une description longue en néerlandais d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'dut').text === \"Ajout d'une description longue en néerlandais d'un événement dans Postman\";",
+                  "    tests[\"longDescription de is Ajout d'une description longue en allemand d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'ger').text === \"Ajout d'une description longue en allemand d'un événement dans Postman\";",
+                  "    postman.setNextRequest(\"Batch contacts Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1aea2977-ed24-547e-971d-459aa5aa0e30",
+          "name": "Batch contacts Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Contacts Event v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "        postman.setNextRequest(\"Delete Event v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"agendacontact_role_personnecontact\",\"profil\":\"2941\",\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"role\":\"agendacontact_role_orateur\",\"profil\":\"10587\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"agendacontact_role_personnecontact\",\"profil\":\"2941\",\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"role\":\"agendacontact_role_orateur\",\"profil\":\"10587\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "afc313f7-eebc-f769-ae7b-a07e694effc6",
+          "name": "Find Batch Contacts Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //contact",
+                  "    tests[\"contact 2525 firstName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).firstName === \"Myrto\";",
+                  "    tests[\"contact 2525 lastName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).lastName === \"Melard\";",
+                  "    tests[\"contact 2525 email is myrto.melard@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).emailAddresses[0] === \"myrto.melard@adn.be\";",
+                  "    tests[\"contact 2525 role is Contact Person\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).role === \"Contact Person\";",
+                  "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
+                  "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
+                  "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
+                  "    tests[\"contact 10972 role is Speaker\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).role === \"Speaker\";",
+                  "    ",
+                  "    for(var i = 0; i < jsonData.contacts.length; i++) {",
+                  "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
+                  "        tests[`Le contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has only one email`] = testCountEmail === 1;",
+                  "    }",
+                  "    ",
+                  "    postman.setNextRequest(\"Batch profils Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "60177fc1-989e-20dd-dde7-8657385d10a5",
+          "name": "Batch profils Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"profils\":{\"0\":{\"id\":\"2941\",\"role\":\"agendaprofil_role_organisateur\",\"action\":\"add\"},\"1\":{\"id\":\"10587\",\"role\":\"agendaprofil_role_partenaire\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"profils\":{\"0\":{\"id\":\"2941\",\"role\":\"agendaprofil_role_organisateur\",\"action\":\"add\"},\"1\":{\"id\":\"10587\",\"role\":\"agendaprofil_role_partenaire\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c94b0e78-6fb3-552e-38d3-e4ffdd462252",
+          "name": "Find Batch profiles Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    ",
+                  "    ",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "676dfbde-2cd3-0116-180f-d9c9167c3210",
+          "name": "Batch Tags Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Tags Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"tags\":{\"0\":{\"id\":\"225\"},\"1\":{\"id\":\"176\"},\"2\":{\"id\":\"11\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"tags\":{\"0\":{\"id\":\"225\"},\"1\":{\"id\":\"176\"},\"2\":{\"id\":\"11\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4e8c813e-2293-10a8-7c06-e3a3f55a0827",
+          "name": "Find Batch Tags Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //tags",
+                  "    tests[\"tags 11 title is Wallonie\"] = jsonData.tags.find(tag => tag.v2Id === 11).title[0].text === \"Wallonie\";",
+                  "    tests[\"tags 176 title is entreprise privée\"] = jsonData.tags.find(tag => tag.v2Id === 176).title[0].text === \"entreprise privée\";",
+                  "    tests[\"tags 225 title is filtre Digital Wallonia\"] = jsonData.tags.find(tag => tag.v2Id === 225).title[0].text === \"filtre Digital Wallonia\";",
+                  "    postman.setNextRequest(\"Batch Adresse Postale v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a0e8d69c-1f6c-d299-bbab-fffa5dcc5c69",
+          "name": "Batch Adresse Postale v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Adresse Postale Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"adresse\":{\"id\":\"3\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"adresse\":{\"id\":\"3\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f7afccc4-e6e5-0b31-1798-7926bccfc9e0",
+          "name": "Find Batch Adresse Postale Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    // venueAddress",
+                  "    tests[\"venueAddress thoroughfare is Avenue du Prince de Liège\"] = jsonData.venueAddress.thoroughfare === \"Avenue du Prince de Liège\";",
+                  "    tests[\"venueAddress locality is Jambes\"] = jsonData.venueAddress.locality === \"Jambes\";",
+                  "    tests[\"venueAddress postalCode is 5100\"] = jsonData.venueAddress.postalCode === \"5100\";",
+                  "    tests[\"venueAddress number is 133\"] = jsonData.venueAddress.number === \"133\";",
+                  "    postman.setNextRequest(\"Batch contacts Adresse Url v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "087e47c8-02a5-532d-0925-f8244f69d1a8",
+          "name": "Batch contacts Adresse Url v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Adresse Url Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"lieuUrl\":{\"id\":\"30258\",\"type\":{\"id\":10,\"nom\":\"Web\"},\"label\":\"LieuUrl1406\",\"fr\":\"30258\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"lieuUrl\":{\"id\":\"30258\",\"type\":{\"id\":10,\"nom\":\"Web\"},\"label\":\"LieuUrl1406\",\"fr\":\"30258\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "64cc5470-ea0a-272a-9eff-4d21c6f7eb64",
+          "name": "Find Batch Adresse Url Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    // venueUrl",
+                  "    tests[\"venueUrl type is Web\"] = jsonData.venueUrl.type === \"Web\";",
+                  "    tests[\"venueUrl address is http://digitalwallonia.be\"] = jsonData.venueUrl.address === \"http://digitalwallonia.be\";",
+                  "    postman.setNextRequest(\"Batch contacts Adresse Etendue v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3c135f63-6903-6591-6e9b-f80d60445e5a",
+          "name": "Batch contacts Adresse Etendue v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Adresse Etendue Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"lieuEtendu\":{\"action\":\"add\",\"label\":\"adresseEtendueEvenementTest\",\"fr\":\"Test adresse étendue Postman\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"lieuEtendu\":{\"action\":\"add\",\"label\":\"adresseEtendueEvenementTest\",\"fr\":\"Test adresse étendue Postman\"},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "7dfffefe-dcf8-9a18-a5d4-7e7af540ae1d",
+          "name": "Find Batch Adresse Etendue Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    // venueAdditionalInformation",
+                  "    tests[\"venueAdditionalInformation is Test adresse étendue Postman\"] = jsonData.venueAdditionalInformation[0].text === \"Test adresse étendue Postman\";",
+                  "    postman.setNextRequest(\"Batch Infos De Base Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e7b589c0-2430-0aa1-aa15-cd36d223b205",
+          "name": "Batch Infos De Base Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
+                  "        console.log(\"jsonData a un id \" + eventV2Id);",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Find Batch Infos De Base Event v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"permalien\":\"ajout-event-test-postman\",\"dateCommentaires\":{\"action\":\"add\",\"label\":\"titreEvenementComplément horaire test Postman\",\"fr\":\"Complément horaire test Postman\"},\"publicCible\":{\"action\":\"add\",\"label\":\"titreEvenementPour le public de Postman\",\"fr\":\"Pour le public de Postman\"},\"prix\":{\"action\":\"add\",\"label\":\"prixEvenementGratuit pour Postman\",\"fr\":\"Gratuit pour Postman\"},\"journee\":true,\"telephone\":{\"international\":\"+3243800513\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800514\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32472859685\",\"codePays\":\"BE\"},\"url\":{\"adresse\":\"https://www.digitalwallonia.be\",\"type\":{\"id\":10,\"nom\":\"Web\"}},\"email\":{\"id\":\"44372\"},\"cibles\":{\"0\":{\"id\":\"1\"},\"1\":{\"id\":\"2\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"permalien\":\"ajout-event-test-postman\",\"dateCommentaires\":{\"action\":\"add\",\"label\":\"titreEvenementComplément horaire test Postman\",\"fr\":\"Complément horaire test Postman\"},\"publicCible\":{\"action\":\"add\",\"label\":\"titreEvenementPour le public de Postman\",\"fr\":\"Pour le public de Postman\"},\"prix\":{\"action\":\"add\",\"label\":\"prixEvenementGratuit pour Postman\",\"fr\":\"Gratuit pour Postman\"},\"journee\":true,\"telephone\":{\"international\":\"+3243800513\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800514\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32472859685\",\"codePays\":\"BE\"},\"url\":{\"adresse\":\"https://www.digitalwallonia.be\",\"type\":{\"id\":10,\"nom\":\"Web\"}},\"email\":{\"id\":\"44372\"},\"cibles\":{\"0\":{\"id\":\"1\"},\"1\":{\"id\":\"2\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "27dc72d6-3184-ac07-6b0b-082981896faf",
+          "name": "Find Batch Infos De Base Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
+                  "    //slug",
+                  "    tests[\"slug fr published is ajout-event-test-postman\"] = jsonData.slug.find(i => i.status === \"Published\" && i.language === \"fre\").slug === \"ajout-event-test-postman\";",
+                  "    //scheduleAdditionalInformation",
+                  "    tests[\"scheduleAdditionalInformation is Complément horaire test Postman\"] = jsonData.scheduleAdditionalInformation[0].text === \"Complément horaire test Postman\";",
+                  "    //price",
+                  "    tests[\"price is Gratuit pour Postman\"] = jsonData.price[0].text === \"Gratuit pour Postman\";",
+                  "    //targetAudience",
+                  "    tests[\"targetAudience is Pour le public de Postman\"] = jsonData.targetAudience[0].text === \"Pour le public de Postman\";",
+                  "    //day",
+                  "    tests[\"day is true\"] = jsonData.day === true;",
+                  "    //faxNumbers",
+                  "    tests[\"faxNumbers is 3243800514\"] = jsonData.faxNumbers[0] === 3243800514;",
+                  "    //phoneNumbers",
+                  "    tests[\"phoneNumbers is 3243800513\"] = jsonData.phoneNumbers[0] === 3243800513;",
+                  "    tests[\"phoneNumbers is 32472859685\"] = jsonData.phoneNumbers[1] === 32472859685;",
+                  "    //emailAddresses",
+                  "    tests[\"emailAddresses is info@digitalwallonia.be\"] = jsonData.emailAddresses[0] === \"info@digitalwallonia.be\";",
+                  "    //themes",
+                  "    tests[\"themes v2Id 1 is secteur numérique\"] = jsonData.themes.find(i => i.v2Id === 1).title[0].text === \"secteur numérique\";",
+                  "    tests[\"themes v2Id 2 is entreprises\"] = jsonData.themes.find(i => i.v2Id === 2).title[0].text === \"entreprises\";",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Event v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e01f5ac6-d2e5-0b5c-fe7d-4b4f3b7d12f4",
+          "name": "Delete Event v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"L'événement a été supprimé en v2\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"eventV2Id\");",
+                  "    postman.setNextRequest(\"Delete Event v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "evenements",
+                "{{eventV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "554e3796-3d5f-55b4-f43b-5f3234028357",
+          "name": "Delete Event v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f7f0d073-ce13-4ba9-a6f4-861774d8a041",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'événement a été supprimé en v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"eventv3Id\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b57accd6-494d-476e-87bc-54057d1e4b4d",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "09b31856-5d49-44d6-b1da-6e9975d95eed",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
       "_postman_id": "09f70665-0a3f-c57a-0cb9-0c0bb7b21112",
       "name": "Add New Cible v2 / Theme v3",
       "description": "",
@@ -4576,1743 +6313,6 @@
           "listen": "test",
           "script": {
             "id": "296c0d0e-fa1a-419d-82f5-196228c50005",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "_postman_id": "5006c1e7-04fa-68cb-6d9d-1d688a267a6f",
-      "name": "Add New Evenement v2 / Event v3",
-      "description": null,
-      "item": [
-        {
-          "_postman_id": "f2f260d4-1736-1ac1-5e42-bdac86a4e816",
-          "name": "Find Artifact from previous tests event",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"eventV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests event\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7d847a3a-c04d-2002-9ad4-173255e3fba6",
-          "name": "Delete Artifact from previous tests event",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"L'événement est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"eventv3Id\");",
-                  "    postman.setNextRequest(\"Add Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "{{eventV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f9e907f1-d48b-36ab-f1db-ceb3d66ba793",
-          "name": "Add Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.evenement.id !== \"undefined\";",
-                  "    if (jsonData.response.evenement.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"eventV2Id\", jsonData.response.evenement.id);",
-                  "        postman.setNextRequest(\"Find New Event v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=ajout-event-postman&dateDebut=2017-11-28T15:48:42&dateFin=2017-11-30T15:48:42&statut=agenda_statut_archive",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "add"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "permalien",
-                  "value": "ajout-event-postman",
-                  "equals": true
-                },
-                {
-                  "key": "dateDebut",
-                  "value": "2017-11-28T15:48:42",
-                  "equals": true
-                },
-                {
-                  "key": "dateFin",
-                  "value": "2017-11-30T15:48:42",
-                  "equals": true
-                },
-                {
-                  "key": "statut",
-                  "value": "agenda_statut_archive",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ad737ad7-e4c4-93ba-932e-088a044af326",
-          "name": "Find New Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a6415bea-bc23-47f2-a136-9d66853f2fbc",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"eventV2Id\"));",
-                  "console.log('event: ', pm.environment, pm.environment.get(\"eventV2Id\"), pm.response.code);",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"eventV3Id\", jsonData.id);",
-                  "    //Status",
-                  "    tests[\"Status is Archived\"] = jsonData.status === \"Archived\";",
-                  "    //v2Id",
-                  "    tests.v2Id = jsonData.v2Id === v2Id;",
-                  "    //title",
-                  "    tests[\"title fr is Test\"] = jsonData.title[0].text === \"Test\";",
-                  "    //slug",
-                  "    tests[\"slug fr is ajout-event-postman\"] = jsonData.slug[0].slug === \"ajout-event-postman\";",
-                  "    //startDate & endDate",
-                  "    tests[\"startDate < endDate\"] = jsonData.startDate < jsonData.endDate;",
-                  "    ",
-                  "    postman.setNextRequest(\"Batch Titre Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"ajout-event-postman\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "48e7140c-fc3d-c23a-8d30-da20b7306637",
-          "name": "Batch Titre Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Titre Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français\",\"en\":\"Sensibilisation à la facturation électronique en anglais\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais\",\"de\":\"Sensibilisation à la facturation électronique en allemand\",\"original\":\"Sensibilisation à la facturation électronique en français\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"titre\":{\"action\":\"update\",\"id\":\"75645\",\"label\":\"labelTitreEvenementId1309\",\"fr\":\"Sensibilisation à la facturation électronique en français\",\"en\":\"Sensibilisation à la facturation électronique en anglais\",\"nl\":\"Sensibilisation à la facturation électronique en néerlandais\",\"de\":\"Sensibilisation à la facturation électronique en allemand\",\"original\":\"Sensibilisation à la facturation électronique en français\"},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "833cfe69-f068-81b6-ac60-12dc42354c2b",
-          "name": "Find Batch Titre Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //title",
-                  "    tests[\"title fr is Sensibilisation à la facturation électronique en français\"] = jsonData.title.find(titre => titre.language === 'fre').text === \"Sensibilisation à la facturation électronique en français\";",
-                  "    tests[\"title en is Sensibilisation à la facturation électronique en anglais\"] = jsonData.title.find(titre => titre.language === 'eng').text === \"Sensibilisation à la facturation électronique en anglais\";",
-                  "    tests[\"title nl is Sensibilisation à la facturation électronique en néerlandais\"] = jsonData.title.find(titre => titre.language === 'dut').text === \"Sensibilisation à la facturation électronique en néerlandais\";",
-                  "    tests[\"title de is Sensibilisation à la facturation électronique en allemand\"] = jsonData.title.find(titre => titre.language === 'ger').text === \"Sensibilisation à la facturation électronique en allemand\";",
-                  "    postman.setNextRequest(\"Set Vignette to Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "022fbe05-964f-17fa-5642-40dd69c2417c",
-          "name": "Set Vignette to Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.vignette) {",
-                  "        console.log(jsonData.response.evenement.vignette);",
-                  "        postman.setNextRequest(\"Find Vignette in Event v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas de vignette\");",
-                  "    }",
-                  "    tests[\"Le logo a été ajouté\"] = jsonData.response.evenement.vignette !== \"undefined\";",
-                  "    postman.setNextRequest(\"Find Vignette in Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/vignette/23213/set?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "{{eventV2Id}}",
-                "vignette",
-                "23213",
-                "set"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0d1ee6e5-14fe-9010-f0e9-918c5251adcd",
-          "name": "Find Vignette in Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    console.log(jsonData);",
-                  "    tests[`images url is ${baseUrl}/ressources/23213/logo-agence-du-numerique`] = jsonData.images[0].url === `${baseUrl}/ressources/23213/logo-agence-du-numerique`;",
-                  "    tests[\"images type is Thumbnail\"] = jsonData.images[0].type === \"Thumbnail\";",
-                  "    postman.setNextRequest(\"Batch Descriptions Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6929bd62-7fde-f10e-90b9-7ada99bb93b8",
-          "name": "Batch Descriptions Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Descriptions Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"description\":{\"court\":{\"action\":\"add\",\"label\":\"descriptionEvenementAjout d'une description courte en français d'un événement dans Postman\",\"fr\":\"Ajout d'une description courte en français d'un événement dans Postman\",\"en\":\"Ajout d'une description courte en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description courte en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description courte en allemand d'un événement dans Postman\"},\"longue\":{\"action\":\"add\",\"label\":\"descriptionLongueEvenement\",\"fr\":\"Ajout d'une description longue en français d'un événement dans Postman\",\"en\":\"Ajout d'une description longue en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description longue en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description longue en allemand d'un événement dans Postman\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"description\":{\"court\":{\"action\":\"add\",\"label\":\"descriptionEvenementAjout d'une description courte en français d'un événement dans Postman\",\"fr\":\"Ajout d'une description courte en français d'un événement dans Postman\",\"en\":\"Ajout d'une description courte en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description courte en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description courte en allemand d'un événement dans Postman\"},\"longue\":{\"action\":\"add\",\"label\":\"descriptionLongueEvenement\",\"fr\":\"Ajout d'une description longue en français d'un événement dans Postman\",\"en\":\"Ajout d'une description longue en anglais d'un événement dans Postman\",\"nl\":\"Ajout d'une description longue en néerlandais d'un événement dans Postman\",\"de\":\"Ajout d'une description longue en allemand d'un événement dans Postman\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1a6f357b-6c6e-575c-a512-a9e4009e22cd",
-          "name": "Find Batch Descriptions Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //shortDescription",
-                  "    tests[\"shortDescription fr is Ajout d'une description courte en français d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'fre').text === \"Ajout d'une description courte en français d'un événement dans Postman\";",
-                  "    tests[\"shortDescription en is Ajout d'une description courte en anglais d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'eng').text === \"Ajout d'une description courte en anglais d'un événement dans Postman\";",
-                  "    tests[\"shortDescription nl is Ajout d'une description courte en néerlandais d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'dut').text === \"Ajout d'une description courte en néerlandais d'un événement dans Postman\";",
-                  "    tests[\"shortDescription de is Ajout d'une description courte en allemand d'un événement dans Postman\"] = jsonData.shortDescription.find(shortD => shortD.language === 'ger').text === \"Ajout d'une description courte en allemand d'un événement dans Postman\";",
-                  "    //longDescription",
-                  "    tests[\"longDescription fr is Ajout d'une description longue en français d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'fre').text === \"Ajout d'une description longue en français d'un événement dans Postman\";",
-                  "    tests[\"longDescription en is Ajout d'une description longue en anglais d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'eng').text === \"Ajout d'une description longue en anglais d'un événement dans Postman\";",
-                  "    tests[\"longDescription nl is Ajout d'une description longue en néerlandais d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'dut').text === \"Ajout d'une description longue en néerlandais d'un événement dans Postman\";",
-                  "    tests[\"longDescription de is Ajout d'une description longue en allemand d'un événement dans Postman\"] = jsonData.longDescription.find(shortD => shortD.language === 'ger').text === \"Ajout d'une description longue en allemand d'un événement dans Postman\";",
-                  "    postman.setNextRequest(\"Batch contacts Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1aea2977-ed24-547e-971d-459aa5aa0e30",
-          "name": "Batch contacts Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Contacts Event v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "        postman.setNextRequest(\"Delete Event v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"agendacontact_role_personnecontact\",\"profil\":\"2941\",\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"role\":\"agendacontact_role_orateur\",\"profil\":\"10587\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"agendacontact_role_personnecontact\",\"profil\":\"2941\",\"action\":\"add\"},\"1\":{\"email\":\"49356\",\"id\":\"10972\",\"role\":\"agendacontact_role_orateur\",\"profil\":\"10587\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "afc313f7-eebc-f769-ae7b-a07e694effc6",
-          "name": "Find Batch Contacts Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //contact",
-                  "    tests[\"contact 2525 firstName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).firstName === \"Myrto\";",
-                  "    tests[\"contact 2525 lastName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).lastName === \"Melard\";",
-                  "    tests[\"contact 2525 email is myrto.melard@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).emailAddresses[0] === \"myrto.melard@adn.be\";",
-                  "    tests[\"contact 2525 role is Contact Person\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).role === \"Contact Person\";",
-                  "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
-                  "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
-                  "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
-                  "    tests[\"contact 10972 role is Speaker\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).role === \"Speaker\";",
-                  "    ",
-                  "    for(var i = 0; i < jsonData.contacts.length; i++) {",
-                  "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
-                  "        tests[`Le contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has only one email`] = testCountEmail === 1;",
-                  "    }",
-                  "    ",
-                  "    postman.setNextRequest(\"Batch profils Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "60177fc1-989e-20dd-dde7-8657385d10a5",
-          "name": "Batch profils Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"profils\":{\"0\":{\"id\":\"2941\",\"role\":\"agendaprofil_role_organisateur\",\"action\":\"add\"},\"1\":{\"id\":\"10587\",\"role\":\"agendaprofil_role_partenaire\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"profils\":{\"0\":{\"id\":\"2941\",\"role\":\"agendaprofil_role_organisateur\",\"action\":\"add\"},\"1\":{\"id\":\"10587\",\"role\":\"agendaprofil_role_partenaire\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "c94b0e78-6fb3-552e-38d3-e4ffdd462252",
-          "name": "Find Batch profiles Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    ",
-                  "    ",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "676dfbde-2cd3-0116-180f-d9c9167c3210",
-          "name": "Batch Tags Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Tags Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"tags\":{\"0\":{\"id\":\"225\"},\"1\":{\"id\":\"176\"},\"2\":{\"id\":\"11\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"tags\":{\"0\":{\"id\":\"225\"},\"1\":{\"id\":\"176\"},\"2\":{\"id\":\"11\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "4e8c813e-2293-10a8-7c06-e3a3f55a0827",
-          "name": "Find Batch Tags Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //tags",
-                  "    tests[\"tags 11 title is Wallonie\"] = jsonData.tags.find(tag => tag.v2Id === 11).title[0].text === \"Wallonie\";",
-                  "    tests[\"tags 176 title is entreprise privée\"] = jsonData.tags.find(tag => tag.v2Id === 176).title[0].text === \"entreprise privée\";",
-                  "    tests[\"tags 225 title is filtre Digital Wallonia\"] = jsonData.tags.find(tag => tag.v2Id === 225).title[0].text === \"filtre Digital Wallonia\";",
-                  "    postman.setNextRequest(\"Batch Adresse Postale v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a0e8d69c-1f6c-d299-bbab-fffa5dcc5c69",
-          "name": "Batch Adresse Postale v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Adresse Postale Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"adresse\":{\"id\":\"3\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"adresse\":{\"id\":\"3\"},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f7afccc4-e6e5-0b31-1798-7926bccfc9e0",
-          "name": "Find Batch Adresse Postale Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    // venueAddress",
-                  "    tests[\"venueAddress thoroughfare is Avenue du Prince de Liège\"] = jsonData.venueAddress.thoroughfare === \"Avenue du Prince de Liège\";",
-                  "    tests[\"venueAddress locality is Jambes\"] = jsonData.venueAddress.locality === \"Jambes\";",
-                  "    tests[\"venueAddress postalCode is 5100\"] = jsonData.venueAddress.postalCode === \"5100\";",
-                  "    tests[\"venueAddress number is 133\"] = jsonData.venueAddress.number === \"133\";",
-                  "    postman.setNextRequest(\"Batch contacts Adresse Url v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "087e47c8-02a5-532d-0925-f8244f69d1a8",
-          "name": "Batch contacts Adresse Url v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Adresse Url Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"lieuUrl\":{\"id\":\"30258\",\"type\":{\"id\":10,\"nom\":\"Web\"},\"label\":\"LieuUrl1406\",\"fr\":\"30258\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"lieuUrl\":{\"id\":\"30258\",\"type\":{\"id\":10,\"nom\":\"Web\"},\"label\":\"LieuUrl1406\",\"fr\":\"30258\"},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "64cc5470-ea0a-272a-9eff-4d21c6f7eb64",
-          "name": "Find Batch Adresse Url Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    // venueUrl",
-                  "    tests[\"venueUrl type is Web\"] = jsonData.venueUrl.type === \"Web\";",
-                  "    tests[\"venueUrl address is http://digitalwallonia.be\"] = jsonData.venueUrl.address === \"http://digitalwallonia.be\";",
-                  "    postman.setNextRequest(\"Batch contacts Adresse Etendue v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3c135f63-6903-6591-6e9b-f80d60445e5a",
-          "name": "Batch contacts Adresse Etendue v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Adresse Etendue Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"lieuEtendu\":{\"action\":\"add\",\"label\":\"adresseEtendueEvenementTest\",\"fr\":\"Test adresse étendue Postman\"},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"lieuEtendu\":{\"action\":\"add\",\"label\":\"adresseEtendueEvenementTest\",\"fr\":\"Test adresse étendue Postman\"},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7dfffefe-dcf8-9a18-a5d4-7e7af540ae1d",
-          "name": "Find Batch Adresse Etendue Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    // venueAdditionalInformation",
-                  "    tests[\"venueAdditionalInformation is Test adresse étendue Postman\"] = jsonData.venueAdditionalInformation[0].text === \"Test adresse étendue Postman\";",
-                  "    postman.setNextRequest(\"Batch Infos De Base Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e7b589c0-2430-0aa1-aa15-cd36d223b205",
-          "name": "Batch Infos De Base Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let eventV2Id = pm.environment.get(\"eventV2Id\");",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    if (jsonData.response.evenement.id && jsonData.response.evenement.id === eventV2Id) {",
-                  "        console.log(\"jsonData a un id \" + eventV2Id);",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "    }",
-                  "    postman.setNextRequest(\"Find Batch Infos De Base Event v3\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"evenement\":{\"id\":{{eventV2Id}},\"permalien\":\"ajout-event-test-postman\",\"dateCommentaires\":{\"action\":\"add\",\"label\":\"titreEvenementComplément horaire test Postman\",\"fr\":\"Complément horaire test Postman\"},\"publicCible\":{\"action\":\"add\",\"label\":\"titreEvenementPour le public de Postman\",\"fr\":\"Pour le public de Postman\"},\"prix\":{\"action\":\"add\",\"label\":\"prixEvenementGratuit pour Postman\",\"fr\":\"Gratuit pour Postman\"},\"journee\":true,\"telephone\":{\"international\":\"+3243800513\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800514\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32472859685\",\"codePays\":\"BE\"},\"url\":{\"adresse\":\"https://www.digitalwallonia.be\",\"type\":{\"id\":10,\"nom\":\"Web\"}},\"email\":{\"id\":\"44372\"},\"cibles\":{\"0\":{\"id\":\"1\"},\"1\":{\"id\":\"2\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"evenement\":{\"id\":{{eventV2Id}},\"permalien\":\"ajout-event-test-postman\",\"dateCommentaires\":{\"action\":\"add\",\"label\":\"titreEvenementComplément horaire test Postman\",\"fr\":\"Complément horaire test Postman\"},\"publicCible\":{\"action\":\"add\",\"label\":\"titreEvenementPour le public de Postman\",\"fr\":\"Pour le public de Postman\"},\"prix\":{\"action\":\"add\",\"label\":\"prixEvenementGratuit pour Postman\",\"fr\":\"Gratuit pour Postman\"},\"journee\":true,\"telephone\":{\"international\":\"+3243800513\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800514\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32472859685\",\"codePays\":\"BE\"},\"url\":{\"adresse\":\"https://www.digitalwallonia.be\",\"type\":{\"id\":10,\"nom\":\"Web\"}},\"email\":{\"id\":\"44372\"},\"cibles\":{\"0\":{\"id\":\"1\"},\"1\":{\"id\":\"2\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "27dc72d6-3184-ac07-6b0b-082981896faf",
-          "name": "Find Batch Infos De Base Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    //slug",
-                  "    tests[\"slug fr published is ajout-event-test-postman\"] = jsonData.slug.find(i => i.status === \"Published\" && i.language === \"fre\").slug === \"ajout-event-test-postman\";",
-                  "    //scheduleAdditionalInformation",
-                  "    tests[\"scheduleAdditionalInformation is Complément horaire test Postman\"] = jsonData.scheduleAdditionalInformation[0].text === \"Complément horaire test Postman\";",
-                  "    //price",
-                  "    tests[\"price is Gratuit pour Postman\"] = jsonData.price[0].text === \"Gratuit pour Postman\";",
-                  "    //targetAudience",
-                  "    tests[\"targetAudience is Pour le public de Postman\"] = jsonData.targetAudience[0].text === \"Pour le public de Postman\";",
-                  "    //day",
-                  "    tests[\"day is true\"] = jsonData.day === true;",
-                  "    //faxNumbers",
-                  "    tests[\"faxNumbers is 3243800514\"] = jsonData.faxNumbers[0] === 3243800514;",
-                  "    //phoneNumbers",
-                  "    tests[\"phoneNumbers is 3243800513\"] = jsonData.phoneNumbers[0] === 3243800513;",
-                  "    tests[\"phoneNumbers is 32472859685\"] = jsonData.phoneNumbers[1] === 32472859685;",
-                  "    //emailAddresses",
-                  "    tests[\"emailAddresses is info@digitalwallonia.be\"] = jsonData.emailAddresses[0] === \"info@digitalwallonia.be\";",
-                  "    //themes",
-                  "    tests[\"themes v2Id 1 is secteur numérique\"] = jsonData.themes.find(i => i.v2Id === 1).title[0].text === \"secteur numérique\";",
-                  "    tests[\"themes v2Id 2 is entreprises\"] = jsonData.themes.find(i => i.v2Id === 2).title[0].text === \"entreprises\";",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Event v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{eventV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e01f5ac6-d2e5-0b5c-fe7d-4b4f3b7d12f4",
-          "name": "Delete Event v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"L'événement a été supprimé en v2\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"eventV2Id\");",
-                  "    postman.setNextRequest(\"Delete Event v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "evenements",
-                "{{eventV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "554e3796-3d5f-55b4-f43b-5f3234028357",
-          "name": "Delete Event v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f7f0d073-ce13-4ba9-a6f4-861774d8a041",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"L'événement a été supprimé en v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"eventv3Id\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "{{eventV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "b57accd6-494d-476e-87bc-54057d1e4b4d",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "09b31856-5d49-44d6-b1da-6e9975d95eed",
             "type": "text/javascript",
             "exec": [
               ""
