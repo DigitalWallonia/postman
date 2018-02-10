@@ -5244,7 +5244,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "feb225b1-3bdf-4f4b-bd1a-720ff3ebff4a",
+                "id": "ffaf9f9c-c928-4741-9b6c-b33deeee197f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5254,6 +5254,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    pm.environment.unset(\"page2IdEN\");",
+                  "    postman.setNextRequest(\"Find Artifact previous tests pressreview\");",
                   "}"
                 ]
               }
@@ -5284,7 +5285,8 @@
               "query": [
                 {
                   "key": "force",
-                  "value": "true"
+                  "value": "true",
+                  "equals": true
                 }
               ]
             },
