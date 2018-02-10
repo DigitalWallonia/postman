@@ -8041,7 +8041,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b861b149-acd0-4075-8274-c9e94764730e",
+                "id": "178bed76-b9d8-49cf-bebb-36c978451f9a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -8051,7 +8051,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"TagCategory was deleted in v3\"] = jsonData.count ",
                   "        && jsonData.count === 1;",
-                  "    pm.environment.unset(\"tagCategoryV3Id\");",
+                  "    pm.environment.unset(\"tagBundleV3Id\");",
                   "}",
                   "",
                   "postman.setNextRequest(\"Find Artifact from previous tests project\");"
