@@ -2612,6 +2612,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "953b08c7-d3a2-4665-9f72-7584273f8a27",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2622,6 +2623,7 @@
                   "",
                   "    tests[\"L'événement a été supprimé en v2\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"eventV2Id\");",
+                  "    pm.environment.unset(\"eventPermalienV2Id\");",
                   "    postman.setNextRequest(\"Delete Event v3\");",
                   "}"
                 ]
