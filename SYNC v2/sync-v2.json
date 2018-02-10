@@ -9185,13 +9185,10 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "90b1bdc0-b32f-43b6-8c5b-46896a06282c",
+                "id": "fbe2cdb3-4d30-4578-993f-1453161c1027",
                 "type": "text/javascript",
                 "exec": [
-                  "postman.setEnvironmentVariable(\"eventV2Permalien\", `automatedtestevent-${Math.random().toString(36).substring(2).toLowerCase()}`);",
-                  "postman.setEnvironmentVariable(\"eventV2Intitule\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"eventV2Description\", `automatedTestEvent.${Math.random().toString(36).substring(2)}`);",
-                  "postman.setEnvironmentVariable(\"eventV2Date\", new Date());"
+                  ""
                 ]
               }
             }
@@ -9206,7 +9203,7 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien={{eventV2Permalien}}&dateDebut={{eventV2Date}}&dateFin={{eventV2Date}}&statut=agenda_statut_publie",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=automatedtestevent{{$timestamp}}&dateDebut=2017-11-28T15:48:42&dateFin=2017-11-30T15:48:42&statut=agenda_statut_archive",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -9223,22 +9220,22 @@
                 },
                 {
                   "key": "permalien",
-                  "value": "{{eventV2Permalien}}",
+                  "value": "automatedtestevent{{$timestamp}}",
                   "equals": true
                 },
                 {
                   "key": "dateDebut",
-                  "value": "{{eventV2Date}}",
+                  "value": "2017-11-28T15:48:42",
                   "equals": true
                 },
                 {
                   "key": "dateFin",
-                  "value": "{{eventV2Date}}",
+                  "value": "2017-11-30T15:48:42",
                   "equals": true
                 },
                 {
                   "key": "statut",
-                  "value": "agenda_statut_publie",
+                  "value": "agenda_statut_archive",
                   "equals": true
                 }
               ]
