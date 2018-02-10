@@ -191,6 +191,8 @@
             {
               "listen": "test",
               "script": {
+                "id": "f93507a7-bb46-46f4-90be-898a5b4a2f28",
+                "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
@@ -202,20 +204,25 @@
                   "    if (jsonData.response.profil.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
+                  "        postman.setEnvironmentVariable(\"profileTitreV2Id\", jsonData.response.profil.nom);",
                   "        postman.setNextRequest(\"Find New Profile v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
                   "    }",
                   "}"
-                ],
-                "type": "text/javascript"
+                ]
               }
             }
           ],
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
             "body": {
               "mode": "formdata",
               "formdata": [
@@ -227,12 +234,12 @@
                 {
                   "key": "nom",
                   "type": "text",
-                  "value": "Test Synchro 1"
+                  "value": "Test Synchro 2{{$timestamp}}"
                 },
                 {
                   "key": "permalien",
                   "type": "text",
-                  "value": "test-synchro-1{{$timestamp}}"
+                  "value": "test-synchro-1"
                 },
                 {
                   "key": "statut",
