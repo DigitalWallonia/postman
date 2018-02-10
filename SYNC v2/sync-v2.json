@@ -7007,7 +7007,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e092d00d-9d9e-41fb-9cbd-951b2f335b3b",
+                "id": "485fd093-827c-4974-8fa0-6c4db6453adc",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -7021,7 +7021,7 @@
                   "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800785\";",
                   "        tests[\"faxNumbers 1\"] = jsonData.faxNumbers[0] = \"3243800563\";",
                   "        tests[\"faxNumbers 2\"] = jsonData.faxNumbers[1] = \"32478968596\";",
-                  "        postman.setNextRequest(\"\");",
+                  "        postman.setNextRequest(\"Batch Urls Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
