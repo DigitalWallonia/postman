@@ -2670,7 +2670,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f7f0d073-ce13-4ba9-a6f4-861774d8a041",
+                "id": "017b2b89-8142-4b05-a962-290c129ee933",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -2680,6 +2680,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"L'événement a été supprimé en v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"eventv3Id\");",
+                  "    postman.setNextRequest(\"Find Artifact from previous tests post\");",
                   "}",
                   ""
                 ]
