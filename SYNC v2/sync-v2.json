@@ -191,7 +191,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f93507a7-bb46-46f4-90be-898a5b4a2f28",
+                "id": "ff2d79f0-5b17-47d1-9eb7-8e92928b1820",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -205,6 +205,7 @@
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
                   "        postman.setEnvironmentVariable(\"profileTitreV2Id\", jsonData.response.profil.nom);",
+                  "        postman.setEnvironmentVariable(\"profilePermalienV2Id\", jsonData.response.profil.permalien);",
                   "        postman.setNextRequest(\"Find New Profile v3\");",
                   "    }",
                   "    else{",
