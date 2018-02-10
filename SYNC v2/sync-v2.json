@@ -8076,21 +8076,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/{{tagCategoryV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles/{{tagBundleV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "tagCategories",
-                "{{tagCategoryV3Id}}"
+                "tagBundles",
+                "{{tagBundleV3Id}}"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
