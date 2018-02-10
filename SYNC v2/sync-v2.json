@@ -6805,7 +6805,7 @@
         },
         {
           "_postman_id": "dbf4e0fa-fd2d-297b-71ae-cffb016563bd",
-          "name": "Batch Tag Contact v2 copy",
+          "name": "Batch Photo Contact v2",
           "event": [
             {
               "listen": "test",
