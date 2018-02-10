@@ -1121,6 +1121,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "31c3e4f7-bb87-4689-87f6-1c738806bda7",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1133,6 +1134,7 @@
                   "    if (jsonData.response.evenement.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
                   "        postman.setEnvironmentVariable(\"eventV2Id\", jsonData.response.evenement.id);",
+                  "        postman.setEnvironmentVariable(\"eventPermalienV2Id\", jsonData.response.evenement.permalien);",
                   "        postman.setNextRequest(\"Find New Event v3\");",
                   "    }",
                   "    else{",
@@ -1156,7 +1158,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=ajout-event-postman&dateDebut=2017-11-28T15:48:42&dateFin=2017-11-30T15:48:42&statut=agenda_statut_archive",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=ajout-event-postman{{$timestamp}}&dateDebut=2017-11-28T15:48:42&dateFin=2017-11-30T15:48:42&statut=agenda_statut_archive",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -1173,7 +1175,7 @@
                 },
                 {
                   "key": "permalien",
-                  "value": "ajout-event-postman",
+                  "value": "ajout-event-postman{{$timestamp}}",
                   "equals": true
                 },
                 {
