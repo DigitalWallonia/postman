@@ -891,6 +891,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "4aede300-3769-416b-842d-95b8bbf63dc3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -901,6 +902,8 @@
                   "",
                   "    tests[\"Le profil a été supprimée\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"profileV2Id\");",
+                  "    pm.environment.unset(\"profileTitreV2Id\");",
+                  "    pm.environment.unset(\"profilePermalienV2Id\");",
                   "    postman.setNextRequest(\"Delete Profile v3\");",
                   "}"
                 ]
