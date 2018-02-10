@@ -4724,7 +4724,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Page EN\",\n  \"slug\": \"test-page-EN\",\n  \"content\": \"Ceci est une page de test EN\",\n  \"status\": \"publish\"\n}"
+              "raw": "{\n  \"title\": \"Test Page EN\",\n  \"slug\": \"test-page-EN{{$timestamp}}\",\n  \"content\": \"Ceci est une page de test EN\",\n  \"status\": \"publish\"\n}"
             },
             "url": {
               "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/pages/?lang=en",
@@ -4741,7 +4741,8 @@
               "query": [
                 {
                   "key": "lang",
-                  "value": "en"
+                  "value": "en",
+                  "equals": true
                 }
               ]
             },
