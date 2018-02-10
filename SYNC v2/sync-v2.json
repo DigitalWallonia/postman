@@ -7836,7 +7836,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1f576ec8-7ac9-4366-9083-09f49ae4ddcd",
+                "id": "635ab896-597a-4c40-9ba4-1d63b1678f0d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", () => {",
@@ -7845,16 +7845,16 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Theme was added in v2\"] = jsonData",
+                  "    tests[\"Bundle was added in v2\"] = jsonData",
                   "        && jsonData.response",
-                  "        && jsonData.response.theme",
-                  "        && jsonData.response.theme.id;",
+                  "        && jsonData.response.bundle",
+                  "        && jsonData.response.bundle.id;",
                   "    if (jsonData",
                   "        && jsonData.response",
-                  "        && jsonData.response.theme",
-                  "        && jsonData.response.theme.id) {",
+                  "        && jsonData.response.bundle",
+                  "        && jsonData.response.bundle.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"themeV2Id\", jsonData.response.theme.id);",
+                  "        postman.setEnvironmentVariable(\"bundleV2Id\", jsonData.response.bundle.id);",
                   "        postman.setNextRequest(\"Find New TagBundle v3\");",
                   "    } else{",
                   "        postman.setNextRequest(null);",
@@ -7879,22 +7879,30 @@
           "request": {
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"bundle\":{\"action\":\"add\",\"theme\":\"2\",\"label\":\"testbundlelabel{{$timestamp}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleBundleIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundleintitule{{$timestamp}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundledescription{{$timestamp}}\"}},\"visibleFront\":true,\"actif\":true,\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"bundle\":{\"action\":\"add\",\"theme\":\"2\",\"label\":\"testbundlelabel{{$timestamp}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleBundleIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundleintitule{{$timestamp}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeIdtestbundlelabel{{$timestamp}}\",\"fr\":\"testbundledescription{{$timestamp}}\"}},\"visibleFront\":true,\"actif\":true,\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
                 {
                   "key": "oauth_token",
                   "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "json",
-                  "value": "{\"theme\":{\"action\":\"add\",\"label\":\"{{themeV2Label}}\",\"intitule\":{\"court\":{\"label\":\"labelIntituleThemeId{{themeV2Label}}\",\"fr\":\"{{themeV2Intitule}}\"}},\"description\":{\"court\":{\"label\":\"labelDescriptionThemeId{{themeV2Label}}\",\"fr\":\"{{themeV2Description}}\"}},\"statut\":{\"label\":\"theme_statut_redaction\",\"langue\":\"FRE\",\"original\":\"rédaction\",\"fr\":\"rédaction\"},\"visibleFront\":false,\"actif\":false,\"user\":\"Synchronization v2\"}}",
-                  "type": "text"
+                  "equals": true
                 }
               ]
             },
-            "url": "{{v2_protocol}}://{{v2_domain}}/services/batch",
             "description": null
           },
           "response": []
