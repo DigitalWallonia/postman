@@ -7906,7 +7906,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "fabc2a95-60bb-453a-ba0b-bec1f7a0f245",
+                "id": "c7baa965-e33e-4349-9c93-776edd5aae15",
                 "type": "text/javascript",
                 "exec": [
                   "const expectedStatus = 'Pending';",
@@ -7919,7 +7919,7 @@
                   "});",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    const jsonData = JSON.parse(responseBody);",
-                  "    tests[\"A new TagCategory has been added in v3\"] = typeof(jsonData.id) !== \"undefined\";",
+                  "    tests[\"A new TagBundle has been added in v3\"] = typeof(jsonData.id) !== \"undefined\";",
                   "    tests[`Status is ${expectedStatus}`] = typeof(jsonData.status) !== \"undefined\" ",
                   "        && jsonData.status === expectedStatus;",
                   "    tests[`Slug is ${expectedSlug}`] = typeof(jsonData.slug) !== 'undefined'",
@@ -7941,7 +7941,7 @@
                   "        && json.shortDescription[0].text.length",
                   "        && json.shortDescription[0].text === expectedShortDescription;",
                   "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"tagCategoryV3Id\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"tagBundleV3Id\", jsonData.id);",
                   "        postman.setNextRequest(\"Delete Theme v2\");",
                   "    } else {",
                   "       postman.setNextRequest(\"Delete Theme v2\");",
@@ -7956,14 +7956,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?filter={\"where\":{\"v2Id\":\"{{themeV2Id}}\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles/findOne?filter={\"where\":{\"v2Id\":\"{{themeV2Id}}\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "tagCategories",
+                "tagBundles",
                 "findOne"
               ],
               "query": [
