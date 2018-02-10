@@ -7750,7 +7750,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagBundles/findOne?filter={\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles/findOne?filter={\"where\":{ \"slug.slug\":\"{{bundleLabelV2Id}}\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -7763,7 +7763,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"automatedTest\"}}}",
+                  "value": "{\"where\":{ \"slug.slug\":\"{{bundleLabelV2Id}}\"}}",
                   "equals": true
                 },
                 {
