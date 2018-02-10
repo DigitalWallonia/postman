@@ -1344,7 +1344,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "84f63828-2478-4a4a-9da6-f234c9a336cb",
+                "id": "9e0da4b0-4dab-43a8-9086-3b340adbb130",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1355,9 +1355,9 @@
                   "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
                   "    //title",
                   "    tests[\"title fr is Sensibilisation à la facturation électronique en français\"] = jsonData.title.find(titre => titre.language === 'fre').text === `${pm.environment.get(\"eventTitreFRV2Id\")}`;",
-                  "    tests[\"title en is Sensibilisation à la facturation électronique en anglais\"] = jsonData.title.find(titre => titre.language === 'eng').text === `${pm.environment.get(\"eventTitreENV2Id\")}`",
-                  "    tests[\"title nl is Sensibilisation à la facturation électronique en néerlandais\"] = jsonData.title.find(titre => titre.language === 'dut').text === `${pm.environment.get(\"eventTitreNLV2Id\")}`",
-                  "    tests[\"title de is Sensibilisation à la facturation électronique en allemand\"] = jsonData.title.find(titre => titre.language === 'ger').text === `${pm.environment.get(\"eventTitreDEV2Id\")}`",
+                  "    tests[\"title en is Sensibilisation à la facturation électronique en anglais\"] = jsonData.title.find(titre => titre.language === 'eng').text === `${pm.environment.get(\"eventTitreENV2Id\")}`;",
+                  "    tests[\"title nl is Sensibilisation à la facturation électronique en néerlandais\"] = jsonData.title.find(titre => titre.language === 'dut').text === `${pm.environment.get(\"eventTitreNLV2Id\")}`;",
+                  "    tests[\"title de is Sensibilisation à la facturation électronique en allemand\"] = jsonData.title.find(titre => titre.language === 'ger').text === `${pm.environment.get(\"eventTitreDEV2Id\")}`;",
                   "    postman.setNextRequest(\"Set Vignette to Event v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Event v2\");",
