@@ -5297,6 +5297,1017 @@
       ]
     },
     {
+      "_postman_id": "781c3dec-a576-8854-7ade-147da8d91385",
+      "name": "Add New Presse v2 / PressReview v3",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "e2af44aa-37b3-788e-3e62-dbcc555b4c54",
+          "name": "Find Artifact previous tests pressreview",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ce12dfa6-3b07-4760-9448-1b4e36884a98",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests pressreview\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add PresseReview v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"title.text\":\"Le cours du bitcoin\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"title.text\":\"Le cours du bitcoin\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8daa3ae4-5b8b-1111-bb6a-ab09b8b99bee",
+          "name": "Delete Artifact from previous tests pressreview",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e05d095d-25b8-412d-acb5-7e57a6010c90",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"pressev3Id\");",
+                  "}",
+                  "postman.setNextRequest(\"Add PresseReview v2\");",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "{{presseV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "32a7ed58-811b-ccd4-2338-350ad407ce34",
+          "name": "Add PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "84066367-f923-4d99-9640-e35947e922ff",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.presse.id !== \"undefined\";",
+                  "    if (jsonData.response.presse.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"presseV2Id\", jsonData.response.presse.id);",
+                  "        postman.setNextRequest(\"Batch Infos de base PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "dateParution",
+                  "value": "2018-02-01T00:00:00+0100",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/presse/add",
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "808b5df5-f156-429f-b4ef-86c29e0414ea",
+          "name": "Batch Infos de base PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "39042de4-d9f1-4717-b6f2-e3eb5391a81c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
+                  "        postman.setNextRequest(\"Find New PresseReview v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":{{presseV2Id}},\"titre\":{\"label\":\"labelTitrePresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le cours du bitcoin\",\"fr\":\"Le cours du bitcoin\"},\"description\":{\"label\":\"labelDescriptionPresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\",\"fr\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\"},\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"add\"},\"cibles\":{\"0\":{\"id\":\"1\"}},\"visibleFront\":true,\"profils\":{},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"presse\":{\"id\":{{presseV2Id}},\"titre\":{\"label\":\"labelTitrePresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le cours du bitcoin\",\"fr\":\"Le cours du bitcoin\"},\"description\":{\"label\":\"labelDescriptionPresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\",\"fr\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\"},\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"add\"},\"cibles\":{\"0\":{\"id\":\"1\"}},\"visibleFront\":true,\"profils\":{},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e557147f-9a3b-652a-51d2-24e9e4a90812",
+          "name": "Find New PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f34e8277-527e-4b77-9aca-1cf6e9e9c625",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
+                  "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-01-31T23:00:00.000Z\";",
+                  "        tests[\"status\"] = jsonData.status === \"Published\";",
+                  "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
+                  "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
+                  "        tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
+                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8d2d9d5d-e117-4166-146e-92ae2a67a352",
+          "name": "Batch Tag PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a84652b-b8e7-4d9c-9e71-ce1f7a36b04d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
+                  "        postman.setNextRequest(\"Find Tag in PresseReview v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "d9396458-4ab0-e9b2-7ae2-61fd6319729c",
+          "name": "Find Tag in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0ab3e901-e5a3-4637-aa64-58d21eafcc13",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
+                  "        postman.setNextRequest(\"Batch Profile Quoted PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "ec321ed8-b297-dea0-ee3d-c3b4a80884ca",
+          "name": "Batch Profile Quoted PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "656105ba-e7ce-4b2e-a395-0aeca8099efc",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
+                  "        postman.setNextRequest(\"Find Profile Quoted in PresseReview v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "5e365555-51b3-d0e3-5108-11cd9d908d03",
+          "name": "Find Profile Quoted in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e855eae7-a805-42e7-b1fa-406943dc677d",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"Profile Quoted\"] = jsonData.find(p => p.profile.v2Id === 2914).role === \"Quoted\";",
+                  "        tests[\"Profile Dogstudio\"] = jsonData.find(p => p.profile.v2Id === 2914).profile.title[0].text === \"Dogstudio\";",
+                  "        postman.setNextRequest(\"Find Profile Source in PresseReview v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "xPressReviewProfile",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "fr",
+                  "equals": true
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "405fb403-2f78-218a-bbca-749811a7741a",
+          "name": "Find Profile Source in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "216afbbe-9510-4035-9320-bff379cdfe90",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"Profile Source\"] = jsonData.find(p => p.profile.v2Id === 10317).role === \"Source\";",
+                  "        tests[\"Profile Le Soir\"] = jsonData.find(p => p.profile.v2Id === 10317).profile.title[0].text === \"Le Soir\";",
+                  "        postman.setNextRequest(\"Batch Contact Quoted PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "xPressReviewProfile",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "fr",
+                  "equals": true
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e8bad6f0-f0dd-95ee-3abd-70a6f874ec7d",
+          "name": "Batch Contact Quoted PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "159b10b2-15ad-4d73-a26f-49472e78d913",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
+                  "        postman.setNextRequest(\"Find Contact Quoted in PresseReview v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "fc540c80-0094-e3eb-e174-1211cad269a7",
+          "name": "Find Contact Quoted in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "37c44c3c-d964-4eae-a89f-c64dfed6d2a8",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"Contact Myrto\"] = jsonData.contacts.find(c => c.v2Id === 2525).firstName === \"Myrto\";",
+                  "        tests[\"Contact Melard\"] = jsonData.contacts.find(c => c.v2Id === 2525).lastName === \"Melard\";",
+                  "        postman.setNextRequest(\"Batch Contact Journalist PresseReview v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "0481904e-c95b-a829-6f60-e5259545b23d",
+          "name": "Batch Contact Journalist PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a326a38a-7967-46dd-af1a-dbf16c94c1d4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
+                  "        postman.setNextRequest(\"Find Contact Journalist in PresseReview v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"id\":1873,\"role\":\"pressecontact_role_journaliste\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"id\":1873,\"role\":\"pressecontact_role_journaliste\"}},\"user\":\"Cédric Waxweiler\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "eef24b95-255b-73ba-9bb3-462423be576e",
+          "name": "Find Contact Journalist in PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "462217f0-2a78-4705-b8ce-aba1b1a2826c",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
+                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
+                  "        tests[\"Contact Journalist\"] = jsonData.contacts.find(c => c.v2Id === 1873).role === \"Journalist\";",
+                  "        tests[\"Contact Brigitte\"] = jsonData.contacts.find(c => c.v2Id === 1873, c =>  c.role === Journalist).firstName === \"Brigitte\";",
+                  "        tests[\"Contact Doucet\"] = jsonData.contacts.find(c => c.v2Id === 1873, c =>  c.role === Journalist).lastName === \"Doucet\";",
+                  "    }",
+                  "    postman.setNextRequest(\"Delete PresseReview v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "88aad640-d0e6-7331-66b0-fe21f1ca9b63",
+          "name": "Delete PresseReview v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "de775aee-0f12-4221-bc1b-ea0dcf3e9a44",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"L'article de presse a été supprimé\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"presseV2Id\");",
+                  "    postman.setNextRequest(\"Delete PresseReview v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/presse/{{presseV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "presse",
+                "{{presseV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}"
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "23d5284c-ded2-9c8f-e200-bdf67e8d475e",
+          "name": "Delete PresseReview v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3cd787e7-0d39-4d6d-9e22-f03821a63459",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"presseV3Id\");",
+                  "    postman.setNextRequest('Find Artifact from previous tests post');",
+                  "}else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pressReviews",
+                "{{presseV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "0d07bce7-8488-1ad2-6044-8f43fcc7a46f",
       "name": "Add New Theme v2 / TagCategory v3",
       "description": "",
@@ -8853,1017 +9864,6 @@
               ""
             ]
           }
-        }
-      ]
-    },
-    {
-      "_postman_id": "781c3dec-a576-8854-7ade-147da8d91385",
-      "name": "Add New Presse v2 / PressReview v3",
-      "description": "",
-      "item": [
-        {
-          "_postman_id": "e2af44aa-37b3-788e-3e62-dbcc555b4c54",
-          "name": "Find Artifact previous tests pressreview",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ce12dfa6-3b07-4760-9448-1b4e36884a98",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests pressreview\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add PresseReview v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"title.text\":\"Le cours du bitcoin\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"title.text\":\"Le cours du bitcoin\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8daa3ae4-5b8b-1111-bb6a-ab09b8b99bee",
-          "name": "Delete Artifact from previous tests pressreview",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e05d095d-25b8-412d-acb5-7e57a6010c90",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"pressev3Id\");",
-                  "}",
-                  "postman.setNextRequest(\"Add PresseReview v2\");",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "{{presseV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "32a7ed58-811b-ccd4-2338-350ad407ce34",
-          "name": "Add PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "84066367-f923-4d99-9640-e35947e922ff",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un événement a été ajouté\"] = jsonData.response.presse.id !== \"undefined\";",
-                  "    if (jsonData.response.presse.id) {",
-                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"presseV2Id\", jsonData.response.presse.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base PresseReview v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "dateParution",
-                  "value": "2018-02-01T00:00:00+0100",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/presse/add",
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "808b5df5-f156-429f-b4ef-86c29e0414ea",
-          "name": "Batch Infos de base PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "39042de4-d9f1-4717-b6f2-e3eb5391a81c",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
-                  "        postman.setNextRequest(\"Find New PresseReview v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":{{presseV2Id}},\"titre\":{\"label\":\"labelTitrePresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le cours du bitcoin\",\"fr\":\"Le cours du bitcoin\"},\"description\":{\"label\":\"labelDescriptionPresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\",\"fr\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\"},\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"add\"},\"cibles\":{\"0\":{\"id\":\"1\"}},\"visibleFront\":true,\"profils\":{},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"presse\":{\"id\":{{presseV2Id}},\"titre\":{\"label\":\"labelTitrePresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le cours du bitcoin\",\"fr\":\"Le cours du bitcoin\"},\"description\":{\"label\":\"labelDescriptionPresseId{{presseV2Id}}\",\"langue\":\"FRE\",\"original\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\",\"fr\":\"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\"},\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"add\"},\"cibles\":{\"0\":{\"id\":\"1\"}},\"visibleFront\":true,\"profils\":{},\"tags\":{},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e557147f-9a3b-652a-51d2-24e9e4a90812",
-          "name": "Find New PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f34e8277-527e-4b77-9aca-1cf6e9e9c625",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        postman.setEnvironmentVariable(\"presseV3Id\", jsonData.id);",
-                  "        tests[\"publicationDate\"] = jsonData.publicationDate === \"2018-01-31T23:00:00.000Z\";",
-                  "        tests[\"status\"] = jsonData.status === \"Published\";",
-                  "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
-                  "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-à-dire une monnaie virtuelle protégée par de très nombreux codes d'accès qui a pour symbole un B barré de deux traits verticaux\";",
-                  "        tests[\"themes secteur numérique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur numérique\";",
-                  "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8d2d9d5d-e117-4166-146e-92ae2a67a352",
-          "name": "Batch Tag PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "9a84652b-b8e7-4d9c-9e71-ce1f7a36b04d",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
-                  "        postman.setNextRequest(\"Find Tag in PresseReview v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"tags\":{\"0\":{\"id\":\"250\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d9396458-4ab0-e9b2-7ae2-61fd6319729c",
-          "name": "Find Tag in PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0ab3e901-e5a3-4637-aa64-58d21eafcc13",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
-                  "        postman.setNextRequest(\"Batch Profile Quoted PresseReview v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ec321ed8-b297-dea0-ee3d-c3b4a80884ca",
-          "name": "Batch Profile Quoted PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "656105ba-e7ce-4b2e-a395-0aeca8099efc",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
-                  "        postman.setNextRequest(\"Find Profile Quoted in PresseReview v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "5e365555-51b3-d0e3-5108-11cd9d908d03",
-          "name": "Find Profile Quoted in PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e855eae7-a805-42e7-b1fa-406943dc677d",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        tests[\"Profile Quoted\"] = jsonData.find(p => p.profile.v2Id === 2914).role === \"Quoted\";",
-                  "        tests[\"Profile Dogstudio\"] = jsonData.find(p => p.profile.v2Id === 2914).profile.title[0].text === \"Dogstudio\";",
-                  "        postman.setNextRequest(\"Find Profile Source in PresseReview v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "xPressReviewProfile",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "fr",
-                  "equals": true
-                },
-                {
-                  "key": "filter",
-                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "405fb403-2f78-218a-bbca-749811a7741a",
-          "name": "Find Profile Source in PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "216afbbe-9510-4035-9320-bff379cdfe90",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        tests[\"Profile Source\"] = jsonData.find(p => p.profile.v2Id === 10317).role === \"Source\";",
-                  "        tests[\"Profile Le Soir\"] = jsonData.find(p => p.profile.v2Id === 10317).profile.title[0].text === \"Le Soir\";",
-                  "        postman.setNextRequest(\"Batch Contact Quoted PresseReview v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile/?lang=fr&filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "xPressReviewProfile",
-                ""
-              ],
-              "query": [
-                {
-                  "key": "lang",
-                  "value": "fr",
-                  "equals": true
-                },
-                {
-                  "key": "filter",
-                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\"}],\"where\":{\"pressReviewId\":\"{{presseV3Id}}\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "e8bad6f0-f0dd-95ee-3abd-70a6f874ec7d",
-          "name": "Batch Contact Quoted PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "159b10b2-15ad-4d73-a26f-49472e78d913",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
-                  "        postman.setNextRequest(\"Find Contact Quoted in PresseReview v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"email\":\"49367\",\"id\":\"2525\",\"role\":\"pressecontact_role_cite\",\"profil\":\"2941\",\"action\":\"add\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fc540c80-0094-e3eb-e174-1211cad269a7",
-          "name": "Find Contact Quoted in PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "37c44c3c-d964-4eae-a89f-c64dfed6d2a8",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        tests[\"Contact Myrto\"] = jsonData.contacts.find(c => c.v2Id === 2525).firstName === \"Myrto\";",
-                  "        tests[\"Contact Melard\"] = jsonData.contacts.find(c => c.v2Id === 2525).lastName === \"Melard\";",
-                  "        postman.setNextRequest(\"Batch Contact Journalist PresseReview v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "0481904e-c95b-a829-6f60-e5259545b23d",
-          "name": "Batch Contact Journalist PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "a326a38a-7967-46dd-af1a-dbf16c94c1d4",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.response.presse.id && jsonData.response.presse.id == presseV2Id) {",
-                  "        postman.setNextRequest(\"Find Contact Journalist in PresseReview v3\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"id\":1873,\"role\":\"pressecontact_role_journaliste\"}},\"user\":\"Cédric Waxweiler\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"contacts\":{\"0\":{\"id\":1873,\"role\":\"pressecontact_role_journaliste\"}},\"user\":\"Cédric Waxweiler\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "eef24b95-255b-73ba-9bb3-462423be576e",
-          "name": "Find Contact Journalist in PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "462217f0-2a78-4705-b8ce-aba1b1a2826c",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let presseV2Id = pm.environment.get(\"presseV2Id\");",
-                  "    if (jsonData.v2Id && jsonData.v2Id == presseV2Id) {",
-                  "        tests[\"Contact Journalist\"] = jsonData.contacts.find(c => c.v2Id === 1873).role === \"Journalist\";",
-                  "        tests[\"Contact Brigitte\"] = jsonData.contacts.find(c => c.v2Id === 1873, c =>  c.role === Journalist).firstName === \"Brigitte\";",
-                  "        tests[\"Contact Doucet\"] = jsonData.contacts.find(c => c.v2Id === 1873, c =>  c.role === Journalist).lastName === \"Doucet\";",
-                  "    }",
-                  "    postman.setNextRequest(\"Delete PresseReview v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{presseV2Id}}}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "88aad640-d0e6-7331-66b0-fe21f1ca9b63",
-          "name": "Delete PresseReview v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "de775aee-0f12-4221-bc1b-ea0dcf3e9a44",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"L'article de presse a été supprimé\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"presseV2Id\");",
-                  "    postman.setNextRequest(\"Delete PresseReview v3\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/presse/{{presseV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "presse",
-                "{{presseV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}"
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "23d5284c-ded2-9c8f-e200-bdf67e8d475e",
-          "name": "Delete PresseReview v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3cd787e7-0d39-4d6d-9e22-f03821a63459",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"L'article de presse est supprimé\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"presseV3Id\");",
-                  "    postman.setNextRequest('Find Artifact from previous tests post');",
-                  "}else{",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{presseV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "pressReviews",
-                "{{presseV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            },
-            "description": null
-          },
-          "response": []
         }
       ]
     }
