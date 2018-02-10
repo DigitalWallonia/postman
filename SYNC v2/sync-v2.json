@@ -7988,7 +7988,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c45efea3-0399-4565-9092-c7ebb377cd16",
+                "id": "e111a27f-db03-441b-bd27-82b7be448561",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -7998,7 +7998,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Theme was deleted in v2\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"themeV2Id\");",
-                  "    postman.setNextRequest(\"Delete TagCategory v3\");",
+                  "    postman.setNextRequest(\"Delete TagBundle v3\");",
                   "}"
                 ]
               }
