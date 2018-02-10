@@ -7404,7 +7404,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "26bc7d6e-b215-47d3-9ad7-cbdfc17ce245",
+                "id": "c22e4880-b035-4680-9d14-29e728aae64a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful DELETE Request\", () => {",
@@ -7440,7 +7440,8 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
