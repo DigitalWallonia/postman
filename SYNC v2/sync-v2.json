@@ -4620,7 +4620,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "43e01d39-ee53-4852-bc7e-f7f438f6ee03",
+                "id": "4ad4d775-9f0e-4fa8-8147-5b775f02ffc8",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -4629,7 +4629,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Status",
-                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T15:38:36.000Z\";",
+                  "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T14:38:36.000Z\";",
                   "    postman.setNextRequest(\"Add Page EN v2\");",
                   "}",
                   "else{",
