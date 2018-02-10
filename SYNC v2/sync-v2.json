@@ -1118,7 +1118,7 @@
         },
         {
           "_postman_id": "f9e907f1-d48b-36ab-f1db-ceb3d66ba793",
-          "name": "Add Event v2",
+          "name": "Add Event in v2",
           "event": [
             {
               "listen": "test",
