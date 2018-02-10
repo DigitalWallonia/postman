@@ -3453,7 +3453,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"title\": \"Test Post EN\",\n\t\"slug\": \"test-post-EN\",\n\t\"content\": \"Ceci est un post de test EN\",\n\t\"status\": \"publish\"\n}"
+              "raw": "{\n  \"title\": \"Test Post EN\",\n  \"slug\": \"test-post-EN{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test EN\",\n  \"status\": \"publish\"\n}"
             },
             "url": {
               "raw": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/?lang=en",
@@ -3470,7 +3470,8 @@
               "query": [
                 {
                   "key": "lang",
-                  "value": "en"
+                  "value": "en",
+                  "equals": true
                 }
               ]
             },
