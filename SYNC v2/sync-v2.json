@@ -7906,7 +7906,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c7baa965-e33e-4349-9c93-776edd5aae15",
+                "id": "2da98b79-8137-47ad-8874-6ca53172c195",
                 "type": "text/javascript",
                 "exec": [
                   "const expectedStatus = 'Pending';",
@@ -7942,10 +7942,8 @@
                   "        && json.shortDescription[0].text === expectedShortDescription;",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"tagBundleV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Delete Theme v2\");",
-                  "    } else {",
-                  "       postman.setNextRequest(\"Delete Theme v2\");",
                   "    }",
+                  "    postman.setNextRequest(\"Delete Bundle v2\");",
                   "}"
                 ]
               }
