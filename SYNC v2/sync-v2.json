@@ -1344,6 +1344,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "653542f7-0b6b-449f-b1aa-e2c371e04506",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1353,10 +1354,10 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
                   "    //title",
-                  "    tests[\"title fr is Sensibilisation à la facturation électronique en français\"] = jsonData.title.find(titre => titre.language === 'fre').text === \"Sensibilisation à la facturation électronique en français\";",
-                  "    tests[\"title en is Sensibilisation à la facturation électronique en anglais\"] = jsonData.title.find(titre => titre.language === 'eng').text === \"Sensibilisation à la facturation électronique en anglais\";",
-                  "    tests[\"title nl is Sensibilisation à la facturation électronique en néerlandais\"] = jsonData.title.find(titre => titre.language === 'dut').text === \"Sensibilisation à la facturation électronique en néerlandais\";",
-                  "    tests[\"title de is Sensibilisation à la facturation électronique en allemand\"] = jsonData.title.find(titre => titre.language === 'ger').text === \"Sensibilisation à la facturation électronique en allemand\";",
+                  "    /tests[\"title fr is Sensibilisation à la facturation électronique en français\"] = jsonData.title.find(titre => titre.language === 'fre').text === `${pm.environment.get(\"eventTitreFRV2Id\")}`;",
+                  "    tests[\"title en is Sensibilisation à la facturation électronique en anglais\"] = jsonData.title.find(titre => titre.language === 'eng').text === `${pm.environment.get(\"eventTitreENV2Id\")}`",
+                  "    tests[\"title nl is Sensibilisation à la facturation électronique en néerlandais\"] = jsonData.title.find(titre => titre.language === 'dut').text === `${pm.environment.get(\"eventTitreNLV2Id\")}`",
+                  "    tests[\"title de is Sensibilisation à la facturation électronique en allemand\"] = jsonData.title.find(titre => titre.language === 'ger').text === `${pm.environment.get(\"eventTitreDEV2Id\")}`",
                   "    postman.setNextRequest(\"Set Vignette to Event v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Event v2\");",
