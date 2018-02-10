@@ -6487,6 +6487,59 @@
           "response": []
         },
         {
+          "_postman_id": "57e0ba21-a1a0-c95e-bd06-d6c60fc7a6d2",
+          "name": "Add Email to Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "1fb66f7a-8c74-438c-9f89-105ccb69ae7c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un paramètre id",
+                  "    tests[\"Un email au contact été ajouté\"] = jsonData.response.email.id !== \"undefined\";",
+                  "    if (jsonData.response.email.id) {",
+                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
+                  "        postman.setEnvironmentVariable(\"emailContactV2Id\", jsonData.response.email.id);",
+                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "type": "text"
+                },
+                {
+                  "key": "adresse",
+                  "value": "testlastnamecontact{{$timestamp}}@Testlastnamecontact.be",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/emails/add",
+            "description": null
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d9766b8a-bbb9-008c-e8ab-36dfa8716a6d",
           "name": "Batch Infos de base Contact v2",
           "event": [
@@ -7183,59 +7236,6 @@
                 }
               ]
             },
-            "description": null
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "57e0ba21-a1a0-c95e-bd06-d6c60fc7a6d2",
-          "name": "Add Email to Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "1fb66f7a-8c74-438c-9f89-105ccb69ae7c",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un paramètre id",
-                  "    tests[\"Un email au contact été ajouté\"] = jsonData.response.email.id !== \"undefined\";",
-                  "    if (jsonData.response.email.id) {",
-                  "        // On met la valeur de la variable d'environnement id avec l'id fraichement créé",
-                  "        postman.setEnvironmentVariable(\"emailContactV2Id\", jsonData.response.email.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "type": "text"
-                },
-                {
-                  "key": "adresse",
-                  "value": "testlastnamecontact{{$timestamp}}@Testlastnamecontact.be",
-                  "type": "text"
-                }
-              ]
-            },
-            "url": "{{v2_protocol}}://{{v2_domain}}/emails/add",
             "description": null
           },
           "response": []
