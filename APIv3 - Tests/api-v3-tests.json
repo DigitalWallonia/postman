@@ -2463,12 +2463,12 @@
             {
               "listen": "test",
               "script": {
-                "id": "757df29d-0c06-463a-afc2-1f5d6dfe4cc5",
+                "id": "3a8f3255-dc4d-4145-84c5-86c21287b6ac",
                 "type": "text/javascript",
                 "exec": [
                   "let jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < postman.getEnvironmentVariable('RESPONSE_TIME');",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
                   "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"Test ajout page\";"
                 ]
