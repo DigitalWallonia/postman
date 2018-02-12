@@ -581,6 +581,61 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "ec0e111e-6d27-1c69-9cda-3149469909e0",
+          "name": "Updates All Post Tags Where Tags",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5d863bbd-c095-4f04-b11b-11e45baa8b3d",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\"status\": \"Hidden\"\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/update?where={\"tags.v2Id\":196}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "where",
+                  "value": "{\"tags.v2Id\":196}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
