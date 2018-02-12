@@ -437,6 +437,153 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "c698e59c-f4a1-5d95-99fd-8c22c3f03283",
+          "name": "Updates All Post Where Tags",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2b8c9751-d09e-4746-a4e9-966f19bb0753",
+                "type": "text/javascript",
+                "exec": [
+                  "{",
+                  "\"tags\": {",
+                  "    \"v2Id\": 14,",
+                  "    \"status\": \"Published\",",
+                  "    \"id\": \"5a65e9e1c2c99942f22cabce\",",
+                  "    \"title\": [",
+                  "        {",
+                  "            \"language\": \"fre\",",
+                  "            \"text\": \"Communauté germanophone\",",
+                  "            \"createdAt\": null,",
+                  "            \"id\": \"5a65e9e1bf283\"",
+                  "        }",
+                  "    ],",
+                  "    \"shortDescription\": [",
+                  "        {",
+                  "            \"language\": \"fre\",",
+                  "            \"text\": \"localisation ou activités en Communauté germanophone\",",
+                  "            \"createdAt\": null,",
+                  "            \"id\": \"5a65e9e1bf2c3\"",
+                  "        }",
+                  "    ],",
+                  "    \"slug\": [",
+                  "        {",
+                  "            \"language\": \"fre\",",
+                  "            \"slug\": \"germanophone\",",
+                  "            \"status\": null,",
+                  "            \"createdAt\": null,",
+                  "            \"id\": \"5a65e9e1bf236\"",
+                  "        }",
+                  "    ],",
+                  "    \"tagBundle\": {",
+                  "        \"v2Id\": 3,",
+                  "        \"status\": \"Published\",",
+                  "        \"id\": \"5a65e9dfc2c99942f22caba6\",",
+                  "        \"title\": [",
+                  "            {",
+                  "                \"language\": \"fre\",",
+                  "                \"text\": \"territoire et institutions\",",
+                  "                \"createdAt\": null,",
+                  "                \"id\": \"5a65e9dfbc405\"",
+                  "            }",
+                  "        ],",
+                  "        \"shortDescription\": [",
+                  "            {",
+                  "                \"language\": \"fre\",",
+                  "                \"text\": \"Appartenance territoriale et institutionnelle\",",
+                  "                \"createdAt\": null,",
+                  "                \"id\": \"5a65e9dfbc446\"",
+                  "            }",
+                  "        ],",
+                  "        \"slug\": [",
+                  "            {",
+                  "                \"language\": \"fre\",",
+                  "                \"slug\": \"territoire\",",
+                  "                \"status\": null,",
+                  "                \"createdAt\": null,",
+                  "                \"id\": \"5a65e9dfbc37b\"",
+                  "            }",
+                  "        ],",
+                  "        \"createdAt\": \"2018-01-22T13:40:47.788Z\",",
+                  "        \"updatedAt\": \"2018-01-22T13:40:47.788Z\",",
+                  "        \"tagCategory\": {",
+                  "            \"v2Id\": 1,",
+                  "            \"status\": \"Published\",",
+                  "            \"id\": \"5a65e9dfc2c99942f22cab9d\",",
+                  "            \"title\": [",
+                  "                {",
+                  "                    \"language\": \"fre\",",
+                  "                    \"text\": \"appartenance territoriale et institutionnelle\",",
+                  "                    \"createdAt\": null,",
+                  "                    \"id\": \"5a65e9df82dd1\"",
+                  "                }",
+                  "            ],",
+                  "            \"shortDescription\": [",
+                  "                {",
+                  "                    \"language\": \"fre\",",
+                  "                    \"text\": \"Appartenance institutionnelle (Région Wallonne, Fédération Wallonie Bruxelles, etc.) et localisation géographique (Wallonie, Bruxelles, etc.). Répond à la question: \\\"où suis-je situé ?\\\", \\\"Quel est mon périmètre institutionnel de travail ?\\\"\",",
+                  "                    \"createdAt\": null,",
+                  "                    \"id\": \"5a65e9df82e0c\"",
+                  "                }",
+                  "            ],",
+                  "            \"slug\": [",
+                  "                {",
+                  "                    \"language\": \"fre\",",
+                  "                    \"slug\": \"localisation\",",
+                  "                    \"status\": null,",
+                  "                    \"createdAt\": null,",
+                  "                    \"id\": \"5a65e9df82d94\"",
+                  "                }",
+                  "            ],",
+                  "            \"createdAt\": \"2018-01-22T13:40:47.543Z\",",
+                  "            \"updatedAt\": \"2018-01-22T13:40:47.543Z\"",
+                  "        }",
+                  "    },",
+                  "    \"createdAt\": \"2018-01-22T13:40:49.811Z\",",
+                  "    \"updatedAt\": \"2018-01-22T13:40:49.811Z\"",
+                  "}",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/update?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
