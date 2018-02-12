@@ -552,7 +552,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\"status\": \"Hidden\"\n}"
+              "raw": "{\n\"status\": \"Published\"\n}"
             },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/posts/update?where={\"tags.v2Id\":196}&access_token={{v3_token}}",
