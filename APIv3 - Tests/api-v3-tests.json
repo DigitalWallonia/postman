@@ -2395,14 +2395,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "804b3391-aca2-47ad-bed2-635094d2568d",
+                "id": "0bf680a7-241d-4cfe-9ee4-a4118dc49185",
                 "type": "text/javascript",
                 "exec": [
                   "// Récupération du JSON complet",
                   "let jsonData = JSON.parse(responseBody);",
                   "",
                   "// Série de tests sur la présence des éléments obligatoires",
-                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < postman.getEnvironmentVariable('RESPONSE_TIME');",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
                   "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Le paramètre id est présent'\"] = jsonData.id;",
                   "tests[\"Le paramètre slug est présent\"] = jsonData.slug[0].slug;",
