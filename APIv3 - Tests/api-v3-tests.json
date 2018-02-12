@@ -2463,14 +2463,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "7a5f55ad-5f69-441d-912f-e94916741de6",
+                "id": "757df29d-0c06-463a-afc2-1f5d6dfe4cc5",
                 "type": "text/javascript",
                 "exec": [
                   "let jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < postman.getEnvironmentVariable('RESPONSE_TIME');",
                   "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"Digital Wallonia Champion\";"
+                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"Test ajout page\";"
                 ]
               }
             }
