@@ -9773,7 +9773,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d836cacc-daa0-4fee-b83e-68ce46309ac7",
+                "id": "46df8536-ca16-44cb-b7ad-4d21c7623f96",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9782,8 +9782,8 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "",
-                  "    tests[\"Tag mission was deleted in v2\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"missionV2Id\");",
+                  "    tests[\"Event was deleted in v2\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"eventV2Id\");",
                   "}",
                   "postman.setNextRequest(\"Delete Mission v3\");"
                 ]
@@ -9798,21 +9798,20 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/tags/461/delete?oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/events/1621/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
               ],
               "path": [
-                "tags",
-                "461",
+                "events",
+                "1621",
                 "delete"
               ],
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
+                  "value": "{{v2_token}}"
                 }
               ]
             },
