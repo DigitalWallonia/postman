@@ -636,6 +636,40 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "cd847285-fe1e-dbc7-16bf-b2385d831a8b",
+          "name": "Find Posts match v2Id contact",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"where\":{\"tags.v2Id\":14}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"tags.v2Id\":14}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
