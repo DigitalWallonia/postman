@@ -9185,10 +9185,11 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "fbe2cdb3-4d30-4578-993f-1453161c1027",
+                "id": "d881548e-0210-4c4d-a954-d9e334912317",
                 "type": "text/javascript",
                 "exec": [
-                  ""
+                  "let currentDate = new Date();",
+                  "pm.environment.set(\"currentDate\", currentDate);"
                 ]
               }
             }
@@ -9203,7 +9204,7 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=automatedtestevent{{$timestamp}}&dateDebut=2017-11-28T15:48:42&dateFin=2017-11-30T15:48:42&statut=agenda_statut_archive",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/add?oauth_token={{v2_token}}&permalien=automatedtestevent{{$timestamp}}&dateDebut={{currentDate}}&dateFin={{currentDate}}&statut=agenda_statut_archive",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -9225,12 +9226,12 @@
                 },
                 {
                   "key": "dateDebut",
-                  "value": "2017-11-28T15:48:42",
+                  "value": "{{currentDate}}",
                   "equals": true
                 },
                 {
                   "key": "dateFin",
-                  "value": "2017-11-30T15:48:42",
+                  "value": "{{currentDate}}",
                   "equals": true
                 },
                 {
