@@ -492,6 +492,40 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "71f9e05d-03c2-fa8b-1c7a-b66456183272",
+          "name": "Find Posts match v2Id tag",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"where\":{\"tags.v2Id\":196}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"tags.v2Id\":196}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
