@@ -445,13 +445,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "2b8c9751-d09e-4746-a4e9-966f19bb0753",
+                "id": "3d14999a-df31-41c6-96ef-a66425ac4951",
                 "type": "text/javascript",
                 "exec": [
                   "{",
                   "\"tags\": {",
                   "    \"v2Id\": 14,",
-                  "    \"status\": \"Published\",",
+                  "    \"status\": \"Hidden\",",
                   "    \"id\": \"5a65e9e1c2c99942f22cabce\",",
                   "    \"title\": [",
                   "        {",
@@ -563,7 +563,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/update?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/posts/update?\"where\":{ \"tags.v2Id\":\"14\"}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -574,6 +574,11 @@
                 "update"
               ],
               "query": [
+                {
+                  "key": "\"where\":{ \"tags.v2Id\":\"14\"}",
+                  "value": "",
+                  "equals": false
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
