@@ -9773,7 +9773,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "46df8536-ca16-44cb-b7ad-4d21c7623f96",
+                "id": "dfc4c2b0-d76b-4de4-85cd-2e9f7745c828",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9785,7 +9785,7 @@
                   "    tests[\"Event was deleted in v2\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"eventV2Id\");",
                   "}",
-                  "postman.setNextRequest(\"Delete Mission v3\");"
+                  "postman.setNextRequest(\"Delete Tag Mission v2\");"
                 ]
               }
             }
