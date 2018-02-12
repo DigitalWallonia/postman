@@ -645,7 +645,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"where\":{\"tags.v2Id\":14}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"where\":{\"contacts.v2Id\":36292}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -657,7 +657,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tags.v2Id\":14}}",
+                  "value": "{\"where\":{\"contacts.v2Id\":36292}}",
                   "equals": true
                 },
                 {
