@@ -9926,6 +9926,59 @@
             "description": ""
           },
           "response": []
+        },
+        {
+          "_postman_id": "9293bf4d-dfae-b92e-678b-71b6dd4fe7c1",
+          "name": "Delete Event v3 Mission v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "13791e8c-7125-45cc-a220-5ca09a19e0b9",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Event was deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"eventv3Id\");",
+                  "}",
+                  "postman.setNextRequest(\"Delete Tag Mission v2\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     }
