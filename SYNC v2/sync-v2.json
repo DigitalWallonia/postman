@@ -4092,7 +4092,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "239fb025-78b6-4eae-a638-498cef7b0ab4",
+                "id": "5280a96b-5039-4ddf-99b2-8888eec51274",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -4103,7 +4103,7 @@
                   "    postman.setEnvironmentVariable(\"pagev3Id\", jsonData.id);",
                   "    postman.setNextRequest(\"Delete Artifact from previous tests page\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
+                  "    postman.setNextRequest(\"Auth WP Page\");",
                   "}"
                 ]
               }
@@ -4130,11 +4130,13 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}"
+                  "value": "{\"where\":{ \"slug.slug\":{\"regexp\":\"test\"}}}",
+                  "equals": true
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
