@@ -4364,7 +4364,7 @@
         },
         {
           "_postman_id": "18a6ac37-64a5-fce6-5b5c-2c22d32e96d0",
-          "name": "Find Slug FR v3",
+          "name": "Find Slug FR v3 Page",
           "event": [
             {
               "listen": "test",
