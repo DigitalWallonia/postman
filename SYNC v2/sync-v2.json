@@ -4149,7 +4149,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3119157e-25d6-4d5a-be03-433e4df6b297",
+                "id": "e9771449-202d-4bff-8c4a-366b634a9162",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4159,12 +4159,8 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"La page est supprimée\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"pagev3Id\");",
-                  "    postman.setNextRequest(\"Auth WP\");",
                   "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
-                  ""
+                  "postman.setNextRequest(\"Auth WP Page\");"
                 ]
               }
             }
@@ -4190,7 +4186,8 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             },
