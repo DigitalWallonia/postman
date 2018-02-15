@@ -4303,7 +4303,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "627ac595-0ff5-4b65-a1bf-a0ee5370ecd3",
+                "id": "a7d292f8-367e-4d15-a227-77382bbc4576",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4316,7 +4316,7 @@
                   "    tests[\"Une page a été ajoutée\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"pageV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "        postman.setNextRequest(\"Find Slug FR v3 Page\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
