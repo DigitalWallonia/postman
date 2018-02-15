@@ -4200,7 +4200,7 @@
         },
         {
           "_postman_id": "38a136ee-31ac-9fc8-2e40-15a7577921c8",
-          "name": "Auth WP",
+          "name": "Auth WP Page",
           "event": [
             {
               "listen": "test",
