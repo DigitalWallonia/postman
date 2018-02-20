@@ -3792,12 +3792,6 @@
                   "key": "access_token",
                   "value": "{{v3_token}}",
                   "equals": true
-                },
-                {
-                  "key": "where",
-                  "value": "{\"and\":[{\"status\":\"Published\"},{\"slug\":{\"elemMatch\":{\"language\":\"fre\",\"status\":\"Published\"}}}]}}",
-                  "equals": true,
-                  "disabled": true
                 }
               ]
             },
