@@ -3744,6 +3744,66 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "8b024bd8-269d-6c34-a2d4-2dc4383e9782",
+          "name": "Event + Liaisons",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/5a82111c728b8f170251f38e?filter={\"include\":[{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "5a82111c728b8f170251f38e"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "where",
+                  "value": "{\"and\":[{\"status\":\"Published\"},{\"slug\":{\"elemMatch\":{\"language\":\"fre\",\"status\":\"Published\"}}}]}}",
+                  "equals": true,
+                  "disabled": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
