@@ -3358,7 +3358,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10}",
+              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3371,6 +3371,11 @@
                 {
                   "key": "filter",
                   "value": "{\"limit\":10}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
