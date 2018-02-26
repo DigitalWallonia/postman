@@ -4119,14 +4119,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "7a5f55ad-5f69-441d-912f-e94916741de6",
+                "id": "5902074f-2025-4652-a33f-13d2233caf99",
                 "type": "text/javascript",
                 "exec": [
-                  "let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < postman.getEnvironmentVariable('RESPONSE_TIME');",
-                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Le titre est présent\"] = jsonData.title[0].text === \"Digital Wallonia Champion\";"
+                  "let jsonData = JSON.parse(responseBody);"
                 ]
               }
             }
@@ -4139,22 +4135,16 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"champion\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pages",
-                "findOne"
+                "pages"
               ],
               "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"champion\"}}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
