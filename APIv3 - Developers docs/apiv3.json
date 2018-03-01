@@ -3938,6 +3938,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "b8522dd0-6606-4fb7-b5a8-6b5338bf9d38",
                 "type": "text/javascript",
                 "exec": [
                   "tests[\"Le temps de réponse est inférieur à 250ms\"] = responseTime < environment.responseTime;",
@@ -3948,30 +3949,51 @@
                   "tests[\"Il existe bien au moins 1 tag\"] = jsonData.length >= 1;"
                 ]
               }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "8edbb837-2cab-4bf2-ba95-d3ee1ff6d308",
+                "type": "text/javascript",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqId\", uuidv4());"
+                ]
+              }
             }
           ],
           "request": {
-            "method": "GET",
-            "header": [],
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\n    \"title\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"services publics\", \n            \"createdAt\" : \"2015-04-21T14:04:02.000+0000\", \n            \"id\" : \"d8cc89098c3cc7b6c37ed3b0b7e1c857\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"Public Services\", \n            \"createdAt\" : \"2015-04-21T14:04:02.000+0000\", \n            \"id\" : \"f628eacdae39e5437325e3992cf993c2\"\n        }\n    ], \n    \"shortDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Réinventer par le numérique la relation entre les administrations régionales et locales, les entreprises et le citoyen\", \n            \"createdAt\" : \"2015-04-21T14:04:02.000+0000\", \n            \"id\" : \"92eb0eeed2b06f94989ba13cad3cf984\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"A new generation of open public services, acting transparently and being by themselves an example of the digital transformation.\", \n            \"createdAt\" : \"2015-04-21T14:04:02.000+0000\", \n            \"id\" : \"75756b38509e7ae15e3a70e74849ce21\"\n        }\n    ], \n    \"longDescription\" : [\n\n    ],\n    \"slug\" : [\n        {\n            \"language\" : \"fre\", \n            \"slug\" : \"services-publics\", \n            \"status\" : \"Published\", \n            \"createdAt\" : null, \n            \"id\" : \"5a8b3dfb57f5a\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"slug\" : \"public-services\", \n            \"status\" : \"Published\", \n            \"createdAt\" : null, \n            \"id\" : \"5a8b3dfb57f99\"\n        }\n    ], \n    \"createdAt\" : \"2015-04-21T14:04:02.000+0000\", \n    \"updatedAt\" : \"2018-02-22T22:17:05.966+0000\", \n    \"v2Id\" : 4,\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://s3-eu-west-1.amazonaws.com/digitalwallonia-images/icones/themes/DW+Picto+Services+Publics+CMJN.jpg\",\n      \"name\": \"Services publics\",\n      \"id\": \"{{uniqId}}\"\n    }\n  ]\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/themes?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/themes/5a8b3dfba5aa1d3843896779?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "themes"
+                "themes",
+                "5a8b3dfba5aa1d3843896779"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
