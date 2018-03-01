@@ -78,6 +78,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "7ce55c4b-4f75-4862-b754-a09be1786c42",
                 "type": "text/javascript",
                 "exec": [
                   "// Récupération du JSON complet",
@@ -93,6 +94,8 @@
                   "tests[\"La valeur du paramètre statut est Published\"] = jsonData.status === \"Published\";",
                   "tests[\"Le paramètre type est présent\"] = jsonData.type;",
                   "tests[\"La valeur du paramètre type est Standard\"] = jsonData.type === \"Standard\";",
+                  "tests[\"La date de création est préservée\"] = jsonData.createdAt === \"2016-12-08T10:27:17.000Z\";",
+                  "tests[\"La date de modificatin est préservée\"] = jsonData.updatedAt === \"2017-10-12T11:23:13.777Z\";",
                   "",
                   "// Si le JSON comporte un paramètre id",
                   "if (responseBody.has(\"id\")) {",
