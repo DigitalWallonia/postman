@@ -3233,6 +3233,60 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "ac300b8c-4575-9397-7aba-bbf5351b90fe",
+          "name": "Liste des profils filtrés par thème",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Le temps de réponse est inférieur à 250ms\"] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
+                  "tests[\"On récupère bien 10 profils ou moins\"] = jsonData.length <= 10;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"themes.v2Id\": \"4\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"themes.v2Id\": \"4\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
