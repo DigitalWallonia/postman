@@ -4000,6 +4000,58 @@
             "description": null
           },
           "response": []
+        },
+        {
+          "_postman_id": "c342aac5-e070-7256-741b-de39b415906c",
+          "name": "Get Theme with Related",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f1b3e17c-9c9f-45db-9cc1-fedc3295641d",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?filter={\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"2017-11-27T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectId}}"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"2017-11-27T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
+            "description": null
+          },
+          "response": []
         }
       ]
     },
