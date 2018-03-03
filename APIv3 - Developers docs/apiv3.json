@@ -3975,7 +3975,24 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/themes",
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/themes?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "themes"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            },
             "description": null
           },
           "response": []
