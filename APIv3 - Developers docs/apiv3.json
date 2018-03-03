@@ -4037,7 +4037,7 @@
             }
           ],
           "request": {
-            "method": "PUT",
+            "method": "PATCH",
             "header": [
               {
                 "key": "Content-Type",
@@ -4046,7 +4046,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"longDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Réinventer par le numérique la relation entre les administrations régionales et locales, les entreprises et le citoyen\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"A new generation of open public services, acting transparently and being by themselves an example of the digital transformation.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }\n    ]\n}"
+              "raw": "{\n    \"longDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Faire progresser la taille et la valeur des entreprises du secteur numérique en stimulant le développement des compétences transversales et spécialisées pour les positionner sur les maillons les plus porteurs (production, capture, exploitation) de la chaîne de valeur, et ainsi dégager un avantage compétitif pour la Wallonie.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId1}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"Enable businesses in the digital sector to grow in size and value by stimulating the development of cross-disciplinary and specialist skills in order to focus on the most promising links in the value chain (production, data capture, utilisation) and thus create a competitive advantage for Wallonia.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId2}}\"\n        }\n    ]\n}"
             },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/themes/5a8b3dfba5aa1d3843896776?access_token={{v3_token}}",
