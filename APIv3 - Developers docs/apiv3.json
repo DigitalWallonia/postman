@@ -4019,7 +4019,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "532c2afa-1733-46bc-89b3-6683e6113213",
+                "id": "764447fd-4596-4f79-8a79-dccefccd4ba9",
                 "type": "text/javascript",
                 "exec": [
                   "function uuidv4() {",
@@ -4030,7 +4030,8 @@
                   "}",
                   "let currentDate = new Date();",
                   "pm.environment.set(\"currentDate\", currentDate);",
-                  "pm.environment.set(\"uniqId\", uuidv4());"
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());"
                 ]
               }
             }
@@ -4045,10 +4046,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"title\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"services publics\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"Public Services\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }\n    ], \n    \"shortDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Réinventer par le numérique la relation entre les administrations régionales et locales, les entreprises et le citoyen\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"A new generation of open public services, acting transparently and being by themselves an example of the digital transformation.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }\n    ], \n    \"longDescription\" : [\n\n    ],\n    \"slug\" : [\n        {\n            \"language\" : \"fre\", \n            \"slug\" : \"services-publics\", \n            \"status\" : \"Published\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"slug\" : \"public-services\", \n            \"status\" : \"Published\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }\n    ]\n}"
+              "raw": "{\n    \"longDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Réinventer par le numérique la relation entre les administrations régionales et locales, les entreprises et le citoyen\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"A new generation of open public services, acting transparently and being by themselves an example of the digital transformation.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId}}\"\n        }\n    ]\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/themes/{{themeId}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/themes/5a8b3dfba5aa1d3843896776?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4056,13 +4057,12 @@
               "path": [
                 "api",
                 "themes",
-                "{{themeId}}"
+                "5a8b3dfba5aa1d3843896776"
               ],
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
