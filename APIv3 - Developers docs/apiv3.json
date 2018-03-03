@@ -4019,7 +4019,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "764447fd-4596-4f79-8a79-dccefccd4ba9",
+                "id": "361d7e47-5865-4c16-b599-80ea9ac47639",
                 "type": "text/javascript",
                 "exec": [
                   "function uuidv4() {",
@@ -4031,7 +4031,9 @@
                   "let currentDate = new Date();",
                   "pm.environment.set(\"currentDate\", currentDate);",
                   "pm.environment.set(\"uniqId1\", uuidv4());",
-                  "pm.environment.set(\"uniqId2\", uuidv4());"
+                  "pm.environment.set(\"uniqId2\", uuidv4());",
+                  "pm.environment.set(\"uniqId3\", uuidv4());",
+                  "pm.environment.set(\"uniqId4\", uuidv4());"
                 ]
               }
             }
@@ -4046,7 +4048,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"longDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Faire progresser la taille et la valeur des entreprises du secteur numérique en stimulant le développement des compétences transversales et spécialisées pour les positionner sur les maillons les plus porteurs (production, capture, exploitation) de la chaîne de valeur, et ainsi dégager un avantage compétitif pour la Wallonie.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId1}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"Enable businesses in the digital sector to grow in size and value by stimulating the development of cross-disciplinary and specialist skills in order to focus on the most promising links in the value chain (production, data capture, utilisation) and thus create a competitive advantage for Wallonia.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId2}}\"\n        }\n    ]\n}"
+              "raw": "{\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"secteur numérique\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId1}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"Digital sector\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId2}}\"\n        }\n     ],\n    \"longDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"Faire progresser la taille et la valeur des entreprises du secteur numérique en stimulant le développement des compétences transversales et spécialisées pour les positionner sur les maillons les plus porteurs (production, capture, exploitation) de la chaîne de valeur, et ainsi dégager un avantage compétitif pour la Wallonie.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId3}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"Enable businesses in the digital sector to grow in size and value by stimulating the development of cross-disciplinary and specialist skills in order to focus on the most promising links in the value chain (production, data capture, utilisation) and thus create a competitive advantage for Wallonia.\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId4}}\"\n        }\n    ]\n}"
             },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/themes/5a8b3dfba5aa1d3843896776?access_token={{v3_token}}",
