@@ -9324,7 +9324,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "210a1ad9-2c96-4b89-ad0f-e70260761840",
+                "id": "bbfa4bd5-e440-43dc-96a5-101556f097c8",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9336,7 +9336,6 @@
                   "    tests[\"A mission has been linked to the event\"] = jsonData.missions && jsonData.missions.length > 0;",
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
-                  "        postman.setEnvironmentVariable(\"eventV3Id\", jsonData.id);",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Event Tag Mission v2\");",
@@ -9374,7 +9373,7 @@
                 }
               ]
             },
-            "description": ""
+            "description": null
           },
           "response": []
         },
@@ -9976,7 +9975,7 @@
                 }
               ]
             },
-            "description": ""
+            "description": null
           },
           "response": []
         }
