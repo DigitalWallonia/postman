@@ -1,8 +1,7 @@
 {
   "info": {
-    "name": "DigitalWallonia.be API v3",
     "_postman_id": "3350275b-9824-371e-add3-8329669e7ae5",
-    "description": "",
+    "name": "DigitalWallonia.be API v3",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item": [
@@ -43,8 +42,7 @@
               "mode": "raw",
               "raw": "{\n  \"email\": \"{{v3_email}}\",\n  \"password\": \"{{v3_password}}\"\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/users/login",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/users/login"
           },
           "response": []
         }
@@ -122,8 +120,7 @@
               "mode": "raw",
               "raw": "{\n  \"v2Id\": 222664,\n  \"status\": \"Published\",\n  \"publicationDate\": \"2017-10-18T07:44:07.000Z\",\n  \"title\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"Conf\\u00e9rences Smart Farming. Les messages cl\\u00e9s\",\n      \"id\": \"59edd06cdfe8e\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"Smart Farming. Key messages\",\n      \"id\": \"59edd06ce032d\"\n    }\n  ],\n  \"shortDescription\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"<p>Le num\\u00e9rique est de plus en plus pr\\u00e9sent dans les exploitations agricoles. Guidage GPS et logiciels d\\u2019aide \\u00e0 la d\\u00e9cision font d\\u00e9j\\u00e0 partie int\\u00e9grante de certaines fermes. D\\u2019autres technologies (robots, drones, cloud), jusqu\\u2019\\u00e0 pr\\u00e9sent moins utilis\\u00e9es par les agriculteurs, apparaissent d\\u00e9sormais dans le paysage agricole.<\\/p>\\n\",\n      \"id\": \"59edd06cdff44\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"<p>Agriculture and digital are increasingly associated in the news and many issues are emerging. What are the issues and opportunities for the farmer? Will digital technology revolutionize agriculture? Is there a choice? What technology for what use? Etc.<\\/p>\\n\",\n      \"id\": \"59edd06ce0360\"\n    }\n  ],\n  \"images\": [\n    \n  ],\n  \"content\": [\n    {\n      \"language\": \"fre\",\n      \"text\": \"<p>Agriculture et num\\u00e9rique sont de plus en plus souvent associ\\u00e9s dans l\\u2019actualit\\u00e9 et de nombreuses questions \\u00e9mergent. Quels enjeux et opportunit\\u00e9s pour l\\u2019agriculteur ? Le num\\u00e9rique va-t-il r\\u00e9volutionner l\\u2019agriculture ? A-t-on le choix ? Quelle technologie pour quel usage ? Etc.<\\/p>\\n<p><strong>Autant de questions que la <a href=\\\"https:\\/\\/www.cbc.be\\/entreprendre\\/fr.html?zone=topnav\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">CBC banque<\\/a> a souhait\\u00e9 adresser directement aux agriculteurs wallons lors d\\u2019un roadshow \\u00ab Agriculture Num\\u00e9rique \\u00bb.<\\/strong> En tant que banque partenaire du secteur agricole en Wallonia, CBC banque juge qu\\u2019il est important d\\u2019informer ses clients sur les enjeux de demain. De v\\u00e9ritables opportunit\\u00e9s sont \\u00e0 saisir, notamment sur la r\\u00e9organisation des fili\\u00e8res. Il est crucial que les agriculteurs soient une partie prenante centrale de la cha\\u00eene de valeur tout en ne perdant pas de vue que le digital reste au service de l\\u2019humain, et non l\\u2019inverse.<\\/p>\\n<p><strong>Trois conf\\u00e9rences ont \\u00e9t\\u00e9 organis\\u00e9es en f\\u00e9vrier 2017 \\u00e0 Amay, Mons et Gembloux et ont rassembl\\u00e9 plus de 600 agriculteurs.<\\/strong><\\/p>\\n<p><strong>Ce roadshow a \\u00e9t\\u00e9 l\\u2019occasion de :<\\/strong><\\/p>\\n<ul>\\n<li>Pr\\u00e9senter les r\\u00e9sultats de l\\u2019\\u00e9tude sur la transition num\\u00e9rique du secteur agricole wallon r\\u00e9alis\\u00e9e en 2016 par la CBC.<\\/li>\\n<li>Exposer des t\\u00e9moignages d\\u2019agriculteurs ayant int\\u00e9gr\\u00e9 une dimension num\\u00e9rique importante dans leur activit\\u00e9.<\\/li>\\n<li>Collecter des informations sur la perception du num\\u00e9rique par le monde agricole en Wallonie.<\\/li>\\n<\\/ul>\\n<h2>Agriculture et num\\u00e9rique : \\u00e9tat des lieux en Wallonie<\\/h2>\\n<p><strong><a href=\\\"https:\\/\\/cbc.prezly.com\\/resultats-du-premier-observatoire-cbc-de-la-transition-numerique-du-monde-agricole-wallon\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">Selon l\\u2019observatoire CBC sur la transition num\\u00e9rique<\\/a>, 60% des agriculteurs wallons utilisent internet pour leur activit\\u00e9 au bureau, mais seulement 12% l\\u2019utilisent sur le terrain.<\\/strong> En ce qui concerne les outils num\\u00e9riques utilis\\u00e9s, la tendance est la m\\u00eame. Parmi les agriculteurs qui utilisent internet:<\\/p>\\n<ul>\\n<li>68% d\\u2019entre eux utilisent des outils classiques (email, moteur de recherche et r\\u00e9seaux sociaux),<\\/li>\\n<li>17% des logiciels de gestion,<\\/li>\\n<li>12% seulement des technologies de terrain (t\\u00e9l\\u00e9guidage, capteur, drone, etc.).<\\/li>\\n<\\/ul>\\n<p><strong>Cette \\u00e9tude nous permet d\\u2019\\u00e9tablir un premier constat : les agriculteurs wallons semblent utiliser les outils num\\u00e9riques de fa\\u00e7on assez classique alors que le <a href=\\\"https:\\/\\/www.digitalwallonia.be\\/smart-farming\\/\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">Smart Farming <\\/a>offre la possibilit\\u00e9 d\\u2019utiliser des outils num\\u00e9riques tr\\u00e8s diversifi\\u00e9s et pouvant \\u00eatre int\\u00e9gr\\u00e9s sur l\\u2019ensemble de l\\u2019exploitation et de la cha\\u00eene de valeur<\\/strong>.<\\/p>\\n<p>Face \\u00e0 ce constat, il nous para\\u00eet important de sensibiliser les agriculteurs sur les derni\\u00e8res tendances en terme de transformation num\\u00e9rique ainsi que de les mettre en relation avec l\\u2019offre de produits et services num\\u00e9riques en r\\u00e9gion wallonne. C\\u2019est ensuite aux agriculteurs de juger de l\\u2019int\\u00e9r\\u00eat de certaines technologies pour leur exploitation. Les principales motivations d\\u2019utilisation de ces technologies sont :<\\/p>\\n<ul>\\n<li>en liant les pratiques agricoles aux besoins personnalis\\u00e9s des cultures et du b\\u00e9tail ;<\\/li>\\n<li>d\\u00e9velopper des avantages \\u00e9conomiques en stimulant la comp\\u00e9titivit\\u00e9 gr\\u00e2ce \\u00e0 des pratiques plus efficaces, mais aussi en cr\\u00e9ant de nouvelles opportunit\\u00e9s commerciales gr\\u00e2ce au temps lib\\u00e9r\\u00e9 ;<\\/li>\\n<li>r\\u00e9duire les risques environnementaux et l\\u2019empreinte de l\\u2019agriculture en limitant, notamment, l\\u2019utilisation d\\u2019intrants.<\\/li>\\n<\\/ul>\\n<h2>T\\u00e9moignages d\\u2019agriculteurs<\\/h2>\\n<p><strong>Les 3 t\\u00e9moignages diffus\\u00e9s lors des conf\\u00e9rences traitaient du sujet suivant : agriculture num\\u00e9rique, bras de levier pour am\\u00e9liorer la rentabilit\\u00e9 de nos exploitations ?<\\/strong><\\/p>\\n<ul>\\n<li>La ferme Cense du Mayeur, en Belgique, utilisant diff\\u00e9rents <a href=\\\"https:\\/\\/vimeo.com\\/210593742\\\">robots de traites, racleur, distributeur d\\u2019aliments, etc.<\\/a> ;<\\/li>\\n<li>Paul-Henri Leluc, producteur ind\\u00e9pendant en France, utilisant des <a href=\\\"https:\\/\\/www.youtube.com\\/watch?v=NvbWR5blw4I\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">pluviom\\u00e8tres num\\u00e9riques et drones<\\/a> ;<\\/li>\\n<li>Steve Tanner, en Suisse, utilisant un <a href=\\\"https:\\/\\/www.youtube.com\\/watch?v=CmsX0_ZVs_E\\\" target=\\\"_blank\\\" rel=\\\"noopener\\\">robot autonome de d\\u00e9sherbage<\\/a>.<\\/li>\\n<\\/ul>\\n<p>Chacun de ces t\\u00e9moignages met en exergue l\\u2019am\\u00e9lioration d\\u2019un enjeu agricole gr\\u00e2ce \\u00e0 l\\u2019int\\u00e9gration d\\u2019une technologie num\\u00e9rique sp\\u00e9cifique. Ces technologies sont donc utilis\\u00e9es comme moyens pour, par exemple:<\\/p>\\n<ul>\\n<li>optimiser la gestion des exploitations (anticiper l\\u2019\\u00e9volution des cultures, \\u2026),<\\/li>\\n<li>d\\u00e9velopper la comp\\u00e9titivit\\u00e9 (en gagnant du temps sur des t\\u00e2ches r\\u00e9p\\u00e9titives avec peu de valeur ajout\\u00e9e, \\u2026),<\\/li>\\n<li>cr\\u00e9er de nouvelles opportunit\\u00e9s (en consacrant du temps \\u00e0 de nouvelles activit\\u00e9s avec plus de valeur ajout\\u00e9e, \\u2026),<\\/li>\\n<li>utiliser moins d\\u2019intrants.<\\/li>\\n<\\/ul>\\n<p>Finalement, ces vid\\u00e9os montrent aussi que chaque situation est particuli\\u00e8re et que l\\u2019utilisation des technologies num\\u00e9riques est \\u00e0 d\\u00e9finir en fonction des sp\\u00e9cificit\\u00e9s des exploitations.<\\/p>\\n<p><iframe src=\\\"https:\\/\\/player.vimeo.com\\/video\\/210593742\\\" width=\\\"500\\\" height=\\\"281\\\" frameborder=\\\"0\\\" title=\\\"Digital Wallonia Smart farming : La ferme Cense du mayeur\\\" webkitallowfullscreen mozallowfullscreen allowfullscreen><\\/iframe><\\/p>\\n<h2>Perception du num\\u00e9rique par le monde agricole en Wallonie<\\/h2>\\n<p><strong>Tout au long des conf\\u00e9rences, des questions ont \\u00e9t\\u00e9 pos\\u00e9es aux participants sur 3 sujets cl\\u00e9s :<\\/strong><\\/p>\\n<ol>\\n<li>Sensibilisation et besoin en information.<\\/li>\\n<li>Int\\u00e9gration de technologies au sein des exploitations.<\\/li>\\n<li>Coop\\u00e9ration et partage de l\\u2019information.<\\/li>\\n<\\/ol>\\n<p>La premi\\u00e8re question ciblait l\\u2019int\\u00e9r\\u00eat port\\u00e9 \\u00e0 la th\\u00e9matique de la transformation num\\u00e9rique du secteur agricole. 90% des r\\u00e9pondants se disent int\\u00e9ress\\u00e9s par le sujet. Parmi ces int\\u00e9ress\\u00e9s:<\\/p>\\n<ul>\\n<li>53% sont convaincus de l\\u2019importance du sujet,<\\/li>\\n<li>16% se disent simplement int\\u00e9ress\\u00e9s,<\\/li>\\n<li>21% sont int\\u00e9ress\\u00e9s, mais pas assez inform\\u00e9s.<\\/li>\\n<\\/ul>\\n<p>La deuxi\\u00e8me question a \\u00e9t\\u00e9 pos\\u00e9e sur l\\u2019int\\u00e9r\\u00eat de l\\u2019int\\u00e9gration de nouvelles technologies (collier d\\u2019alimentation, GPS, capteur, etc.) permettant la gestion en temps r\\u00e9el de troupeaux et \\/ ou de parcelles. Il ressort que:<\\/p>\\n<ul>\\n<li>53% des r\\u00e9pondants ont confirm\\u00e9 \\u00eatre \\u00e9quip\\u00e9s ou en train de s\\u2019\\u00e9quiper de ces technologies,<\\/li>\\n<li>45% n\\u2019ont pas encore essay\\u00e9 d\\u2019int\\u00e9grer ces technologies sur leur exploitation, mais trouvent cependant le sujet int\\u00e9ressant,<\\/li>\\n<li>2% d\\u2019entre eux seulement n\\u2019en voient pas l\\u2019int\\u00e9r\\u00eat.<\\/li>\\n<\\/ul>\\n<p>Finalement, la derni\\u00e8re question portait sur l\\u2019int\\u00e9r\\u00eat d\\u2019int\\u00e9grer davantage de coop\\u00e9ration entre les exploitations agricoles au niveau du partage d\\u2019informations, de mat\\u00e9riel ou de main d\\u2019\\u0153uvre, etc. 58% des r\\u00e9pondants souhaitent plus de coop\\u00e9ration, alors que 33% souhaitent aussi plus de coop\\u00e9ration, mais pensent que cela reste une utopie. Finalement, 10% ne trouvent cela pas int\\u00e9ressant et, pour certains, potentiellement risqu\\u00e9.<\\/p>\\n\",\n      \"id\": \"59edd06cdff80\"\n    },\n    {\n      \"language\": \"eng\",\n      \"text\": \"<p>Agriculture and digital are increasingly associated in the news and many issues are emerging. What are the issues and opportunities for the farmer? Will digital technology revolutionize agriculture? Is there a choice? What technology for what use? Etc.<\\/p>\\n<p>So many questions that the CBC bank wished to address directly to Walloon farmers during a \\u00ab Digital Agriculture \\u00bb roadshow. As a bank partner in the agricultural sector in Wallonia, CBC Bank believes it is important to inform its clients about tomorrow\\u2019s issues. Real opportunities are to be seized, notably on the reorganization of the sectors. It is crucial that farmers be a central stakeholder in the value chain, bearing in mind that digital remains at the service of humans, not the other way round.<\\/p>\\n<p>Three conferences were held in Amay, Mons and Gembloux in February 2017 and brought together more than 600 farmers.<\\/p>\\n\",\n      \"id\": \"59edd06ce0395\"\n    }\n  ],\n  \"contacts\": [\n    \n  ],\n  \"createdAt\": \"2017-10-18T07:44:07.000Z\",\n  \"updatedAt\": \"2017-10-23T11:20:12.920Z\",\n  \"slug\": [\n    {\n      \"language\": \"fre\",\n      \"slug\": \"conferences-smart-farmingqvevzebazeebzbrzr\",\n      \"status\": \"Published\",\n      \"createdAt\": \"2017-10-18T07:44:07.000Z\",\n      \"id\": \"59edd06cdfe80\"\n    },\n    {\n      \"language\": \"eng\",\n      \"slug\": \"smart-farming-key-messageszebzebzrbzrbzrb\",\n      \"status\": \"Published\",\n      \"createdAt\": \"2017-10-18T08:21:15.000Z\",\n      \"id\": \"59edd06ce0322\"\n    }\n  ],\n  \"tags\": [\n    \n  ],\n  \"themes\": [\n    \n  ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/posts&access_token={{v3_token}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/posts&access_token={{v3_token}}"
           },
           "response": []
         },
@@ -241,8 +238,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}&access_token={{v3_token}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}&access_token={{v3_token}}"
           },
           "response": []
         },
@@ -272,8 +268,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}"
           },
           "response": []
         },
@@ -306,8 +301,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}"
           },
           "response": []
         },
@@ -354,8 +348,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -393,8 +386,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -433,8 +425,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -488,8 +479,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -522,8 +512,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -577,8 +566,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -632,8 +620,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -666,8 +653,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -731,8 +717,7 @@
               "mode": "raw",
               "raw": "    {\n        \"v2Id\": 323,\n        \"status\": \"Published\",\n        \"title\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"#WallCode\",\n                \"id\": \"5a158e962345d\"\n            }\n        ],\n        \"shortDescription\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"Ensemble des \u00e9l\u00e9ments relatifs au programme Wallcode : publications, partenaires, \u00e9v\u00e9nements, etc. Wallcode est le programme d'initiation des \u00e9l\u00e8ves wallons aux sciences informatiques, \u00e0 la logique algorithmique et aux langages de programmation faisant partie de la strat\u00e9gie Digital Wallonia\",\n                \"id\": \"5a158e96234a3\"\n            }\n        ],\n        \"longDescription\": [],\n        \"images\": [ \n          {\n          \"type\": \"Image\",\n          \"container\": \"digitalwallonia-images\",\n          \"name\": \"Image prise sur digital Wallonia\",\n          \"url\": \"https://api.digitalwallonia.be/v2/ressources/29604/kodo.jpg?w=250&h=175\",\n          \"id\": \"654651651651651651651651651654445616\"\n       }\n    ],\n        \"contacts\": [],\n        \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n        \"updatedAt\": \"2017-11-22T14:49:58.157Z\",\n        \"slug\": [\n            {\n                \"language\": \"fre\",\n                \"slug\": \"wallcode\",\n                \"id\": \"5a158e962340e\"\n            }\n        ],\n        \"tags\": [],\n        \"themes\": []\n    }"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects"
           },
           "response": [
             {
@@ -891,7 +876,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects?filter={\"limit\":5}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/projects?filter={\"limit\":15}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -903,7 +888,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":5}",
+                  "value": "{\"limit\":15}",
                   "equals": true
                 },
                 {
@@ -912,8 +897,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -947,8 +931,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}&access_token={{v3_token}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}&access_token={{v3_token}}"
           },
           "response": []
         },
@@ -978,8 +961,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projetId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projetId}}"
           },
           "response": []
         },
@@ -1012,8 +994,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projetId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projetId}}"
           },
           "response": []
         },
@@ -1032,8 +1013,7 @@
               "mode": "raw",
               "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://www.digitalwallonia.be/wp-content/uploads/2016/02/2228-commerce-connect\u00e9-04-job.jpg\",\n      \"name\": \"Commerce Connect\u00e9\",\n      \"id\": \"cdf4aad0-cf95-1ddezze-sdfsdf69fad2c811a3\"\n    }\n  ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/cdf59530-cf95-11e7-aa9d-69fad2c811a3",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/cdf59530-cf95-11e7-aa9d-69fad2c811a3"
           },
           "response": []
         },
@@ -1052,8 +1032,7 @@
               "mode": "raw",
               "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://www.digitalwallonia.be/wp-content/uploads/2017/06/DW-ecole-num\u00e9rique-1.jpg\",\n      \"name\": \"Ecole Num\u00e9rique\",\n      \"id\": \"cdf4aad0-cf95-11e7-sdfsdf69fad2c811a3\"\n    }\n  ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/cdf52000-cf95-11e7-aa9d-69fad2c811a3",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/cdf52000-cf95-11e7-aa9d-69fad2c811a3"
           },
           "response": []
         },
@@ -1072,8 +1051,7 @@
               "mode": "raw",
               "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://www.digitalwallonia.be/wp-content/uploads/2017/01/3027-Logo-Made-Different-01.jpg\",\n      \"name\": \"Made Different\",\n      \"id\": \"cdf4aad0-cf95-11e7-aa9d-69fad2c811a3\"\n    }\n  ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/cdf435a0-cf95-11e7-aa9d-69fad2c811a3",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/cdf435a0-cf95-11e7-aa9d-69fad2c811a3"
           },
           "response": []
         },
@@ -1092,8 +1070,7 @@
               "mode": "raw",
               "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://www.digitalwallonia.be/wp-content/uploads/2017/09/wallcode-Digital-Wallonia-2017.jpg\",\n      \"name\": \"KIKK Festival\",\n      \"id\": \"59df441e3a82zet\"\n    }\n  ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/cdf435a0-cf95-11e7-aa9d-69fad2c811a3",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/cdf435a0-cf95-11e7-aa9d-69fad2c811a3"
           },
           "response": []
         },
@@ -1130,8 +1107,7 @@
               "mode": "raw",
               "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://www.digitalwallonia.be/wp-content/uploads/2017/09/wallcode-Digital-Wallonia-2017.jpg\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"https://www.digitalwallonia.be/wp-content/uploads/2016/11/14692162_1186327821404607_1806988632639376034_o.jpg\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}"
           },
           "response": []
         },
@@ -1170,8 +1146,7 @@
               "mode": "raw",
               "raw": "{\n    \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"wallcode\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId1}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"wallcode\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId2}}\"\n        }\n    ],\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"#WallCode\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId1}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"#WallCode\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId2}}\"\n        }\n    ],\n    \"shortDescription\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Ensemble des \u00e9l\u00e9ments relatifs au programme Wallcode : publications, partenaires, \u00e9v\u00e9nements, etc. Wallcode est le programme d'initiation des \u00e9l\u00e8ves wallons aux sciences informatiques, \u00e0 la logique algorithmique et aux langages de programmation faisant partie de la strat\u00e9gie Digital Wallonia\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId3}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"Wallcode is the program for introducing Walloon students to computer science, algorithmic logic and programming languages \u200b\u200bthat are part of the Digital Wallonia strategy\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId4}}\"\n        }\n    ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}"
           },
           "response": []
         },
@@ -1203,8 +1178,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1238,8 +1212,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/profiles",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/profiles"
           },
           "response": []
         },
@@ -1303,8 +1276,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1318,8 +1290,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/profiles/46c2a320-cba6-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/profiles/46c2a320-cba6-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}"
           },
           "response": []
         },
@@ -1333,8 +1304,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/events/dadf2f90-cbad-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/events/dadf2f90-cbad-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}"
           },
           "response": []
         },
@@ -1348,8 +1318,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/posts/61808ec0-cdd6-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/posts/61808ec0-cdd6-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}"
           },
           "response": []
         },
@@ -1363,8 +1332,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/pressReviews/b3c0db40-d34e-11e7-afa2-9d3a45678716/projects/rel/{{projetId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/pressReviews/b3c0db40-d34e-11e7-afa2-9d3a45678716/projects/rel/{{projetId}}"
           },
           "response": []
         },
@@ -1383,8 +1351,7 @@
               "mode": "raw",
               "raw": "{\n  \"v2Id\": 7575,\n  \"role\": \"Contact Person\",\n    \"firstName\": \"Pascal\",\n    \"lastName\": \"Balancier\",\n    \"emailAddresses\": [\n        \"pascal.balancier@adn.aei.be\",\n        \"conference@seriousgame.be\",\n        \"pascal.balancier@adn.be\"\n    ],\n    \"phoneNumbers\": [\n        3281778086,\n        32477865941\n    ],\n    \"faxNumbers\": [\n        3281778097\n    ],\n    \"id\": \"5a0f1c7adaea5a674a38ff58\",\n    \"createdAt\": \"2014-11-27T09:28:28.000Z\",\n    \"updatedAt\": \"2017-11-17T17:29:30.519Z\",\n    \"images\": [\n        {\n            \"type\": \"Photo\",\n            \"container\": \"digitalwallonia-images\",\n            \"url\": \"https://dev-api.digitalwallonia.be/v2/ressources/27502/adn-pascal-balancier-2\",\n            \"id\": \"5a0f1c7a7aaed\"\n        }\n    ],\n    \"tags\": [\n        {\n            \"v2Id\": 33,\n            \"status\": \"Published\",\n            \"id\": \"5a0eedaddaea5a674a380bae\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"#edtechforum\",\n                    \"id\": \"5a0eedad4f235\"\n                }\n            ],\n            \"shortDescription\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"Communaut\u00e9 des entreprises et partenaires du #edtechforum. Le #edtechforum est une initiative de Digital Wallonia qui vise \u00e0 d\u00e9crypter les tendances et les perspectives TIC dans le contexte d'apprentissage\",\n                    \"id\": \"5a0eedad4f271\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"edtechforum\",\n                    \"id\": \"5a0eedad4f128\"\n                },\n                {\n                    \"language\": \"eng\",\n                    \"slug\": \"edtechforum\",\n                    \"id\": \"5a0eedad4f16d\"\n                },\n                {\n                    \"language\": \"dut\",\n                    \"slug\": \"edtechforum\",\n                    \"id\": \"5a0eedad4f1bf\"\n                },\n                {\n                    \"language\": \"ger\",\n                    \"slug\": \"edtechforum\",\n                    \"id\": \"5a0eedad4f1fa\"\n                }\n            ],\n            \"tagBundle\": {\n                \"v2Id\": 5,\n                \"status\": \"Published\",\n                \"id\": \"5a0eedabdaea5a674a380afa\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"r\u00e9seaux\",\n                        \"id\": \"5a0eedabc5726\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"R\u00e9seaux reconnus li\u00e9s \u00e0 la Wallonie\",\n                        \"id\": \"5a0eedabc5761\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc563a\"\n                    },\n                    {\n                        \"language\": \"eng\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc5676\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc56b0\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc56eb\"\n                    }\n                ],\n                \"createdAt\": \"2017-11-17T14:09:47.812Z\",\n                \"updatedAt\": \"2017-11-17T14:09:47.812Z\",\n                \"tagCategory\": {\n                    \"v2Id\": 3,\n                    \"status\": \"Published\",\n                    \"id\": \"5a0eedabdaea5a674a380af1\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"communaut\u00e9s\",\n                            \"id\": \"5a0eedaba96c0\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                            \"id\": \"5a0eedaba9707\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8dba\"\n                        },\n                        {\n                            \"language\": \"eng\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8df6\"\n                        },\n                        {\n                            \"language\": \"dut\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e30\"\n                        },\n                        {\n                            \"language\": \"ger\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e69\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-11-17T14:09:47.695Z\",\n                    \"updatedAt\": \"2017-11-17T14:09:47.695Z\"\n                }\n            },\n            \"createdAt\": \"2017-11-17T14:09:49.333Z\",\n            \"updatedAt\": \"2017-11-17T14:09:49.333Z\"\n        },\n        {\n            \"v2Id\": 87,\n            \"status\": \"Published\",\n            \"id\": \"5a0eedaedaea5a674a380c6d\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"produits et services edtech\",\n                    \"id\": \"5a0eedaec2e56\"\n                }\n            ],\n            \"shortDescription\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"Prestataires TICE / e-learning\",\n                    \"id\": \"5a0eedaec2e92\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"services-edtech\",\n                    \"id\": \"5a0eedaec2d68\"\n                },\n                {\n                    \"language\": \"eng\",\n                    \"slug\": \"services-edtech\",\n                    \"id\": \"5a0eedaec2da5\"\n                },\n                {\n                    \"language\": \"dut\",\n                    \"slug\": \"services-edtech\",\n                    \"id\": \"5a0eedaec2ddf\"\n                },\n                {\n                    \"language\": \"ger\",\n                    \"slug\": \"services-edtech\",\n                    \"id\": \"5a0eedaec2e17\"\n                }\n            ],\n            \"tagBundle\": {\n                \"v2Id\": 15,\n                \"status\": \"Published\",\n                \"id\": \"5a0eedabdaea5a674a380b04\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"ICT - services\",\n                        \"id\": \"5a0eedabd5da3\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"services ICT\",\n                        \"id\": \"5a0eedabd5de1\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"ict-services\",\n                        \"id\": \"5a0eedabd5cb4\"\n                    },\n                    {\n                        \"language\": \"eng\",\n                        \"slug\": \"ict-services\",\n                        \"id\": \"5a0eedabd5cf2\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"slug\": \"ict-services\",\n                        \"id\": \"5a0eedabd5d2c\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"slug\": \"ict-services\",\n                        \"id\": \"5a0eedabd5d66\"\n                    }\n                ],\n                \"createdAt\": \"2017-11-17T14:09:47.879Z\",\n                \"updatedAt\": \"2017-11-17T14:09:47.879Z\",\n                \"tagCategory\": {\n                    \"v2Id\": 2,\n                    \"status\": \"Published\",\n                    \"id\": \"5a0eedabdaea5a674a380af0\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"produits & services\",\n                            \"id\": \"5a0eedaba7f68\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Offre de produits et services. R\u00e9pond \u00e0 la question \\\"Quelle est mon offre ?\\\"\",\n                            \"id\": \"5a0eedaba7fa3\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"produits-services\",\n                            \"id\": \"5a0eedaba7e99\"\n                        },\n                        {\n                            \"language\": \"eng\",\n                            \"slug\": \"produits-services\",\n                            \"id\": \"5a0eedaba7ed4\"\n                        },\n                        {\n                            \"language\": \"dut\",\n                            \"slug\": \"produits-services\",\n                            \"id\": \"5a0eedaba7f0e\"\n                        },\n                        {\n                            \"language\": \"ger\",\n                            \"slug\": \"produits-services\",\n                            \"id\": \"5a0eedaba7f2c\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-11-17T14:09:47.689Z\",\n                    \"updatedAt\": \"2017-11-17T14:09:47.689Z\"\n                }\n            },\n            \"createdAt\": \"2017-11-17T14:09:50.801Z\",\n            \"updatedAt\": \"2017-11-17T14:09:50.801Z\"\n        },\n        {\n            \"v2Id\": 92,\n            \"status\": \"Hidden\",\n            \"id\": \"5a0eedacdaea5a674a380b66\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"grappe SeriousGame.be\",\n                    \"id\": \"5a0eedacae9e4\"\n                }\n            ],\n            \"shortDescription\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"Membres de la grappe Serious Game g\u00e9r\u00e9e par le Cluster TWIST et l'INFOPOLE Cluster TIC. Ce groupe de travail pluridisciplinaire d\u00e9veloppe des solutions wallonnes collectives et innovantes dans le domaine du Serious Game\",\n                    \"id\": \"5a0eedacaea1f\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"grappe-seriousgame\",\n                    \"id\": \"5a0eedacae8f8\"\n                },\n                {\n                    \"language\": \"eng\",\n                    \"slug\": \"grappe-seriousgame\",\n                    \"id\": \"5a0eedacae935\"\n                },\n                {\n                    \"language\": \"dut\",\n                    \"slug\": \"grappe-seriousgame\",\n                    \"id\": \"5a0eedacae96f\"\n                },\n                {\n                    \"language\": \"ger\",\n                    \"slug\": \"grappe-seriousgame\",\n                    \"id\": \"5a0eedacae9a8\"\n                }\n            ],\n            \"tagBundle\": {\n                \"v2Id\": 9,\n                \"status\": \"Published\",\n                \"id\": \"5a0eedabdaea5a674a380afe\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"grappes\",\n                        \"id\": \"5a0eedabcb88e\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"grappes du secteur num\u00e9rique\",\n                        \"id\": \"5a0eedabcb8c9\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"grappes\",\n                        \"id\": \"5a0eedabcb7a0\"\n                    },\n                    {\n                        \"language\": \"eng\",\n                        \"slug\": \"grappes\",\n                        \"id\": \"5a0eedabcb7de\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"slug\": \"grappes\",\n                        \"id\": \"5a0eedabcb818\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"slug\": \"grappes\",\n                        \"id\": \"5a0eedabcb851\"\n                    }\n                ],\n                \"createdAt\": \"2017-11-17T14:09:47.841Z\",\n                \"updatedAt\": \"2017-11-17T14:09:47.841Z\",\n                \"tagCategory\": {\n                    \"v2Id\": 3,\n                    \"status\": \"Published\",\n                    \"id\": \"5a0eedabdaea5a674a380af1\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"communaut\u00e9s\",\n                            \"id\": \"5a0eedaba96c0\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                            \"id\": \"5a0eedaba9707\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8dba\"\n                        },\n                        {\n                            \"language\": \"eng\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8df6\"\n                        },\n                        {\n                            \"language\": \"dut\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e30\"\n                        },\n                        {\n                            \"language\": \"ger\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e69\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-11-17T14:09:47.695Z\",\n                    \"updatedAt\": \"2017-11-17T14:09:47.695Z\"\n                }\n            },\n            \"createdAt\": \"2017-11-17T14:09:48.720Z\",\n            \"updatedAt\": \"2017-11-17T14:09:48.720Z\"\n        },\n        {\n            \"v2Id\": 94,\n            \"status\": \"Published\",\n            \"id\": \"5a0eedaddaea5a674a380bc7\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"r\u00e9seau learn-on-line\",\n                    \"id\": \"5a0eedad84447\"\n                }\n            ],\n            \"shortDescription\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"organismes de formation r\u00e9f\u00e9renc\u00e9s dans le catalogue Learn-on-Line.be\",\n                    \"id\": \"5a0eedad84485\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"learn-on-line\",\n                    \"id\": \"5a0eedad8434c\"\n                },\n                {\n                    \"language\": \"eng\",\n                    \"slug\": \"learn-on-line\",\n                    \"id\": \"5a0eedad84394\"\n                },\n                {\n                    \"language\": \"dut\",\n                    \"slug\": \"learn-on-line\",\n                    \"id\": \"5a0eedad843d1\"\n                },\n                {\n                    \"language\": \"ger\",\n                    \"slug\": \"learn-on-line\",\n                    \"id\": \"5a0eedad8440c\"\n                }\n            ],\n            \"tagBundle\": {\n                \"v2Id\": 5,\n                \"status\": \"Published\",\n                \"id\": \"5a0eedabdaea5a674a380afa\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"r\u00e9seaux\",\n                        \"id\": \"5a0eedabc5726\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"R\u00e9seaux reconnus li\u00e9s \u00e0 la Wallonie\",\n                        \"id\": \"5a0eedabc5761\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc563a\"\n                    },\n                    {\n                        \"language\": \"eng\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc5676\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc56b0\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"slug\": \"reseaux\",\n                        \"id\": \"5a0eedabc56eb\"\n                    }\n                ],\n                \"createdAt\": \"2017-11-17T14:09:47.812Z\",\n                \"updatedAt\": \"2017-11-17T14:09:47.812Z\",\n                \"tagCategory\": {\n                    \"v2Id\": 3,\n                    \"status\": \"Published\",\n                    \"id\": \"5a0eedabdaea5a674a380af1\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"communaut\u00e9s\",\n                            \"id\": \"5a0eedaba96c0\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                            \"id\": \"5a0eedaba9707\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8dba\"\n                        },\n                        {\n                            \"language\": \"eng\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8df6\"\n                        },\n                        {\n                            \"language\": \"dut\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e30\"\n                        },\n                        {\n                            \"language\": \"ger\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e69\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-11-17T14:09:47.695Z\",\n                    \"updatedAt\": \"2017-11-17T14:09:47.695Z\"\n                }\n            },\n            \"createdAt\": \"2017-11-17T14:09:49.545Z\",\n            \"updatedAt\": \"2017-11-17T14:09:49.545Z\"\n        },\n        {\n            \"v2Id\": 230,\n            \"status\": \"Published\",\n            \"id\": \"5a0eedacdaea5a674a380b3c\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"\u00e9cosyst\u00e8me EdTech\",\n                    \"id\": \"5a0eedac60006\"\n                }\n            ],\n            \"shortDescription\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"Initiatives et acteurs impliqu\u00e9s dans la transformation num\u00e9rique des processus d'apprentissage, dans le cadre de la formation professionnelle (e-learning) et de l'enseignement (TICE)\",\n                    \"id\": \"5a0eedac60041\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"ecosysteme-edtech\",\n                    \"id\": \"5a0eedac5ff1d\"\n                },\n                {\n                    \"language\": \"eng\",\n                    \"slug\": \"ecosysteme-edtech\",\n                    \"id\": \"5a0eedac5ff5a\"\n                },\n                {\n                    \"language\": \"dut\",\n                    \"slug\": \"ecosysteme-edtech\",\n                    \"id\": \"5a0eedac5ff94\"\n                },\n                {\n                    \"language\": \"ger\",\n                    \"slug\": \"ecosysteme-edtech\",\n                    \"id\": \"5a0eedac5ffcd\"\n                }\n            ],\n            \"tagBundle\": {\n                \"v2Id\": 26,\n                \"status\": \"Published\",\n                \"id\": \"5a0eedabdaea5a674a380b0f\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"\u00e9cosyst\u00e8mes\",\n                        \"id\": \"5a0eedabe68df\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Initiatives et acteurs impliqu\u00e9s dans une th\u00e9matique\",\n                        \"id\": \"5a0eedabe691b\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"ecosystemes\",\n                        \"id\": \"5a0eedabe67e8\"\n                    },\n                    {\n                        \"language\": \"eng\",\n                        \"slug\": \"ecosystemes\",\n                        \"id\": \"5a0eedabe6825\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"slug\": \"ecosystemes\",\n                        \"id\": \"5a0eedabe685f\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"slug\": \"ecosystemes\",\n                        \"id\": \"5a0eedabe68a2\"\n                    }\n                ],\n                \"createdAt\": \"2017-11-17T14:09:47.956Z\",\n                \"updatedAt\": \"2017-11-17T14:09:47.956Z\",\n                \"tagCategory\": {\n                    \"v2Id\": 3,\n                    \"status\": \"Published\",\n                    \"id\": \"5a0eedabdaea5a674a380af1\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"communaut\u00e9s\",\n                            \"id\": \"5a0eedaba96c0\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                            \"id\": \"5a0eedaba9707\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8dba\"\n                        },\n                        {\n                            \"language\": \"eng\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8df6\"\n                        },\n                        {\n                            \"language\": \"dut\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e30\"\n                        },\n                        {\n                            \"language\": \"ger\",\n                            \"slug\": \"communautes\",\n                            \"id\": \"5a0eedaba8e69\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-11-17T14:09:47.695Z\",\n                    \"updatedAt\": \"2017-11-17T14:09:47.695Z\"\n                }\n            },\n            \"createdAt\": \"2017-11-17T14:09:48.396Z\",\n            \"updatedAt\": \"2017-11-17T14:09:48.396Z\"\n        }\n    ],\n    \"urls\": [\n        {\n            \"type\": \"Web\",\n            \"address\": \"http://www.digitalwallonia.be\",\n            \"v2Id\": 17331,\n            \"id\": \"5a0f1c7a7e0a4\",\n            \"createdAt\": \"2015-07-01T17:13:18+0200\"\n        },\n        {\n            \"type\": \"Twitter\",\n            \"address\": \"http://twitter.com/pbalancier\",\n            \"v2Id\": 21333,\n            \"id\": \"5a0f1c7a7e0ea\",\n            \"createdAt\": \"2016-01-22T13:56:01+0100\"\n        },\n        {\n            \"type\": \"LinkedIn\",\n            \"address\": \"https://be.linkedin.com/in/pascalbalancier\",\n            \"v2Id\": 21334,\n            \"id\": \"5a0f1c7a7e128\",\n            \"createdAt\": \"2016-01-22T13:55:05+0100\"\n        }\n    ]\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/contacts",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/contacts"
           },
           "response": []
         },
@@ -1403,8 +1370,7 @@
               "mode": "raw",
               "raw": "{\n    \"v2Id\": 358,\n    \"status\": \"Published\",\n    \"id\": \"5a16d7774ed4fc24a4e3d32f\",\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"WallCode 2017\",\n            \"id\": \"5a16d7772d095\"\n        }\n    ],\n    \"shortDescription\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Ateliers, \u00e9tablissements et organismes de formation actifs dans le cadre de Wallcode du 7 au 22 octobre 2017. Cette semaine annuelle du code vise la sensibilisation des \u00e9l\u00e8ves et enseignants aux sciences informatiques, \u00e0 la logique algorithmique et aux langages de programmation\",\n            \"id\": \"5a16d7772d099\"\n        }\n    ],\n    \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"wallcode2017\",\n            \"id\": \"5a16d7772d08b\"\n        }\n    ],\n    \"tagBundle\": {\n        \"v2Id\": 10,\n        \"status\": \"Published\",\n        \"id\": \"5a16d76f4ed4fc24a4e3d281\",\n        \"title\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"missions et \u00e9v\u00e9nements\",\n                \"id\": \"5a16d76f22d27\"\n            }\n        ],\n        \"shortDescription\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"missions et \u00e9v\u00e9nements du secteur du num\u00e9rique\",\n                \"id\": \"5a16d76f22d37\"\n            }\n        ],\n        \"slug\": [\n            {\n                \"language\": \"fre\",\n                \"slug\": \"missions\",\n                \"id\": \"5a16d76f22d1a\"\n            }\n        ],\n        \"createdAt\": \"2017-11-23T14:13:03.151Z\",\n        \"updatedAt\": \"2017-11-23T14:13:03.151Z\",\n        \"tagCategory\": {\n            \"v2Id\": 3,\n            \"status\": \"Published\",\n            \"id\": \"5a16d7694ed4fc24a4e3d273\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"communaut\u00e9s\",\n                    \"id\": \"5a16d769ad17d\"\n                }\n            ],\n            \"shortDescription\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                    \"id\": \"5a16d769ad190\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"communautes\",\n                    \"id\": \"5a16d769ad162\"\n                }\n            ],\n            \"createdAt\": \"2017-11-23T14:12:57.710Z\",\n            \"updatedAt\": \"2017-11-23T14:12:57.710Z\"\n        }\n    },\n    \"createdAt\": \"2017-11-23T14:13:11.187Z\",\n    \"updatedAt\": \"2017-11-23T14:13:11.187Z\"\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/cdf260e0-cf95-11e7-aa9d-69fad2c811a3/tags",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/cdf260e0-cf95-11e7-aa9d-69fad2c811a3/tags"
           },
           "response": []
         },
@@ -1423,8 +1389,7 @@
               "mode": "raw",
               "raw": "    {\n        \"id\": \"5a0eedafdaea5a674a380c8a\",\n        \"title\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"secteur num\u00e9rique\",\n                \"id\": \"5a0eedaf0184e\"\n            },\n            {\n                \"language\": \"eng\",\n                \"text\": \"Digital sector\",\n                \"id\": \"5a0eedaf01888\"\n            }\n        ],\n        \"shortDescription\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"D\u00e9velopper et structurer le secteur pour capter les opportunit\u00e9s et la valeur ajout\u00e9e de l'\u00e9conomie du num\u00e9rique pour la Wallonie\",\n                \"id\": \"5a0eedaf018c2\"\n            },\n            {\n                \"language\": \"eng\",\n                \"text\": \"A strong digital sector and an cutting-edge research, able to capture and maintain the added value of the digital transformation on our territory.\",\n                \"id\": \"5a0eedaf018fb\"\n            }\n        ],\n        \"longDescription\": [],\n        \"images\": [],\n        \"slug\": [\n            {\n                \"language\": \"fre\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf01764\"\n            },\n            {\n                \"language\": \"eng\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf017a0\"\n            },\n            {\n                \"language\": \"dut\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf017da\"\n            },\n            {\n                \"language\": \"ger\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf01814\"\n            }\n        ],\n        \"createdAt\": \"2017-11-17T14:09:51.008Z\",\n        \"updatedAt\": \"2017-11-17T14:09:51.009Z\",\n        \"v2Id\": 1\n    }"
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/themes",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/themes"
           },
           "response": []
         },
@@ -1490,8 +1455,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1539,8 +1503,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1589,8 +1552,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -1644,8 +1606,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1711,8 +1672,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1783,8 +1743,7 @@
                   "disabled": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -1862,8 +1821,7 @@
                   "disabled": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -1941,8 +1899,7 @@
                   "disabled": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2020,8 +1977,7 @@
                   "disabled": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -2084,8 +2040,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -2177,8 +2132,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2230,8 +2184,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2287,8 +2240,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2355,8 +2307,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2394,8 +2345,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2433,8 +2383,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2474,8 +2423,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2510,8 +2458,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2551,8 +2498,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2592,8 +2538,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2632,8 +2577,7 @@
                   "value": "{{v3_token}}"
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -2729,8 +2673,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -2792,8 +2735,7 @@
                       "equals": true
                     }
                   ]
-                },
-                "description": null
+                }
               },
               "response": []
             },
@@ -2826,8 +2768,7 @@
                   "mode": "raw",
                   "raw": "{\n  \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957c5\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957d1\"\n        },\n        {\n            \"language\": \"dut\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957f0\"\n        },\n        {\n            \"language\": \"ger\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd495807\"\n        },\n      {\n          \"language\": \"fre\",\n          \"slug\": \"catstudio\",\n          \"status\": \"Archived\",\n          \"createdAt\": \"2017-10-26T10:40:51.000Z\",\n          \"id\": \"59ef0cd4957r2\"\n      }\n  ]\n}"
                 },
-                "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}",
-                "description": null
+                "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
               },
               "response": []
             }
@@ -2890,8 +2831,7 @@
               "mode": "raw",
               "raw": "{\r\n    \"status\" : \"Published\", \r\n    \"emailAddresses\" : [\r\n        \"info@aplusconcept.be\"\r\n    ], \r\n    \"title\" : [\r\n        {\r\n            \"language\" : \"fre\", \r\n            \"text\" : \"A+ Concept\", \r\n            \"id\" : \"59b8e8a3873ed\"\r\n        }, \r\n        {\r\n            \"language\" : \"eng\", \r\n            \"text\" : \"A+ Concept\", \r\n            \"id\" : \"59b8e8a387427\"\r\n        }, \r\n        {\r\n            \"language\" : \"dut\", \r\n            \"text\" : \"A+ Concept\", \r\n            \"id\" : \"59b8e8a387460\"\r\n        }, \r\n        {\r\n            \"language\" : \"ger\", \r\n            \"text\" : \"A+ Concept\", \r\n            \"id\" : \"59b8e8a387499\"\r\n        }\r\n    ], \r\n    \"shortTitle\" : [\r\n\r\n    ], \r\n    \"shortDescription\" : [\r\n        {\r\n            \"language\" : \"fre\", \r\n            \"text\" : \"A+ Concept est un bureau d'\u00e9tude actif dans la conception et le suivi des techniques sp\u00e9ciales du b\u00e2timent.\", \r\n            \"id\" : \"59b8e8a3874d4\"\r\n        }\r\n    ], \r\n    \"longDescription\" : [\r\n        {\r\n            \"language\" : \"fre\", \r\n            \"text\" : \"<p>En tant qu'expert \u00e9nerg\u00e9tique reconnu et agr\u00e9\u00e9 A+ Concept r\u00e9alise des projets novateurs et exclusivement orient\u00e9s vers l'efficience \u00e9nerg\u00e9tique des installations techniques.&nbsp;</p><p>Produits / Services\\n</p><p>Mission TS compl\u00e8te (HVAC, SN, Elec, Data, SI, ...) - Optimisation \u00e9nerg\u00e9tique - PEB (responsable, conseiller, \u00e9tude de faisabilit\u00e9) - Certifications environnementales (assesseur BREEAM) - Etude et conception de b\u00e2timents passifs - Audits \u00e9nerg\u00e9tiques - R\u00e9seau de chaleur (chaufferie biomasse, r\u00e9seau de distribution, ...)\\n</p>\", \r\n            \"id\" : \"59b8e8a38750f\"\r\n        }\r\n    ], \r\n    \"images\" : [\r\n        {\r\n            \"type\" : \"Logo\", \r\n            \"container\" : \"digitalwallonia-images\", \r\n            \"url\" : \"https://api.digitalwallonia.be/v2/ressources/28407/a-concept\", \r\n            \"id\" : \"59b8e8a3873b3\"\r\n        }\r\n    ], \r\n    \"addresses\" : [\r\n        {\r\n            \"thoroughfare\" : \"Rue du Tilleul\", \r\n            \"number\" : \"54\", \r\n            \"box\" : null, \r\n            \"additionalInformation\" : null, \r\n            \"postalCode\" : \"4432\", \r\n            \"locality\" : \"Ans\", \r\n            \"countryCode\" : \"BE\", \r\n            \"coordinates\" : {\r\n                \"lat\" : 50.6760996, \r\n                \"lng\" : 5.519184300000006\r\n            }, \r\n            \"phoneNumbers\" : [\r\n\r\n            ],\r\n            \"id\" : \"59b8e8a38a8c9\"\r\n        }\r\n    ], \r\n    \"contacts\" : [\r\n        {\r\n            \"firstName\" : \"Boris\", \r\n            \"lastName\" : \"Defays\", \r\n            \"emailAddresses\" : [\r\n                \"b.defays@aplusconcept.be\"\r\n            ], \r\n            \"id\" : \"59b7e92865a72b1156275616\",\r\n            \"images\" : [\r\n\r\n            ], \r\n            \"profiles\" : [\r\n\r\n            ], \r\n            \"tags\" : [\r\n\r\n            ], \r\n            \"urls\" : [\r\n                {\r\n                    \"type\" : \"LinkedIn\", \r\n                    \"address\" : \"https://www.linkedin.com/in/boris-defays-7107257/\",\r\n                    \"id\" : \"59b7e9286c83f\", \r\n                    \"createdAt\" : \"2017-05-17T15:16:10+0200\"\r\n                }\r\n            ]\r\n        }\r\n    ], \r\n    \"enterprises\" : [\r\n        {\r\n            \"role\" : \"[object Object]\", \r\n            \"countryCode\" : \"BE\", \r\n            \"enterpriseNumber\" : \"BE0824959363\", \r\n            \"startDate\" : null, \r\n            \"vatNumber\" : \"BE 0824.959.363\", \r\n            \"authorizedCapital\" : null, \r\n            \"id\" : \"59b8e8a38a839\", \r\n            \"legalForm\" : { \r\n                \"countryCode\" : \"BE\", \r\n                \"id\" : \"59b7e72c65a72b1156273eb7\", \r\n                \"name\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"text\" : \"Soci\u00e9t\u00e9 Priv\u00e9e \u00e0 Responsabilit\u00e9 Limit\u00e9e\",\r\n                        \"id\" : \"c75b4ba2d3628941840cb2b6\"\r\n                    }\r\n                ], \r\n                \"abbreviation\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"text\" : \"SPRL\", \r\n                        \"id\" : \"4f03b28afd815438637072cc\"\r\n                    }\r\n                ]\r\n            }, \r\n            \"legalName\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"A+ Concept\", \r\n                    \"id\" : \"59b8e8a38a886\"\r\n                }\r\n            ], \r\n            \"abbreviation\" : [\r\n\r\n            ]\r\n        }\r\n    ],\r\n    \"slug\" : [\r\n        {\r\n            \"language\" : \"fre\", \r\n            \"slug\" : \"a-concept\", \r\n            \"id\" : \"59b8e8a3872c9\"\r\n        }, \r\n        {\r\n            \"language\" : \"eng\", \r\n            \"slug\" : \"a-concept\", \r\n            \"id\" : \"59b8e8a387307\"\r\n        }, \r\n        {\r\n            \"language\" : \"dut\", \r\n            \"slug\" : \"a-concept\", \r\n            \"id\" : \"59b8e8a387340\"\r\n        }, \r\n        {\r\n            \"language\" : \"ger\", \r\n            \"slug\" : \"a-concept\", \r\n            \"id\" : \"59b8e8a387379\"\r\n        }\r\n    ], \r\n    \"tags\" : [\r\n        { \r\n            \"id\" : \"59b7e72965a72b1156273d3c\", \r\n            \"title\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"Wallonie\", \r\n                    \"id\" : \"59b7e7292a8bd\"\r\n                }\r\n            ], \r\n            \"shortDescription\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"Entreprises et activit\u00e9s situ\u00e9es en R\u00e9gion wallonne\", \r\n                    \"id\" : \"59b7e7292a8f7\"\r\n                }\r\n            ], \r\n            \"slug\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"slug\" : \"wallonie\", \r\n                    \"id\" : \"59b7e7292a7d1\"\r\n                }, \r\n                {\r\n                    \"language\" : \"eng\", \r\n                    \"slug\" : \"wallonie\", \r\n                    \"id\" : \"59b7e7292a812\"\r\n                }, \r\n                {\r\n                    \"language\" : \"dut\", \r\n                    \"slug\" : \"wallonie\", \r\n                    \"id\" : \"59b7e7292a84c\"\r\n                }, \r\n                {\r\n                    \"language\" : \"ger\", \r\n                    \"slug\" : \"wallonie\", \r\n                    \"id\" : \"59b7e7292a884\"\r\n                }\r\n            ], \r\n            \"tagBundle\" : {\r\n                \"id\" : \"59b7e72865a72b1156273d15\", \r\n                \"title\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"text\" : \"r\u00e9gions\", \r\n                        \"id\" : \"59b7e728a593a\"\r\n                    }\r\n                ], \r\n                \"shortDescription\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"text\" : \"r\u00e9gions d'origine ou d'activit\u00e9\", \r\n                        \"id\" : \"59b7e728a5974\"\r\n                    }\r\n                ], \r\n                \"slug\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"slug\" : \"regions\", \r\n                        \"id\" : \"59b7e728a584d\"\r\n                    }, \r\n                    {\r\n                        \"language\" : \"eng\", \r\n                        \"slug\" : \"regions\", \r\n                        \"id\" : \"59b7e728a588d\"\r\n                    }, \r\n                    {\r\n                        \"language\" : \"dut\", \r\n                        \"slug\" : \"regions\", \r\n                        \"id\" : \"59b7e728a58c7\"\r\n                    }, \r\n                    {\r\n                        \"language\" : \"ger\", \r\n                        \"slug\" : \"regions\", \r\n                        \"id\" : \"59b7e728a5900\"\r\n                    }\r\n                ],\r\n                \"tagCategory\" : {\r\n                    \"id\" : \"59b7e72865a72b1156273d0d\", \r\n                    \"title\" : [\r\n                        {\r\n                            \"language\" : \"fre\", \r\n                            \"text\" : \"appartenance territoriale et institutionnelle\", \r\n                            \"id\" : \"59b7e7288d0ef\"\r\n                        }\r\n                    ], \r\n                    \"shortDescription\" : [\r\n                        {\r\n                            \"language\" : \"fre\", \r\n                            \"text\" : \"Appartenance institutionnelle (R\u00e9gion Wallonne, F\u00e9d\u00e9ration Wallonie Bruxelles, etc.) et localisation g\u00e9ographique (Wallonie, Bruxelles, etc.). R\u00e9pond \u00e0 la question: \\\"o\u00f9 je me situe?\\\", \\\"Dans quel p\u00e9rim\u00e8tre institutionnel je travaille?\\\"\", \r\n                            \"id\" : \"59b7e7288d12a\"\r\n                        }\r\n                    ], \r\n                    \"slug\" : [\r\n                        {\r\n                            \"language\" : \"fre\", \r\n                            \"slug\" : \"localisation\", \r\n                            \"id\" : \"59b7e7288d006\"\r\n                        }, \r\n                        {\r\n                            \"language\" : \"eng\", \r\n                            \"slug\" : \"localisation\", \r\n                            \"id\" : \"59b7e7288d043\"\r\n                        }, \r\n                        {\r\n                            \"language\" : \"dut\", \r\n                            \"slug\" : \"localisation\", \r\n                            \"id\" : \"59b7e7288d07c\"\r\n                        }, \r\n                        {\r\n                            \"language\" : \"ger\", \r\n                            \"slug\" : \"localisation\", \r\n                            \"id\" : \"59b7e7288d0b5\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        }, \r\n        {\r\n            \"id\" : \"59b7e72b65a72b1156273e2a\", \r\n            \"title\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"filtre Cluster Cap 2020\", \r\n                    \"id\" : \"59b7e72b642f6\"\r\n                }\r\n            ], \r\n            \"shortDescription\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"permet de lier un \u00e9l\u00e9ment au Cluster Cap 2020\", \r\n                    \"id\" : \"59b7e72b64331\"\r\n                }\r\n            ], \r\n            \"slug\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"slug\" : \"filtre-cap2020\", \r\n                    \"id\" : \"59b7e72b6420d\"\r\n                }, \r\n                {\r\n                    \"language\" : \"eng\", \r\n                    \"slug\" : \"filtre-cap2020\", \r\n                    \"id\" : \"59b7e72b6424a\"\r\n                }, \r\n                {\r\n                    \"language\" : \"dut\", \r\n                    \"slug\" : \"filtre-cap2020\", \r\n                    \"id\" : \"59b7e72b64283\"\r\n                }, \r\n                {\r\n                    \"language\" : \"ger\", \r\n                    \"slug\" : \"filtre-cap2020\", \r\n                    \"id\" : \"59b7e72b642bc\"\r\n                }\r\n            ], \r\n            \"tagBundle\" : {\r\n                \"id\" : \"59b7e72865a72b1156273d26\", \r\n                \"title\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"text\" : \"filtre\", \r\n                        \"id\" : \"59b7e728c5bb8\"\r\n                    }\r\n                ], \r\n                \"shortDescription\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"text\" : \"int\u00e9r\u00eat d'un partenaire pour un \u00e9l\u00e9ment\", \r\n                        \"id\" : \"59b7e728c5bf2\"\r\n                    }\r\n                ], \r\n                \"slug\" : [\r\n                    {\r\n                        \"language\" : \"fre\", \r\n                        \"slug\" : \"filtre\", \r\n                        \"id\" : \"59b7e728c5ac9\"\r\n                    }, \r\n                    {\r\n                        \"language\" : \"eng\", \r\n                        \"slug\" : \"filtre\", \r\n                        \"id\" : \"59b7e728c5b0a\"\r\n                    }, \r\n                    {\r\n                        \"language\" : \"dut\", \r\n                        \"slug\" : \"filtre\", \r\n                        \"id\" : \"59b7e728c5b44\"\r\n                    }, \r\n                    {\r\n                        \"language\" : \"ger\", \r\n                        \"slug\" : \"filtre\", \r\n                        \"id\" : \"59b7e728c5b7d\"\r\n                    }\r\n                ],\r\n                \"tagCategory\" : { \r\n                    \"id\" : \"59b7e72865a72b1156273d11\", \r\n                    \"title\" : [\r\n                        {\r\n                            \"language\" : \"fre\", \r\n                            \"text\" : \"partenaires\", \r\n                            \"id\" : \"59b7e72891ec8\"\r\n                        }\r\n                    ], \r\n                    \"shortDescription\" : [\r\n                        {\r\n                            \"language\" : \"fre\", \r\n                            \"text\" : \"Tags invisibles utilis\u00e9s pour r\u00e9pondre \u00e0 des besoins particuliers d'un ou plusieurs partenaires\", \r\n                            \"id\" : \"59b7e72891f03\"\r\n                        }\r\n                    ], \r\n                    \"slug\" : [\r\n                        {\r\n                            \"language\" : \"fre\", \r\n                            \"slug\" : \"partenaires\", \r\n                            \"id\" : \"59b7e72891ddd\"\r\n                        }, \r\n                        {\r\n                            \"language\" : \"eng\", \r\n                            \"slug\" : \"partenaires\", \r\n                            \"id\" : \"59b7e72891e1e\"\r\n                        }, \r\n                        {\r\n                            \"language\" : \"dut\", \r\n                            \"slug\" : \"partenaires\", \r\n                            \"id\" : \"59b7e72891e57\"\r\n                        }, \r\n                        {\r\n                            \"language\" : \"ger\", \r\n                            \"slug\" : \"partenaires\", \r\n                            \"id\" : \"59b7e72891e8f\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        }\r\n    ], \r\n    \"themes\" : [\r\n        { \r\n          \"id\" : 65464654654,\r\n            \"title\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"entreprises\", \r\n                    \"id\" : \"59b7e72c6208d\"\r\n                }, \r\n                {\r\n                    \"language\" : \"eng\", \r\n                    \"text\" : \"Digital business\", \r\n                    \"id\" : \"59b7e72c620c5\"\r\n                }\r\n            ], \r\n            \"shortDescription\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"text\" : \"Augmenter l'intensit\u00e9 num\u00e9rique des entreprises de tous les secteurs d'activit\u00e9 de l'\u00e9conomie de la Wallonie\", \r\n                    \"id\" : \"59b7e72c620fe\"\r\n                }, \r\n                {\r\n                    \"language\" : \"eng\", \r\n                    \"text\" : \"Boosting the Walloon economy depends on a strong and fast increase of digital maturity of our companies.\", \r\n                    \"id\" : \"59b7e72c62137\"\r\n                }\r\n            ], \r\n            \"longDescription\" : [\r\n\r\n            ], \r\n            \"images\" : [\r\n\r\n            ], \r\n            \"slug\" : [\r\n                {\r\n                    \"language\" : \"fre\", \r\n                    \"slug\" : \"entreprises\", \r\n                    \"id\" : \"59b7e72c61fa8\"\r\n                }, \r\n                {\r\n                    \"language\" : \"eng\", \r\n                    \"slug\" : \"entreprises\", \r\n                    \"id\" : \"59b7e72c61fe3\"\r\n                }, \r\n                {\r\n                    \"language\" : \"dut\", \r\n                    \"slug\" : \"entreprises\", \r\n                    \"id\" : \"59b7e72c6201b\"\r\n                }, \r\n                {\r\n                    \"language\" : \"ger\", \r\n                    \"slug\" : \"entreprises\", \r\n                    \"id\" : \"59b7e72c62054\"\r\n                }\r\n            ]\r\n        }\r\n    ], \r\n    \"urls\" : [\r\n        {\r\n            \"type\" : \"Facebook\", \r\n            \"address\" : \"https://www.facebook.com/aplusconcept/?fref=ts\",\r\n            \"id\" : \"59b8e8a38b297\"\r\n        }\r\n    ]\r\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/profiles",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/profiles"
           },
           "response": []
         },
@@ -2944,8 +2884,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -2974,8 +2913,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
           },
           "response": []
         },
@@ -3001,8 +2939,7 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts"
           },
           "response": []
         },
@@ -3049,8 +2986,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3120,8 +3056,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3151,8 +3086,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
           },
           "response": []
         },
@@ -3180,8 +3114,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
           },
           "response": []
         },
@@ -3229,8 +3162,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3278,8 +3210,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         }
@@ -3344,8 +3275,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3374,8 +3304,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
           },
           "response": []
         },
@@ -3428,8 +3357,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3459,8 +3387,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
           },
           "response": []
         },
@@ -3488,8 +3415,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
           },
           "response": []
         },
@@ -3553,8 +3479,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3607,8 +3532,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3638,8 +3562,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/events/5a2637b7ce18e431f4853105/posts",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/events/5a2637b7ce18e431f4853105/posts"
           },
           "response": []
         },
@@ -3672,8 +3595,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3727,8 +3649,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -3794,8 +3715,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3848,8 +3768,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -3904,8 +3823,7 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/tags",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/tags"
           },
           "response": []
         },
@@ -3937,8 +3855,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -3986,8 +3903,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -4041,8 +3957,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -4120,8 +4035,7 @@
                   "value": "{{v3_token}}"
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -4172,8 +4086,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         }
@@ -4214,8 +4127,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -4243,8 +4155,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -4277,8 +4188,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -4312,8 +4222,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": ""
+            }
           },
           "response": []
         },
@@ -4346,8 +4255,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -4397,8 +4305,7 @@
                   "equals": true
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
@@ -4454,8 +4361,7 @@
               "equals": true
             }
           ]
-        },
-        "description": null
+        }
       },
       "response": []
     },
@@ -4507,8 +4413,7 @@
               "equals": true
             }
           ]
-        },
-        "description": null
+        }
       },
       "response": []
     },
@@ -4541,8 +4446,7 @@
               "equals": true
             }
           ]
-        },
-        "description": ""
+        }
       },
       "response": []
     }
@@ -4574,7 +4478,7 @@
       "id": "2e6e75e5-ff92-4b17-870c-65d04f16e6a0",
       "key": "access_token",
       "value": "{{v3_token}}",
-      "type": "text"
+      "type": "string"
     }
   ]
 }
