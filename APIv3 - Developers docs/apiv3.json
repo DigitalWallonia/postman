@@ -2913,7 +2913,25 @@
               "mode": "raw",
               "raw": ""
             },
-            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         },
