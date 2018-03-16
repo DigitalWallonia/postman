@@ -4391,6 +4391,37 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "3229dc62-df0c-43f0-b156-23d77411cb45",
+          "name": "Container Access File",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-images/files/1bc14d8c-383a-425c-8d8a-49463573e335.png?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "containers",
+                "digitalwallonia-images",
+                "files",
+                "1bc14d8c-383a-425c-8d8a-49463573e335.png"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
