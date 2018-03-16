@@ -4370,7 +4370,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-images?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-images/files?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4378,7 +4378,8 @@
               "path": [
                 "api",
                 "containers",
-                "digitalwallonia-images"
+                "digitalwallonia-images",
+                "files"
               ],
               "query": [
                 {
