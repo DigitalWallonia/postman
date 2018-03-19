@@ -4400,7 +4400,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-images/files/1bc14d8c-383a-425c-8d8a-49463573e335.png?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-content/files/digitalwallonia-content/20180319112405/Twitter_Bird.png?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4408,9 +4408,11 @@
               "path": [
                 "api",
                 "containers",
-                "digitalwallonia-images",
+                "digitalwallonia-content",
                 "files",
-                "1bc14d8c-383a-425c-8d8a-49463573e335.png"
+                "digitalwallonia-content",
+                "20180319112405",
+                "Twitter_Bird.png"
               ],
               "query": [
                 {
