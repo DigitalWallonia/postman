@@ -561,10 +561,10 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{v2_protocol}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
               "host": [
-                "{{v2_domain}}"
+                "{{domain}}"
               ],
               "path": [
                 "api",
