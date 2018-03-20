@@ -559,15 +559,12 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{v2_protocol}}",
               "host": [
-                "{{domain}}"
+                "{{v2_domain}}"
               ],
               "path": [
                 "api",
