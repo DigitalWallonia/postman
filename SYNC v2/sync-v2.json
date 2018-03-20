@@ -1443,6 +1443,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "2b74bab6-0a83-4155-bfda-5862e5d2cfc4",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1450,9 +1451,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
-                  "    console.log(jsonData);",
-                  "    tests[`images url is ${baseUrl}/ressources/23213/logo-agence-du-numerique`] = jsonData.images[0].url === `${baseUrl}/ressources/23213/logo-agence-du-numerique`;",
+                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/event\\/[a-f0-9]{32}\\/logo-agence-du-numerique/.test(jsonData.images[0].url);",
                   "    tests[\"images type is Thumbnail\"] = jsonData.images[0].type === \"Thumbnail\";",
                   "    postman.setNextRequest(\"Batch Descriptions Event v2\");",
                   "}else{",
@@ -1465,10 +1464,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events/findOne?filter={\"where\":{ \"v2Id\":{{eventV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
