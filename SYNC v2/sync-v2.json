@@ -1443,7 +1443,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2b74bab6-0a83-4155-bfda-5862e5d2cfc4",
+                "id": "4f1543bb-9134-4796-8907-877d45c56280",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
