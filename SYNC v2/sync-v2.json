@@ -657,6 +657,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "e79a0a06-af61-4aac-9fa2-17f47ecd9c69",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -678,7 +679,7 @@
                   "        console.log(enterpriseFounder.legalName.find(item => item.language === 'fre'));",
                   "    tests[\"enterprise Founder legalName fr is Agence du Num\u00e9rique\"] = enterpriseFounder.legalName.find(item => item.language === 'fre').text === \"Agence du Num\u00e9rique\";",
                   "    tests[\"enterprise Founder abbreviation fr is AdN\"] = enterpriseFounder.abbreviation.find(item => item.language === 'fre').text === \"AdN\";",
-                  "    postman.setNextRequest(\"Batch contacts Profil v2\");",
+                  "    postman.setNextRequest(\"Batch Contacts Add Email v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}",
@@ -690,10 +691,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{\"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
