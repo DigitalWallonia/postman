@@ -722,6 +722,39 @@
           "response": []
         },
         {
+          "_postman_id": "b9191c0a-3f71-4da7-af9e-35abc54a5da8",
+          "name": "Batch Contacts Add Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367},\"2\":{\"id\":\"49920\",\"principal\":false,\"prive\":true,\"action\":\"add\"}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367},\"2\":{\"id\":\"49920\",\"principal\":false,\"prive\":true,\"action\":\"add\"}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "1f7fe04e-02a4-95ab-6f18-d39d7bcdb697",
           "name": "Batch contacts Profil v2",
           "event": [
@@ -965,39 +998,6 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b9191c0a-3f71-4da7-af9e-35abc54a5da8",
-          "name": "Batch Contacts Add Email",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367},\"2\":{\"id\":\"49920\",\"principal\":false,\"prive\":true,\"action\":\"add\"}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367},\"2\":{\"id\":\"49920\",\"principal\":false,\"prive\":true,\"action\":\"add\"}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
                   "equals": true
                 }
               ]
