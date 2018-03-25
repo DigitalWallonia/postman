@@ -782,6 +782,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "3cfa2686-4d23-4413-884b-1b0db01a07fa",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -793,7 +794,7 @@
                   "    // Si le JSON comporte un param\u00e8tre id",
                   "    if (jsonData.response.profil.id) {",
                   "        console.log(\"jsonData a un id \" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Contacts Profile v3\");",
+                  "        postman.setNextRequest(\"Batch Contacts Delete Email v2\");",
                   "    }",
                   "    else{",
                   "        console.log(\"jsonData n'a pas d'id\");",
