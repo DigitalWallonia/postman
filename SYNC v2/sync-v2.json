@@ -236,7 +236,7 @@
                 {
                   "key": "permalien",
                   "type": "text",
-                  "value": "test-synchro-1"
+                  "value": "test-synchro-1{{$timestamp}}"
                 },
                 {
                   "key": "statut",
