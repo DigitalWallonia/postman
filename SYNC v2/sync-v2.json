@@ -804,7 +804,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts?filter=%7B%22where%22%3A%7B%22v2Id%22%20%3A%20%222525%22%20%7D%7D&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{ \"v2Id\":2525}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -816,7 +816,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "%7B%22where%22%3A%7B%22v2Id%22%20%3A%20%222525%22%20%7D%7D",
+                  "value": "{\"where\":{ \"v2Id\":2525}}",
                   "equals": true
                 },
                 {
