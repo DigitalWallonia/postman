@@ -979,7 +979,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5ed59fac-7209-415d-bb1d-e90f84eabd22",
+                "id": "d6f0cb51-c56e-407c-8c04-bc9fdb3279c6",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -989,7 +989,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
                   "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.profil.id) {",
+                  "    if (jsonData.response.contact.id) {",
                   "        console.log(\"jsonData a un id \" + profileV2Id);",
                   "        postman.setNextRequest(\"Delete Profile v2\");",
                   "    }",
