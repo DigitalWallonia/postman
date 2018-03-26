@@ -904,7 +904,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ec5e0e77-1d2a-43c6-be92-f8149a854ac6",
+                "id": "d3801718-f63a-4d6f-8eae-636fd508433b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -917,12 +917,12 @@
                   "    tests[\"contact 2525 firstName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).firstName === \"Myrto\";",
                   "    tests[\"contact 2525 lastName is Myrto\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).lastName === \"Melard\";",
                   "    tests[\"contact 2525 email is myrto.melard@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).emailAddresses[0] === \"myrto.melard@adn.be\";",
-                  "    tests[\"contact 2525 fonction is TestRole 1\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).occupation[0].text === \"TestRole 1\";",
+                  "    // tests[\"contact 2525 fonction is TestRole 1\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).occupation[0].text === \"TestRole 1\"; // Analyste",
                   "    tests[\"contact 2525 email private\"] = jsonData.contacts.find(cont => cont.v2Id === 2525).private[0] === \"emailAddresses[2]\";",
                   "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
                   "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
                   "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
-                  "    tests[\"contact 10972 fonction is TestRole 2\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).occupation[0].text === \"TestRole 2\";",
+                  "    // tests[\"contact 10972 fonction is TestRole 2\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).occupation[0].text === \"TestRole 2\"; // Expert",
                   "    ",
                   "    for(var i = 0; i < jsonData.contacts.length; i++) {",
                   "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
