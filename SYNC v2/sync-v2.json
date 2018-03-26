@@ -898,66 +898,6 @@
           "response": []
         },
         {
-          "_postman_id": "485b8a54-f78f-4e00-ac47-be40dc37eacb",
-          "name": "Batch Contacts Delete Email v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c764fc6b-6785-4546-aa46-5c8e8f477161",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
-                  "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.profil.id) {",
-                  "        console.log(\"jsonData a un id \" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Contacts Profile v3\");",
-                  "    }",
-                  "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
-                  "        postman.setNextRequest(\"Delete Profile v2\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "f91c2c5c-a348-79b5-e7c6-8e6c2ef5a642",
           "name": "Find Batch Contacts Profile v3",
           "event": [
@@ -1022,6 +962,66 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "485b8a54-f78f-4e00-ac47-be40dc37eacb",
+          "name": "Batch Contacts Delete Email v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c764fc6b-6785-4546-aa46-5c8e8f477161",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.profil.id) {",
+                  "        console.log(\"jsonData a un id \" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Contacts Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas d'id\");",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"contact\":{\"id\":\"2525\",\"telephone\":{\"international\":\"+3281778074\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3281778097\",\"codePays\":\"BE\"},\"emails\":{\"0\":{\"id\":3790},\"1\":{\"id\":49367}},\"urls\":{\"0\":{\"id\":278},\"1\":{\"id\":796},\"2\":{\"id\":1891},\"3\":{\"id\":2062},\"4\":{\"id\":2087}},\"tags\":{\"0\":{\"id\":\"35\"},\"1\":{\"id\":\"87\"},\"2\":{\"id\":\"426\"}},\"user\":\"C\u00e9dric Waxweilerr\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
                   "equals": true
                 }
               ]
