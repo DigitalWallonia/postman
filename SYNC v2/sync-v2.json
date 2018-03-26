@@ -776,6 +776,60 @@
           "response": []
         },
         {
+          "_postman_id": "f67fe1c1-f158-430d-9993-d649b078da8c",
+          "name": "Find Batch Contacts Email Private",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c15c862a-800e-4628-adc1-65e603d79b58",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"contact 2525 email waxtest@wax.be is private\"] = jsonData[0].private[0] === \"emailAddresses[2]\";",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts?filter=%7B%22where%22%3A%7B%22v2Id%22%20%3A%20%222525%22%20%7D%7D&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "%7B%22where%22%3A%7B%22v2Id%22%20%3A%20%222525%22%20%7D%7D",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "1f7fe04e-02a4-95ab-6f18-d39d7bcdb697",
           "name": "Batch contacts Profil v2",
           "event": [
@@ -1077,60 +1131,6 @@
                 "{{profileV3Id}}"
               ],
               "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "f67fe1c1-f158-430d-9993-d649b078da8c",
-          "name": "Find Batch Contacts Email Private",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c15c862a-800e-4628-adc1-65e603d79b58",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"contact 2525 email waxtest@wax.be is private\"] = jsonData[0].private[0] === \"emailAddresses[2]\";",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts?filter=%7B%22where%22%3A%7B%22v2Id%22%20%3A%20%222525%22%20%7D%7D&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "contacts"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "%7B%22where%22%3A%7B%22v2Id%22%20%3A%20%222525%22%20%7D%7D",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
