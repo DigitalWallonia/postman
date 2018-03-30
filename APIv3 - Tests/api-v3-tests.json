@@ -1048,10 +1048,11 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "5decd91f-dbbe-4bc2-b1e9-a9e2077b09cd",
+                "id": "8dd7b9ee-a9ad-4495-80cb-2cc5b548b553",
                 "type": "text/javascript",
                 "exec": [
-                  "let currentDate = new Date();"
+                  "let currentDate = new Date();",
+                  "pm.environment.set(\"currentDate\", currentDate);"
                 ]
               }
             }
