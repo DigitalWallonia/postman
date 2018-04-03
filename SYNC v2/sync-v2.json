@@ -6974,7 +6974,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b9b30708-72aa-464a-8ebf-d63b575f3762",
+                "id": "120d93e0-850f-4833-bdac-bc6833030137",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -6989,6 +6989,8 @@
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
                   "    }",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Contact v2\");",
                   "}"
                 ]
               }
