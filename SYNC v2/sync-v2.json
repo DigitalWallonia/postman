@@ -958,7 +958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a3fe352c-9453-457d-81cb-c456959fd7b6",
+                "id": "71f264ea-b54c-47ec-87ca-5e06357bf876",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -974,7 +974,7 @@
                   "    tests[\"contact 2525 firstName is Myrto\"] = contact2525.firstName === \"Myrto\";",
                   "    tests[\"contact 2525 lastName is Myrto\"] = contact2525.lastName === \"Melard\";",
                   "    tests[\"contact 2525 has no email because it's private\"] = contact2525.emailAddresses.length === 0;",
-                  "    tests[\"contact 2525 fonction is Analyste\"] = contact2525.occupation[0].text === \"Analyste\";",
+                  "    // tests[\"contact 2525 fonction is Analyste\"] = contact2525.occupation[0].text === \"Analyste\";",
                   "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
                   "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
                   "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
