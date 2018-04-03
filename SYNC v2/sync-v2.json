@@ -834,7 +834,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "dc13d455-5e43-4569-90e3-7f6a2acf4071",
+                "id": "cdd2fd96-e5ca-4d19-99be-828dca4508ea",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -843,7 +843,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let emailV2Address = pm.environment.get(\"emailV2Address\");",
-                  "    console.log(emailV2Address);",
+                  "    console.log(jsonData.emailAddresses.find(e => e === emailV2Address);",
                   "    tests[\"contact 2525 email test@synchro.be is private\"] = jsonData.private[0] === \"emailAddresses[2]\";",
                   "    postman.setNextRequest(\"Batch contacts Profil v2\");",
                   "}else{",
