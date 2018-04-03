@@ -774,7 +774,7 @@
         },
         {
           "_postman_id": "b9191c0a-3f71-4da7-af9e-35abc54a5da8",
-          "name": "Add Email to Contact v2",
+          "name": "Add Email to Profile Contact v2",
           "event": [
             {
               "listen": "test",
