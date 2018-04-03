@@ -719,7 +719,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "cf86f6f8-0d20-4944-aa2b-21326257f3ba",
+                "id": "2c7e7449-a05d-4b58-8dbe-9b9606aec5e6",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -730,7 +730,7 @@
                   "    // Si le JSON comporte un param\u00e8tre id",
                   "    if (jsonData.response.email.id) {",
                   "        postman.setEnvironmentVariable(\"emailV2Id\", jsonData.response.email.id);",
-                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
+                  "        postman.setNextRequest(\"Add Email to Profile Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Profile v2\");",
