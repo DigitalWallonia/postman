@@ -1092,7 +1092,7 @@
         },
         {
           "_postman_id": "c2d6e799-3fba-4eec-bd08-44d896c6042a",
-          "name": "Delete Email to Contact v2",
+          "name": "Delete Email to Profile Contact v2",
           "event": [
             {
               "listen": "test",
