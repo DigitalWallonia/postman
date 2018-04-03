@@ -580,7 +580,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f85f1e8b-8c4c-4bca-a0d0-5d1a307e262d",
+                "id": "b2f94e4a-e5a9-4f5a-becd-bd3299394680",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -588,7 +588,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    let profileV2Id = parseInt(pm.environment.get(\"profileV2Id\"), 10);",
                   "    // Si le JSON comporte un param\u00e8tre id",
                   "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
                   "        console.log(\"jsonData a un id\" + profileV2Id);",
