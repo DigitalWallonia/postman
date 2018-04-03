@@ -6911,7 +6911,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1da1e93f-e39f-4cea-875c-63eeb762fdee",
+                "id": "7fbe56c8-46e1-4b2a-ac2f-8f81ed6c2588",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -6928,6 +6928,8 @@
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
                   "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete Contact v2\");",
                   "}",
                   ""
                 ]
