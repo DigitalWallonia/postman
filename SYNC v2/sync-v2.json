@@ -833,7 +833,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6482a0f4-6e7a-45c2-97a8-34e49375e03e",
+                "id": "4b55d47b-6a19-4261-9826-93731d3a29b2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
