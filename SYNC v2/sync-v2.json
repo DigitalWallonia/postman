@@ -1681,12 +1681,9 @@
           "request": {
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/vignette/23213/set?oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/vignette/31306/set?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -1695,7 +1692,7 @@
                 "evenements",
                 "{{eventV2Id}}",
                 "vignette",
-                "23213",
+                "31306",
                 "set"
               ],
               "query": [
