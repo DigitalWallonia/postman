@@ -5589,7 +5589,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "84066367-f923-4d99-9640-e35947e922ff",
+                "id": "e280f49d-774a-43a6-b96a-410b6ed413af",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5605,8 +5605,10 @@
                   "        postman.setNextRequest(\"Batch Infos de base PresseReview v2\");",
                   "    }",
                   "    else{",
-                  "        postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
                   "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete PresseReview v2\");",
                   "}"
                 ]
               }
