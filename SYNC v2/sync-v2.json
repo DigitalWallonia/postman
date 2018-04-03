@@ -902,7 +902,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7c6e2aab-1517-4722-b55f-45facd4a721f",
+                "id": "d1700c79-f1fd-4e10-83d7-16d095310bdb",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -917,7 +917,6 @@
                   "        postman.setNextRequest(\"Find Batch Contacts Profile v3\");",
                   "    }",
                   "    else{",
-                  "        console.log(\"jsonData n'a pas d'id\");",
                   "        postman.setNextRequest(\"Delete Profile v2\");",
                   "    }",
                   "}"
