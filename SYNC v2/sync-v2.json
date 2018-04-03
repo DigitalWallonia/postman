@@ -6699,7 +6699,7 @@
         },
         {
           "_postman_id": "d9766b8a-bbb9-008c-e8ab-36dfa8716a6d",
-          "name": "Batch Infos de base Contact v2",
+          "name": "Add Email to Contact v2",
           "event": [
             {
               "listen": "test",
