@@ -7365,7 +7365,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2932c997-3506-4792-99af-f0382e0a9926",
+                "id": "4f4b72c9-6813-4f27-9ce3-3131d0658853",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -7376,8 +7376,8 @@
                   "",
                   "    tests[\"Le contact a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"contactV2Id\");",
-                  "    postman.setNextRequest(\"Delete Email v2\");",
-                  "}"
+                  "}",
+                  "postman.setNextRequest(\"Delete Email v2\");"
                 ]
               }
             }
