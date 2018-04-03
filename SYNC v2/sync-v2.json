@@ -1713,7 +1713,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "0e9088c8-e48c-4d23-9bfc-a1c779280ca2",
+                "id": "a8ccd1fa-c70f-4a85-8ec5-cd97570e23ec",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
