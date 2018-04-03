@@ -1085,7 +1085,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1635f605-9afa-4957-b847-48a8f731cd25",
+                "id": "16e923e8-ef2e-47e4-89d2-d8b971d50218",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1095,7 +1095,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let emailV2Id = parseInt(pm.environment.get(\"emailV2Id\"), 10);",
                   "    console.log(jsonData.response.contact.emails.find(e => e.id === emailV2Id));",
-                  "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e du contact\"] = jsonData.response.contact.emails.find(e => e.id === emailV2Id) === \"undefined\";",
+                  "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e du contact\"] = jsonData.response.contact.emails.find(e => e.id === emailV2Id) === \"null\";",
                   "    postman.setNextRequest(\"Delete Email v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v3\");",
