@@ -1713,7 +1713,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a8ccd1fa-c70f-4a85-8ec5-cd97570e23ec",
+                "id": "4fee001e-131d-4a08-bc54-5abcf2ee048f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1721,7 +1721,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/event\\/[a-f0-9]{32}\\/2729-logo wallcode/.test(jsonData.images[0].url);",
+                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/event\\/[a-f0-9]{32}\\/technofuturtic/.test(jsonData.images[0].url);",
                   "    tests[\"images type is Thumbnail\"] = jsonData.images[0].type === \"Thumbnail\";",
                   "    postman.setNextRequest(\"Batch Descriptions Event v2\");",
                   "}else{",
