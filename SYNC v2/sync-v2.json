@@ -6911,7 +6911,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f80bae74-29c6-4cb6-a716-af2558c7c7b4",
+                "id": "4fc1bd59-7837-48cc-a01b-15262d9286ee",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -6920,7 +6920,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    let contactV2Id = parseInt(pm.environment.get(\"contactV2Id\"), 10);",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
                   "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
                   "        postman.setNextRequest(\"Batch Photo Contact v2\");",
@@ -6937,10 +6937,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
