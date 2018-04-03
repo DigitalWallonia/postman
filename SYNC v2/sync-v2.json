@@ -387,7 +387,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e130b1a5-53ad-4168-b045-34c50adebc05",
+                "id": "5193802c-340d-4333-88da-688da7fe3ef7",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -395,7 +395,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/profile\\/[a-f0-9]{32}\\/logo-agence-du-numerique/.test(jsonData.images[0].url);",
+                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/profile\\/[a-f0-9]{32}\\/adn-couleur-rvb-sans-baseline/.test(jsonData.images[0].url);",
                   "    tests[\"images type is Logo\"] = jsonData.images[0].type === \"Logo\";",
                   "    postman.setNextRequest(\"Batch Descriptions Profile v2\");",
                   "}",
