@@ -7304,7 +7304,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5803b796-1f47-4000-9aac-5f9169cbc6c3",
+                "id": "e6f169d7-5ced-48ac-8344-d583131a7731",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -7320,8 +7320,9 @@
                   "        tests[\"Urls Pinterest\"] = jsonData.urls.find(u => u.type === 'Pinterest').address === \"https://www.pinterest.com/Testlastnamecontact\";",
                   "    }",
                   "    postman.setNextRequest(\"Delete Contact v2\");",
-                  "}",
-                  ""
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Contact v2\");",
+                  "}"
                 ]
               }
             }
