@@ -388,7 +388,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5193802c-340d-4333-88da-688da7fe3ef7",
+                "id": "ab7119d6-da53-44e9-b749-7a3d74b07918",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -399,6 +399,8 @@
                   "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/profile\\/[a-f0-9]{32}\\/adn-couleur-rvb-sans-baseline/.test(jsonData.images[0].url);",
                   "    tests[\"images type is Logo\"] = jsonData.images[0].type === \"Logo\";",
                   "    postman.setNextRequest(\"Batch Descriptions Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}",
                   ""
                 ]
