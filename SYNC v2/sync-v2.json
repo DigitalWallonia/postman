@@ -760,6 +760,66 @@
           "response": []
         },
         {
+          "_postman_id": "6d9ad22c-0d48-4bc1-9fe2-8baebc8adcce",
+          "name": "Add Email v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8aa0ed62-19a8-4265-89a5-eed0477013ed",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.email.id) {",
+                  "        postman.setEnvironmentVariable(\"emailV2Id\", jsonData.response.email.id);",
+                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/emails/add?oauth_token={{v2_token}}&adresse=test@synchro.be",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "emails",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "adresse",
+                  "value": "test@synchro.be",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "b9191c0a-3f71-4da7-af9e-35abc54a5da8",
           "name": "Add Email to Contact v2",
           "event": [
@@ -1241,66 +1301,6 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "6d9ad22c-0d48-4bc1-9fe2-8baebc8adcce",
-          "name": "Add Email v2 Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "8aa0ed62-19a8-4265-89a5-eed0477013ed",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.email.id) {",
-                  "        postman.setEnvironmentVariable(\"emailV2Id\", jsonData.response.email.id);",
-                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Profile v2\");",
-                  "    }",
-                  "} else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/emails/add?oauth_token={{v2_token}}&adresse=test@synchro.be",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "emails",
-                "add"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "adresse",
-                  "value": "test@synchro.be",
                   "equals": true
                 }
               ]
