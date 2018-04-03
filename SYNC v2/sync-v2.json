@@ -958,7 +958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "10276437-5dd0-4edb-abe6-37c3b0446c07",
+                "id": "bc1819dd-af83-41b8-a130-7b54510b36f6",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -969,12 +969,13 @@
                   "    let baseUrl = `${pm.environment.get(\"v2_protocol\")}://${pm.environment.get(\"v2_domain\")}`;",
                   "    let emailV2Address = pm.environment.get(\"emailV2Address\");",
                   "    let contact2525 = jsonData.contacts.find(cont => cont.v2Id === 2525);",
+                  "    ",
                   "    //contact",
                   "    tests[\"contact 2525 firstName is Myrto\"] = contact2525.firstName === \"Myrto\";",
                   "    tests[\"contact 2525 lastName is Myrto\"] = contact2525.lastName === \"Melard\";",
-                  "    tests[\"contact 2525 email is myrto.melard@adn.be\"] = contact2525.emailAddresses[0] === emailV2Address;",
+                  "    tests[\"contact 2525 has no email because it's private\"] = contact2525.emailAddresses[0] === nulls;",
                   "    tests[\"contact 2525 fonction is TestRole 1\"] = contact2525.occupation[0].text === \"TestRole 1\";",
-                  "    tests[\"contact 2525 email private\"] = jsonData.private.find(p => p === `emailAddresses[${contact2525.emailAddresses.indexOf(emailV2Address)}]`);",
+                  "    tests[\"contact 2525 email private\"] = contact2525.private.find(p => p === `emailAddresses[${contact2525.emailAddresses.indexOf(emailV2Address)}]`);",
                   "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
                   "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
                   "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
