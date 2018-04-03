@@ -766,7 +766,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f28014a9-135b-458c-a789-720fd005f313",
+                "id": "f9983746-aa1b-4877-bd9f-fb9f141e470b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -776,6 +776,8 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let emailV2Id = pm.environment.get(\"emailV2Id\");",
                   "    // Si le JSON comporte un param\u00e8tre id",
+                  "    console.log(emailV2Id);",
+                  "    console.log(jsonData.response.contact.emails.find(e => e.id === emailV2Id));",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525 && jsonData.response.contact.emails.find(e => e.id === emailV2Id) && jsonData.response.contact.emails.find(e => e.id === emailV2Id).adresse) {",
                   "        postman.setEnvironmentVariable(\"emailV2Address\", jsonData.response.contact.emails.find(e => e.id === emailV2Id).adresse);",
                   "        postman.setNextRequest(\"Find Contact Email Private v3\");",
