@@ -766,7 +766,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "555e4703-418e-4f98-9856-7b3161b8d9f7",
+                "id": "708b56bc-52b8-4cce-a96c-0a6334947f3c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -779,7 +779,11 @@
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525) {",
                   "        console.log(\"jsonData a un id\" + profileV2Id);",
                   "        postman.setNextRequest(\"Find Batch Contacts Email Private v3\");",
+                  "    }else{",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
                   "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}"
                 ]
               }
@@ -790,7 +794,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/49367/update?oauth_token={{v2_token}}&prive=true&principal=false",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/{{emailV2Id}}/add?oauth_token={{v2_token}}&prive=true&principal=false",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -799,8 +803,8 @@
                 "contacts",
                 "2525",
                 "emails",
-                "49367",
-                "update"
+                "{{emailV2Id}}",
+                "add"
               ],
               "query": [
                 {
