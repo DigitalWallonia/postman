@@ -1032,7 +1032,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "829e76fb-a48e-4e30-9cc5-5c52d4212f8e",
+                "id": "0eb0675e-ae16-4131-8ac1-ce87087ab61a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1046,6 +1046,8 @@
                   "    pm.environment.unset(\"profileTitreV2Id\");",
                   "    pm.environment.unset(\"profilePermalienV2Id\");",
                   "    postman.setNextRequest(\"Delete Email to Contact v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v3\");",
                   "}"
                 ]
               }
