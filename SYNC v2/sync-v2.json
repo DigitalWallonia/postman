@@ -6781,7 +6781,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "50399403-8ea8-4510-874d-1dd3fc5d329a",
+                "id": "9598dffd-fc87-41c5-ae18-93048d2b55c3",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -6790,7 +6790,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    let contactV2Id = parseInt(pm.environment.get(\"contactV2Id\"), 10);",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
                   "        postman.setEnvironmentVariable(\"contactV3Id\", jsonData.id);",
                   "        tests[\"firstName\"] = jsonData.firstName === \"Testfirstnamecontact\";",
@@ -6809,10 +6809,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
