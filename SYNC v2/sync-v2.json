@@ -637,7 +637,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e79a0a06-af61-4aac-9fa2-17f47ecd9c69",
+                "id": "845e13f4-2b91-47db-9483-98aef8227ede",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -659,7 +659,7 @@
                   "        console.log(enterpriseFounder.legalName.find(item => item.language === 'fre'));",
                   "    tests[\"enterprise Founder legalName fr is Agence du Num\u00e9rique\"] = enterpriseFounder.legalName.find(item => item.language === 'fre').text === \"Agence du Num\u00e9rique\";",
                   "    tests[\"enterprise Founder abbreviation fr is AdN\"] = enterpriseFounder.abbreviation.find(item => item.language === 'fre').text === \"AdN\";",
-                  "    postman.setNextRequest(\"Batch Contacts Add Email v2\");",
+                  "    postman.setNextRequest(\"Add Email v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}",
