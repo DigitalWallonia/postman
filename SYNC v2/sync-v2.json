@@ -605,7 +605,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Syncronisation v2\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -617,7 +617,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Myrto Melard\"}}",
+                  "value": "{\"profil\":{\"id\":\"{{profileV2Id}}\",\"entitesJuridiques\":{\"0\":{\"id\":\"8336\",\"role\":\"entitejuridiqueprofil_type_fondateur\",\"action\":\"add\"}},\"contacts\":{\"0\":{\"email\":\"49349\",\"id\":\"10586\",\"principal\":true,\"afficheFront\":false,\"action\":\"add\"}},\"adresses\":{\"0\":{\"id\":\"3\",\"type\":\"profiladresse_type_siege_social\",\"principale\":true,\"action\":\"add\"}},\"tags\":{},\"nom\":\"Test Synchro 1\",\"modificationImportante\":true,\"user\":\"Syncronisation v2\"}}",
                   "equals": true
                 },
                 {
