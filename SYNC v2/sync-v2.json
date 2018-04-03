@@ -1060,7 +1060,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "71f264ea-b54c-47ec-87ca-5e06357bf876",
+                "id": "165d0c5c-81da-4233-8510-153c3898dae2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1089,7 +1089,7 @@
                   "    ",
                   "    postman.setNextRequest(\"Batch Contacts Delete Email v2\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "    postman.setNextRequest(\"Delete Email v2\");",
                   "}",
                   ""
                 ]
