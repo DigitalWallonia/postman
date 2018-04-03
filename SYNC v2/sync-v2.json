@@ -7364,7 +7364,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "88c852b7-0090-40cd-875a-d40dbc6ed444",
+                "id": "2932c997-3506-4792-99af-f0382e0a9926",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -7375,8 +7375,7 @@
                   "",
                   "    tests[\"Le contact a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"contactV2Id\");",
-                  "    pm.environment.unset(\"emailContactV2Id\");",
-                  "    postman.setNextRequest(\"Delete Contact v3\");",
+                  "    postman.setNextRequest(\"Delete Email v2\");",
                   "}"
                 ]
               }
@@ -7385,10 +7384,7 @@
           "request": {
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/{{contactV2Id}}/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
@@ -7403,7 +7399,8 @@
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}"
+                  "value": "{{v2_token}}",
+                  "equals": true
                 }
               ]
             }
