@@ -1194,6 +1194,74 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "c2d6e799-3fba-4eec-bd08-44d896c6042a",
+          "name": "Add Email to Contact v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f28014a9-135b-458c-a789-720fd005f313",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let emailV2Id = pm.environment.get(\"emailV2Id\");",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525 && jsonData.response.contact.emails.find(e => e.id === emailV2Id) && jsonData.response.contact.emails.find(e => e.id === emailV2Id).adresse) {",
+                  "        postman.setEnvironmentVariable(\"emailV2Address\", jsonData.response.contact.emails.find(e => e.id === emailV2Id).adresse);",
+                  "        postman.setNextRequest(\"Find Contact Email Private v3\");",
+                  "    }else{",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/{{emailV2Id}}/add?oauth_token={{v2_token}}&prive=true&principal=false",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "contacts",
+                "2525",
+                "emails",
+                "{{emailV2Id}}",
+                "add"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "prive",
+                  "value": "true",
+                  "equals": true
+                },
+                {
+                  "key": "principal",
+                  "value": "false",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
