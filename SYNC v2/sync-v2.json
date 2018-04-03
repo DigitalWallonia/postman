@@ -6652,7 +6652,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1fb66f7a-8c74-438c-9f89-105ccb69ae7c",
+                "id": "4747d18d-4c12-4224-9559-a99d1a6074a6",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -6664,8 +6664,8 @@
                   "    tests[\"Un email au contact \u00e9t\u00e9 ajout\u00e9\"] = jsonData.response.email.id !== \"undefined\";",
                   "    if (jsonData.response.email.id) {",
                   "        // On met la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
-                  "        postman.setEnvironmentVariable(\"emailContactV2Id\", jsonData.response.email.id);",
-                  "        postman.setNextRequest(\"Batch Infos de base Contact v2\");",
+                  "        postman.setEnvironmentVariable(\"emailV2Id\", jsonData.response.email.id);",
+                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
