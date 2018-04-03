@@ -958,7 +958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1a3874ac-70ef-4869-9c1d-fea03cb00d91",
+                "id": "b167ed79-54e9-4e93-b4b1-3e8682c9861c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -985,9 +985,9 @@
                   "        tests[`contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has one or no email`] = testCountEmail <= 1;",
                   "    }",
                   "    ",
-                  "    postman.setNextRequest(\"Batch Contacts Delete Email v2\");",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Delete Email v2\");",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}",
                   ""
                 ]
