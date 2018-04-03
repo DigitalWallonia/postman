@@ -833,7 +833,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "05e0043e-e0c8-46b0-aadc-3ad365d0ef5f",
+                "id": "376a3e4b-db56-4621-bc85-69ebaa14e346",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -841,7 +841,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"contact 2525 email waxtest@wax.be is private\"] = jsonData[0].private[0] === \"emailAddresses[2]\";",
+                  "    tests[\"contact 2525 email test@synchro.be is private\"] = jsonData[0].private[0] === \"emailAddresses[2]\";",
                   "    postman.setNextRequest(\"Batch contacts Profil v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
