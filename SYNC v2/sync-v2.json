@@ -1135,7 +1135,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "0a603d1a-34b2-4132-83b2-e46e094bd89b",
+                "id": "ec08e129-9bdd-4e02-9f74-0ceaab49c30b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1147,6 +1147,8 @@
                   "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"emailV2Id\");",
                   "    pm.environment.unset(\"emailV2Address\");",
+                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "}else{",
                   "    postman.setNextRequest(\"Delete Profile v3\");",
                   "}"
                 ]
