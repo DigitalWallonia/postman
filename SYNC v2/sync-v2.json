@@ -7104,7 +7104,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2f82a596-3f33-4f24-9336-27fa6919edd5",
+                "id": "89616e6c-7719-4afe-9bff-999b934d9dc3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -7112,13 +7112,15 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    let contactV2Id = parseInt(pm.environment.get(\"contactV2Id\"), 10);",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
                   "        postman.setNextRequest(\"Find phone&faxNumbers in Contact v3\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
                   "    }",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Contact v2\");",
                   "}"
                 ]
               }
@@ -7137,7 +7139,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"C\u00e9dric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -7149,7 +7151,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"C\u00e9dric Waxweiler\"}}",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"telephone\":{\"international\":\"+3243800563\",\"codePays\":\"BE\"},\"fax\":{\"international\":\"+3243800785\",\"codePays\":\"BE\"},\"mobile\":{\"international\":\"+32478968596\",\"codePays\":\"BE\"},\"user\":\"Synchronisation v2\"}}",
                   "equals": true
                 },
                 {
