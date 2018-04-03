@@ -958,7 +958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a0acaf44-8177-4e28-a76f-5771b6477737",
+                "id": "5db56401-0bd5-4394-985f-96d230ead11e",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -975,7 +975,6 @@
                   "    tests[\"contact 2525 lastName is Myrto\"] = contact2525.lastName === \"Melard\";",
                   "    tests[\"contact 2525 has no email because it's private\"] = contact2525.emailAddresses.length === 0;",
                   "    tests[\"contact 2525 fonction is Analyste\"] = contact2525.occupation[0].text === \"Analyste\";",
-                  "    tests[\"contact 2525 email private\"] = contact2525.private.find(p => p === `emailAddresses[${contact2525.emailAddresses.indexOf(emailV2Address)}]`);",
                   "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
                   "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
                   "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
@@ -983,7 +982,7 @@
                   "    ",
                   "    for(var i = 0; i < jsonData.contacts.length; i++) {",
                   "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
-                  "        tests[`Le contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has only one email`] = testCountEmail === 1;",
+                  "        tests[`Le contact ${jsonData.contacts[i].firstName} ${jsonData.contacts[i].lastName} has one or no email`] = testCountEmail === 1;",
                   "    }",
                   "    ",
                   "    postman.setNextRequest(\"Batch Contacts Delete Email v2\");",
