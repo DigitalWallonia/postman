@@ -1683,7 +1683,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/vignette/31295/set?oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/evenements/{{eventV2Id}}/vignette/31287/set?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -1692,7 +1692,7 @@
                 "evenements",
                 "{{eventV2Id}}",
                 "vignette",
-                "31295",
+                "31287",
                 "set"
               ],
               "query": [
