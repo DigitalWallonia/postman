@@ -4114,7 +4114,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6c1db212-6d23-4993-b8d2-d53c05cd1ac1",
+                "id": "965dce9f-50d2-4bc3-bbe0-9b5362b0bee5",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4124,8 +4124,8 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    pm.environment.unset(\"postV2IdFR\");",
-                  "    postman.setNextRequest(\"Delete Post v2 EN\");",
-                  "}"
+                  "}",
+                  "postman.setNextRequest(\"Delete Post v2 EN\");"
                 ]
               }
             }
