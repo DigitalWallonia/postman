@@ -5710,7 +5710,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f34e8277-527e-4b77-9aca-1cf6e9e9c625",
+                "id": "8c9e99e7-3bee-4b00-9a44-1815e15f9ab2",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -5726,7 +5726,7 @@
                   "        tests[\"status\"] = jsonData.status === \"Published\";",
                   "        tests[\"title FR\"] = jsonData.title.find(title => title.language === 'fre').text === \"Le cours du bitcoin\";",
                   "        tests[\"shortDescription FR\"] = jsonData.shortDescription.find(shortDescription => shortDescription.language === 'fre').text === \"Le bitcoin est une crypto-monnaie, c'est-\u00e0-dire une monnaie virtuelle prot\u00e9g\u00e9e par de tr\u00e8s nombreux codes d'acc\u00e8s qui a pour symbole un B barr\u00e9 de deux traits verticaux\";",
-                  "        tests[\"themes secteur num\u00e9rique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').title[0].text === \"secteur num\u00e9rique\";",
+                  "        tests[\"themes secteur num\u00e9rique\"] = jsonData.themes.find(themes => themes.title[0].language === 'fre').v2Id === 1;",
                   "        postman.setNextRequest(\"Batch Tag PresseReview v2\");",
                   "    }",
                   "    else{",
@@ -5741,10 +5741,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/pressReviews/findOne?filter={\"where\":{ \"v2Id\":{{presseV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
