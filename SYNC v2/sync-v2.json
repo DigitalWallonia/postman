@@ -7041,7 +7041,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f745e557-5a01-4d84-b547-038b3a1cf276",
+                "id": "d418ae26-bcb8-44b9-b337-f82329f92990",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -7058,6 +7058,8 @@
                   "    else{",
                   "        postman.setNextRequest(\"Delete Contact v2\");",
                   "    }",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Contact v2\");",
                   "}",
                   ""
                 ]
@@ -7067,10 +7069,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
