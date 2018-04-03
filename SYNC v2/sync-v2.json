@@ -706,7 +706,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2b7924c1-1a79-4c53-8ce8-a59c09f7baba",
+                "id": "99e82b14-b975-48a1-b7dc-c32a5e69df92",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -716,7 +716,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Si le JSON comporte un param\u00e8tre id",
                   "    if (jsonData.response.email.id) {",
-                  "        pm.environment.set(\"emailV2\");",
+                  "        pm.environment.set(\"emailV2Id\");",
                   "        postman.setNextRequest(\"Find Batch Contacts Email Private v3\");",
                   "    }",
                   "}"
