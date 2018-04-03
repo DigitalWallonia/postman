@@ -1134,7 +1134,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4aede300-3769-416b-842d-95b8bbf63dc3",
+                "id": "829e76fb-a48e-4e30-9cc5-5c52d4212f8e",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1147,7 +1147,7 @@
                   "    pm.environment.unset(\"profileV2Id\");",
                   "    pm.environment.unset(\"profileTitreV2Id\");",
                   "    pm.environment.unset(\"profilePermalienV2Id\");",
-                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "    postman.setNextRequest(\"Delete Email to Contact v2\");",
                   "}"
                 ]
               }
@@ -1156,10 +1156,7 @@
           "request": {
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
