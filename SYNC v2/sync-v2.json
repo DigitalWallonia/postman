@@ -833,7 +833,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "376a3e4b-db56-4621-bc85-69ebaa14e346",
+                "id": "8a16a87f-7198-463d-a583-70cf8831b8aa",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -841,7 +841,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"contact 2525 email test@synchro.be is private\"] = jsonData[0].private[0] === \"emailAddresses[2]\";",
+                  "    tests[\"contact 2525 email test@synchro.be is private\"] = jsonData.private[0] === \"emailAddresses[2]\";",
                   "    postman.setNextRequest(\"Batch contacts Profil v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
@@ -855,14 +855,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{ \"v2Id\":2525}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":2525}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "contacts"
+                "contacts",
+                "findOne"
               ],
               "query": [
                 {
