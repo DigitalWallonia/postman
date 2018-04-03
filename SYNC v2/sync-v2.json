@@ -958,7 +958,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "165d0c5c-81da-4233-8510-153c3898dae2",
+                "id": "1a3874ac-70ef-4869-9c1d-fea03cb00d91",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -974,11 +974,11 @@
                   "    tests[\"contact 2525 firstName is Myrto\"] = contact2525.firstName === \"Myrto\";",
                   "    tests[\"contact 2525 lastName is Myrto\"] = contact2525.lastName === \"Melard\";",
                   "    tests[\"contact 2525 has no email because it's private\"] = contact2525.emailAddresses.length === 0;",
-                  "    // tests[\"contact 2525 fonction is Analyste\"] = contact2525.occupation[0].text === \"Analyste\";",
+                  "    tests[\"contact 2525 fonction is Analyste\"] = contact2525.occupation[0].text === \"TestRole 1\";",
                   "    tests[\"contact 10972 firstName is Christelle\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).firstName === \"Christelle\";",
                   "    tests[\"contact 10972 lastName is Darville\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).lastName === \"Darville\";",
                   "    tests[\"contact 10972 email is christelle.darville@adn.be\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).emailAddresses[0] === \"christelle.darville@adn.be\";",
-                  "    // tests[\"contact 10972 fonction is TestRole 2\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).occupation[0].text === \"TestRole 2\"; // Expert",
+                  "    tests[\"contact 10972 fonction is TestRole 2\"] = jsonData.contacts.find(cont => cont.v2Id === 10972).occupation[0].text === \"TestRole 2\";",
                   "    ",
                   "    for(var i = 0; i < jsonData.contacts.length; i++) {",
                   "        var testCountEmail = jsonData.contacts[i].emailAddresses.length;",
@@ -999,7 +999,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":2941}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1012,7 +1012,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":2941}}",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
                   "equals": true
                 },
                 {
