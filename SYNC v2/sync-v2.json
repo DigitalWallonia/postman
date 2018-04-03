@@ -6652,7 +6652,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4747d18d-4c12-4224-9559-a99d1a6074a6",
+                "id": "16511731-560d-49d9-94cb-95294cbed266",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -6668,9 +6668,11 @@
                   "        postman.setNextRequest(\"Add Email to Contact v2\");",
                   "    }",
                   "    else{",
-                  "        postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
                   "    }",
-                  "}"
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Contact v2\");",
+                  "    }"
                 ]
               }
             }
