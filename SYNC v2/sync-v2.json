@@ -766,7 +766,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f9983746-aa1b-4877-bd9f-fb9f141e470b",
+                "id": "607d9f5d-7eb7-4e49-b42a-d1d3a4830563",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -776,7 +776,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let emailV2Id = pm.environment.get(\"emailV2Id\");",
                   "    // Si le JSON comporte un param\u00e8tre id",
-                  "    console.log(emailV2Id);",
+                  "    console.log(typeOf(emailV2Id));",
                   "    console.log(jsonData.response.contact.emails.find(e => e.id === emailV2Id));",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525 && jsonData.response.contact.emails.find(e => e.id === emailV2Id) && jsonData.response.contact.emails.find(e => e.id === emailV2Id).adresse) {",
                   "        postman.setEnvironmentVariable(\"emailV2Address\", jsonData.response.contact.emails.find(e => e.id === emailV2Id).adresse);",
