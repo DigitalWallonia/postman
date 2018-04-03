@@ -706,7 +706,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "448fb6de-1606-44af-b573-90b26cb7a23d",
+                "id": "8aa0ed62-19a8-4265-89a5-eed0477013ed",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -719,6 +719,11 @@
                   "        postman.setEnvironmentVariable(\"emailV2Id\", jsonData.response.email.id);",
                   "        postman.setNextRequest(\"Add Email to Contact v2\");",
                   "    }",
+                  "    else{",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}"
                 ]
               }
