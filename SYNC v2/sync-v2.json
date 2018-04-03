@@ -879,57 +879,6 @@
           "response": []
         },
         {
-          "_postman_id": "c2d6e799-3fba-4eec-bd08-44d896c6042a",
-          "name": "Delete Email to Contact v2",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "ccfd72d8-c092-4529-bc86-d4be353992a4",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e du contact\"] = jsonData.response.deleted === true;",
-                  "    postman.setNextRequest(\"Delete Email v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/{{emailV2Id}}/delete?oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "contacts",
-                "2525",
-                "emails",
-                "{{emailV2Id}}",
-                "delete"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "f67fe1c1-f158-430d-9993-d649b078da8c",
           "name": "Find Contact Email Private v3",
           "event": [
@@ -1120,6 +1069,57 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c2d6e799-3fba-4eec-bd08-44d896c6042a",
+          "name": "Delete Email to Contact v2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ccfd72d8-c092-4529-bc86-d4be353992a4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e du contact\"] = jsonData.response.deleted === true;",
+                  "    postman.setNextRequest(\"Delete Email v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/{{emailV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "contacts",
+                "2525",
+                "emails",
+                "{{emailV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
                   "equals": true
                 }
               ]
