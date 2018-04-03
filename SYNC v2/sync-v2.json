@@ -476,7 +476,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Syncronisation v2\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -488,7 +488,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Myrto Melard\"}}",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Syncronisation v2\"}}",
                   "equals": true
                 },
                 {
