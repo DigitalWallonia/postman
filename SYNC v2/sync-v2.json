@@ -328,6 +328,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "cca8fca5-92d7-45fe-8c94-9a08afd99d98",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -345,9 +346,9 @@
                   "    }",
                   "    tests[\"Le logo a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.response.profil.logo !== \"undefined\";",
                   "}else{",
-                  "    pm.environment.unset(\"profileV2Id\");",
-                  "    postman.setNextRequest(null);",
-                  "}"
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
                 ]
               }
             }
