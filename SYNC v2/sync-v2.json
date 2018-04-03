@@ -11,13 +11,6 @@
       "description": null,
       "item": [
         {
-          "_postman_id": "0a9d4f30-203c-9041-de0d-b2e91f68f6cd",
-          "name": "Add New Cible v2 / Theme v3",
-          "description": "",
-          "item": [],
-          "_postman_isSubFolder": true
-        },
-        {
           "_postman_id": "b4743617-fa3b-8a07-cf13-3494d2125e8c",
           "name": "Add EntiteJuridique v2 / LegalForm v3",
           "description": "",
