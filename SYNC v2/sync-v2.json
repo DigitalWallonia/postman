@@ -7408,7 +7408,7 @@
         },
         {
           "_postman_id": "7d495f20-9b0b-441b-972a-f9d79b9487b4",
-          "name": "Delete Email v2 Copy",
+          "name": "Delete Email v2",
           "event": [
             {
               "listen": "test",
