@@ -7007,7 +7007,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"C\u00e9dric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -7019,7 +7019,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"C\u00e9dric Waxweiler\"}}",
+                  "value": "{\"contact\":{\"id\":\"{{contactV2Id}}\",\"photo\":{\"id\":\"27495\"},\"user\":\"Synchronisation v2\"}}",
                   "equals": true
                 },
                 {
