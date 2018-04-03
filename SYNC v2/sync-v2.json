@@ -794,17 +794,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/49367/update?oauth_token={{v2_token}}&prive=true&principal=false",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/emails/add?oauth_token={{v2_token}}&adresse=test@synchro.be",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
               ],
               "path": [
-                "contacts",
-                "2525",
                 "emails",
-                "49367",
-                "update"
+                "add"
               ],
               "query": [
                 {
@@ -813,13 +810,8 @@
                   "equals": true
                 },
                 {
-                  "key": "prive",
-                  "value": "true",
-                  "equals": true
-                },
-                {
-                  "key": "principal",
-                  "value": "false",
+                  "key": "adresse",
+                  "value": "test@synchro.be",
                   "equals": true
                 }
               ]
