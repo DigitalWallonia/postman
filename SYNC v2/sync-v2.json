@@ -5643,7 +5643,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "cefc705a-1ba3-4585-aa64-032b3bc1e9b3",
+                "id": "f89572dd-14a1-40d6-9ecb-1f370be299fe",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -5656,8 +5656,10 @@
                   "        postman.setNextRequest(\"Find New PresseReview v3\");",
                   "    }",
                   "    else{",
-                  "        postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete PresseReview v2\");",
                   "    }",
+                  "} else{",
+                  "    postman.setNextRequest(\"Delete PresseReview v2\");",
                   "}"
                 ]
               }
