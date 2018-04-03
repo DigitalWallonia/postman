@@ -766,7 +766,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c754b607-cdd2-45ea-9087-6113002793e7",
+                "id": "689a388b-94c5-462a-87a3-c745f3c1c983",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -774,9 +774,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    let emailV2Id = pm.environment.get(\"emailV2Id\");",
                   "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525) {",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525 && jsonData.response.contact.emails.find(e => e.id === emailV2Id)) {",
                   "        postman.setNextRequest(\"Find Batch Contacts Email Private v3\");",
                   "    }else{",
                   "        postman.setNextRequest(\"Delete Profile v2\");",
