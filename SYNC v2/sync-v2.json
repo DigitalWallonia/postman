@@ -580,7 +580,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7c7f764f-de52-4acc-9b00-15a624281488",
+                "id": "f85f1e8b-8c4c-4bca-a0d0-5d1a307e262d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -595,7 +595,7 @@
                   "        postman.setNextRequest(\"Find Batch Infos Obligatoires Profile v3\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(\"Find Batch Infos Obligatoires Profile v3\");",
+                  "       postman.setNextRequest(\"Delete Profile v2\");",
                   "    }",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
