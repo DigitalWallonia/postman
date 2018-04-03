@@ -6844,7 +6844,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "088c452c-825d-4e4d-87b9-ee9b4603a1ab",
+                "id": "b20f12d8-0785-41cd-9b0f-1277b68e97c8",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -6852,7 +6852,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    let contactV2Id = parseInt(pm.environment.get(\"contactV2Id\"), 10);",
                   "    if (jsonData.response.contact.id && jsonData.response.contact.id == contactV2Id) {",
                   "        postman.setNextRequest(\"Find Tag in Contact v3\");",
                   "    }",
