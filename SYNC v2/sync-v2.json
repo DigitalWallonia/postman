@@ -6737,24 +6737,32 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"contact\":{\"id\":{{contactV2Id}},\"emails\":{\"0\":{\"id\":\"{{emailContactV2Id}}\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"C\u00e9dric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/{{contactV2Id}}/emails/{{emailV2Id}}/add?oauth_token={{v2_token}}&prive=false&principal=true",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
               ],
               "path": [
-                "services",
-                "batch"
+                "contacts",
+                "{{contactV2Id}}",
+                "emails",
+                "{{emailV2Id}}",
+                "add"
               ],
               "query": [
                 {
-                  "key": "json",
-                  "value": "{\"contact\":{\"id\":{{contactV2Id}},\"emails\":{\"0\":{\"id\":\"{{emailContactV2Id}}\",\"principal\":true,\"prive\":false,\"action\":\"add\"}},\"tags\":{},\"user\":\"C\u00e9dric Waxweiler\"}}",
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
                   "equals": true
                 },
                 {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
+                  "key": "prive",
+                  "value": "false",
+                  "equals": true
+                },
+                {
+                  "key": "principal",
+                  "value": "true",
                   "equals": true
                 }
               ]
