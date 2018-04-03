@@ -514,6 +514,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "d7f36ff9-af74-4e10-8187-7cd3fd566c55",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -533,6 +534,8 @@
                   "    tests[\"longDescription nl is Synchro Test 1 Beschrijving Lang\"] = jsonData.longDescription.find(shortD => shortD.language === 'dut').text === \"Synchro Test 1 Beschrijving Lang\";",
                   "    tests[\"longDescription de is Synchro Test 1 Beschreibung Lang\"] = jsonData.longDescription.find(shortD => shortD.language === 'ger').text === \"Synchro Test 1 Beschreibung Lang\";",
                   "    postman.setNextRequest(\"Batch Infos Obligatoires Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}",
                   ""
                 ]
