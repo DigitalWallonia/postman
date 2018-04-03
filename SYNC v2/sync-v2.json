@@ -1225,10 +1225,7 @@
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
