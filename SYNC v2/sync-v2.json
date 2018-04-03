@@ -11,13 +11,6 @@
       "description": null,
       "item": [
         {
-          "_postman_id": "b4743617-fa3b-8a07-cf13-3494d2125e8c",
-          "name": "Add EntiteJuridique v2 / LegalForm v3",
-          "description": "",
-          "item": [],
-          "_postman_isSubFolder": true
-        },
-        {
           "_postman_id": "baa4cab3-27ba-9bc6-fe19-1840307f39a9",
           "name": "Get Token",
           "event": [
