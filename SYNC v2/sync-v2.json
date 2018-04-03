@@ -6911,7 +6911,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4fc1bd59-7837-48cc-a01b-15262d9286ee",
+                "id": "bc0c2943-fcea-402b-94b1-3ccf335d51c8",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -6922,7 +6922,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    let contactV2Id = parseInt(pm.environment.get(\"contactV2Id\"), 10);",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
-                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title[0].language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
+                  "        tests[\"tags partenaire Digital Wallonia\"] = jsonData.tags.find(tags => tags.title.language === 'fre').title[0].text === \"partenaire Digital Wallonia\";",
                   "        postman.setNextRequest(\"Batch Photo Contact v2\");",
                   "    }",
                   "    else{",
