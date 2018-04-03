@@ -1713,7 +1713,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4f1543bb-9134-4796-8907-877d45c56280",
+                "id": "0e9088c8-e48c-4d23-9bfc-a1c779280ca2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1721,7 +1721,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/event\\/[a-f0-9]{32}\\/logo-agence-du-numerique/.test(jsonData.images[0].url);",
+                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/event\\/[a-f0-9]{32}\\/2729-logo wallcode/.test(jsonData.images[0].url);",
                   "    tests[\"images type is Thumbnail\"] = jsonData.images[0].type === \"Thumbnail\";",
                   "    postman.setNextRequest(\"Batch Descriptions Event v2\");",
                   "}else{",
