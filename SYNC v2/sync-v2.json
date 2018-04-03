@@ -766,7 +766,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8aa0ed62-19a8-4265-89a5-eed0477013ed",
+                "id": "638a9cba-d86d-4be9-84a4-e3caa1679c3b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -774,15 +774,10 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.email.id) {",
-                  "        postman.setEnvironmentVariable(\"emailV2Id\", jsonData.response.email.id);",
-                  "        postman.setNextRequest(\"Add Email to Contact v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Profile v2\");",
-                  "    }",
-                  "} else{",
+                  "",
+                  "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"emailV2Id\");",
+                  "    pm.environment.unset(\"emailV2Address\");",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}"
                 ]
