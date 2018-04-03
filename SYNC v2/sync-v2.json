@@ -1247,6 +1247,58 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "7d495f20-9b0b-441b-972a-f9d79b9487b4",
+          "name": "Delete Email v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ee0c69de-402b-4216-93e0-82107d40c929",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"L'email a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"emailV2Id\");",
+                  "    pm.environment.unset(\"emailV2Address\");",
+                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v3\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/emails/{{emailV2Id}}/delete?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "emails",
+                "{{emailV2Id}}",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
