@@ -764,6 +764,70 @@
           "response": []
         },
         {
+          "_postman_id": "d8401b3b-ee39-4596-99ed-6b25e0ff6f2e",
+          "name": "Batch Contacts Add Email v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "555e4703-418e-4f98-9856-7b3161b8d9f7",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525) {",
+                  "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Contacts Email Private v3\");",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/49367/update?oauth_token={{v2_token}}&prive=true&principal=false",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "contacts",
+                "2525",
+                "emails",
+                "49367",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "prive",
+                  "value": "true",
+                  "equals": true
+                },
+                {
+                  "key": "principal",
+                  "value": "false",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "f67fe1c1-f158-430d-9993-d649b078da8c",
           "name": "Find Batch Contacts Email Private v3",
           "event": [
@@ -1120,70 +1184,6 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d8401b3b-ee39-4596-99ed-6b25e0ff6f2e",
-          "name": "Batch Contacts Add Email v2 Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "555e4703-418e-4f98-9856-7b3161b8d9f7",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = pm.environment.get(\"profileV2Id\");",
-                  "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.contact.id && jsonData.response.contact.id === 2525) {",
-                  "        console.log(\"jsonData a un id\" + profileV2Id);",
-                  "        postman.setNextRequest(\"Find Batch Contacts Email Private v3\");",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/contacts/2525/emails/49367/update?oauth_token={{v2_token}}&prive=true&principal=false",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "contacts",
-                "2525",
-                "emails",
-                "49367",
-                "update"
-              ],
-              "query": [
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "prive",
-                  "value": "true",
-                  "equals": true
-                },
-                {
-                  "key": "principal",
-                  "value": "false",
                   "equals": true
                 }
               ]
