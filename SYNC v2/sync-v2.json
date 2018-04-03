@@ -7304,7 +7304,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "bdfdd2f7-0110-4660-97fa-fc9ecfe9ba57",
+                "id": "5803b796-1f47-4000-9aac-5f9169cbc6c3",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -7313,7 +7313,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    let contactV2Id = pm.environment.get(\"contactV2Id\");",
+                  "    let contactV2Id = parseInt(pm.environment.get(\"contactV2Id\"), 10);",
                   "    if (jsonData.v2Id && jsonData.v2Id == contactV2Id) {",
                   "        tests[\"Urls Facebook\"] = jsonData.urls.find(u => u.type === 'Facebook').address === \"https://www.facebook.com/Testlastnamecontact\";",
                   "        tests[\"Urls Twitter\"] = jsonData.urls.find(u => u.type === 'Twitter').address === \"https://twitter.com/Testlastnamecontact\";",
@@ -7329,10 +7329,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":{{contactV2Id}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
