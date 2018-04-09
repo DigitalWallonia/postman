@@ -4579,7 +4579,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"serviceDeskId\": \"3\",\r\n    \"requestTypeId\": \"71\",\r\n    \"requestFieldValues\": {\r\n        \"summary\": \"Test-APIv3 Through : TTTTTTT\",\r\n        \"description\": \"Test-DIG : la page d'accueil est en erreur !\",\r\n        \"customfield_10200\": { \"value\": \"DigitalWallonia.be\" },\r\n        \"customfield_10203\": \"https://www.digitalwallonia.be/fr/home\"\r\n    }\r\n}"
+          "raw": "{\r\n    \"serviceDeskId\": \"3\",\r\n    \"requestTypeId\": \"71\",\r\n    \"requestFieldValues\": {\r\n        \"summary\": \"Test-APIv3 Through : Bug\",\r\n        \"description\": \"Test-DIG : la page d'accueil est en erreur !\",\r\n        \"customfield_10200\": { \"value\": \"DigitalWallonia.be\" },\r\n        \"customfield_10203\": \"https://www.digitalwallonia.be/fr/home\"\r\n    }\r\n}"
         },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/servicedesk?access_token={{v3_token}}",
