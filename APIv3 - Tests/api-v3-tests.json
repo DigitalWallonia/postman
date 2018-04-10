@@ -110,7 +110,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "4ca1cf2e-5983-4e12-a48c-06b8e2837887",
+                "id": "e95d7069-59fc-439c-b6dc-3b444c158265",
                 "type": "text/javascript",
                 "exec": [
                   "let currentDate = new Date();",
@@ -122,9 +122,9 @@
                   "  });",
                   "}",
                   "function uuidv2() {",
-                  "  return 'xxxx'.replace(/[xy]/g, function(c) {",
-                  "    var r = Math.random() * 4 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
-                  "    return v.toString(4);",
+                  "  return 'xxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 6 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(6);",
                   "  });",
                   "}",
                   "pm.environment.set(\"uniqId1\", uuidv4());",
