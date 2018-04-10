@@ -110,7 +110,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "ae75f5b2-4318-4f6f-9c40-12d72f7d4aab",
+                "id": "2d0fa816-d069-4fdc-978f-fe4b5331f35e",
                 "type": "text/javascript",
                 "exec": [
                   "let currentDate = new Date();",
@@ -127,8 +127,8 @@
                   "pm.environment.set(\"uniqId4\", uuidv4());",
                   "function uuidv2() {",
                   "  return 'xxxx'.replace(/[xy]/g, function(c) {",
-                  "    var r = Math.random() * 4;",
-                  "    return v.toString(16);",
+                  "    var r = Math.random() * 4 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(4);",
                   "  });",
                   "}",
                   "console.log(uuidv2());",
