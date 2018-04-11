@@ -4347,24 +4347,22 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pages"
+                "pages",
+                "findOne"
               ],
               "query": [
                 {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}",
                   "equals": true
                 }
               ]
