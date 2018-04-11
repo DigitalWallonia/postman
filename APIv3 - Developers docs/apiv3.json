@@ -3257,7 +3257,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"where\":{\"and\": [{ \"tags.slug.slug\": \"entreprise-privee\"},{\"tags.slug.slug\": \"belgique\"},{\"status\": \"Published\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3269,7 +3269,12 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
+                  "value": "{\"where\":{\"and\": [{ \"tags.slug.slug\": \"entreprise-privee\"},{\"tags.slug.slug\": \"belgique\"},{\"status\": \"Published\"}]}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
