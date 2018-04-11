@@ -4349,7 +4349,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4363,6 +4363,11 @@
                 {
                   "key": "filter",
                   "value": "{\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
