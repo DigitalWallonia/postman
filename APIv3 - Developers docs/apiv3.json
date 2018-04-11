@@ -3239,15 +3239,10 @@
             {
               "listen": "test",
               "script": {
+                "id": "2ea72c34-7ae1-4118-97a4-cb656b74af02",
                 "type": "text/javascript",
                 "exec": [
-                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
-                  "",
-                  "let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
-                  "tests[\"On r\u00e9cup\u00e8re bien 10 profils ou moins\"] = jsonData.length <= 10;"
+                  ""
                 ]
               }
             }
