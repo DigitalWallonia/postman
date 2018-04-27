@@ -1156,12 +1156,9 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"v2Id\":323}}",
+              "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"v2Id\":324}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1174,7 +1171,12 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":323}}",
+                  "value": "{\"where\":{ \"v2Id\":324}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
