@@ -4653,6 +4653,55 @@
         }
       },
       "response": []
+    },
+    {
+      "_postman_id": "0b142181-faca-4152-b238-c3c2659845ea",
+      "name": "Subscribe Newsletter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "af3d671c-68b4-4dd6-a01a-a77e6fe89e40",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"emailAddress\":\"myrto.melard@adn.be\"\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/newsletter/subscribe?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "newsletter",
+            "subscribe"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
