@@ -3977,7 +3977,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3989,7 +3989,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true}}",
+                  "value": "{\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true}}",
                   "equals": true
                 },
                 {
