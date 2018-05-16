@@ -3959,6 +3959,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "0cb0366e-dcbd-4d77-97d4-29b79feab8f5",
                 "type": "text/javascript",
                 "exec": [
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
@@ -3968,6 +3969,17 @@
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
                   "tests[\"On r\u00e9cup\u00e8re bien 10 profils ou moins\"] = jsonData.length <= 10;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "1e58e1d2-fe78-48cd-b6af-917f46263339",
+                "type": "text/javascript",
+                "exec": [
+                  "let currentDate = new Date();",
+                  "pm.environment.set(\"currentDate\", currentDate);"
                 ]
               }
             }
