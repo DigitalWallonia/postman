@@ -3989,7 +3989,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true},\"where\":{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]},\"order\":[\"endDate+ASC\"]}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4001,7 +4001,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true}}",
+                  "value": "{\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true},\"where\":{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]},\"order\":[\"endDate+ASC\"]}",
                   "equals": true
                 },
                 {
