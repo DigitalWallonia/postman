@@ -5940,7 +5940,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"tags\": {},\"user\":\"C\u00e9dric Waxweiler\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"tags\": {},\"contacts\": {},\"user\":\"C\u00e9dric Waxweiler\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -5952,7 +5952,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"tags\": {},\"user\":\"C\u00e9dric Waxweiler\"}}",
+                  "value": "{\"presse\":{\"id\":\"{{presseV2Id}}\",\"mediaSource\":{\"id\":\"10317\",\"role\":\"presseprofil_role_source\",\"action\":\"no\"},\"profils\":{\"0\":{\"id\":\"2914\",\"action\":\"add\"}},\"tags\": {},\"contacts\": {},\"user\":\"C\u00e9dric Waxweiler\"}}",
                   "equals": true
                 },
                 {
