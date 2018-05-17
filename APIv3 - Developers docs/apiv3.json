@@ -3280,6 +3280,56 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "fddd37ff-d3aa-421c-96f6-426cfe9f3810",
+          "name": "Liste des profils - Fields limit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
+                  "tests[\"On r\u00e9cup\u00e8re bien 10 profils ou moins\"] = jsonData.length <= 10;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":25,\"where\":{\"and\":[{\"status\":\"Published\"}]},\"fields\":{\"images\":true,\"title\":true,\"addresses\":true}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":25,\"where\":{\"and\":[{\"status\":\"Published\"}]},\"fields\":{\"images\":true,\"title\":true,\"addresses\":true}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
