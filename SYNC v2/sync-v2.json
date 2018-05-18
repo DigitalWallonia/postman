@@ -8925,7 +8925,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d07453c4-f13f-43e4-9eeb-8c7ba4828f5a",
+                "id": "9c3f558c-b89b-44d4-8d71-f5f5dd6e1f5a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -8936,7 +8936,6 @@
                   "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"projectv3Id\");",
                   "}",
-                  "",
                   "postman.setNextRequest(\"Find Artifact from previous tests mission\");"
                 ]
               }
@@ -8945,10 +8944,7 @@
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
