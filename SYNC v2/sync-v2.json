@@ -8875,7 +8875,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "86a03d0d-acf4-4872-83e6-a5a8312fc0f4",
+                "id": "2aea807b-ef3d-4213-bbea-2b1a7afc33b2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -8886,8 +8886,8 @@
                   "",
                   "    tests[\"Tag project was deleted in v2\"] = jsonData.response.deleted === true;",
                   "    pm.environment.unset(\"projectV2Id\");",
-                  "    postman.setNextRequest(\"Delete Project v3\");",
-                  "}"
+                  "}",
+                  "postman.setNextRequest(\"Delete Project v3\");"
                 ]
               }
             }
@@ -8895,10 +8895,7 @@
           "request": {
             "method": "POST",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{v2_protocol}}://{{v2_domain}}/tags/{{tagV2Id}}/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
