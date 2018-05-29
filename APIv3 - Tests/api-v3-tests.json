@@ -2609,6 +2609,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "cb196d69-4908-4582-8005-1a15339efcf0",
+      "name": "Environment",
+      "description": null,
+      "item": []
     }
   ]
 }
