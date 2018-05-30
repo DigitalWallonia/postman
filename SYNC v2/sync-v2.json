@@ -10147,7 +10147,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7a831486-f220-488b-9214-52e7f1cf2c06",
+                "id": "89cc3621-3b82-4c72-b425-26bc1fc0b006",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -10155,15 +10155,15 @@
                   "});",
                   "console.log(pm.response);",
                   "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    if (jsonData !== [] && jsonData[0].id) {",
-                  "        postman.setEnvironmentVariable(\"environmentId\", jsonData[0].id);",
+                  "    if (responseBody == \"[]\") {",
+                  "        postman.setNextRequest(\"Ajout d'un environnement\");",
                   "    }",
                   "    else {",
-                  "        postman.setNextRequest(\"Delete if not empty\"); ",
+                  "        let jsonData = JSON.parse(responseBody);",
+                  "        postman.setEnvironmentVariable(\"environmentId\", jsonData[0].id);",
+                  "        postman.setNextRequest(\"Delete if not empty\");",
                   "    }",
                   "}else{",
-                  "    console.log('eeeeeeeeeeee');",
                   "    postman.setNextRequest(\"Ajout d'un environnement\");",
                   "}"
                 ]
