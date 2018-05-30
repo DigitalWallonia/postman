@@ -10039,7 +10039,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1821339e-6ec6-4ea9-bb44-e73d563d36b5",
+                "id": "4fec9625-d1d8-4ae8-8513-a183e9539c19",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -10050,7 +10050,7 @@
                   "    tests[\"Mission was deleted in v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"missionv3Id\");",
                   "}",
-                  "postman.setNextRequest(null);"
+                  "postman.setNextRequest(\"Ajout d'un environnement\");"
                 ]
               }
             }
@@ -10058,10 +10058,7 @@
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/missions/{{missionV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
