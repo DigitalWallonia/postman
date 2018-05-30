@@ -10141,6 +10141,61 @@
       "description": null,
       "item": [
         {
+          "_postman_id": "d3f96dcd-2b20-4f6b-8450-825501ca3231",
+          "name": "Find Artifact from previous tests profile Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cbe7171e-5e9b-426d-bd54-5293aab606a1",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete Artifact from previous tests profile\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Add Profile v2\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\": {\"like\": \"test-synchro\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"slug.slug\": {\"like\": \"test-synchro\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "5c572226-231c-4347-9617-767cf4ba2be2",
           "name": "Ajout d'un environnement",
           "event": [
@@ -10557,61 +10612,6 @@
                 "{{environmentId}}"
               ],
               "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "d3f96dcd-2b20-4f6b-8450-825501ca3231",
-          "name": "Find Artifact from previous tests profile Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "cbe7171e-5e9b-426d-bd54-5293aab606a1",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful GET request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests profile\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Add Profile v2\");",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\": {\"like\": \"test-synchro\"}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\": {\"like\": \"test-synchro\"}}}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
