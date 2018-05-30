@@ -10196,6 +10196,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "f1206f0d-9dfe-4095-9b08-7091dae9a84d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -10203,9 +10204,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest(\"Add Profile v2\");",
+                  "    tests[\"L'environement' est supprim\u00e9\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"environmentId\");",
+                  "    postman.setNextRequest(\"Ajout d'un environnement\");",
                   "}",
                   ""
                 ]
@@ -10217,15 +10218,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles",
-                "{{profileV3Id}}"
+                "environments",
+                "{{environmentId}}"
               ],
               "query": [
                 {
