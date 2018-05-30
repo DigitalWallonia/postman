@@ -10207,7 +10207,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f1206f0d-9dfe-4095-9b08-7091dae9a84d",
+                "id": "ff6191e3-c848-47bc-9c20-d38d6d74aad3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -10215,8 +10215,12 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"L'environement' est supprim\u00e9\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"environmentId\");",
+                  "    if (jsonData.count === 0) {",
+                  "        postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "    } else if (jsonData.count === 0) {",
+                  "        tests[\"L'environement' est supprim\u00e9\"] = jsonData.count === 1;",
+                  "        pm.environment.unset(\"environmentId\");",
+                  "    }",
                   "    postman.setNextRequest(\"Ajout d'un environnement\");",
                   "}",
                   ""
