@@ -10147,7 +10147,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e3a76e2d-ed6b-402c-9de6-79bb78a666c8",
+                "id": "7e3af627-49fa-442c-9511-ab0d56aa34d9",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10170,6 +10170,7 @@
                   "if (responseBody.has(\"id\")) {",
                   "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
                   "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
+                  "    postman.setNextRequest(\"Suppression d'un stickyPost\");",
                   "}",
                   "",
                   "else{",
