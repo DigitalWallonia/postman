@@ -10220,7 +10220,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "44095fb0-d6f3-4887-96a7-19435af1c613",
+                "id": "f1413483-2b82-4024-a9af-e0acdc1ccde4",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10245,6 +10245,7 @@
                   "if (responseBody.has(\"id\")) {",
                   "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
                   "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
+                  "    postman.setNextRequest(\"Modification du titre d'un stickyPost existant\");",
                   "}",
                   "",
                   "else{",
