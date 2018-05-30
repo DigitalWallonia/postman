@@ -2694,7 +2694,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "1c625844-8dd2-4fd2-b543-096e0ee13d47",
+                "id": "44095fb0-d6f3-4887-96a7-19435af1c613",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -2713,7 +2713,7 @@
                   "tests[\"La valeur du param\u00e8tre environment est TEST\"] = jsonData.environment === \"TEST\";",
                   "tests[\"La valeur du param\u00e8tre product est Webapp\"] = jsonData.product === \"Webapp\";",
                   "",
-                  "tests[\"Le nombre de stickyPost est \u00e9gal \u00e0 1\"] = jsonData.stickyPosts.length >= 1;",
+                  "tests[\"Le nombre de stickyPost est \u00e9gal \u00e0 1\"] = jsonData.stickyPosts.length === 1;",
                   "",
                   "// Si le JSON comporte un param\u00e8tre id",
                   "if (responseBody.has(\"id\")) {",
