@@ -10410,7 +10410,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "496e6fcb-9fcb-4f7e-a7e5-7a4d34e2304b",
+                "id": "8d6611a9-d7c7-4127-b584-9d71cb984dda",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10436,7 +10436,7 @@
                   "if (responseBody.has(\"id\")) {",
                   "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
                   "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
-                  "    postman.setNextRequest(\"Ajout de 2 nouveaux stickyPosts\");",
+                  "    postman.setNextRequest(\"Modification de companyProfile\");",
                   "}",
                   "",
                   "else{",
