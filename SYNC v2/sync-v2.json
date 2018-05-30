@@ -10147,7 +10147,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "cbe7171e-5e9b-426d-bd54-5293aab606a1",
+                "id": "6fc2d9c3-b690-4d6a-a99d-49cae23dd3ed",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -10155,10 +10155,10 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
-                  "    postman.setNextRequest(\"Delete Artifact from previous tests profile\");",
+                  "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
+                  "    postman.setNextRequest(\"Delete if not empty\");",
                   "}else{",
-                  "    postman.setNextRequest(\"Add Profile v2\");",
+                  "    postman.setNextRequest(\"Ajout d'un environnement\");",
                   "}"
                 ]
               }
@@ -10169,22 +10169,16 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\": {\"like\": \"test-synchro\"}}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/environments?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles",
-                "findOne"
+                "environments"
               ],
               "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\": {\"like\": \"test-synchro\"}}}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
