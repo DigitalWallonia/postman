@@ -10563,7 +10563,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "863db667-a7c4-4b54-8119-08bcb840cd97",
+                "id": "e09d86fa-3315-49c9-a94b-0809e5572f40",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10589,7 +10589,7 @@
                   "if (responseBody.has(\"id\")) {",
                   "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
                   "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
-                  "    postman.setNextRequest(\"Modification de companyProfile\");",
+                  "    postman.setNextRequest(\"Suppression de 3 th\u00e8mes\");",
                   "}",
                   "",
                   "else{",
