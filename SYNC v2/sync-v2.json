@@ -10147,12 +10147,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "6fc2d9c3-b690-4d6a-a99d-49cae23dd3ed",
+                "id": "985962dd-9e70-46fb-bc49-abd07c6226fe",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
                   "});",
+                  "console.log(pm.response);",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
