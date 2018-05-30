@@ -10147,7 +10147,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6260b006-0197-4e31-ac08-559c5d6e0e95",
+                "id": "d2f181a4-ea79-4dde-9621-99dd59ab07e7",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -10155,7 +10155,6 @@
                   "});",
                   "console.log(pm.response);",
                   "if (pm.response.code === 200) {",
-                  "    console.log(\"iiiiiiiiiiiiii\");",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    postman.setEnvironmentVariable(\"environmentId\", jsonData[0].id);",
                   "    postman.setNextRequest(\"Delete if not empty\");",
