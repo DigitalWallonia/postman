@@ -10147,7 +10147,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "89cc3621-3b82-4c72-b425-26bc1fc0b006",
+                "id": "ce326c10-49a3-45cc-8a92-400af4e300f0",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -10160,7 +10160,7 @@
                   "    }",
                   "    else {",
                   "        let jsonData = JSON.parse(responseBody);",
-                  "        postman.setEnvironmentVariable(\"environmentId\", jsonData[0].id);",
+                  "        postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
                   "        postman.setNextRequest(\"Delete if not empty\");",
                   "    }",
                   "}else{",
@@ -10180,16 +10180,22 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/environments?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/environments/findOne?filter={\"where\":{ \"environment\":{\"like\":\"testing\"}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "environments"
+                "environments",
+                "findOne"
               ],
               "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"environment\":{\"like\":\"testing\"}}}",
+                  "equals": true
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
