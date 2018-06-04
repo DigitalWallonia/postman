@@ -10563,7 +10563,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e09d86fa-3315-49c9-a94b-0809e5572f40",
+                "id": "f5489167-0835-4013-a3fc-fbfa33f272a3",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10579,7 +10579,7 @@
                   "tests[\"Le param\u00e8tre themes est pr\u00e9sent\"] = jsonData.themes;",
                   "tests[\"Le param\u00e8tre stickyPosts est pr\u00e9sent\"] = jsonData.stickyPosts;",
                   "",
-                  "tests[\"La valeur du param\u00e8tre environment est TEST\"] = jsonData.environment === \"TEST\";",
+                  "tests[\"La valeur du param\u00e8tre environment est testing\"] = jsonData.environment === \"testing\";",
                   "tests[\"La valeur du param\u00e8tre product est Webapp\"] = jsonData.product === \"Webapp\";",
                   "",
                   "tests[\"Le nombre de stickyPost est \u00e9gal \u00e0 1\"] = jsonData.stickyPosts.length === 3;",
