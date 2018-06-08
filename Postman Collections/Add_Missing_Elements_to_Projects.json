@@ -1,0 +1,803 @@
+{
+  "info": {
+    "_postman_id": "6755b2fb-92f2-441f-9707-422efd24167b",
+    "name": "Add Missing Elements to Projects",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "fa408ad7-0a43-4cfd-a7b6-04666e232fd8",
+      "name": "Find Project",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "614c5b46-d190-4f4e-9a89-60ab73493617",
+            "type": "text/javascript",
+            "exec": [
+              "pm.environment.unset(\"contactsInvolved\");",
+              "pm.environment.unset(\"theme\");",
+              "pm.environment.unset(\"v2IdTheme\");",
+              "pm.environment.unset(\"contact\");",
+              "pm.environment.unset(\"v2IdContact\");",
+              "pm.environment.unset(\"profilesJson\");",
+              "pm.environment.unset(\"v2IdProfile\");",
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "if (pm.response.code === 200) {",
+              "    let jsonData = JSON.parse(responseBody);",
+              "    postman.setEnvironmentVariable(\"projectId\", jsonData.id);",
+              "    postman.setEnvironmentVariable(\"projectName\", jsonData.title[0].text);",
+              "    postman.setEnvironmentVariable(\"projectPublicationDate\", JSON.stringify(data.publicationDate));",
+              "    if(jsonData.contacts && jsonData.contacts.length > 0){",
+              "        let contactsInvolved = jsonData.contacts.filter(c => c.role === 'Involved');",
+              "        postman.setEnvironmentVariable(\"contactsInvolved\", JSON.stringify(contactsInvolved));",
+              "    }",
+              "    if(data.bannerUrl && data.logoUrl  && data.logoUrl !== \"\" && data.bannerUrl !== \"\"){",
+              "        postman.setNextRequest(\"Add Images\");",
+              "    }else if(data.logoUrl && data.logoUrl !== \"\"){",
+              "        postman.setNextRequest(\"Add Logo\");",
+              "    }else if(data.bannerUrl && data.bannerUrl !== \"\"){",
+              "        postman.setNextRequest(\"Add Banner\");",
+              "    }else{",
+              "        postman.setNextRequest(\"Find Theme\");      ",
+              "    }",
+              "}else{",
+              "    postman.setNextRequest(\"\");",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"v2Id\":\"{{projectV2Id}}\"}}&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "findOne"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"v2Id\":\"{{projectV2Id}}\"}}",
+              "equals": true
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d57839eb-295f-4cc8-aa8f-882fcf0a3d21",
+      "name": "Add Images",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5318d250-2dfd-405b-b54c-edfa3c58d906",
+            "type": "text/javascript",
+            "exec": [
+              "function uuidv4() {",
+              "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+              "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+              "    return v.toString(16);",
+              "  });",
+              "}",
+              "pm.environment.set(\"uniqId1\", uuidv4());",
+              "pm.environment.set(\"uniqId2\", uuidv4());"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "6c3f679c-4733-4457-ad22-adff490eb5e9",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "postman.setNextRequest(\"Find Theme\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"{{logoUrl}}\",\n      \"name\": \"{{projectName}}\",\n      \"id\": \"{{uniqId1}}\"\n    },\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"{{bannerUrl}}\",\n      \"name\": \"{{projectName}}\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "368cfe74-cb65-4bc7-93e3-accba8961eab",
+      "name": "Add Logo",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5318d250-2dfd-405b-b54c-edfa3c58d906",
+            "type": "text/javascript",
+            "exec": [
+              "function uuidv4() {",
+              "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+              "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+              "    return v.toString(16);",
+              "  });",
+              "}",
+              "pm.environment.set(\"uniqId1\", uuidv4());",
+              "pm.environment.set(\"uniqId2\", uuidv4());"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "6c3f679c-4733-4457-ad22-adff490eb5e9",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "postman.setNextRequest(\"Find Theme\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"{{logoUrl}}\",\n      \"name\": \"{{projectName}}\",\n      \"id\": \"{{uniqId1}}\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "b978be87-25ba-4fb1-988b-6db7ed3b2bf8",
+      "name": "Add Banner",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5318d250-2dfd-405b-b54c-edfa3c58d906",
+            "type": "text/javascript",
+            "exec": [
+              "function uuidv4() {",
+              "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+              "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+              "    return v.toString(16);",
+              "  });",
+              "}",
+              "pm.environment.set(\"uniqId1\", uuidv4());",
+              "pm.environment.set(\"uniqId2\", uuidv4());"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "f50ea18a-cfa1-4be0-b403-eb34a7f08728",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "postman.setNextRequest(\"Find Theme\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Banner\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"{{bannerUrl}}\",\n      \"name\": \"{{projectName}}\",\n      \"id\": \"{{uniqId2}}\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "cbad64e6-2cba-42eb-b808-1b775b7c7fea",
+      "name": "Find Theme",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8a15e20e-9632-4a55-8216-18d0dbee1c74",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "if (pm.response.code === 200) {",
+              "    let jsonData = JSON.parse(responseBody);",
+              "    postman.setEnvironmentVariable(\"theme\", JSON.stringify(jsonData));",
+              "    postman.setNextRequest(\"Link Theme\");",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "61fdeacf-b40b-44a3-9e26-1b736b8eb2c2",
+            "type": "text/javascript",
+            "exec": [
+              "/**",
+              " * R\u00e9cuperation des valeurs du csv",
+              " * Mise dans un tableau",
+              " */",
+              "let gTheme = pm.iterationData.get(\"themeV2Id\").toString(10).split(':');",
+              "//initialisation des variables",
+              "let gString = [];",
+              "let v2IdTheme = null;",
+              "//Parcours du tableau initials\u00e9 et concatenation des where de la requ\u00eate",
+              "gTheme.forEach(function(gV2id) {",
+              "    gString.push('{\"v2Id\":'+ gV2id.trim() +'}');",
+              "    ",
+              "});",
+              "//Cr\u00e9ation de la variable \u00e0 passer dans la requ\u00eate",
+              "pm.environment.set(\"v2IdTheme\", gString.join());"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "",
+            "value": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/themes?filter={\"where\":{\"and\":[{\"or\":[{{v2IdTheme}}]}]}}&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "themes"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"and\":[{\"or\":[{{v2IdTheme}}]}]}}",
+              "equals": true
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c4525acc-4ed4-4b3e-a571-ccca74738f78",
+      "name": "Link Theme",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5d2d12af-6c1e-4d4c-9ca0-81db0c1383fa",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "",
+              "if(pm.iterationData.get(\"contactProfileV2Id\") !== null){",
+              "    postman.setNextRequest(\"Find Profile\");",
+              "}else{",
+              "     postman.setNextRequest(\"Find Contact\");",
+              "}"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "20ab2cab-4232-485b-a9fe-6b54584bc3da",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"themes\": \n    {{theme}}\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "279609a1-79aa-46ea-90bc-089ff6faaa01",
+      "name": "Find Profile",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ece7a80c-8b80-42f3-8992-5751178b2028",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function() {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
+              "});",
+              "let jsonData = [];",
+              "if (pm.response.code === 200) {",
+              "    jsonData = JSON.parse(responseBody);",
+              "}",
+              "pm.environment.set(\"profilesJson\", jsonData);",
+              "postman.setNextRequest(\"Find Contact\");",
+              "",
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "bbb0ddd6-5f28-4a24-a4d9-6e1e7a088a29",
+            "type": "text/javascript",
+            "exec": [
+              "/**",
+              " * R\u00e9cuperation des valeurs du csv",
+              " * Mise dans un tableau",
+              " */",
+              "",
+              "//initialisation des variables",
+              "let gString = [];",
+              "let v2IdProfile = null;",
+              "let gContact = [];",
+              "//R\u00e9cup\u00e9ration des Id profils associ\u00e9s au projet/mission",
+              "if(pm.iterationData.get(\"contactProfileV2Id\") !== null){",
+              "    gContact = pm.iterationData.get(\"contactProfileV2Id\").toString(10).split(':');",
+              "}",
+              "",
+              "//Parcours du tableau initials\u00e9 et concatenation des where de la requ\u00eate",
+              "gContact.forEach(function(gV2id) {",
+              "    gString.push('{\"v2Id\":'+ gV2id.trim() +'}');",
+              "",
+              "});",
+              "//Cr\u00e9ation de la variable \u00e0 passer dans la requ\u00eate",
+              "pm.environment.set(\"v2IdProfile\", gString);",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"where\":{\"and\":[{\"or\":[{{v2IdProfile}}]}]},\"fields\": [\"title\",\"shortTitle\",\"slug\",\"v2Id\",\"status\",\"partners\",\"contacts\"]}&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "profiles"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"and\":[{\"or\":[{{v2IdProfile}}]}]},\"fields\": [\"title\",\"shortTitle\",\"slug\",\"v2Id\",\"status\",\"partners\",\"contacts\"]}",
+              "equals": true
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c150d6ba-50b8-4861-8037-b8ed84a8413e",
+      "name": "Find Contact",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5ee666f4-df51-4a62-849b-07e06a3d8a8b",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function() {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
+              "});",
+              "let profileJson = pm.environment.get(\"profilesJson\");",
+              "let constructJson = [];",
+              "let contactEmail = [];",
+              "let occupationFr = [];",
+              "let occupationEn = [];",
+              "let contactV2Id = [];",
+              "let contactInfos = [];",
+              "let contactsInvolved = [];",
+              "try{",
+              "    contactsInvolved = JSON.parse(pm.environment.get(\"contactsInvolved\"));",
+              "}catch(e){",
+              "    ",
+              "}",
+              "",
+              "if(contactsInvolved && contactsInvolved.length > 0){",
+              "    constructJson = contactsInvolved;",
+              "}",
+              "// R\u00e9cup\u00e9ration des emails, occupation du Csv et association avec les id des contacts correspondants",
+              "if(pm.iterationData.get(\"contactEmail\") !== null){",
+              " contactEmail = pm.iterationData.get(\"contactEmail\").toString(10).split(':');",
+              "}",
+              "",
+              "if(pm.iterationData.get(\"contactOccupationFr\") !== null){",
+              " occupationFr = pm.iterationData.get(\"contactOccupationFr\").toString(10).split(':');",
+              "}",
+              "",
+              "if(pm.iterationData.get(\"contactOccupationEn\") !== null){",
+              " occupationEn = pm.iterationData.get(\"contactOccupationEn\").toString(10).split(':');",
+              "}",
+              "if(pm.iterationData.get(\"contactV2Id\") !== null){",
+              " contactV2Id = pm.iterationData.get(\"contactV2Id\").toString(10).split(':');",
+              "}",
+              "",
+              "let i = 0;",
+              "contactV2Id.forEach(function(cV2id) {",
+              " contactInfos.push({ v2Id: cV2id, fr: occupationFr[i], en: occupationEn[i], email: contactEmail[i]});",
+              " i++;",
+              "});",
+              "",
+              "let publicationDate = pm.iterationData.get(\"publicationDate\");",
+              "",
+              "if (pm.response.code === 200) {",
+              "  let nouvOccupation = null;",
+              "  let jsonData = JSON.parse(responseBody);",
+              "  jsonData.forEach(function(el) {",
+              "    let cont = null;",
+              "    el.role = \"Contact Person\";",
+              "    el.status = \"Published\";",
+              "    if(profileJson !== undefined){",
+              "        const nouvProfile = profileJson.find(p => { ",
+              "          cont = p.contacts.find(c => c.v2Id === el.v2Id);",
+              "          if (cont !== undefined) {",
+              "            return p;",
+              "          } else {",
+              "            return undefined;",
+              "          }",
+              "        });",
+              "    ",
+              "        if (nouvProfile !== undefined) {",
+              "          el.profiles = nouvProfile;",
+              "        }",
+              "    }",
+              "    nouvOccupation = contactInfos.find(o => o.v2Id === JSON.stringify(el.v2Id));",
+              "    if(nouvOccupation !== null){",
+              "      el.emailAddresses = [nouvOccupation.email];",
+              "      if(nouvOccupation.fr !== undefined){",
+              "        el.occupation.push({id:Math.random().toString(36).substr(2, 27), language: \"fre\", text: nouvOccupation.fr});",
+              "      }",
+              " ",
+              "      if(nouvOccupation.en !== undefined){",
+              "        el.occupation.push({id:Math.random().toString(36).substr(2, 27), language: \"eng\", text: nouvOccupation.en});",
+              "      }",
+              "    }",
+              "    constructJson.push(el);",
+              "    i++;",
+              "  });",
+              "  ",
+              "  postman.setEnvironmentVariable(\"contact\", JSON.stringify(constructJson));",
+              "  postman.setNextRequest(\"Embed Contact\");",
+              "}else{",
+              "  postman.setNextRequest(\"Add publicationDate\");",
+              "}",
+              "",
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "647ab931-40bb-4316-8311-f12e1e9c9fb7",
+            "type": "text/javascript",
+            "exec": [
+              "/**",
+              " * R\u00e9cuperation des valeurs du csv",
+              " * Mise dans un tableau",
+              " */",
+              "let gContact = pm.iterationData.get(\"contactV2Id\").toString(10).split(':');",
+              "",
+              "//initialisation des variables",
+              "let gString = [];",
+              "let v2IdContact = null;",
+              "",
+              "//Parcours du tableau initials\u00e9 et concatenation des where de la requ\u00eate",
+              "gContact.forEach(function(gV2id) {",
+              "  gString.push('{\"v2Id\":'+ gV2id.trim() +'}');",
+              "});",
+              "",
+              "//Cr\u00e9ation de la variable \u00e0 passer dans la requ\u00eate",
+              "pm.environment.set(\"v2IdContact\", gString.join());",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"and\":[{\"or\":[{{v2IdContact}}]}]}}&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "contacts"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"and\":[{\"or\":[{{v2IdContact}}]}]}}",
+              "equals": true
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "a50e8a61-0995-4a7b-b475-a68fc30d302c",
+      "name": "Embed Contact",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f523dd03-13ba-46b3-97a3-bfa7aa2b2e45",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function() {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
+              "});",
+              "postman.setNextRequest(\"Add publicationDate\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contacts\": \n  \n    {{contact}}\n  \n  \n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c771d9ee-7e3c-4460-ba7f-585b0e0a631e",
+      "name": "Add publicationDate",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f94c3d19-de3d-4e5f-bfb2-dfa315b32437",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "20ab2cab-4232-485b-a9fe-6b54584bc3da",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"publicationDate\": {{projectPublicationDate}}\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
