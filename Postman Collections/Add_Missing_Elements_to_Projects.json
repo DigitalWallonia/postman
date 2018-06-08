@@ -145,7 +145,8 @@
           "query": [
             {
               "key": "access_token",
-              "value": "{{v3_token}}"
+              "value": "{{v3_token}}",
+              "equals": true
             }
           ]
         }
