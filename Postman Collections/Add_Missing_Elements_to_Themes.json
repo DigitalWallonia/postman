@@ -1,0 +1,199 @@
+{
+  "info": {
+    "_postman_id": "6f7c8ade-9255-42c8-b20c-2e12db9e7051",
+    "name": "Add Missing Elements to Themes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "f5197908-d82b-4f03-940d-e2bc2966f0b3",
+      "name": "Find Theme",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "dd938613-f47d-4df7-9344-2f4ef1c72f7b",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "if (pm.response.code === 200) {",
+              "    let jsonData = JSON.parse(responseBody);",
+              "    postman.setEnvironmentVariable(\"themeId\", jsonData.id);",
+              "    postman.setNextRequest(\"Find Contact\");",
+              "}else{",
+              "    postman.setNextRequest(\"\");",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/themes/findOne?filter={\"where\":{\"v2Id\":{{themeV2Id}}}}&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "themes",
+            "findOne"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"v2Id\":{{themeV2Id}}}}"
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "8e3c79a1-8404-445f-92f5-00b1f4085e67",
+      "name": "Find Contact",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4360cb56-f196-421b-ac4a-7fedb0418795",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function() {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
+              "});",
+              "if (pm.response.code === 200) {",
+              "    let jsonData = JSON.parse(responseBody);",
+              "    jsonData.emailAddresses = [",
+              "        jsonData.emailAddresses.find(email => email.match('@adn.be'))",
+              "    ];",
+              "    jsonData.role = \"Contact Person\";",
+              "    jsonData.status = \"Published\";",
+              "    postman.setEnvironmentVariable(\"contact\", JSON.stringify(jsonData));",
+              "}",
+              "postman.setNextRequest(\"Patch Theme\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{\"v2Id\":\"{{contactV2Id}}\"}}&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "contacts",
+            "findOne"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"v2Id\":\"{{contactV2Id}}\"}}"
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "33a21d96-dd8c-4aba-8a47-0db0ca74fe78",
+      "name": "Patch Theme",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "56f7fdb6-6e22-498b-84c4-ac5c77c41cf2",
+            "type": "text/javascript",
+            "exec": [
+              "postman.setNextRequest(\"\");"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "159a490a-52e1-41b2-b126-1d619449e65a",
+            "type": "text/javascript",
+            "exec": [
+              "function uuidv4() {",
+              "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+              "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+              "    return v.toString(16);",
+              "  });",
+              "}",
+              "let currentDate = new Date();",
+              "pm.environment.set(\"currentDate\", currentDate);",
+              "pm.environment.set(\"uniqId1\", uuidv4());",
+              "pm.environment.set(\"uniqId2\", uuidv4());",
+              "pm.environment.set(\"uniqId3\", uuidv4());",
+              "pm.environment.set(\"uniqId4\", uuidv4());",
+              "pm.environment.set(\"uniqId5\", uuidv4());",
+              "pm.environment.set(\"uniqId6\", uuidv4());",
+              "pm.environment.set(\"uniqId7\", uuidv4());",
+              "pm.environment.set(\"uniqId8\", uuidv4());",
+              "pm.environment.set(\"uniqId9\", uuidv4());",
+              "pm.environment.set(\"uniqId10\", uuidv4());"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"{{slugFR}}\",\n            \"status\": \"Published\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId1}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"{{slugEN}}\",\n            \"status\": \"Published\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId2}}\"\n        },\n        {\n            \"language\": \"fre\",\n            \"slug\": \"{{oldSlugFR}}\",\n            \"status\": \"Archived\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId9}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"{{oldSlugEN}}\",\n            \"status\": \"Archived\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId10}}\"\n        }\n    ],\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"{{titleFR}}\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId3}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"{{titleEN}}\",\n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId4}}\"\n        }\n     ],\n    \"shortDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"{{shortDescriptionFR}}\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId5}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"{{shortDescriptionEN}}\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId6}}\"\n        }\n    ],\n    \"longDescription\" : [\n        {\n            \"language\" : \"fre\", \n            \"text\" : \"{{longDescriptionFR}}\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId3}}\"\n        }, \n        {\n            \"language\" : \"eng\", \n            \"text\" : \"{{longDescriptionEN}}\", \n            \"createdAt\" : \"{{currentDate}}\", \n            \"id\" : \"{{uniqId4}}\"\n        }\n    ],\n    \"images\":[\n      {\n        \"type\": \"Logo\",\n        \"container\": \"digitalwallonia-images\",\n        \"url\": \"{{logoUrl}}\",\n        \"name\": \"{{titleFR}}\",\n        \"id\": \"{{uniqId2}}\"\n      }\n    ],\n    \"contacts\":[\n      {{contact}}\n    ]\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/themes/{{themeId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "themes",
+            "{{themeId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
