@@ -10416,7 +10416,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "bd4ccd04-007f-4b5d-892b-84778300d2ba",
+                "id": "0216585c-7a1a-4b97-b144-dc5b434d5ca7",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10432,10 +10432,10 @@
                   "tests[\"Le param\u00e8tre themes est pr\u00e9sent\"] = jsonData.themes;",
                   "tests[\"Le param\u00e8tre stickyPosts est pr\u00e9sent\"] = jsonData.stickyPosts;",
                   "",
-                  "tests[\"La valeur du param\u00e8tre environment est 'testing'\"] = jsonData.environment === \"testing\";",
+                  "tests[\"La valeur du param\u00e8tre environment est TEST\"] = jsonData.environment === \"testing\";",
                   "tests[\"La valeur du param\u00e8tre product est Webapp\"] = jsonData.product === \"Webapp\";",
                   "",
-                  "tests[\"Le nombre de stickyPost est \u00e9gal ou sup\u00e9rieur \u00e0 1\"] = jsonData.stickyPosts.length >= 1;",
+                  "tests[\"Le nombre de stickyPost est \u00e9gal \u00e0 1\"] = jsonData.stickyPosts.length >= 1;",
                   "tests[\"Le titre a bien chang\u00e9 et est devenu Test Roland Garros\"] = jsonData.stickyPosts[0].title.find(title => title.language === 'fre').text === \"Test Roland garros\";",
                   "",
                   "// Si le JSON comporte un param\u00e8tre id",
@@ -10493,7 +10493,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f1306a7c-0387-4d82-b369-efbc4f79c43c",
+                "id": "901599b2-c6a2-4970-ad2a-db3d27998d9e",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10509,7 +10509,7 @@
                   "tests[\"Le param\u00e8tre themes est pr\u00e9sent\"] = jsonData.themes;",
                   "tests[\"Le param\u00e8tre stickyPosts est pr\u00e9sent\"] = jsonData.stickyPosts;",
                   "",
-                  "tests[\"La valeur du param\u00e8tre environment est 'testing'\"] = jsonData.environment === \"testing\";",
+                  "tests[\"La valeur du param\u00e8tre environment est TEST\"] = jsonData.environment === \"testing\";",
                   "tests[\"La valeur du param\u00e8tre product est Webapp\"] = jsonData.product === \"Webapp\";",
                   "",
                   "tests[\"companyprofile a bien \u00e9t\u00e9 mis \u00e0 jour\"] = jsonData.companyProfile.slug.find(slug => slug.language === 'fre').slug === \"adn\";",
@@ -10646,7 +10646,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b1cdd3b0-956b-4fcb-9710-91811d6543ab",
+                "id": "57c45e15-ad7e-45ea-962a-bb23feb1d01f",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10662,7 +10662,7 @@
                   "tests[\"Le param\u00e8tre themes est pr\u00e9sent\"] = jsonData.themes;",
                   "tests[\"Le param\u00e8tre stickyPosts est pr\u00e9sent\"] = jsonData.stickyPosts;",
                   "",
-                  "tests[\"La valeur du param\u00e8tre environment est 'testing'\"] = jsonData.environment === \"testing\";",
+                  "tests[\"La valeur du param\u00e8tre environment est TEST\"] = jsonData.environment === \"testing\";",
                   "tests[\"La valeur du param\u00e8tre product est Webapp\"] = jsonData.product === \"Webapp\";",
                   "",
                   "tests[\"Le nombre de th\u00e8mes est \u00e9gal \u00e0 3\"] = jsonData.themes.length === 3;",
