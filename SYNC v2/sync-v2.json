@@ -388,7 +388,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ab7119d6-da53-44e9-b749-7a3d74b07918",
+                "id": "42ab2f57-c3ec-44e4-ac84-163bfccf6a5a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -396,7 +396,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"images url is correct\"] = /content\\.digitalwallonia\\.be\\/profile\\/[a-f0-9]{32}\\/adn-couleur-rvb-sans-baseline/.test(jsonData.images[0].url);",
+                  "    tests[\"images url is correct\"] = /\\/profile\\/[a-f0-9]{32}\\/adn-couleur-rvb-sans-baseline/.test(jsonData.images[0].url);",
                   "    tests[\"images type is Logo\"] = jsonData.images[0].type === \"Logo\";",
                   "    postman.setNextRequest(\"Batch Descriptions Profile v2\");",
                   "}else{",
