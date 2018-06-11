@@ -10493,7 +10493,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "901599b2-c6a2-4970-ad2a-db3d27998d9e",
+                "id": "f1306a7c-0387-4d82-b369-efbc4f79c43c",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -10509,7 +10509,7 @@
                   "tests[\"Le param\u00e8tre themes est pr\u00e9sent\"] = jsonData.themes;",
                   "tests[\"Le param\u00e8tre stickyPosts est pr\u00e9sent\"] = jsonData.stickyPosts;",
                   "",
-                  "tests[\"La valeur du param\u00e8tre environment est TEST\"] = jsonData.environment === \"testing\";",
+                  "tests[\"La valeur du param\u00e8tre environment est 'testing'\"] = jsonData.environment === \"testing\";",
                   "tests[\"La valeur du param\u00e8tre product est Webapp\"] = jsonData.product === \"Webapp\";",
                   "",
                   "tests[\"companyprofile a bien \u00e9t\u00e9 mis \u00e0 jour\"] = jsonData.companyProfile.slug.find(slug => slug.language === 'fre').slug === \"adn\";",
