@@ -10124,6 +10124,126 @@
       "description": null,
       "item": [
         {
+          "_postman_id": "d3f96dcd-2b20-4f6b-8450-825501ca3231",
+          "name": "Find if not empty",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ce326c10-49a3-45cc-8a92-400af4e300f0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200,404]);",
+                  "});",
+                  "console.log(pm.response);",
+                  "if (pm.response.code === 200) {",
+                  "    if (responseBody == \"[]\") {",
+                  "        postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "    }",
+                  "    else {",
+                  "        let jsonData = JSON.parse(responseBody);",
+                  "        postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
+                  "        postman.setNextRequest(\"Delete if not empty\");",
+                  "    }",
+                  "}else{",
+                  "    postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/environments/findOne?filter={\"where\":{ \"environment\":{\"like\":\"testing\"}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "environments",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"environment\":{\"like\":\"testing\"}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a86cd8a7-7901-49cf-b5a6-c7edc5ea0c8c",
+          "name": "Delete if not empty",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ff6191e3-c848-47bc-9c20-d38d6d74aad3",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if (jsonData.count === 0) {",
+                  "        postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "    } else if (jsonData.count === 0) {",
+                  "        tests[\"L'environement' est supprim\u00e9\"] = jsonData.count === 1;",
+                  "        pm.environment.unset(\"environmentId\");",
+                  "    }",
+                  "    postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "environments",
+                "{{environmentId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "ad433b20-237b-4c28-89fd-ffdc34e1d790",
           "name": "Suppression d'un stickyPost",
           "event": [
