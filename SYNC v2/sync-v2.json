@@ -244,7 +244,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "d883288a-49d8-42b2-8b55-03c7d8cb12cc",
+                "id": "10e867a0-76a4-46cb-b6f6-85c8f91f4a11",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -267,10 +267,10 @@
                   "    tests[\"title nl is Test Synchro 1\"] = jsonData.title[2].text === profileTitreV2Id;",
                   "    tests[\"title de is Test Synchro 1\"] = jsonData.title[3].text === profileTitreV2Id;",
                   "    //slug",
-                  "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug[0].slug === profilePermalienV2Id;",
-                  "    tests[\"slug en is test-synchro-1\"] = jsonData.slug[1].slug === profilePermalienV2Id;",
-                  "    tests[\"slug nl is test-synchro-1\"] = jsonData.slug[2].slug === profilePermalienV2Id;",
-                  "    tests[\"slug de is test-synchro-1\"] = jsonData.slug[3].slug === profilePermalienV2Id;",
+                  "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"fre\").slug === profilePermalienV2Id;",
+                  "    tests[\"slug en is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"eng\") === profilePermalienV2Id;",
+                  "    tests[\"slug nl is test-synchro-1\"] = jjsonData.slug.find(s => s.status === \"Published\" && s.language === \"dut\") === profilePermalienV2Id;",
+                  "    tests[\"slug de is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"ger\") === profilePermalienV2Id;",
                   "    tests[\"slug fr status is Published\"] = jsonData.slug[0].status === \"Published\";",
                   "    tests[\"slug en status is Published\"] = jsonData.slug[1].status === \"Published\";",
                   "    tests[\"slug nl status is Published\"] = jsonData.slug[2].status === \"Published\";",
