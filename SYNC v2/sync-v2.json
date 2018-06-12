@@ -9865,7 +9865,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ae595301-af10-41e9-9726-afbc85006377",
+                "id": "8f8bb11f-5235-4ef8-bea6-e12ff45c2088",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9880,10 +9880,9 @@
                   "    if (jsonData.id) {",
                   "        postman.setNextRequest(\"Delete Event v2 Mission v2/v3\");",
                   "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Event v2 Mission v2/v3\");",
-                  "    }",
-                  "}"
+                  "}",
+                  "postman.setNextRequest(\"Delete Event v2 Mission v2/v3\");",
+                  ""
                 ]
               }
             }
