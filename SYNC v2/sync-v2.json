@@ -3614,7 +3614,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "06fc8429-933d-49bd-8640-532f41a563da",
+                "id": "686e054c-91d0-4e1d-af5c-265e6b98994d",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3623,7 +3623,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    console.log(jsonData.stickyPosts.find((sP) => {",
-                  "        console.log(sP);",
+                  "        console.log(sP.v2Id);",
                   "        return sP.v2Id === Number.parseInt(pm.environment.get(\"postV2IdFR\"), 1);",
                   "    }));",
                   "    // Status",
