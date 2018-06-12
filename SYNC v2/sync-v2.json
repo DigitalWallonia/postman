@@ -3614,7 +3614,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ff825b4b-f26c-43b5-ab80-f342b0381ef6",
+                "id": "09e65c82-03a9-400a-9e3b-07cdb656ab96",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3623,8 +3623,9 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Status",
-                  "    tests[\"Status is Published\"] = jsonData.status === \"Published\";",
-                  "    postman.setNextRequest(\"Find publicationDate Post v3\");",
+                  "    tests[\"Post is sticky\"] = jsonData.stickyPosts",
+                  "        && jsonData.stickyPosts.find(sP => sP.id === pm.environment.get(\"postV3Id\"));",
+                  "    postman.setNextRequest(\"Add Post EN v2\");",
                   "}",
                   "else{",
                   "    postman.setNextRequest(\"Delete Post v2\");",
@@ -3639,20 +3640,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?&filter={\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/environments/findOne?&filter={\"where\":{\"and\":[{\"product\":\"Webapp\"},{\"environment\":\"testing\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
+                "environments",
                 "findOne"
               ],
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"{{postV2Slug}}\"}]}}",
+                  "value": "{\"where\":{\"and\":[{\"product\":\"Webapp\"},{\"environment\":\"testing\"}]}}",
                   "equals": true
                 },
                 {
