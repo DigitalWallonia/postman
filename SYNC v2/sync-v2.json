@@ -10074,7 +10074,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "13791e8c-7125-45cc-a220-5ca09a19e0b9",
+                "id": "186fe5a9-bbea-4d8e-9c7a-c7d2fbe0d898",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -10085,7 +10085,7 @@
                   "    tests[\"Event was deleted in v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"eventv3Id\");",
                   "}",
-                  "postman.setNextRequest(\"Delete Tag Mission v2\");"
+                  "postman.setNextRequest(\"Find if not empty\");"
                 ]
               }
             }
@@ -10093,10 +10093,7 @@
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events/{{eventV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
