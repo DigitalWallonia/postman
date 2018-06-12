@@ -4978,6 +4978,45 @@
         }
       },
       "response": []
+    },
+    {
+      "_postman_id": "0c3bde65-7270-4c22-979f-d5c0bc5d998e",
+      "name": "Count Profiles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/profiles/count?where[partners]=filtre-digital-wallonia&where[status]=Published&access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "profiles",
+            "count"
+          ],
+          "query": [
+            {
+              "key": "where[partners]",
+              "value": "filtre-digital-wallonia",
+              "equals": true
+            },
+            {
+              "key": "where[status]",
+              "value": "Published",
+              "equals": true
+            },
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
