@@ -9865,7 +9865,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8f8bb11f-5235-4ef8-bea6-e12ff45c2088",
+                "id": "2913b613-29f8-45ea-b494-8f03715e96e2",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9877,9 +9877,6 @@
                   "    tests[\"The mission status is published\"] = jsonData.status === \"Published\";",
                   "    tests[\"The mission still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The mission still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Event v2 Mission v2/v3\");",
-                  "    }",
                   "}",
                   "postman.setNextRequest(\"Delete Event v2 Mission v2/v3\");",
                   ""
