@@ -10025,7 +10025,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "a6777c00-b07d-4202-b06b-d3651863fff3",
+                "id": "092f1d8a-ce94-41aa-bf34-4972ed7f0855",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -10036,7 +10036,7 @@
                   "    tests[\"Mission was deleted in v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"missionv3Id\");",
                   "}",
-                  "postman.setNextRequest(\"Find if not empty\");"
+                  "postman.setNextRequest(\"Delete Event v3 Mission v3\");"
                 ]
               }
             }
