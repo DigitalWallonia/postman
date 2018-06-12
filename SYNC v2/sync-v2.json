@@ -8810,7 +8810,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "193360c6-471d-46ee-9dc3-9b4c58de625f",
+                "id": "dd43759d-b40b-4c75-b7c7-3e4d0e3f7026",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -8822,13 +8822,9 @@
                   "    tests[\"The project status is published\"] = jsonData.status === \"Published\";",
                   "    tests[\"The project still has a logo\"] = jsonData.images.find(i => i.type === 'Logo');",
                   "    tests[\"The project still has a banner\"] = jsonData.images.find(i => i.type === 'Banner');",
-                  "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "    else{",
-                  "        postman.setNextRequest(\"Delete Tag Project v2\");",
-                  "    }",
-                  "}"
+                  "}",
+                  "postman.setNextRequest(\"Delete Tag Project v2\");",
+                  ""
                 ]
               }
             }
