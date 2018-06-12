@@ -4942,6 +4942,37 @@
         }
       },
       "response": []
+    },
+    {
+      "_postman_id": "130387b8-231e-484a-b4bd-e66239b585cb",
+      "name": "Count Profiles in Projects",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b3afb6a4c11bba097f1/profiles/count?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "5ab93b3afb6a4c11bba097f1",
+            "profiles",
+            "count"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
