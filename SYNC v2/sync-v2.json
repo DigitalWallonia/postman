@@ -3614,7 +3614,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "09e65c82-03a9-400a-9e3b-07cdb656ab96",
+                "id": "132796e9-e94c-43d7-ae59-38722d2b12fa",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3623,6 +3623,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Status",
+                  "    console.log(typeof pm.environment.get(\"postV3Id\"));",
                   "    tests[\"Post is sticky\"] = jsonData.stickyPosts",
                   "        && jsonData.stickyPosts.find(sP => sP.id === pm.environment.get(\"postV3Id\"));",
                   "    postman.setNextRequest(\"Add Post EN v2\");",
