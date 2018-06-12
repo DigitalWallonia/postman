@@ -4951,7 +4951,7 @@
         "header": [],
         "body": {},
         "url": {
-          "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b3afb6a4c11bba097f1/profiles/count?access_token={{v3_token}}",
+          "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b3afb6a4c11bba097f1/profiles/count?filter={\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"fre\"},{\"tags.slug.slug\":\"entreprise-privee\"},{\"tags.slug.slug\":\"secteur-du-numerique\"},{\"status\":\"Published\"}]}&access_token={{v3_token}}",
           "protocol": "{{protocol}}",
           "host": [
             "{{domain}}"
@@ -4964,6 +4964,11 @@
             "count"
           ],
           "query": [
+            {
+              "key": "filter",
+              "value": "{\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"fre\"},{\"tags.slug.slug\":\"entreprise-privee\"},{\"tags.slug.slug\":\"secteur-du-numerique\"},{\"status\":\"Published\"}]}",
+              "equals": true
+            },
             {
               "key": "access_token",
               "value": "{{v3_token}}",
