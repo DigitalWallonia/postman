@@ -10581,54 +10581,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "6d168aa5-b3ec-4881-925a-8d8aba51483f",
-          "name": "Supprimer un environnement",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "583127bf-0619-4919-a4cb-9c092d13e648",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
-                  "",
-                  "let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Un et un seul environnement a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.count === 1;",
-                  "pm.environment.unset(\"contactV3Id\");",
-                  "postman.setNextRequest(null);"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "environments",
-                "{{environmentId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     }
