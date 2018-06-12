@@ -10074,7 +10074,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "186fe5a9-bbea-4d8e-9c7a-c7d2fbe0d898",
+                "id": "3e29d2a2-fc5a-4862-a1c8-6951f9289858",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -10084,8 +10084,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Event was deleted in v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"eventv3Id\");",
-                  "}",
-                  "postman.setNextRequest(\"Find if not empty\");"
+                  "}"
                 ]
               }
             }
