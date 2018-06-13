@@ -12,7 +12,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "600aaaae-011b-4160-82ee-9b8aacd0f38d",
+            "id": "e67768dd-b642-4432-a512-9a5dbc2158c9",
             "type": "text/javascript",
             "exec": [
               "pm.environment.unset(\"contactsAttendee\");",
@@ -31,8 +31,7 @@
               "    postman.setEnvironmentVariable(\"missionName\", jsonData.title[0].text);",
               "    postman.setEnvironmentVariable(\"missionPublicationDate\", JSON.stringify(data.publicationDate));",
               "    if(jsonData.contacts && jsonData.contacts.length > 0){",
-              "        // let contactsAttendee = jsonData.contacts.filter(c => c.role === 'Attendee');",
-              "        let contactsAttendee = jsonData.contacts.filter(c => c.role === 'Involved');",
+              "        let contactsAttendee = jsonData.contacts.filter(c => c.role === 'Attendee');",
               "        postman.setEnvironmentVariable(\"contactsAttendee\", JSON.stringify(contactsAttendee));",
               "    }",
               "    if(data.bannerUrl && data.logoUrl  && data.logoUrl !== \"\" && data.bannerUrl !== \"\"){",
