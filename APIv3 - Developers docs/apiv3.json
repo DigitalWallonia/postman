@@ -927,11 +927,26 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}&access_token={{v3_token}}"
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         },
