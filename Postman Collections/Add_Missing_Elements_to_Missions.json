@@ -520,7 +520,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "83bbb9bd-7814-4325-85d7-bb90225226f9",
+            "id": "160b82c2-5cda-475b-ba01-aa54d3c35583",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful GET request\", function() {",
@@ -584,7 +584,11 @@
               "          }",
               "        });",
               "        if (nouvProfile !== undefined) {",
-              "          el.profiles = nouvProfile;",
+              "          if(nouvProfile.contacts){",
+              "            nouvProfile.contacts = undefined;",
+              "          }",
+              "          el.profiles = [];",
+              "          el.profiles.push(nouvProfile);",
               "        }",
               "    }",
               "    nouvOccupation = contactInfos.find(o => o.v2Id === JSON.stringify(el.v2Id));",
