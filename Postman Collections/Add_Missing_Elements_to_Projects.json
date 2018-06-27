@@ -534,7 +534,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "5ee666f4-df51-4a62-849b-07e06a3d8a8b",
+            "id": "382e9ae8-3cd4-4419-97a1-86d177cdc1ab",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful GET request\", function() {",
@@ -599,7 +599,7 @@
               "        });",
               "    ",
               "        if (nouvProfile !== undefined) {",
-              "          el.profiles = nouvProfile;",
+              "          el.profiles.push(nouvProfile);",
               "        }",
               "    }",
               "    nouvOccupation = contactInfos.find(o => o.v2Id === JSON.stringify(el.v2Id));",
