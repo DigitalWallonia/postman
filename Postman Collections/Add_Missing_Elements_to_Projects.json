@@ -534,7 +534,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "e95767bf-ab05-4857-90b4-ea5f88c4ec35",
+            "id": "c25e0133-cef6-4f9d-8d89-56429191d00e",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful GET request\", function() {",
@@ -600,7 +600,7 @@
               "    ",
               "        if (nouvProfile !== undefined) {",
               "          if(nouvProfile.contacts){",
-              "              delete nouvProfile.contacts;",
+              "            nouvProfile.contacts = undefined;",
               "          }",
               "          el.profiles = nouvProfile;",
               "        }",
