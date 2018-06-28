@@ -3080,14 +3080,17 @@
             {
               "listen": "test",
               "script": {
-                "id": "f1f8016d-ce3e-44d2-a490-cd992a0ead4f",
+                "id": "4d375a6f-ee6c-4fe3-bc14-905a0f9904b6",
                 "type": "text/javascript",
                 "exec": [
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
+                  "    console.log(jsonData);",
+                  "    console.log(jsonData.token);",
                   "    pm.environment.set(\"v2_wp_bearer\", jsonData.token);",
                   "    postman.setNextRequest(\"Add Post FR v2\");",
-                  "}else{",
+                  "}",
+                  "else{",
                   "    console.log('No token');",
                   "}"
                 ]
