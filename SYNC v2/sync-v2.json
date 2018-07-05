@@ -3317,7 +3317,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "205c3866-774f-43ed-ad52-980be298bfdd",
+                "id": "bdf6e1f3-76a6-4a71-b585-71be33c76fae",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3326,6 +3326,8 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Email de l'auteur\"] = jsonData.contacts[0].emailAddresses[0] === pm.environment.get(\"postV2EmailAuthor\");",
+                  "    tests[\"Il n'y a qu'un auteur\"] = jsonData.contacts.length === 1;",
+                  "    tests[\"L'auteur n'a q'un email\"] = jsonData.contacts[0].emailAddresses.length === 1;",
                   "    postman.setNextRequest(\"Find Slug FR v3\");",
                   "}",
                   "else{",
