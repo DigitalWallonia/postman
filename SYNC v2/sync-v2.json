@@ -3171,6 +3171,60 @@
           "response": []
         },
         {
+          "_postman_id": "75978cb9-024a-4b4c-8861-0a033726d909",
+          "name": "Add Post FR v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Find New Post v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"sticky\": true,\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+            },
+            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/"
+          },
+          "response": []
+        },
+        {
           "_postman_id": "45edc7c2-f4ab-82a1-2557-ea304e7d8f37",
           "name": "Find New Post v3",
           "event": [
@@ -4327,60 +4381,6 @@
                 }
               ]
             }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "75978cb9-024a-4b4c-8861-0a033726d909",
-          "name": "Add Post FR v2 Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Find New Post v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"sticky\": true,\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
-            },
-            "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/"
           },
           "response": []
         }
