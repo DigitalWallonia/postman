@@ -3749,7 +3749,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c69fae70-db99-4466-aabe-68580100da72",
+                "id": "21fcc1b3-c0ab-4354-b5cb-786c313359cf",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
