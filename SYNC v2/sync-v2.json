@@ -4481,7 +4481,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "93ae21d9-1dd9-4cbe-86f4-81d7714a0d3c",
+                "id": "03f52e0f-3551-4edb-b294-b0b8d1dbce76",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -4491,7 +4491,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le post a \u00e9t\u00e9 supprim\u00e9 en v3\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"postV3Id\");",
-                  "    postman.setNextRequest(\"Delete environment v3\");",
+                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
                   "} else {",
                   "    postman.setNextRequest(null);",
                   "}",
