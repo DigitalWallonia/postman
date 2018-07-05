@@ -4414,58 +4414,6 @@
           "response": []
         },
         {
-          "_postman_id": "23d9617e-4141-76ff-1e93-e8e90d80e42c",
-          "name": "Delete Post v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "93ae21d9-1dd9-4cbe-86f4-81d7714a0d3c",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le post a \u00e9t\u00e9 supprim\u00e9 en v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"postV3Id\");",
-                  "    postman.setNextRequest(\"Delete environment v3\");",
-                  "} else {",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postV3Id}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "{{postV3Id}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "1eca12a3-30c7-4d14-995b-2547e62ee306",
           "name": "Delete environment v3",
           "event": [
@@ -4506,6 +4454,58 @@
                 "environments",
                 "{{postV2IdFR}}",
                 "_stickyPosts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "23d9617e-4141-76ff-1e93-e8e90d80e42c",
+          "name": "Delete Post v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "93ae21d9-1dd9-4cbe-86f4-81d7714a0d3c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le post a \u00e9t\u00e9 supprim\u00e9 en v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"postV3Id\");",
+                  "    postman.setNextRequest(\"Delete environment v3\");",
+                  "} else {",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postV3Id}}"
               ],
               "query": [
                 {
