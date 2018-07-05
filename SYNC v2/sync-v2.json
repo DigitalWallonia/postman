@@ -3178,7 +3178,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6068b334-5bcb-492f-b50e-fa3b32a01e5c",
+                "id": "db38fe0c-468b-4cf1-ba59-3468f1e68950",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3189,11 +3189,8 @@
                   "",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setEnvironmentVariable(\"postV2IdAuthor\", jsonData.slug);",
+                  "        postman.setEnvironmentVariable(\"postV2EmailAuthor\", jsonData.email);",
                   "        postman.setNextRequest(\"Get Email Author\");",
                   "    }",
                   "    else{",
