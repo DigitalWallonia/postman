@@ -4310,18 +4310,36 @@
             {
               "listen": "test",
               "script": {
-                "id": "12cef394-d86f-4bc9-b233-b91832798671",
+                "id": "ab62d697-dd2f-4e2a-95cf-3f83df6caa3d",
                 "type": "text/javascript",
                 "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le sticy post a \u00e9t\u00e9 supprim\u00e9 en environment v3\"] = jsonData.count === 1;",
+                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
+                  "} else {",
+                  "    postman.setNextRequest(null);",
+                  "}",
                   ""
                 ]
               }
             }
           ],
           "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"stickyPosts\": []\n}"
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}/_stickyPosts/{{stickyPostId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
