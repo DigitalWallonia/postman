@@ -3178,7 +3178,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
+                "id": "6068b334-5bcb-492f-b50e-fa3b32a01e5c",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3193,7 +3193,8 @@
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
                   "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Find New Post v3\");",
+                  "        postman.setEnvironmentVariable(\"postV2IdAuthor\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Get Email Author\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
@@ -3222,7 +3223,7 @@
               "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"sticky\": true,\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
             },
             "url": {
-              "raw": "https://test-wordpress-v2.digitalwallonia.be/wp-json/wp/v2/users/64?context=edit",
+              "raw": "https://test-wordpress-v2.digitalwallonia.be/wp-json/wp/v2/users/{{postV2IdAuthor}}?context=edit",
               "protocol": "https",
               "host": [
                 "test-wordpress-v2",
@@ -3234,7 +3235,7 @@
                 "wp",
                 "v2",
                 "users",
-                "64"
+                "{{postV2IdAuthor}}"
               ],
               "query": [
                 {
