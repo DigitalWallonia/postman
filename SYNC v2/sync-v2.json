@@ -3172,7 +3172,7 @@
         },
         {
           "_postman_id": "75978cb9-024a-4b4c-8861-0a033726d909",
-          "name": "Add Post FR v2 Copy",
+          "name": "Get Email Author",
           "event": [
             {
               "listen": "test",
