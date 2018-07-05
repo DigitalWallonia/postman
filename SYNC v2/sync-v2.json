@@ -3123,7 +3123,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "47324709-98c7-4776-9e34-8907cfcaa4f8",
+                "id": "f876a236-ad3d-4ac2-877d-0b0c8ed2a121",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3138,7 +3138,7 @@
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
                   "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setEnvironmentVariable(\"postV2IdAuthor\", jsonData.slug);",
+                  "        postman.setEnvironmentVariable(\"postV2IdAuthor\", jsonData.author);",
                   "        postman.setNextRequest(\"Get Email Author\");",
                   "    }",
                   "    else{",
