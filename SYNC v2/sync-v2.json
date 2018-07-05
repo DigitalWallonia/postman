@@ -3687,7 +3687,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "75e0c573-519e-4740-b5fd-fdde53390c04",
+                "id": "4332f688-09c1-4471-a990-615d8c00f06e",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3697,7 +3697,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    // Status",
                   "    tests[\"publicationDate is 2018-01-09T14:38:36.000Z\"] = jsonData.publicationDate === \"2018-01-09T14:38:36.000Z\";",
-                  "    postman.setNextRequest(\"Find Sticky Post v3\");",
+                  "    postman.setNextRequest(\"Find Sticky Post in environment v3\");",
                   "}",
                   "else{",
                   "    postman.setNextRequest(\"Delete Post v2\");",
