@@ -4467,7 +4467,7 @@
         },
         {
           "_postman_id": "1eca12a3-30c7-4d14-995b-2547e62ee306",
-          "name": "Delete Post v3 Copy",
+          "name": "Delete environment v3",
           "event": [
             {
               "listen": "test",
