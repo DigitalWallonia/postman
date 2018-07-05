@@ -3178,7 +3178,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "db38fe0c-468b-4cf1-ba59-3468f1e68950",
+                "id": "855107a4-6714-4eb1-82dd-3f50d704681a",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3191,7 +3191,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"postV2EmailAuthor\", jsonData.email);",
-                  "        postman.setNextRequest(\"Get Email Author\");",
+                  "        postman.setNextRequest(\"Find New Post v3\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
