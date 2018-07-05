@@ -4245,7 +4245,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "18733360-53c3-4014-88c6-6acaecb77b0a",
+                "id": "3387e96d-5db2-425d-94d9-97d7d0d1da1e",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4257,7 +4257,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Status Post EN is Published\"] = jsonData.status === \"Published\";",
                   "    if (jsonData.id) {",
-                  "        postman.setNextRequest(\"Delete Post v2\");",
+                  "        postman.setNextRequest(\"Delete environment v3\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
