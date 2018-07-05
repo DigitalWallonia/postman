@@ -3749,7 +3749,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "21fcc1b3-c0ab-4354-b5cb-786c313359cf",
+                "id": "169ba9df-7796-4ae4-bc99-bd7ddaf1b552",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3760,6 +3760,7 @@
                   "    // Status",
                   "    tests[\"Post is sticky\"] = jsonData.stickyPosts",
                   "        && jsonData.stickyPosts.find(sP => sP.v2Id === Number.parseInt(pm.environment.get(\"postV2IdFR\"), 10));",
+                  "    postman.setEnvironmentVariable(\"environmentId\", jsonData.id);",
                   "    postman.setNextRequest(\"Add Post EN v2\");",
                   "}",
                   "else{",
