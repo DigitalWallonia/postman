@@ -4310,19 +4310,9 @@
             {
               "listen": "test",
               "script": {
-                "id": "0f0a09e2-4d70-4281-9f1c-e4db86d64ac8",
+                "id": "12cef394-d86f-4bc9-b233-b91832798671",
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le sticy post a \u00e9t\u00e9 supprim\u00e9 en environment v3\"] = jsonData.count === 1;",
-                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
-                  "} else {",
-                  "    postman.setNextRequest(null);",
-                  "}",
                   ""
                 ]
               }
@@ -4333,7 +4323,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}/_stickyPosts?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}/_stickyPosts/{{stickyPostId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4342,7 +4332,8 @@
                 "api",
                 "environments",
                 "{{environmentId}}",
-                "_stickyPosts"
+                "_stickyPosts",
+                "{{stickyPostId}}"
               ],
               "query": [
                 {
