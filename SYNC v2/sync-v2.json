@@ -3171,6 +3171,82 @@
           "response": []
         },
         {
+          "_postman_id": "bac09464-d7cb-44a1-93b5-c9b152d91dc3",
+          "name": "Get Email Author",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
+                "type": "text/javascript",
+                "exec": [
+                  "var code;",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "    code = pm.response.code;",
+                  "});",
+                  "",
+                  "if (code == 200 || code == 201 || code == 202) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Un post a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.id !== \"undefined\";",
+                  "    if (jsonData.id) {",
+                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
+                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
+                  "        postman.setNextRequest(\"Find New Post v3\");",
+                  "    }",
+                  "    else{",
+                  "       postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{v2_wp_bearer}}"
+              }
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"sticky\": true,\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
+            },
+            "url": {
+              "raw": "https://test-wordpress-v2.digitalwallonia.be/wp-json/wp/v2/users/64?context=edit",
+              "protocol": "https",
+              "host": [
+                "test-wordpress-v2",
+                "digitalwallonia",
+                "be"
+              ],
+              "path": [
+                "wp-json",
+                "wp",
+                "v2",
+                "users",
+                "64"
+              ],
+              "query": [
+                {
+                  "key": "context",
+                  "value": "edit",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "75978cb9-024a-4b4c-8861-0a033726d909",
           "name": "Get Email Author",
           "event": [
@@ -4377,82 +4453,6 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "bac09464-d7cb-44a1-93b5-c9b152d91dc3",
-          "name": "Get Email Author",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "f78203e7-4c5a-4eaa-a6d5-0ed0ec0da0a9",
-                "type": "text/javascript",
-                "exec": [
-                  "var code;",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "    code = pm.response.code;",
-                  "});",
-                  "",
-                  "if (code == 200 || code == 201 || code == 202) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Un post a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.id !== \"undefined\";",
-                  "    if (jsonData.id) {",
-                  "        postman.setEnvironmentVariable(\"postV2IdFR\", jsonData.id);",
-                  "        postman.setEnvironmentVariable(\"postV2Slug\", jsonData.slug);",
-                  "        postman.setNextRequest(\"Find New Post v3\");",
-                  "    }",
-                  "    else{",
-                  "       postman.setNextRequest(null);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": {
-                "token": "{{v2_wp_bearer}}"
-              }
-            },
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"title\": \"Test Post\",\n  \"slug\": \"test-post{{$timestamp}}\",\n  \"content\": \"Ceci est un post de test FR\",\n  \"status\": \"publish\",\n  \"sticky\": true,\n  \"date_gmt\": \"2018-01-09T14:38:36.000Z\"\n}"
-            },
-            "url": {
-              "raw": "https://test-wordpress-v2.digitalwallonia.be/wp-json/wp/v2/users/64?context=edit",
-              "protocol": "https",
-              "host": [
-                "test-wordpress-v2",
-                "digitalwallonia",
-                "be"
-              ],
-              "path": [
-                "wp-json",
-                "wp",
-                "v2",
-                "users",
-                "64"
-              ],
-              "query": [
-                {
-                  "key": "context",
-                  "value": "edit",
                   "equals": true
                 }
               ]
