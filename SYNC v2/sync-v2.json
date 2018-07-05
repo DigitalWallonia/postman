@@ -4302,6 +4302,59 @@
           "response": []
         },
         {
+          "_postman_id": "1eca12a3-30c7-4d14-995b-2547e62ee306",
+          "name": "Delete environment v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0f0a09e2-4d70-4281-9f1c-e4db86d64ac8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le sticy post a \u00e9t\u00e9 supprim\u00e9 en environment v3\"] = jsonData.count === 1;",
+                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
+                  "} else {",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api//environments/{{postV2IdFR}}/_stickyPosts?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "",
+                "environments",
+                "{{postV2IdFR}}",
+                "_stickyPosts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "dcf50743-238d-156e-b21d-4be9107c26b3",
           "name": "Delete Post v2",
           "event": [
@@ -4406,59 +4459,6 @@
                 {
                   "key": "force",
                   "value": "true",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "1eca12a3-30c7-4d14-995b-2547e62ee306",
-          "name": "Delete environment v3",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0f0a09e2-4d70-4281-9f1c-e4db86d64ac8",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le sticy post a \u00e9t\u00e9 supprim\u00e9 en environment v3\"] = jsonData.count === 1;",
-                  "    postman.setNextRequest(\"Find Artifact from previous tests page\");",
-                  "} else {",
-                  "    postman.setNextRequest(null);",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api//environments/{{postV2IdFR}}/_stickyPosts?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "",
-                "environments",
-                "{{postV2IdFR}}",
-                "_stickyPosts"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
