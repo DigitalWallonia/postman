@@ -3317,7 +3317,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "88803fde-107b-43dd-b692-45b45e52e7a9",
+                "id": "205c3866-774f-43ed-ad52-980be298bfdd",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful GET request\", function () {",
@@ -3325,8 +3325,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    // Description",
-                  "    tests[\"slug FR is test-post\"] = jsonData.slug.find(shortD => shortD.language === 'fre').slug === pm.environment.get(\"postV2Slug\");",
+                  "    tests[\"Email de l'auteur\"] = jsonData.contacts[0].emailAddresses[0] === pm.environment.get(\"postV2EmailAuthor\");",
                   "    postman.setNextRequest(\"Find Slug FR v3\");",
                   "}",
                   "else{",
