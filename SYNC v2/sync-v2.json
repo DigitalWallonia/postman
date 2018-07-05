@@ -4332,7 +4332,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}/_stickyPosts/{{postV2IdFR}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/environments/{{environmentId}}/_stickyPosts?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4341,8 +4341,7 @@
                 "api",
                 "environments",
                 "{{environmentId}}",
-                "_stickyPosts",
-                "{{postV2IdFR}}"
+                "_stickyPosts"
               ],
               "query": [
                 {
