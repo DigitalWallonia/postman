@@ -3744,7 +3744,7 @@
         },
         {
           "_postman_id": "5f99ece0-76f7-4df9-a885-b92fdda065cd",
-          "name": "Find Sticky Post v3",
+          "name": "Find Sticky Post in environment v3",
           "event": [
             {
               "listen": "test",
