@@ -3252,7 +3252,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "90b200dd-e029-40a5-b949-c11b07b46354",
+                "id": "37185326-b3b3-4d8f-a679-4b3860e601d0",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3265,7 +3265,7 @@
                   "    tests[\"Un post a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.id !== \"undefined\";",
                   "    if (jsonData.id) {",
                   "        postman.setEnvironmentVariable(\"postV3Id\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Slug FR v3\");",
+                  "        postman.setNextRequest(\"Find Email Author Post v3\");",
                   "    }",
                   "    else{",
                   "       postman.setNextRequest(null);",
