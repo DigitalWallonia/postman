@@ -4309,15 +4309,13 @@
             {
               "listen": "test",
               "script": {
-                "id": "f683a5ac-450e-4baa-b48e-64ad643ce1ad",
+                "id": "a30996f9-c0e2-4643-8926-957120210e92",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
                   "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                   "});",
                   "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Le sticy post a \u00e9t\u00e9 supprim\u00e9 en environment v3\"] = jsonData.count === 1;",
                   "    postman.setNextRequest(\"Delete Post v2\");",
                   "} else {",
                   "    postman.setNextRequest(\"Delete Post v2\");",
