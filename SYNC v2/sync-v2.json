@@ -9307,7 +9307,7 @@
         },
         {
           "_postman_id": "92edb278-e453-4551-a10c-27da9231f112",
-          "name": "Get Dev Token Copy",
+          "name": "Get Staging Token",
           "event": [
             {
               "listen": "test",
