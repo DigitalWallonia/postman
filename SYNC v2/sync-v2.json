@@ -3999,7 +3999,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "71416080-1088-4a66-9f70-bd0384092a59",
+                "id": "2e02b2b8-7fea-4497-9adc-2c317cea7273",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4014,7 +4014,7 @@
                   "        postman.setNextRequest(\"Find Post v3 To Check Status EN Pending\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
