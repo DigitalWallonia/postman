@@ -9216,6 +9216,55 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "e1043f1a-3588-4122-986e-e681547dd30c",
+          "name": "Delete Project v3 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9c3f558c-b89b-44d4-8d71-f5f5dd6e1f5a",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"projectv3Id\");",
+                  "}",
+                  "postman.setNextRequest(\"Find Artifact from previous tests mission\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "event": [
