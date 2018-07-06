@@ -9355,6 +9355,45 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "92edb278-e453-4551-a10c-27da9231f112",
+          "name": "Get Dev Token Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a4d1e68-7a3d-455b-ab77-a1612e7c6785",
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id){",
+                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+                  "        postman.setNextRequest(\"Delete Project v3 in Dev\");",
+                  "    }else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@digitalwallonia.be\",\n  \"password\": \"v6]G(uk.NUGVohei{Ai?e2bn\"\n}"
+            },
+            "url": "{{protocol}}://dev-api-v3.digitalwallonia.be/api/users/login"
+          },
+          "response": []
         }
       ],
       "event": [
