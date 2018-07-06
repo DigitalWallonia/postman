@@ -9243,10 +9243,12 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://dev-api-v3.digitalwallonia.be/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
-                "{{domain}}"
+                "dev-api-v3",
+                "digitalwallonia",
+                "be"
               ],
               "path": [
                 "api",
