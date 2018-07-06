@@ -9251,7 +9251,7 @@
               "mode": "raw",
               "raw": "{\n  \"email\": \"test@digitalwallonia.be\",\n  \"password\": \"v6]G(uk.NUGVohei{Ai?e2bn\"\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/users/login"
+            "url": "{{protocol}}://dev-api-v3.digitalwallonia.be/api/users/login"
           },
           "response": []
         },
