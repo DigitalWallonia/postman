@@ -3022,7 +3022,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "26eafe28-e8dd-4232-a25c-c62f77df531d",
+                "id": "f252fa2f-240c-43b6-962c-7484814dca6a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -3032,11 +3032,8 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le post est supprim\u00e9\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"postv3Id\");",
-                  "    postman.setNextRequest(\"Auth WP\");",
                   "}",
-                  "else{",
-                  "    postman.setNextRequest(\"Auth WP\");",
-                  "}",
+                  "postman.setNextRequest(\"Auth WP\");",
                   ""
                 ]
               }
@@ -3045,10 +3042,7 @@
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/posts/{{postv3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3063,7 +3057,8 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             }
