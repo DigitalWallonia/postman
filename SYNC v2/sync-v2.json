@@ -9175,7 +9175,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7e616e5d-0ff2-43ce-972e-3a9ae7317962",
+                "id": "7c93ca64-1904-4392-b372-ebe2bf37d72f",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9185,7 +9185,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
                   "}",
-                  "postman.setNextRequest(\"Delete Project v3 in Dev\");"
+                  "postman.setNextRequest(\"Get Dev Token\");"
                 ]
               }
             }
