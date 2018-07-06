@@ -9223,14 +9223,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "6f404525-de2f-47fa-b73d-6148ba4e12f8",
+                "id": "9a4d1e68-7a3d-455b-ab77-a1612e7c6785",
                 "type": "text/javascript",
                 "exec": [
                   "if (responseCode.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    if(jsonData.id){",
                   "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
-                  "        postman.setNextRequest(\"Find Artifact from previous tests profile\");",
+                  "        postman.setNextRequest(\"Delete Project v3 in Dev\");",
                   "    }else{",
                   "        postman.setNextRequest(null);",
                   "    }",
