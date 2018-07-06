@@ -4180,7 +4180,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "72d86548-e5d0-4139-8ecd-20c3792be557",
+                "id": "2c89d7d9-946a-4e2f-b10c-d1b7f77e943d",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4195,7 +4195,7 @@
                   "        postman.setNextRequest(\"Find Post v3 To Check Status EN Published\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
