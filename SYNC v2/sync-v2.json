@@ -4244,7 +4244,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3387e96d-5db2-425d-94d9-97d7d0d1da1e",
+                "id": "15cb7469-917b-4cfd-9bff-3c8ac7f5cb51",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4259,7 +4259,7 @@
                   "        postman.setNextRequest(\"Delete environment v3\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
