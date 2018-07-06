@@ -9294,10 +9294,12 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://staging-api-v3.digitalwallonia.be/api/projects/{{projectV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
-                "{{domain}}"
+                "staging-api-v3",
+                "digitalwallonia",
+                "be"
               ],
               "path": [
                 "api",
