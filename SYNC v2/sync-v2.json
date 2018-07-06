@@ -3809,7 +3809,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "7d310de7-24e0-4696-8475-caf5451ab043",
+                "id": "18b0c859-148e-4fb1-b1c9-72aab2bef673",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3828,7 +3828,7 @@
                   "        postman.setNextRequest(\"Add Post liaison FR-EN v2\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
