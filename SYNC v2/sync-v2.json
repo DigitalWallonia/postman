@@ -9175,7 +9175,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "e0faf469-7330-4855-b33a-9b1e5549bb0d",
+                "id": "7e616e5d-0ff2-43ce-972e-3a9ae7317962",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9184,7 +9184,6 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"projectv3Id\");",
                   "}",
                   "postman.setNextRequest(\"Delete Project v3 in Dev\");"
                 ]
