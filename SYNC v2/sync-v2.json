@@ -9223,7 +9223,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "9a4d1e68-7a3d-455b-ab77-a1612e7c6785",
+                "id": "7433a35f-7947-4ead-a614-11752fa5e207",
                 "type": "text/javascript",
                 "exec": [
                   "if (responseCode.code === 200) {",
@@ -9232,7 +9232,7 @@
                   "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
                   "        postman.setNextRequest(\"Delete Project v3 in Dev\");",
                   "    }else{",
-                  "        postman.setNextRequest(null);",
+                  "        postman.setNextRequest(\"Delete Project v3 in Dev\");",
                   "    }",
                   "}"
                 ]
