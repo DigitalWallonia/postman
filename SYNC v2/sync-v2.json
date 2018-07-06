@@ -4063,7 +4063,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "9fdbb0b0-8a8f-4284-a924-35d4e81dda15",
+                "id": "88905afe-959f-4aac-8b4b-d7c54da23f0c",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4078,7 +4078,7 @@
                   "        postman.setNextRequest(\"Update post Status Publish v2\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
