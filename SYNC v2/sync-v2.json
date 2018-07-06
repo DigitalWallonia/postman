@@ -9312,14 +9312,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "9a4d1e68-7a3d-455b-ab77-a1612e7c6785",
+                "id": "a3befafb-895e-4768-bec0-73d2903142d6",
                 "type": "text/javascript",
                 "exec": [
                   "if (responseCode.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    if(jsonData.id){",
                   "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
-                  "        postman.setNextRequest(\"Delete Project v3 in Dev\");",
+                  "        postman.setNextRequest(\"Delete Project v3 in Staging\");",
                   "    }else{",
                   "        postman.setNextRequest(null);",
                   "    }",
@@ -9340,7 +9340,7 @@
               "mode": "raw",
               "raw": "{\n  \"email\": \"test@digitalwallonia.be\",\n  \"password\": \"v6]G(uk.NUGVohei{Ai?e2bn\"\n}"
             },
-            "url": "{{protocol}}://dev-api-v3.digitalwallonia.be/api/users/login"
+            "url": "{{protocol}}://staging-api-v3.digitalwallonia.be/api/users/login"
           },
           "response": []
         },
