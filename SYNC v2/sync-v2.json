@@ -3244,7 +3244,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "37185326-b3b3-4d8f-a679-4b3860e601d0",
+                "id": "69d2957f-0bbf-4ad7-b043-5effa027e55e",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3260,7 +3260,7 @@
                   "        postman.setNextRequest(\"Find Email Author Post v3\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
