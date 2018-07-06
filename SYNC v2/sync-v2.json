@@ -9262,7 +9262,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c64189de-b719-41e0-a96e-dea8a2533f86",
+                "id": "6bc18e45-a569-49b9-97f3-800f346a0252",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9272,7 +9272,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Project was deleted in v3 Dev\"] = jsonData.count === 1;",
                   "}",
-                  "postman.setNextRequest(\"Delete Project v3 in Staging\");"
+                  "postman.setNextRequest(\"Get Staging Token\");"
                 ]
               }
             }
