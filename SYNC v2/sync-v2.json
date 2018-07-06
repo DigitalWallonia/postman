@@ -9268,7 +9268,7 @@
         },
         {
           "_postman_id": "399f6cdf-399b-48b6-b71b-a35dffbb8f7b",
-          "name": "Delete Project v3 in Dev Copy",
+          "name": "Delete Project v3 in Staging",
           "event": [
             {
               "listen": "test",
