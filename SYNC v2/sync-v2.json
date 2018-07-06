@@ -4128,7 +4128,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "c59cb122-a189-44da-922c-79fe1ac42fb5",
+                "id": "c9e1bfb3-9fd5-46e4-9010-19b2d4242e89",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -4144,7 +4144,7 @@
                   "        postman.setNextRequest(\"Find Post v3 To Check Status Published\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
@@ -4167,7 +4167,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"status\": \"publish\"\n}"
+              "raw": "{\n  \"status\": \"publish\"\n}"
             },
             "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}"
           },
