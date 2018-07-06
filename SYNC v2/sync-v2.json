@@ -9271,7 +9271,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "9c3f558c-b89b-44d4-8d71-f5f5dd6e1f5a",
+                "id": "249ea820-9c0e-4ecb-a458-ff32368de566",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -9279,7 +9279,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
-                  "    tests[\"Project was deleted in v3\"] = jsonData.count === 1;",
+                  "    tests[\"Project was deleted in v3 Staging\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"projectv3Id\");",
                   "}",
                   "postman.setNextRequest(\"Find Artifact from previous tests mission\");"
