@@ -3170,7 +3170,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "855107a4-6714-4eb1-82dd-3f50d704681a",
+                "id": "f5b9e51a-dc54-43d7-b55d-3db13224d3a3",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3186,7 +3186,7 @@
                   "        postman.setNextRequest(\"Find New Post v3\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
