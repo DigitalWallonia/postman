@@ -3947,7 +3947,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "5b8b3212-c264-4be1-907c-00071252e589",
+                "id": "65056baf-8343-4399-8fe4-182299f287de",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3963,7 +3963,7 @@
                   "        postman.setNextRequest(\"Find Post v3 To Check Status Draft\");",
                   "    }",
                   "    else{",
-                  "       postman.setNextRequest(null);",
+                  "       postman.setNextRequest(\"Delete Post v2\");",
                   "    }",
                   "}"
                 ]
@@ -3986,7 +3986,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"status\": \"draft\"\n}"
+              "raw": "{\n  \"status\": \"draft\"\n}"
             },
             "url": "{{v2_wp_protocol}}://{{v2_wp_domain}}/wp/v2/posts/{{postV2IdFR}}"
           },
