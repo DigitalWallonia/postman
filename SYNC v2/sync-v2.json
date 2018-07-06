@@ -9257,7 +9257,7 @@
         },
         {
           "_postman_id": "4ccb6f55-75e7-4bc9-8fad-f4e234c5f17c",
-          "name": "Find Artifact from previous tests project Copy",
+          "name": "Find Project v3 in Dev",
           "event": [
             {
               "listen": "test",
