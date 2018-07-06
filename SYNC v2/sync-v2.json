@@ -3883,7 +3883,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "4a80df38-7696-49bd-80b3-1d80e0dd4c44",
+                "id": "bd547d7a-7fec-443b-91e6-8337e0b32951",
                 "type": "text/javascript",
                 "exec": [
                   "var code;",
@@ -3894,6 +3894,9 @@
                   "",
                   "if (code == 200 || code == 201 || code == 202) {",
                   "    postman.setNextRequest(\"Update post Status Draft v2\");",
+                  "}",
+                  "else{",
+                  "   postman.setNextRequest(\"Delete Post v2\");",
                   "}"
                 ]
               }
@@ -3929,7 +3932,8 @@
               "query": [
                 {
                   "key": "translations[en]",
-                  "value": "{{postV2IdEN}}"
+                  "value": "{{postV2IdEN}}",
+                  "equals": true
                 }
               ]
             }
