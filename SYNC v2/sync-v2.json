@@ -244,7 +244,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ff2d79f0-5b17-47d1-9eb7-8e92928b1820",
+                "id": "0b1f7f35-66f0-46c2-b9ec-5738d11f7f3a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -256,9 +256,9 @@
                   "    tests[\"Un profil a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.response.profil.id !== \"undefined\";",
                   "    if (jsonData.response.profil.id) {",
                   "        // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
-                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
-                  "        postman.setEnvironmentVariable(\"profileTitreV2Id\", jsonData.response.profil.nom);",
-                  "        postman.setEnvironmentVariable(\"profilePermalienV2Id\", jsonData.response.profil.permalien);",
+                  "        postman.setEnvironmentVariable(\"profileBisV2Id\", jsonData.response.profil.id);",
+                  "        postman.setEnvironmentVariable(\"profileBisTitreV2Id\", jsonData.response.profil.nom);",
+                  "        postman.setEnvironmentVariable(\"profileBisPermalienV2Id\", jsonData.response.profil.permalien);",
                   "        postman.setNextRequest(\"Find New Profile v3\");",
                   "    }",
                   "    else{",
@@ -288,12 +288,12 @@
                 {
                   "key": "nom",
                   "type": "text",
-                  "value": "Test Synchro 2{{$timestamp}}"
+                  "value": "Test Synchro 2 Bis{{$timestamp}}"
                 },
                 {
                   "key": "permalien",
                   "type": "text",
-                  "value": "test-synchro-1{{$timestamp}}"
+                  "value": "test-synchro-1bis{{$timestamp}}"
                 },
                 {
                   "key": "statut",
@@ -303,7 +303,7 @@
                 {
                   "key": "acronyme",
                   "type": "text",
-                  "value": "TS1"
+                  "value": "TS1Bis"
                 }
               ]
             },
