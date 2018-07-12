@@ -467,7 +467,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "cfdd271b-4613-4bc3-93b9-b6f52ab9bac7",
+                "id": "ffd7bdaf-6d9e-4a36-b0c0-8d28f56445b7",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -476,6 +476,9 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
+                  "    ",
+                  "    let profileBisPermalienV2Id = pm.environment.get(\"profileBisPermalienV2Id\");",
+                  "    let profilePermalienV2Id = pm.environment.get(\"profilePermalienV2Id\");",
                   "    //slug",
                   "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"fre\").slug === profileBisPermalienV2Id;",
                   "    tests[\"slug en is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"eng\").slug === profileBisPermalienV2Id;",
