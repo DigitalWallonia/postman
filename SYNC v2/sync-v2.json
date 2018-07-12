@@ -393,7 +393,7 @@
         },
         {
           "_postman_id": "d90f2128-f60d-4e62-8059-0fa0aac5fc54",
-          "name": "Batch Descriptions Profile v2 Copy",
+          "name": "Set New Permalien Profile v2",
           "event": [
             {
               "listen": "test",
