@@ -397,7 +397,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "19d4f78c-2674-4d58-9f36-aff386ababbe",
+                "id": "3fb9f005-43d9-44b1-a4b5-cf2b55cbdf4c",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -409,6 +409,7 @@
                   "    // Si le JSON comporte un param\u00e8tre id",
                   "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
                   "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setEnvironmentVariable(\"profileBisPermalienV2Id\", jsonData.response.profil.permalien);",
                   "        postman.setNextRequest(\"Find New Profile v3 - N\u00b02\");",
                   "    }else{",
                   "        postman.setNextRequest(\"Delete Profile v2\");",
