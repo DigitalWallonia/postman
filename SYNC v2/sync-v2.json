@@ -435,7 +435,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}Bis\", \"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -447,7 +447,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}Bis\", \"user\":\"Synchronisation v2\"}}",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}",
                   "equals": true
                 },
                 {
