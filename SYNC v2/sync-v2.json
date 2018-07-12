@@ -214,12 +214,12 @@
                 {
                   "key": "nom",
                   "type": "text",
-                  "value": "Test Synchro 2{{$timestamp}}"
+                  "value": "Test Synchro {{$timestamp}}"
                 },
                 {
                   "key": "permalien",
                   "type": "text",
-                  "value": "test-synchro-1{{$timestamp}}"
+                  "value": "test-synchro-{{$timestamp}}"
                 },
                 {
                   "key": "statut",
