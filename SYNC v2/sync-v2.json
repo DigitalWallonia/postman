@@ -1317,6 +1317,66 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "6b5b8e8e-9542-40d7-a0e7-547520f6fe2a",
+          "name": "Set Logo to Profile v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cca8fca5-92d7-45fe-8c94-9a08afd99d98",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.logo) {",
+                  "        console.log(jsonData.response.profil.logo);",
+                  "        postman.setNextRequest(\"Find Logo in Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        console.log(\"jsonData n'a pas de logo\");",
+                  "    }",
+                  "    tests[\"Le logo a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.response.profil.logo !== \"undefined\";",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/logo/31008/set?oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "profils",
+                "{{profileV2Id}}",
+                "logo",
+                "31008",
+                "set"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
