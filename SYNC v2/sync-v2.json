@@ -1243,6 +1243,80 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "783e7eca-2649-4a5c-bd3f-8622644a84e2",
+          "name": "Add Profile v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "ff2d79f0-5b17-47d1-9eb7-8e92928b1820",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    tests[\"Un profil a \u00e9t\u00e9 ajout\u00e9\"] = jsonData.response.profil.id !== \"undefined\";",
+                  "    if (jsonData.response.profil.id) {",
+                  "        // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
+                  "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
+                  "        postman.setEnvironmentVariable(\"profileTitreV2Id\", jsonData.response.profil.nom);",
+                  "        postman.setEnvironmentVariable(\"profilePermalienV2Id\", jsonData.response.profil.permalien);",
+                  "        postman.setNextRequest(\"Find New Profile v3\");",
+                  "    }",
+                  "    else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "oauth_token",
+                  "type": "text",
+                  "value": "{{v2_token}}"
+                },
+                {
+                  "key": "nom",
+                  "type": "text",
+                  "value": "Test Synchro 2{{$timestamp}}"
+                },
+                {
+                  "key": "permalien",
+                  "type": "text",
+                  "value": "test-synchro-1{{$timestamp}}"
+                },
+                {
+                  "key": "statut",
+                  "type": "text",
+                  "value": "profil_statut_redaction"
+                },
+                {
+                  "key": "acronyme",
+                  "type": "text",
+                  "value": "TS1"
+                }
+              ]
+            },
+            "url": "{{v2_protocol}}://{{v2_domain}}/profils/add"
+          },
+          "response": []
         }
       ]
     },
