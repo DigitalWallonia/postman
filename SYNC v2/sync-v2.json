@@ -288,12 +288,12 @@
                 {
                   "key": "nom",
                   "type": "text",
-                  "value": "Test Synchro2 {{$timestamp}} bis"
+                  "value": "Test Synchro {{$timestamp}} bis"
                 },
                 {
                   "key": "permalien",
                   "type": "text",
-                  "value": "test-synchro2{{$timestamp}}bis"
+                  "value": "test-synchro-{{$timestamp}}bis"
                 },
                 {
                   "key": "statut",
