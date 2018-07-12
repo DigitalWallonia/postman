@@ -392,8 +392,8 @@
           "response": []
         },
         {
-          "_postman_id": "6b5b8e8e-9542-40d7-a0e7-547520f6fe2a",
-          "name": "Set Logo to Profile v2 Copy",
+          "_postman_id": "d463eba8-1ac0-bfa1-2565-baee1ac52d4c",
+          "name": "Set Logo to Profile v2",
           "event": [
             {
               "listen": "test",
@@ -452,8 +452,8 @@
           "response": []
         },
         {
-          "_postman_id": "d463eba8-1ac0-bfa1-2565-baee1ac52d4c",
-          "name": "Set Logo to Profile v2",
+          "_postman_id": "6b5b8e8e-9542-40d7-a0e7-547520f6fe2a",
+          "name": "Set Logo to Profile v2 Copy",
           "event": [
             {
               "listen": "test",
