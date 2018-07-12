@@ -1317,6 +1317,75 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "d90f2128-f60d-4e62-8059-0fa0aac5fc54",
+          "name": "Batch Descriptions Profile v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "437bafc7-10f2-4023-aede-47a9cabf9523",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = parseInt(pm.environment.get(\"profileV2Id\"), 10);",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
+                  "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setNextRequest(\"Find Batch Descriptions Profile v3\");",
+                  "    }else{",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"cibles\":{\"0\":{\"id\":\"2\"}},\"presentation\":{\"court\":{\"action\":\"add\",\"label\":\"presentationCourtProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description\",\"en\":\"Synchro Test 1 Description\",\"nl\":\"Synchro Test 1 Beschrijving\",\"de\":\"\nSynchro Test 1 Beschreibung\"},\"longue\":{\"action\":\"add\",\"label\":\"presentationLongueProfilTest Synchro 1\",\"fr\":\"Test Synchro 1 Description Longue\",\"en\":\"Synchro Test 1 Description Long\",\"nl\":\"Synchro Test 1 Beschrijving Lang\",\"de\":\"Synchro Test 1 Beschreibung Lang\"}},\"user\":\"Synchronisation v2\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
