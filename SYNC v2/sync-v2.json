@@ -170,7 +170,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ff2d79f0-5b17-47d1-9eb7-8e92928b1820",
+                "id": "556de17a-0d5b-4f7c-865f-c90e3a0a6f47",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -185,7 +185,7 @@
                   "        postman.setEnvironmentVariable(\"profileV2Id\", jsonData.response.profil.id);",
                   "        postman.setEnvironmentVariable(\"profileTitreV2Id\", jsonData.response.profil.nom);",
                   "        postman.setEnvironmentVariable(\"profilePermalienV2Id\", jsonData.response.profil.permalien);",
-                  "        postman.setNextRequest(\"Find New Profile v3\");",
+                  "        postman.setNextRequest(\"Add Profile BIS v2\");",
                   "    }",
                   "    else{",
                   "        postman.setNextRequest(null);",
