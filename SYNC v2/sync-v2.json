@@ -1649,6 +1649,58 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "fffefabb-5c5f-49b3-b780-35aca560a023",
+          "name": "Delete Profile v3 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
+                  "    pm.environment.unset(\"profilev3Id\");",
+                  "    postman.setNextRequest('Find Artifact from previous tests event');",
+                  "}else{",
+                  "    postman.setNextRequest(null);",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileV3Id}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
