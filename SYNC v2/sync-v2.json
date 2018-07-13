@@ -1440,7 +1440,7 @@
         },
         {
           "_postman_id": "b5e7fea8-f75c-4ef2-a80f-9b49a83836fa",
-          "name": "Delete Profile v2 Copy",
+          "name": "Delete Profile BIS v2",
           "event": [
             {
               "listen": "test",
