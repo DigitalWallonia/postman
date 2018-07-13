@@ -600,6 +600,76 @@
           "response": []
         },
         {
+          "_postman_id": "ba46e13a-d2eb-4cc5-afd0-a28e6af051ea",
+          "name": "Find New Profile v3 - N\u00b02 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b0cbb972-e96c-466f-9bd3-2095180c9843",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    ",
+                  "    let profileBisPermalienV2Id = pm.environment.get(\"profileBisPermalienV2Id\");",
+                  "    let profilePermalienV2Id = pm.environment.get(\"profilePermalienV2Id\");",
+                  "    //slug",
+                  "    tests[\"slug fr is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"fre\").status === \"Published\";",
+                  "    tests[\"slug en is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"eng\").status === \"Published\";",
+                  "    tests[\"slug nl is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"dut\").status === \"Published\";",
+                  "    tests[\"slug de is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"ger\").status === \"Published\";",
+                  "    ",
+                  "    tests[\"slug fr is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"fre\").status === \"Archived\";",
+                  "    tests[\"slug en is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"eng\").status === \"Archived\";",
+                  "    tests[\"slug nl is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"dut\").status === \"Archived\";",
+                  "    tests[\"slug de is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"ger\").status === \"Archived\";",
+                  "    ",
+                  "    postman.setNextRequest(\"Set New Permalien Profile BIS v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d463eba8-1ac0-bfa1-2565-baee1ac52d4c",
           "name": "Set Logo to Profile v2",
           "event": [
@@ -1516,76 +1586,6 @@
                 "{{profileV3Id}}"
               ],
               "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ba46e13a-d2eb-4cc5-afd0-a28e6af051ea",
-          "name": "Find New Profile v3 - N\u00b02 Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b0cbb972-e96c-466f-9bd3-2095180c9843",
-                "type": "text/javascript",
-                "exec": [
-                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    ",
-                  "    let profileBisPermalienV2Id = pm.environment.get(\"profileBisPermalienV2Id\");",
-                  "    let profilePermalienV2Id = pm.environment.get(\"profilePermalienV2Id\");",
-                  "    //slug",
-                  "    tests[\"slug fr is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"fre\").status === \"Published\";",
-                  "    tests[\"slug en is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"eng\").status === \"Published\";",
-                  "    tests[\"slug nl is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"dut\").status === \"Published\";",
-                  "    tests[\"slug de is Published\"] = jsonData.slug.find(s => s.slug === profileBisPermalienV2Id && s.language === \"ger\").status === \"Published\";",
-                  "    ",
-                  "    tests[\"slug fr is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"fre\").status === \"Archived\";",
-                  "    tests[\"slug en is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"eng\").status === \"Archived\";",
-                  "    tests[\"slug nl is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"dut\").status === \"Archived\";",
-                  "    tests[\"slug de is Archived\"] = jsonData.slug.find(s => s.slug === profilePermalienV2Id && s.language === \"ger\").status === \"Archived\";",
-                  "    ",
-                  "    postman.setNextRequest(\"Set New Permalien Profile BIS v2\");",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
