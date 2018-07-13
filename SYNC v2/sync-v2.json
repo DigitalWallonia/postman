@@ -1445,7 +1445,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3733b4f6-ee95-4c5d-87a0-fab17359a301",
+                "id": "6d277a8e-6f3a-4d33-ac54-e48c0e837101",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1454,10 +1454,10 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "",
-                  "    tests[\"Le profil a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
-                  "    pm.environment.unset(\"profileV2Id\");",
-                  "    pm.environment.unset(\"profileTitreV2Id\");",
-                  "    pm.environment.unset(\"profilePermalienV2Id\");",
+                  "    tests[\"Le profil Bis a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.response.deleted === true;",
+                  "    pm.environment.unset(\"profileBisV2Id\");",
+                  "    pm.environment.unset(\"profileBisTitreV2Id\");",
+                  "    pm.environment.unset(\"profileBisPermalienV2Id\");",
                   "    postman.setNextRequest(\"Delete Email to Profile Contact v2\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v3\");",
@@ -1471,14 +1471,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileV2Id}}/delete?oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/profils/{{profileBisV2Id}}/delete?oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
               ],
               "path": [
                 "profils",
-                "{{profileV2Id}}",
+                "{{profileBisV2Id}}",
                 "delete"
               ],
               "query": [
