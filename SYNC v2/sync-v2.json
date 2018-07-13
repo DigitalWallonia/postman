@@ -391,6 +391,63 @@
           "response": []
         },
         {
+          "_postman_id": "3fbc7f8b-d6a1-4c22-99a9-d95d8193c453",
+          "name": "Find New Profile BIS v3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "56ed0907-2ebe-4084-9a79-7987f19873c2",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileBisV3Id\", jsonData.id);",
+                  "    postman.setNextRequest(\"Set New Permalien Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileBisV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileBisV2Id}}}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d90f2128-f60d-4e62-8059-0fa0aac5fc54",
           "name": "Set New Permalien Profile v2",
           "event": [
@@ -1605,7 +1662,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "id": "63190d05-638d-4278-95dc-8f01919b1bc3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1615,7 +1672,7 @@
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
                   "    pm.environment.unset(\"profilev3Id\");",
-                  "    postman.setNextRequest('Find Artifact from previous tests event');",
+                  "    postman.setNextRequest('Delete Profile BIS v3');",
                   "}else{",
                   "    postman.setNextRequest(null);",
                   "}",
@@ -1657,7 +1714,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "id": "184ec9ce-9dbb-494b-bd6a-523e0fddef32",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1666,7 +1723,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
+                  "    pm.environment.unset(\"profileBisv3Id\");",
                   "    postman.setNextRequest('Find Artifact from previous tests event');",
                   "}else{",
                   "    postman.setNextRequest(null);",
@@ -1681,7 +1738,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileBisV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1689,7 +1746,7 @@
               "path": [
                 "api",
                 "profiles",
-                "{{profileV3Id}}"
+                "{{profileBisV3Id}}"
               ],
               "query": [
                 {
