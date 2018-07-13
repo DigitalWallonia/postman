@@ -1605,7 +1605,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8f42de6b-2ada-45d9-ba5c-8bd1310e5025",
+                "id": "63190d05-638d-4278-95dc-8f01919b1bc3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1629,7 +1629,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileBisV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1637,7 +1637,7 @@
               "path": [
                 "api",
                 "profiles",
-                "{{profileBisV3Id}}"
+                "{{profileV3Id}}"
               ],
               "query": [
                 {
@@ -1657,7 +1657,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "id": "184ec9ce-9dbb-494b-bd6a-523e0fddef32",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1666,7 +1666,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
+                  "    pm.environment.unset(\"profileBisv3Id\");",
                   "    postman.setNextRequest('Find Artifact from previous tests event');",
                   "}else{",
                   "    postman.setNextRequest(null);",
@@ -1681,7 +1681,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileBisV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1689,7 +1689,7 @@
               "path": [
                 "api",
                 "profiles",
-                "{{profileV3Id}}"
+                "{{profileBisV3Id}}"
               ],
               "query": [
                 {
