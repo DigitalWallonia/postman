@@ -1605,7 +1605,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8f42de6b-2ada-45d9-ba5c-8bd1310e5025",
+                "id": "63190d05-638d-4278-95dc-8f01919b1bc3",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1657,7 +1657,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "338caf2f-4644-4516-bab7-f6d8291913e0",
+                "id": "184ec9ce-9dbb-494b-bd6a-523e0fddef32",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1666,7 +1666,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profilev3Id\");",
+                  "    pm.environment.unset(\"profileBisv3Id\");",
                   "    postman.setNextRequest('Find Artifact from previous tests event');",
                   "}else{",
                   "    postman.setNextRequest(null);",
@@ -1681,7 +1681,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileV3Id}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileBisV3Id}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1689,9 +1689,89 @@
               "path": [
                 "api",
                 "profiles",
-                "{{profileV3Id}}"
+                "{{profileBisV3Id}}"
               ],
               "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "3fbc7f8b-d6a1-4c22-99a9-d95d8193c453",
+          "name": "Find New Profile v3 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "95eb9d7b-0621-4595-a273-a8995f2acc72",
+                "type": "text/javascript",
+                "exec": [
+                  "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileV3Id\", jsonData.id);",
+                  "    //Status",
+                  "    tests[\"Status is Pending\"] = jsonData.status === \"Pending\";",
+                  "    //v2Id",
+                  "    tests[\"v2Id\"] = jsonData.v2Id === v2Id;",
+                  "    //title",
+                  "    let profileTitreV2Id = pm.environment.get(\"profileTitreV2Id\");",
+                  "    let profilePermalienV2Id = pm.environment.get(\"profilePermalienV2Id\");",
+                  "    ",
+                  "    tests[\"title fr is Test Synchro 1\"] = jsonData.title.find(t => t.language === \"fre\").text === profileTitreV2Id;",
+                  "    tests[\"title en is Test Synchro 1\"] = jsonData.title.find(t => t.language === \"eng\").text === profileTitreV2Id;",
+                  "    tests[\"title nl is Test Synchro 1\"] = jsonData.title.find(t => t.language === \"dut\").text === profileTitreV2Id;",
+                  "    tests[\"title de is Test Synchro 1\"] = jsonData.title.find(t => t.language === \"ger\").text === profileTitreV2Id;",
+                  "    //slug",
+                  "    tests[\"slug fr is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"fre\").slug === profilePermalienV2Id;",
+                  "    tests[\"slug en is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"eng\").slug === profilePermalienV2Id;",
+                  "    tests[\"slug nl is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"dut\").slug === profilePermalienV2Id;",
+                  "    tests[\"slug de is test-synchro-1\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"ger\").slug === profilePermalienV2Id;",
+                  "    //shortTitle",
+                  "    tests[\"shortTitle fr is TS1\"] = jsonData.shortTitle.find(t => t.language === \"fre\").text === \"TS1\";",
+                  "    tests[\"shortTitle en is TS1\"] = jsonData.shortTitle.find(t => t.language === \"eng\").text === \"TS1\";",
+                  "    tests[\"shortTitle nl is TS1\"] = jsonData.shortTitle.find(t => t.language === \"dut\").text === \"TS1\";",
+                  "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle.find(t => t.language === \"ger\").text === \"TS1\";",
+                  "    ",
+                  "    postman.setNextRequest(\"Set New Permalien Profile v2\");",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":{{profileV2Id}}}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":{{profileV2Id}}}}",
+                  "equals": true
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
