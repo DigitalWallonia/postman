@@ -455,7 +455,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3fb9f005-43d9-44b1-a4b5-cf2b55cbdf4c",
+                "id": "e62f3370-dcf1-41fe-b78c-af1d2be4b0ec",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -467,7 +467,7 @@
                   "    // Si le JSON comporte un param\u00e8tre id",
                   "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
                   "        console.log(\"jsonData a un id\" + profileV2Id);",
-                  "        postman.setEnvironmentVariable(\"profileBisPermalienV2Id\", jsonData.response.profil.permalien);",
+                  "        postman.setEnvironmentVariable(\"profilePermalienV2Id\", jsonData.response.profil.permalien);",
                   "        postman.setNextRequest(\"Find New Profile v3 - N\u00b02\");",
                   "    }else{",
                   "        postman.setNextRequest(\"Delete Profile v2\");",
@@ -493,7 +493,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}new\", \"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
               "protocol": "{{v2_protocol}}",
               "host": [
                 "{{v2_domain}}"
@@ -505,7 +505,7 @@
               "query": [
                 {
                   "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}new\", \"user\":\"Synchronisation v2\"}}",
                   "equals": true
                 },
                 {
