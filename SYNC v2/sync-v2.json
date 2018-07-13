@@ -531,6 +531,76 @@
           "response": []
         },
         {
+          "_postman_id": "7aabdf8c-adac-4da6-afeb-3d0733d76500",
+          "name": "Set New Permalien Profile v2 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3fb9f005-43d9-44b1-a4b5-cf2b55cbdf4c",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Successful POST request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    let profileV2Id = parseInt(pm.environment.get(\"profileV2Id\"), 10);",
+                  "    // Si le JSON comporte un param\u00e8tre id",
+                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
+                  "        console.log(\"jsonData a un id\" + profileV2Id);",
+                  "        postman.setEnvironmentVariable(\"profileBisPermalienV2Id\", jsonData.response.profil.permalien);",
+                  "        postman.setNextRequest(\"Find New Profile v3 - N\u00b02\");",
+                  "    }else{",
+                  "        postman.setNextRequest(\"Delete Profile v2\");",
+                  "    }",
+                  "}else{",
+                  "    postman.setNextRequest(\"Delete Profile v2\");",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
+              "protocol": "{{v2_protocol}}",
+              "host": [
+                "{{v2_domain}}"
+              ],
+              "path": [
+                "services",
+                "batch"
+              ],
+              "query": [
+                {
+                  "key": "json",
+                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "oauth_token",
+                  "value": "{{v2_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "d463eba8-1ac0-bfa1-2565-baee1ac52d4c",
           "name": "Set Logo to Profile v2",
           "event": [
@@ -1450,76 +1520,6 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "7aabdf8c-adac-4da6-afeb-3d0733d76500",
-          "name": "Set New Permalien Profile v2 Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "3fb9f005-43d9-44b1-a4b5-cf2b55cbdf4c",
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
-                  "});",
-                  "if (pm.response.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    let profileV2Id = parseInt(pm.environment.get(\"profileV2Id\"), 10);",
-                  "    // Si le JSON comporte un param\u00e8tre id",
-                  "    if (jsonData.response.profil.id && jsonData.response.profil.id === profileV2Id) {",
-                  "        console.log(\"jsonData a un id\" + profileV2Id);",
-                  "        postman.setEnvironmentVariable(\"profileBisPermalienV2Id\", jsonData.response.profil.permalien);",
-                  "        postman.setNextRequest(\"Find New Profile v3 - N\u00b02\");",
-                  "    }else{",
-                  "        postman.setNextRequest(\"Delete Profile v2\");",
-                  "    }",
-                  "}else{",
-                  "    postman.setNextRequest(\"Delete Profile v2\");",
-                  "}",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{v2_protocol}}://{{v2_domain}}/services/batch?json={\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}&oauth_token={{v2_token}}",
-              "protocol": "{{v2_protocol}}",
-              "host": [
-                "{{v2_domain}}"
-              ],
-              "path": [
-                "services",
-                "batch"
-              ],
-              "query": [
-                {
-                  "key": "json",
-                  "value": "{\"profil\":{\"id\":{{profileV2Id}},\"permalien\":\"{{profilePermalienV2Id}}bis\", \"user\":\"Synchronisation v2\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "oauth_token",
-                  "value": "{{v2_token}}",
                   "equals": true
                 }
               ]
