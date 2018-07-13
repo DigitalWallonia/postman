@@ -317,7 +317,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "95eb9d7b-0621-4595-a273-a8995f2acc72",
+                "id": "f9d74bf8-e366-4a12-b109-f8e4d0511bb9",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -350,7 +350,7 @@
                   "    tests[\"shortTitle nl is TS1\"] = jsonData.shortTitle.find(t => t.language === \"dut\").text === \"TS1\";",
                   "    tests[\"shortTitle de is TS1\"] = jsonData.shortTitle.find(t => t.language === \"ger\").text === \"TS1\";",
                   "    ",
-                  "    postman.setNextRequest(\"Set New Permalien Profile v2\");",
+                  "    postman.setNextRequest(\"Find New Profile BIS v3\");",
                   "}else{",
                   "    postman.setNextRequest(\"Delete Profile v2\");",
                   "}",
