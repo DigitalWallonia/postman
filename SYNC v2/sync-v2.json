@@ -668,7 +668,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "41c14d1a-5d23-483f-be70-bdb9042b01e0",
+                "id": "15eedc79-b033-4f20-a971-297b429af252",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -678,8 +678,8 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    ",
-                  "    let profilePermalienOldV2Id = pm.environment.get(\"profilePermalienOldV2Id\");",
-                  "    let profileBisPermalienV2Id = pm.environment.get(\"profileBisPermalienV2Id\");",
+                  "    let profilePermalienOldV2Id = pm.environment.get(\"profileBisPermalienV2Id\");",
+                  "    let profileBisPermalienV2Id = pm.environment.get(\"profilePermalienOldV2Id\");",
                   "    //slug",
                   "    tests[\"slug fr is Published\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"fre\").slug === profilePermalienOldV2Id;",
                   "    tests[\"slug en is Published\"] = jsonData.slug.find(s => s.status === \"Published\" && s.language === \"eng\").slug === profilePermalienOldV2Id;",
