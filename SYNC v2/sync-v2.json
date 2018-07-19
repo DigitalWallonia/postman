@@ -1721,7 +1721,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "184ec9ce-9dbb-494b-bd6a-523e0fddef32",
+                "id": "94328514-8369-4d0d-b650-8d7f29cd66ef",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Successful POST request\", function () {",
@@ -1730,7 +1730,7 @@
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    tests[\"Le profil est supprim\u00e9\"] = jsonData.count === 1;",
-                  "    pm.environment.unset(\"profileBisv3Id\");",
+                  "    pm.environment.unset(\"profileBisV3Id\");",
                   "    postman.setNextRequest('Find Artifact from previous tests event');",
                   "}else{",
                   "    postman.setNextRequest(null);",
