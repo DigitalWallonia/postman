@@ -668,7 +668,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2243c554-8ca7-43f4-bd83-339bee9fa717",
+                "id": "1476d693-26d8-4879-a183-c714f2e3a7cf",
                 "type": "text/javascript",
                 "exec": [
                   "let v2Id = parseInt(pm.environment.get(\"profileV2Id\"));",
@@ -677,6 +677,7 @@
                   "});",
                   "if (pm.response.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"profileBisPermalienOldV2Id\", jsonData.slug.find(s => s.status === \"Archived\" && s.language === \"fre\").slug);",
                   "    ",
                   "    let profileBisPermalienV2Id = pm.environment.get(\"profilePermalienOldV2Id\");",
                   "    let profileBisPermalienOldV2Id = pm.environment.get(\"profilePermalienOldV2Id\");",
