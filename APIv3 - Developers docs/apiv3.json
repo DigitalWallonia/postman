@@ -312,13 +312,13 @@
             {
               "listen": "test",
               "script": {
+                "id": "5a9a2076-3824-4845-9967-96684d285955",
                 "type": "text/javascript",
                 "exec": [
                   "let jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Le titre est pr\u00e9sent\"] = jsonData.title[0].text === \"A+ Concept\";"
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;"
                 ]
               }
             }
@@ -328,7 +328,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":\"master-digital-business\"}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":{\"like\":\"business\"}}}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -341,7 +341,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"master-digital-business\"}}?access_token={{v3_token}}",
+                  "value": "{\"where\":{ \"slug.slug\":{\"like\":\"business\"}}}}?access_token={{v3_token}}",
                   "equals": true
                 }
               ]
