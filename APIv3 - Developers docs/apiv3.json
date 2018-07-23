@@ -326,12 +326,9 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":\"master-digital-business\"}}",
+              "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":\"master-digital-business\"}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -344,7 +341,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"master-digital-business\"}}",
+                  "value": "{\"where\":{ \"slug.slug\":\"master-digital-business\"}}?access_token={{v3_token}}",
                   "equals": true
                 }
               ]
