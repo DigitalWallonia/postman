@@ -198,7 +198,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"container\": \"digitalwallonia-images\",\n      \"url\": \"{{logoUrl}}\",\n      \"name\": \"{{projectName}}\",\n      \"id\": \"{{uniqId1}}\"\n    }\n  ]\n}"
+          "raw": "{\n  \"images\": [\n    {\n      \"type\": \"Logo\",\n      \"url\": \"{{logoUrl}}\",\n      \"name\": \"{{projectName}}\"\n    }\n  ]\n}"
         },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
@@ -214,7 +214,8 @@
           "query": [
             {
               "key": "access_token",
-              "value": "{{v3_token}}"
+              "value": "{{v3_token}}",
+              "equals": true
             }
           ]
         }
