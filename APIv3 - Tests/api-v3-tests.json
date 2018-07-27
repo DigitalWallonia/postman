@@ -2228,7 +2228,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "6a7a5750-0e78-4340-9735-34faa48ed703",
+                "id": "2a72a807-57f5-4070-895c-a1fa70d542f2",
                 "type": "text/javascript",
                 "exec": [
                   "tests[\"response code is 200 OK\"] = responseCode.code === 200",
@@ -2237,7 +2237,7 @@
                   "    if(jsonData && jsonData.length){",
                   "        const randomNumber = Math.floor(Math.random() * jsonData.length);",
                   "        const profile = jsonData[randomNumber];",
-                  "        tests[\"filtre-cetic is in \" + profile.shortTitle[0].text + \" partners's list\"] = profile.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
+                  "        tests[\"filtre-cetic is in \" + profile.title[0].text + \" partners's list\"] = profile.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
                   "        postman.setNextRequest('Partner Event List Random');",
                   "    }",
                   "}"
@@ -2248,10 +2248,7 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2264,9 +2261,9 @@
               ],
               "query": [
                 {
-                  "equals": true,
                   "key": "access_token",
-                  "value": "{{v3_token}}"
+                  "value": "{{v3_token}}",
+                  "equals": true
                 }
               ]
             }
