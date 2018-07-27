@@ -1589,12 +1589,9 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"testfr\",\"slug.language\":\"fre\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"automatedtest-fre\",\"slug.language\":\"fre\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1607,7 +1604,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"testfr\",\"slug.language\":\"fre\"}}",
+                  "value": "{\"where\":{ \"slug.slug\":\"automatedtest-fre\",\"slug.language\":\"fre\"}}",
                   "equals": true
                 },
                 {
