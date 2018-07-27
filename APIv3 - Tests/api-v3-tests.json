@@ -422,6 +422,7 @@
             {
               "listen": "test",
               "script": {
+                "id": "471d6661-895c-4385-84a1-c38d3328fd22",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -444,6 +445,22 @@
                   "else{",
                   "    console.log(\"jsonData n'a pas d'id\");",
                   "}"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2aeac41e-3e41-46ee-b3f4-3aca2ac21aaa",
+                "type": "text/javascript",
+                "exec": [
+                  "function uuidv2() {",
+                  "  return 'xxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 6 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(6);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqIdv2\", uuidv2());"
                 ]
               }
             }
