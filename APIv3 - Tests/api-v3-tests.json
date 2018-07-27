@@ -2645,7 +2645,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "53e496db-ff54-4eeb-9ec2-ed50cc0798c5",
+                "id": "3fe12369-f387-49f3-9f62-1b28e993c18a",
                 "type": "text/javascript",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
@@ -2670,6 +2670,7 @@
                   "postman.setNextRequest('Delete stickyPost');",
                   "}else{",
                   "    console.log(\"jsonData n'a pas d'id\");",
+                  "    postman.setNextRequest('');",
                   "}"
                 ]
               }
@@ -2710,7 +2711,7 @@
         },
         {
           "_postman_id": "c81acc6e-fc77-4f83-a243-e3552b6b203d",
-          "name": "Suppression d'un stickyPost",
+          "name": "Delete stickyPost",
           "event": [
             {
               "listen": "test",
