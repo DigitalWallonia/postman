@@ -1093,12 +1093,18 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "8efc49dc-d09c-4f57-a600-ba0dca90bea4",
+                "id": "6dc78cf4-8b85-41bc-9273-c10bd31f6420",
                 "type": "text/javascript",
                 "exec": [
                   "let currentDate = new Date();",
                   "pm.environment.set(\"currentDate\", currentDate);",
-                  "console.log(currentDate);"
+                  "function uuidv2() {",
+                  "  return 'xxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 6 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(6);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqIdv2\", uuidv2());"
                 ]
               }
             }
