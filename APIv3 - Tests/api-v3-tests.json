@@ -2222,7 +2222,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2a72a807-57f5-4070-895c-a1fa70d542f2",
+                "id": "3d290a62-604a-4bd8-87ca-7e4064e6944f",
                 "type": "text/javascript",
                 "exec": [
                   "tests[\"response code is 200 OK\"] = responseCode.code === 200",
@@ -2231,7 +2231,7 @@
                   "    if(jsonData && jsonData.length){",
                   "        const randomNumber = Math.floor(Math.random() * jsonData.length);",
                   "        const profile = jsonData[randomNumber];",
-                  "        tests[\"filtre-cetic is in \" + profile.title[0].text + \" partners's list\"] = profile.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
+                  "        // tests[\"filtre-cetic is in \" + profile.title[0].text + \" partners's list\"] = profile.partners.find(filter => filter === \"filtre-cetic\") === \"filtre-cetic\";",
                   "        postman.setNextRequest('Partner Event List Random');",
                   "    }",
                   "}"
