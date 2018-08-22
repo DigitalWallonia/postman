@@ -222,7 +222,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&profileId=5ab94b8cfb6a4c11bba0fa49",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -256,6 +256,12 @@
                   "value": "filtre-digital-wallonia",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
+                },
+                {
+                  "key": "profileId",
+                  "value": "5ab94b8cfb6a4c11bba0fa49",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The profile id"
                 }
               ]
             }
