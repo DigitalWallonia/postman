@@ -471,6 +471,43 @@
           "response": []
         },
         {
+          "_postman_id": "83ae0059-4a70-41f5-8103-7bf713bc2c2e",
+          "name": "Post associated with a profile Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "profileId",
+                  "value": "5ab94b8cfb6a4c11bba0fa49",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The profile id"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "5a473057-6c07-4029-9dd0-2c15d1ae4306",
           "name": "Search profile with IdV2",
           "request": {
@@ -607,43 +644,6 @@
                   "value": "addresses",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "83ae0059-4a70-41f5-8103-7bf713bc2c2e",
-          "name": "Post associated with a profile Copy",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "{{profileId}}",
-                "posts"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "profileId",
-                  "value": "5ab94b8cfb6a4c11bba0fa49",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The profile id"
                 }
               ]
             }
