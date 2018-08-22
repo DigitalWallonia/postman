@@ -276,7 +276,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?profileId=5ab94b8cfb6a4c11bba0fa49",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -288,6 +288,12 @@
                 "posts"
               ],
               "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
                 {
                   "key": "profileId",
                   "value": "5ab94b8cfb6a4c11bba0fa49",
