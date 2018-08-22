@@ -343,7 +343,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\":\"adn\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter[where][slug.slug]=adn&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -355,9 +355,10 @@
               ],
               "query": [
                 {
-                  "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"adn\"}}",
-                  "equals": true
+                  "key": "filter[where][slug.slug]",
+                  "value": "adn",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
                 },
                 {
                   "key": "access_token",
