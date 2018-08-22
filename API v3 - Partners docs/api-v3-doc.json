@@ -275,7 +275,27 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?profileId=5ab94b8cfb6a4c11bba0fa49",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "profileId",
+                  "value": "5ab94b8cfb6a4c11bba0fa49",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The profile id"
+                }
+              ]
+            }
           },
           "response": []
         }
