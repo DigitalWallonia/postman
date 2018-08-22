@@ -783,7 +783,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[where][status]=Published&filter[order]=startDate+ASC&filter[where][title.language]=fre&filter[where][endDate]=2017-10-19T23:00:00.000Z",
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[where][status]=Published&filter[order]=startDate+ASC&filter[where][title.language]=fre&filter[where][endDate][gt]=2018-10-19",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -815,8 +815,8 @@
                   "equals": true
                 },
                 {
-                  "key": "filter[where][endDate]",
-                  "value": "2017-10-19T23:00:00.000Z",
+                  "key": "filter[where][endDate][gt]",
+                  "value": "2018-10-19",
                   "equals": true
                 }
               ]
