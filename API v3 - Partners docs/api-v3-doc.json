@@ -945,15 +945,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles",
-                "{{profileId}}",
+                "events",
+                "{{eventId}}",
                 "posts"
               ],
               "query": [
