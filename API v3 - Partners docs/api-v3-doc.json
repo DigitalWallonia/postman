@@ -426,7 +426,7 @@
         },
         {
           "_postman_id": "b4439284-1e5e-4587-a0c9-d906ae49f5a9",
-          "name": "List of profiles filtered by tag Copy",
+          "name": "List of profiles filtered by tags",
           "request": {
             "method": "GET",
             "header": [],
