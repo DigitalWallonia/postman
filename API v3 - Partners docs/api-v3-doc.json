@@ -307,7 +307,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter[where][v2Id]=12249&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter[where][v2Id]=2941&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -320,7 +320,7 @@
               "query": [
                 {
                   "key": "filter[where][v2Id]",
-                  "value": "12249",
+                  "value": "2941",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
                 },
