@@ -973,17 +973,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "23c77152-4a41-4e42-82e5-229bbfa5ef6b",
-          "name": "Post associated with an event",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": ""
-          },
-          "response": []
         }
       ]
     }
