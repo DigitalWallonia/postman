@@ -497,7 +497,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][themes.v2Id]=4",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][themes.v2Id]=3",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -516,7 +516,8 @@
                 {
                   "key": "filter[limit]",
                   "value": "10",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 },
                 {
                   "key": "filter[where][status]",
@@ -532,7 +533,7 @@
                 },
                 {
                   "key": "filter[where][themes.v2Id]",
-                  "value": "4",
+                  "value": "3",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a theme with this value"
                 }
