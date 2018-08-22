@@ -379,7 +379,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=filtre-digital-wallonia&filter[where][status]=Published&filter[where][slug.language]=fre",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=startup&filter[where][status]=Published&filter[where][slug.language]=fre",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -403,7 +403,7 @@
                 },
                 {
                   "key": "filter[where][tags.slug.slug]",
-                  "value": "filtre-digital-wallonia",
+                  "value": "startup",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
                 },
