@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "DigitalWallonia.be API V3 Documentation",
     "_postman_id": "7bdda161-e2e9-83b5-6ff1-c9acd9649bba",
+    "name": "DigitalWallonia.be API V3 Documentation",
     "description": "# Overview\nList of queries allowing the partners to access Digital Wallonia API V3 read-only<br />\nOnly partner's owned datas are availble.\n\n# Environment\nVariables in requests'urls and bodies are between double braces. Ex: {{my_token}}. You have to replace the entire string (double braces included) with your custom variables or set them in the environment if you use Postman Desktop Application\n\n# Authentication\nAccess is strictly authorized by the use of a token. You can get a token by making a post request on the /users/login endpoint with your username and password in the body's request.<br />\n<b>The time to live is 2 weeks</b>.\n\n# Error Codes\nCode | Error\n--- | --- \n401 | Authorization Required\n404 | There is no method to handle the request\n\n# Team\nFor any question contact us at [webdev@adn.be](mailto:webdev@adn.be)",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
@@ -38,8 +38,7 @@
               "mode": "raw",
               "raw": "{\n  \"email\": \"{{v3_email}}\",\n  \"password\": \"{{v3_password}}\"\n}"
             },
-            "url": "{{protocol}}://{{domain}}/api/users/login",
-            "description": null
+            "url": "{{protocol}}://{{domain}}/api/users/login"
           },
           "response": []
         }
@@ -148,8 +147,7 @@
                   "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -212,8 +210,18 @@
                   "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
                 }
               ]
-            },
-            "description": null
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f905d6bc-34a3-4109-972e-78122a1826a7",
+          "name": "Detail of a profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
           },
           "response": []
         }
@@ -312,8 +320,7 @@
                   "description": "<b>[Optionnal]</b><br />\nSpecifies how to sort the results: ascending (ASC) or descending (DESC) based on the specified property"
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         },
@@ -376,8 +383,7 @@
                   "description": "<b>[Optionnal]</b><br />\nThe event that is tagged with this value"
                 }
               ]
-            },
-            "description": null
+            }
           },
           "response": []
         }
