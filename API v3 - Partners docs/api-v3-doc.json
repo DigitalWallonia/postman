@@ -307,7 +307,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter[where][v2Id]=2941&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][v2Id]=2941",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -319,16 +319,16 @@
               ],
               "query": [
                 {
-                  "key": "filter[where][v2Id]",
-                  "value": "2941",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
-                },
-                {
                   "key": "access_token",
                   "value": "{{v3_token}}",
                   "equals": true,
                   "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[where][v2Id]",
+                  "value": "2941",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
                 }
               ]
             }
