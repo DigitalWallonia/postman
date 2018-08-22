@@ -555,7 +555,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=3&filter[offset]=0&filter[where][slug.language]=fre&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=addresses",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -573,27 +573,9 @@
                 },
                 {
                   "key": "filter[limit]",
-                  "value": "3",
+                  "value": "25",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[offset]",
-                  "value": "0",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nUsed for pagination. It's the number of records into a dataset that you want to start"
-                },
-                {
-                  "key": "filter[where][slug.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles with a slug with this value"
-                },
-                {
-                  "key": "filter[where][title.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
                 },
                 {
                   "key": "filter[where][status]",
@@ -602,10 +584,19 @@
                   "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
                 },
                 {
-                  "key": "filter[where][tags.slug.slug]",
-                  "value": "filtre-digital-wallonia",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                  "key": "filter[fields][0]",
+                  "value": "images",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][1]",
+                  "value": "title",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][2]",
+                  "value": "addresses",
+                  "equals": true
                 }
               ]
             }
