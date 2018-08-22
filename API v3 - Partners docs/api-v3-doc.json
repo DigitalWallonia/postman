@@ -945,7 +945,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}/posts?access_token={{v3_token}}&eventId=5ab94b8cfb6a4c11bba0fa49",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -964,10 +964,10 @@
                   "description": "<b>[Obligatory]</b>"
                 },
                 {
-                  "key": "profileId",
+                  "key": "eventId",
                   "value": "5ab94b8cfb6a4c11bba0fa49",
                   "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The profile id"
+                  "description": "<b>[Obligatory]</b><br />The event id"
                 }
               ]
             }
