@@ -806,7 +806,7 @@
                   "key": "filter[order]",
                   "value": "startDate+ASC",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />"
+                  "description": "<b>[Optionnal]</b><br />\nSpecifies how to sort the results: ascending (ASC) or descending (DESC) based on the specified property"
                 },
                 {
                   "key": "filter[where][title.language]",
