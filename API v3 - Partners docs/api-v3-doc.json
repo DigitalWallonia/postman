@@ -1001,7 +1001,8 @@
                 {
                   "key": "filter[where][eventId]",
                   "value": "5b509457fa226a073cb49c3d",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />\nThe event Id"
                 }
               ]
             }
