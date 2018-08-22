@@ -475,6 +475,17 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "4f268b0e-d2cf-4b4d-954e-f99fd6b48e45",
+          "name": "List of profiles filtered by tags",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
         }
       ]
     },
