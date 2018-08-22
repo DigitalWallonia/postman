@@ -939,7 +939,7 @@
         },
         {
           "_postman_id": "83ae0059-4a70-41f5-8103-7bf713bc2c2e",
-          "name": "Post associated with a profile Copy",
+          "name": "Post associated with an event",
           "request": {
             "method": "GET",
             "header": [],
