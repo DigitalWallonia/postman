@@ -638,12 +638,9 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=4&filter[offset]=0&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&filter[where][startDate][lte]=2018-01-31T22:59:59.999Z&filter[where][endDate][gte]=2018-01-05T10:11:48.620Z&filter[order]=startDate%20ASC",
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=4&filter[offset]=0&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&filter[where][startDate][lte]=2018-01-31&filter[where][endDate][gte]=2018-01-05&filter[order]=startDate%20ASC",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -691,13 +688,13 @@
                 },
                 {
                   "key": "filter[where][startDate][lte]",
-                  "value": "2018-01-31T22:59:59.999Z",
+                  "value": "2018-01-31",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nOnly events with this start date. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal)"
                 },
                 {
                   "key": "filter[where][endDate][gte]",
-                  "value": "2018-01-05T10:11:48.620Z",
+                  "value": "2018-01-05",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nOnly events with this end date. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal)"
                 },
