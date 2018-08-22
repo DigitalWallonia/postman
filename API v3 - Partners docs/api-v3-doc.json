@@ -275,7 +275,7 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": ""
+            "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts"
           },
           "response": []
         }
