@@ -432,7 +432,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=startup&filter[where][status]=Published&filter[where][slug.language]=fre",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][and][0][tags.slug.slug]=secteur-ecommerce&filter[where][and][1][tags.slug.slug]=mode",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -455,12 +455,6 @@
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 },
                 {
-                  "key": "filter[where][tags.slug.slug]",
-                  "value": "startup",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
-                },
-                {
                   "key": "filter[where][status]",
                   "value": "Published",
                   "equals": true,
@@ -471,6 +465,18 @@
                   "value": "fre",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
+                },
+                {
+                  "key": "filter[where][and][0][tags.slug.slug]",
+                  "value": "secteur-ecommerce",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                },
+                {
+                  "key": "filter[where][and][1][tags.slug.slug]",
+                  "value": "mode",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
                 }
               ]
             }
