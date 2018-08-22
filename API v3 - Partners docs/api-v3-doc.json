@@ -981,7 +981,30 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": ""
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/xEventProfile?access_token={{v3_token}}&filter[where][eventId]=5b509457fa226a073cb49c3d",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "xEventProfile"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[where][eventId]",
+                  "value": "5b509457fa226a073cb49c3d",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         }
