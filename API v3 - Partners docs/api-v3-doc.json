@@ -373,7 +373,7 @@
         },
         {
           "_postman_id": "a94f0815-8ed7-43c2-bc71-c08e5463013e",
-          "name": "List of profiles filtered by tags",
+          "name": "List of profiles filtered by tag",
           "request": {
             "method": "GET",
             "header": [],
