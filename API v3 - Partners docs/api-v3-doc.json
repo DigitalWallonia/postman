@@ -833,7 +833,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=filtre-digital-wallonia&filter[where][status]=Published&filter[where][title.language]=fre",
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=secteur-ecommerce&filter[where][status]=Published&filter[where][title.language]=fre",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -856,7 +856,7 @@
                 },
                 {
                   "key": "filter[where][tags.slug.slug]",
-                  "value": "filtre-digital-wallonia",
+                  "value": "secteur-ecommerce",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nOnly events that are tagged with this value"
                 },
