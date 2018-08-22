@@ -593,17 +593,20 @@
                 {
                   "key": "filter[fields][0]",
                   "value": "images",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
                 },
                 {
                   "key": "filter[fields][1]",
                   "value": "title",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
                 },
                 {
                   "key": "filter[fields][2]",
                   "value": "addresses",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
                 }
               ]
             }
