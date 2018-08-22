@@ -782,7 +782,45 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": ""
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[where][status]=Published&filter[order]=startDate+ASC&filter[where][title.language]=fre&filter[where][endDate]=2017-10-19T23:00:00.000Z",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe event that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[order]",
+                  "value": "startDate+ASC",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "fre",
+                  "equals": true
+                },
+                {
+                  "key": "filter[where][endDate]",
+                  "value": "2017-10-19T23:00:00.000Z",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         }
