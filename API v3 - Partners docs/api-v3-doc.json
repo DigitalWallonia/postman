@@ -1516,7 +1516,7 @@
             },
             {
               "_postman_id": "9dfc5372-adee-496f-94a3-946c8a01c00f",
-              "name": "Profiles Copy",
+              "name": "Events",
               "request": {
                 "method": "GET",
                 "header": [],
