@@ -768,6 +768,60 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "be7415ae-e1b5-4416-99ce-2cd330cfa3ef",
+          "name": "Detail of a profile Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&profileId=5ab94b8cfb6a4c11bba0fa49",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles",
+                "{{profileId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[where][slug.slug]",
+                  "value": "deco-de-reve",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
+                },
+                {
+                  "key": "profileId",
+                  "value": "5ab94b8cfb6a4c11bba0fa49",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The profile id"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -1220,60 +1274,6 @@
         {
           "_postman_id": "f905d6bc-34a3-4109-972e-78122a1826a7",
           "name": "Detail of a profile",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&profileId=5ab94b8cfb6a4c11bba0fa49",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "{{profileId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[where][slug.slug]",
-                  "value": "deco-de-reve",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[where][tags.slug.slug]",
-                  "value": "filtre-digital-wallonia",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
-                },
-                {
-                  "key": "profileId",
-                  "value": "5ab94b8cfb6a4c11bba0fa49",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The profile id"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "be7415ae-e1b5-4416-99ce-2cd330cfa3ef",
-          "name": "Detail of a profile Copy",
           "request": {
             "method": "GET",
             "header": [],
