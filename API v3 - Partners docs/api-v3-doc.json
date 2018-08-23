@@ -532,7 +532,7 @@
         },
         {
           "_postman_id": "024c3d86-6515-419b-9c89-dee18022f61d",
-          "name": "Search profiles with slug",
+          "name": "With slug",
           "request": {
             "method": "GET",
             "header": [],
