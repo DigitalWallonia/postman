@@ -1143,7 +1143,7 @@
                       "key": "filter[where][v2Id]",
                       "value": "2941",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
+                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this v2Id value"
                     }
                   ]
                 }
