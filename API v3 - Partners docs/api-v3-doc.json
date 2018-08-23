@@ -1476,7 +1476,19 @@
           "_postman_id": "dc8c6d00-3e7e-4c7a-91f7-ef6e539984ac",
           "name": "Associated",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "621742b2-cfdd-42ef-8810-86d995faf08b",
+              "name": "Profiles",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": ""
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
