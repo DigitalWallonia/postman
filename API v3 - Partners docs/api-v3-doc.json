@@ -633,7 +633,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/events/count?access_token={{v3_token}}&filter[where][status]=Published",
+                  "raw": "{{protocol}}://{{domain}}/api/events/count?access_token={{v3_token}}&[where][status]=Published",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -651,7 +651,7 @@
                       "description": "<b>[Obligatory]</b>"
                     },
                     {
-                      "key": "filter[where][status]",
+                      "key": "[where][status]",
                       "value": "Published",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
