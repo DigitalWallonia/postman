@@ -78,7 +78,7 @@
           "item": [
             {
               "_postman_id": "a94f0815-8ed7-43c2-bc71-c08e5463013e",
-              "name": "List of profiles filtered by tag",
+              "name": "By one tag",
               "request": {
                 "method": "GET",
                 "header": [],
@@ -131,7 +131,7 @@
             },
             {
               "_postman_id": "b4439284-1e5e-4587-a0c9-d906ae49f5a9",
-              "name": "List of profiles filtered by tags",
+              "name": "By multiple tags",
               "request": {
                 "method": "GET",
                 "header": [],
