@@ -765,7 +765,7 @@
             },
             {
               "_postman_id": "a7e049d5-e614-40ca-b5bc-45c0473e7dca",
-              "name": "With v2Id tag",
+              "name": "With v2Id contact",
               "request": {
                 "method": "GET",
                 "header": [],
