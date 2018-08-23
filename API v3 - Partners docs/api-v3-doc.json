@@ -1431,7 +1431,7 @@
       "item": [
         {
           "_postman_id": "ef994f12-d6d2-4082-8673-bd0a782d4090",
-          "name": "List og projects",
+          "name": "List of projects",
           "request": {
             "method": "GET",
             "header": [],
