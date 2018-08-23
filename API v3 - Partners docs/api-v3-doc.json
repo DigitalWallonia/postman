@@ -718,6 +718,12 @@
       ]
     },
     {
+      "_postman_id": "b0a5fdf9-be0e-4027-8396-9acbea914597",
+      "name": "Posts",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "ff1f0ad2-b325-1149-a5df-39fdf555bf4c",
       "name": "Profile",
       "description": "",
@@ -1289,12 +1295,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "b0a5fdf9-be0e-4027-8396-9acbea914597",
-      "name": "Posts",
-      "description": "",
-      "item": []
     }
   ],
   "event": [
