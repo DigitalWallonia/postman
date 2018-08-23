@@ -777,7 +777,7 @@
             },
             {
               "_postman_id": "855c1860-7995-468b-873f-33061528fe9b",
-              "name": "By tags",
+              "name": "By multiple tags",
               "request": {
                 "method": "GET",
                 "header": [],
