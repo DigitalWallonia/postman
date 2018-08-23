@@ -735,14 +735,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][slug.slug]=adn",
+                  "raw": "{{protocol}}://{{domain}}/api/posts/findOne?access_token={{v3_token}}&filter[where][slug.slug]=smart-region",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "profiles",
+                    "posts",
                     "findOne"
                   ],
                   "query": [
@@ -754,7 +754,7 @@
                     },
                     {
                       "key": "filter[where][slug.slug]",
-                      "value": "adn",
+                      "value": "smart-region",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
                     }
