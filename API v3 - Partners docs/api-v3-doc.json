@@ -568,7 +568,7 @@
         },
         {
           "_postman_id": "67eab809-dfd2-4d8f-af1a-0beae308e085",
-          "name": "List of profiles with limited fields",
+          "name": "Limited fields",
           "event": [
             {
               "listen": "test",
