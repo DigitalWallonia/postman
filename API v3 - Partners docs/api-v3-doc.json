@@ -931,7 +931,7 @@
         },
         {
           "_postman_id": "855c1860-7995-468b-873f-33061528fe9b",
-          "name": "Events filtered by tags",
+          "name": "By tags",
           "request": {
             "method": "GET",
             "header": [],
