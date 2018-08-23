@@ -1473,6 +1473,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "dc8c6d00-3e7e-4c7a-91f7-ef6e539984ac",
+          "name": "Associated",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "ef994f12-d6d2-4082-8673-bd0a782d4090",
           "name": "List of projects",
           "request": {
