@@ -878,6 +878,41 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "ea4224c2-5494-4cfc-ae40-accdd77ca1e3",
+              "name": "Profiles associated to an event",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/xEventProfile?access_token={{v3_token}}&filter[where][eventId]=5b509457fa226a073cb49c3d",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "xEventProfile"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][eventId]",
+                      "value": "5b509457fa226a073cb49c3d",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b><br />\nThe event Id"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
@@ -1028,41 +1063,6 @@
                   "value": "filtre-digital-wallonia",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nThe event that is tagged with this value"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ea4224c2-5494-4cfc-ae40-accdd77ca1e3",
-          "name": "Profiles associated to an event",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/xEventProfile?access_token={{v3_token}}&filter[where][eventId]=5b509457fa226a073cb49c3d",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "xEventProfile"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[where][eventId]",
-                  "value": "5b509457fa226a073cb49c3d",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />\nThe event Id"
                 }
               ]
             }
