@@ -665,6 +665,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "b6e5d6fe-d0c4-42a0-8124-fb83605ec492",
+          "name": "Filtered",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "9ac44906-c963-7675-ad1c-fe0f59e143ba",
           "name": "List of events",
           "event": [
