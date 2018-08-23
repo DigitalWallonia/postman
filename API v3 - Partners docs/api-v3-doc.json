@@ -1478,17 +1478,6 @@
           "description": "",
           "item": [
             {
-              "_postman_id": "621742b2-cfdd-42ef-8810-86d995faf08b",
-              "name": "Profiles",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": ""
-              },
-              "response": []
-            },
-            {
               "_postman_id": "e7d3676a-ab82-49aa-b9ba-b2de7af8f56a",
               "name": "Posts Copy",
               "request": {
