@@ -841,7 +841,45 @@
           "_postman_id": "a68d2110-7b34-4157-8fce-28f337d04cbd",
           "name": "Associated",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "83ae0059-4a70-41f5-8103-7bf713bc2c2e",
+              "name": "Post associated to an event",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}/posts?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events",
+                    "{{eventId}}",
+                    "posts"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "5b30f5f0580a6c6a99b6eb5f",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b><br />The event id"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
@@ -990,43 +1028,6 @@
                   "value": "filtre-digital-wallonia",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nThe event that is tagged with this value"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "83ae0059-4a70-41f5-8103-7bf713bc2c2e",
-          "name": "Post associated to an event",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}/posts?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "{{eventId}}",
-                "posts"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "eventId",
-                  "value": "5b30f5f0580a6c6a99b6eb5f",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The event id"
                 }
               ]
             }
