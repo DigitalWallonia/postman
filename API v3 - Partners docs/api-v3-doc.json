@@ -1289,6 +1289,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "b0a5fdf9-be0e-4027-8396-9acbea914597",
+      "name": "Posts",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
