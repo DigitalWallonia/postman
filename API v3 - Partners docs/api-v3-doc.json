@@ -762,6 +762,42 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "a7e049d5-e614-40ca-b5bc-45c0473e7dca",
+              "name": "With slug Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/posts/findOne?access_token={{v3_token}}&filter[where][slug.slug]=smart-region",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "posts",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][slug.slug]",
+                      "value": "smart-region",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
