@@ -1485,16 +1485,16 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
+                  "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/profiles?access_token={{v3_token}}&projectId=5ab93b3afb6a4c11bba097f0",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "profiles",
-                    "{{profileId}}",
-                    "posts"
+                    "projects",
+                    "{{projectId}}",
+                    "profiles"
                   ],
                   "query": [
                     {
@@ -1504,10 +1504,10 @@
                       "description": "<b>[Obligatory]</b>"
                     },
                     {
-                      "key": "profileId",
-                      "value": "5ab94b8cfb6a4c11bba0fa49",
+                      "key": "projectId",
+                      "value": "5ab93b3afb6a4c11bba097f0",
                       "equals": true,
-                      "description": "<b>[Obligatory]</b><br />The profile id"
+                      "description": "<b>[Obligatory]</b><br />The project id"
                     }
                   ]
                 }
