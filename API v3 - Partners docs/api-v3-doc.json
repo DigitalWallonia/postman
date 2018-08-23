@@ -370,6 +370,86 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "9a59639f-c174-e29b-2b85-50b5e4a23661",
+          "name": "List of profiles",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=3&filter[offset]=0&filter[where][slug.language]=fre&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "3",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[offset]",
+                  "value": "0",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nUsed for pagination. It's the number of records into a dataset that you want to start"
+                },
+                {
+                  "key": "filter[where][slug.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles with a slug with this value"
+                },
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "f905d6bc-34a3-4109-972e-78122a1826a7",
           "name": "Detail of a profile",
           "request": {
@@ -480,86 +560,6 @@
                   "value": "filtre-digital-wallonia",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "9a59639f-c174-e29b-2b85-50b5e4a23661",
-          "name": "List of profiles",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=3&filter[offset]=0&filter[where][slug.language]=fre&filter[where][title.language]=fre&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "3",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[offset]",
-                  "value": "0",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nUsed for pagination. It's the number of records into a dataset that you want to start"
-                },
-                {
-                  "key": "filter[where][slug.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles with a slug with this value"
-                },
-                {
-                  "key": "filter[where][title.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[where][tags.slug.slug]",
-                  "value": "filtre-digital-wallonia",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
                 }
               ]
             }
