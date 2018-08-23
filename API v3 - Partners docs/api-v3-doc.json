@@ -1020,7 +1020,7 @@
         },
         {
           "_postman_id": "ea4224c2-5494-4cfc-ae40-accdd77ca1e3",
-          "name": "List of profiles associated with an event",
+          "name": "Profiles associated to an event",
           "request": {
             "method": "GET",
             "header": [],
