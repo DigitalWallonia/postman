@@ -1430,6 +1430,13 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "15689d6f-ee10-4d1a-9011-efa772b03375",
+          "name": "Search",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "ef994f12-d6d2-4082-8673-bd0a782d4090",
           "name": "List of projects",
           "request": {
