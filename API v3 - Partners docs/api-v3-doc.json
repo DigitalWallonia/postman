@@ -621,6 +621,13 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "e193a868-dc3e-4a36-99e3-f98ec011f168",
+          "name": "Count",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "9ac44906-c963-7675-ad1c-fe0f59e143ba",
           "name": "List of events",
           "event": [
