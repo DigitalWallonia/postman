@@ -1522,7 +1522,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b3afb6a4c11bba097f0/events?access_token={{v3_token}}&projectId=5ab93b3afb6a4c11bba097f0&filter[where][status]=Published&filter[where][title.language]=fre&filter[where][endDate][gte]=2018-04-05",
+                  "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/events?access_token={{v3_token}}&projectId=5ab93b3afb6a4c11bba097f0&filter[where][status]=Published&filter[where][title.language]=fre&filter[where][endDate][gte]=2018-04-05",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -1530,7 +1530,7 @@
                   "path": [
                     "api",
                     "projects",
-                    "5ab93b3afb6a4c11bba097f0",
+                    "{{projectId}}",
                     "events"
                   ],
                   "query": [
