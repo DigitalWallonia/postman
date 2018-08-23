@@ -1479,7 +1479,7 @@
           "item": [
             {
               "_postman_id": "e7d3676a-ab82-49aa-b9ba-b2de7af8f56a",
-              "name": "Posts Copy",
+              "name": "Profiles",
               "request": {
                 "method": "GET",
                 "header": [],
