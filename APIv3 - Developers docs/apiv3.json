@@ -3879,19 +3879,16 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/count?where={\"status\":\"Published\"}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/events/count?where={\"status\":\"Published\"}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "projects",
+                "events",
                 "count"
               ],
               "query": [
