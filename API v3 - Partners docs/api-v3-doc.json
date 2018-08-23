@@ -791,7 +791,8 @@
                     {
                       "key": "filter[where][contacts.v2Id]",
                       "value": "19240",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe post that has a contact with this v2Id value"
                     }
                   ]
                 }
