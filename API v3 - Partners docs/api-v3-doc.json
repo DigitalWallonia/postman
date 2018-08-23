@@ -75,7 +75,173 @@
           "_postman_id": "3f81fb1f-3f23-40ea-aae1-81461a62e53b",
           "name": "Filtered",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "a94f0815-8ed7-43c2-bc71-c08e5463013e",
+              "name": "List of profiles filtered by tag",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=startup&filter[where][status]=Published&filter[where][slug.language]=fre",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[limit]",
+                      "value": "10",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                    },
+                    {
+                      "key": "filter[where][tags.slug.slug]",
+                      "value": "startup",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                    },
+                    {
+                      "key": "filter[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    },
+                    {
+                      "key": "filter[where][slug.language]",
+                      "value": "fre",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "b4439284-1e5e-4587-a0c9-d906ae49f5a9",
+              "name": "List of profiles filtered by tags",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][and][0][tags.slug.slug]=secteur-ecommerce&filter[where][and][1][tags.slug.slug]=mode",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[limit]",
+                      "value": "10",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                    },
+                    {
+                      "key": "filter[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    },
+                    {
+                      "key": "filter[where][slug.language]",
+                      "value": "fre",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
+                    },
+                    {
+                      "key": "filter[where][and][0][tags.slug.slug]",
+                      "value": "secteur-ecommerce",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                    },
+                    {
+                      "key": "filter[where][and][1][tags.slug.slug]",
+                      "value": "mode",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "3ca42d43-8a35-4a61-a0f5-e5d9b786c304",
+              "name": "List of profiles filtered by theme",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][themes.v2Id]=3",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[limit]",
+                      "value": "10",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                    },
+                    {
+                      "key": "filter[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    },
+                    {
+                      "key": "filter[where][slug.language]",
+                      "value": "fre",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
+                    },
+                    {
+                      "key": "filter[where][themes.v2Id]",
+                      "value": "3",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a theme with this value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
@@ -206,171 +372,6 @@
                   "value": "filtre-digital-wallonia",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "a94f0815-8ed7-43c2-bc71-c08e5463013e",
-          "name": "List of profiles filtered by tag",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][tags.slug.slug]=startup&filter[where][status]=Published&filter[where][slug.language]=fre",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "10",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[where][tags.slug.slug]",
-                  "value": "startup",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[where][slug.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b4439284-1e5e-4587-a0c9-d906ae49f5a9",
-          "name": "List of profiles filtered by tags",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][and][0][tags.slug.slug]=secteur-ecommerce&filter[where][and][1][tags.slug.slug]=mode",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "10",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[where][slug.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
-                },
-                {
-                  "key": "filter[where][and][0][tags.slug.slug]",
-                  "value": "secteur-ecommerce",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
-                },
-                {
-                  "key": "filter[where][and][1][tags.slug.slug]",
-                  "value": "mode",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that are tagged with this value"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "3ca42d43-8a35-4a61-a0f5-e5d9b786c304",
-          "name": "List of profiles filtered by theme",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[where][slug.language]=fre&filter[where][themes.v2Id]=3",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "10",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[where][slug.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\n Only profiles that have a title in this language. Values : \"fre\" or \"eng\""
-                },
-                {
-                  "key": "filter[where][themes.v2Id]",
-                  "value": "3",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a theme with this value"
                 }
               ]
             }
