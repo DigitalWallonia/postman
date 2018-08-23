@@ -818,7 +818,7 @@
         },
         {
           "_postman_id": "3d34649f-08d9-45d4-a48f-067140ae1b36",
-          "name": "List of filtered events by end date",
+          "name": "Events by end date",
           "request": {
             "method": "GET",
             "header": [],
