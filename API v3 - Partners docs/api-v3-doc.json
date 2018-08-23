@@ -1008,6 +1008,17 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "e45413d7-4c6a-4f45-95df-49b711e47ca5",
+          "name": "Count Published Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
         }
       ]
     }
