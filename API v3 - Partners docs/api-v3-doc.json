@@ -1609,7 +1609,7 @@
         },
         {
           "_postman_id": "5ffc8502-9554-4e2c-a09f-61dce9080055",
-          "name": "Detail of a profile Copy",
+          "name": "Detail of a project",
           "request": {
             "method": "GET",
             "header": [],
