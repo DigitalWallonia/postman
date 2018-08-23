@@ -726,7 +726,44 @@
           "_postman_id": "d82201eb-0569-4490-b03d-4051aeeabe39",
           "name": "Search",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "024c3d86-6515-419b-9c89-dee18022f61d",
+              "name": "With slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][slug.slug]=adn",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][slug.slug]",
+                      "value": "adn",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
@@ -1072,42 +1109,6 @@
                       "value": "2941",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "024c3d86-6515-419b-9c89-dee18022f61d",
-              "name": "With slug",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][slug.slug]=adn",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "profiles",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][slug.slug]",
-                      "value": "adn",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
                     }
                   ]
                 }
