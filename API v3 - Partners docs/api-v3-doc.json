@@ -251,7 +251,7 @@
           "item": [
             {
               "_postman_id": "ef9bf0fc-a10c-4928-8e12-52fc1705870f",
-              "name": "Post associated with a profile",
+              "name": "Posts",
               "request": {
                 "method": "GET",
                 "header": [],
