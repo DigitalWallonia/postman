@@ -714,10 +714,17 @@
             }
           },
           "response": []
-        },
+        }
+      ]
+    },
+    {
+      "_postman_id": "b0a5fdf9-be0e-4027-8396-9acbea914597",
+      "name": "Posts",
+      "description": "",
+      "item": [
         {
           "_postman_id": "128c70d8-7c77-4e5b-82a8-b20f50dcd741",
-          "name": "List of events Copy",
+          "name": "List of posts",
           "event": [
             {
               "listen": "test",
@@ -805,12 +812,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "b0a5fdf9-be0e-4027-8396-9acbea914597",
-      "name": "Posts",
-      "description": "",
-      "item": []
     },
     {
       "_postman_id": "ff1f0ad2-b325-1149-a5df-39fdf555bf4c",
