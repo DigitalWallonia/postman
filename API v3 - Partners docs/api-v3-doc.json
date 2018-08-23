@@ -1428,7 +1428,19 @@
       "_postman_id": "23c9cd78-85f6-44c9-8f56-06cae2bd04ba",
       "name": "Projects",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "ef994f12-d6d2-4082-8673-bd0a782d4090",
+          "name": "List og projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
