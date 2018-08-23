@@ -1199,7 +1199,62 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": ""
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/5ab960ddfb6a4c11bba127ec?access_token={{v3_token}}&filter[include][0][relation]=profiles&filter[include][0][scope][where][status]=Published&filter[include][0][scope][where][partners]=filtre-digital-wallonia&filter[include][0][scope][where][title.language]=fre&filter[include][1][relation]=posts&filter[include][1][status]=Published",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "5ab960ddfb6a4c11bba127ec"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[include][0][relation]",
+                  "value": "profiles",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
+                },
+                {
+                  "key": "filter[include][0][scope][where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
+                },
+                {
+                  "key": "filter[include][0][scope][where][partners]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
+                },
+                {
+                  "key": "filter[include][0][scope][where][title.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
+                },
+                {
+                  "key": "filter[include][1][relation]",
+                  "value": "posts",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned"
+                },
+                {
+                  "key": "filter[include][1][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
+                }
+              ]
+            }
           },
           "response": []
         }
