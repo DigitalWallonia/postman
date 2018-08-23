@@ -1017,14 +1017,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/count?access_token={{v3_token}}&filter[where][status]=Published",
+              "raw": "{{protocol}}://{{domain}}/api/events/count?access_token={{v3_token}}&filter[where][status]=Published",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "projects",
+                "events",
                 "count"
               ],
               "query": [
