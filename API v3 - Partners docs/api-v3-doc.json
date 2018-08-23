@@ -660,6 +660,17 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "b920521a-e875-4536-83e7-4b232c0d1000",
+              "name": "Count Future Published Events",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": ""
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
