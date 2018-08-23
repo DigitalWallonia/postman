@@ -1200,7 +1200,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/5ab960ddfb6a4c11bba127ec?access_token={{v3_token}}&filter[include][0][relation]=profiles&filter[include][0][scope][where][status]=Published&filter[include][0][scope][where][partners]=filtre-digital-wallonia&filter[include][0][scope][where][title.language]=fre&filter[include][1][relation]=posts&filter[include][1][status]=Published",
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&filter[include][0][relation]=profiles&filter[include][0][scope][where][status]=Published&filter[include][0][scope][where][partners]=filtre-digital-wallonia&filter[include][0][scope][where][title.language]=fre&filter[include][1][relation]=posts&filter[include][1][status]=Published&eventId=5ab960ddfb6a4c11bba127ec",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1208,7 +1208,7 @@
               "path": [
                 "api",
                 "events",
-                "5ab960ddfb6a4c11bba127ec"
+                "{{eventId}}"
               ],
               "query": [
                 {
@@ -1252,6 +1252,12 @@
                   "value": "Published",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
+                },
+                {
+                  "key": "eventId",
+                  "value": "5ab960ddfb6a4c11bba127ec",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The event id"
                 }
               ]
             }
