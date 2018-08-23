@@ -1106,43 +1106,6 @@
                 }
               },
               "response": []
-            },
-            {
-              "_postman_id": "e7d3676a-ab82-49aa-b9ba-b2de7af8f56a",
-              "name": "Posts Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "profiles",
-                    "{{profileId}}",
-                    "posts"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "profileId",
-                      "value": "5ab94b8cfb6a4c11bba0fa49",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b><br />The profile id"
-                    }
-                  ]
-                }
-              },
-              "response": []
             }
           ],
           "_postman_isSubFolder": true
@@ -1522,6 +1485,43 @@
                 "header": [],
                 "body": {},
                 "url": ""
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "e7d3676a-ab82-49aa-b9ba-b2de7af8f56a",
+              "name": "Posts Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "{{profileId}}",
+                    "posts"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "profileId",
+                      "value": "5ab94b8cfb6a4c11bba0fa49",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b><br />The profile id"
+                    }
+                  ]
+                }
               },
               "response": []
             }
