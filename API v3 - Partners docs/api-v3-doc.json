@@ -248,7 +248,45 @@
           "_postman_id": "1f7f559b-8f75-4403-90d6-d60c293444b6",
           "name": "Associated",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "ef9bf0fc-a10c-4928-8e12-52fc1705870f",
+              "name": "Post associated with a profile",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "{{profileId}}",
+                    "posts"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "profileId",
+                      "value": "5ab94b8cfb6a4c11bba0fa49",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b><br />The profile id"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
@@ -442,43 +480,6 @@
                   "value": "filtre-digital-wallonia",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "ef9bf0fc-a10c-4928-8e12-52fc1705870f",
-          "name": "Post associated with a profile",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts?access_token={{v3_token}}&profileId=5ab94b8cfb6a4c11bba0fa49",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "{{profileId}}",
-                "posts"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "profileId",
-                  "value": "5ab94b8cfb6a4c11bba0fa49",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The profile id"
                 }
               ]
             }
