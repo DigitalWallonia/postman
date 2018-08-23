@@ -723,6 +723,13 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "d82201eb-0569-4490-b03d-4051aeeabe39",
+          "name": "Search",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "128c70d8-7c77-4e5b-82a8-b20f50dcd741",
           "name": "List of posts",
           "event": [
