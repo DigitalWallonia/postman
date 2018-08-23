@@ -771,7 +771,7 @@
         },
         {
           "_postman_id": "be7415ae-e1b5-4416-99ce-2cd330cfa3ef",
-          "name": "Detail of a profile Copy",
+          "name": "Detail of a post",
           "request": {
             "method": "GET",
             "header": [],
