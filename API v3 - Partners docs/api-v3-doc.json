@@ -756,7 +756,7 @@
                       "key": "filter[where][slug.slug]",
                       "value": "smart-region",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
+                      "description": "<b>[Optionnal]</b><br />\nThe post that has this slug"
                     }
                   ]
                 }
