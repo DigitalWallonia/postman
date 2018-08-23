@@ -777,15 +777,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia&profileId=5ab94b8cfb6a4c11bba0fa49",
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}&postId=5b79cb70b325c70afbd73a1d",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles",
-                "{{profileId}}"
+                "posts",
+                "{{postId}}"
               ],
               "query": [
                 {
@@ -795,28 +795,10 @@
                   "description": "<b>[Obligatory]</b>"
                 },
                 {
-                  "key": "filter[where][slug.slug]",
-                  "value": "deco-de-reve",
+                  "key": "postId",
+                  "value": "5b79cb70b325c70afbd73a1d",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[where][tags.slug.slug]",
-                  "value": "filtre-digital-wallonia",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
-                },
-                {
-                  "key": "profileId",
-                  "value": "5ab94b8cfb6a4c11bba0fa49",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The profile id"
+                  "description": "<b>[Obligatory]</b><br />The post id"
                 }
               ]
             }
