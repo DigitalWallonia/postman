@@ -1468,6 +1468,41 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "805ce626-4b22-44d7-9191-d95492b0a940",
+              "name": "With v2Id Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/projects/findOne?access_token={{v3_token}}&filter[where][v2Id]=324",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "projects",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[where][v2Id]",
+                      "value": "324",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe project that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
