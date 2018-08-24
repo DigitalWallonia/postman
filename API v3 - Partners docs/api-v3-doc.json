@@ -1997,14 +1997,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}&filter[limit]=15",
+              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}&filter[limit]=15",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "projects"
+                "tags"
               ],
               "query": [
                 {
