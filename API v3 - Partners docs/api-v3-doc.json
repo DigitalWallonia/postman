@@ -1471,7 +1471,7 @@
             },
             {
               "_postman_id": "805ce626-4b22-44d7-9191-d95492b0a940",
-              "name": "With v2Id Copy",
+              "name": "With slug",
               "request": {
                 "method": "GET",
                 "header": [],
