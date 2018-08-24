@@ -1686,7 +1686,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/events/count?access_token={{v3_token}}&[where][status]=Published&filter[include][0][relation]=events&filter[include][0][scope][where][status]=Published&filter[include][0][scope][where][startDate][gte]=2018-08-15",
+                  "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/events/count?access_token={{v3_token}}&projectId=5ab93b3afb6a4c11bba097f0",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -1706,28 +1706,10 @@
                       "description": "<b>[Obligatory]</b>"
                     },
                     {
-                      "key": "[where][status]",
-                      "value": "Published",
+                      "key": "projectId",
+                      "value": "5ab93b3afb6a4c11bba097f0",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nOnly projects that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                    },
-                    {
-                      "key": "filter[include][0][relation]",
-                      "value": "events",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their have a title in \"fre\""
-                    },
-                    {
-                      "key": "filter[include][0][scope][where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their status is \"Published\""
-                    },
-                    {
-                      "key": "filter[include][0][scope][where][startDate][gte]",
-                      "value": "2018-08-15",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their startDate is greater or equal than this value"
+                      "description": "<b>[Obligatory]</b><br />The project id"
                     }
                   ]
                 }
