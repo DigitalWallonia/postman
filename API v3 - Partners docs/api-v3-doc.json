@@ -1708,7 +1708,7 @@
             },
             {
               "_postman_id": "e28318f9-df56-45be-91bd-4c6258a266d9",
-              "name": "One project with his related ressources Copy",
+              "name": "Projects with his related ressources",
               "request": {
                 "method": "GET",
                 "header": [],
