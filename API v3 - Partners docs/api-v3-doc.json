@@ -1680,7 +1680,7 @@
             },
             {
               "_postman_id": "ca3f1420-f9c2-480d-abfa-7542b56c8569",
-              "name": "Futures events of a Published projects",
+              "name": "Futures events of a Published project",
               "request": {
                 "method": "GET",
                 "header": [],
