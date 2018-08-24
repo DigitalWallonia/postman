@@ -1651,7 +1651,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b39fb6a4c11bba097e8?access_token={{v3_token}}&filter[include][0][relation]=pressReviews&filter[include][0][scope][where][status]=Published&filter[include][1][relation]=posts&filter[include][1][scope][where][status]=Published&projectId=5ab93b39fb6a4c11bba097e8",
+              "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b39fb6a4c11bba097e8?access_token={{v3_token}}&filter[include][0][relation]=pressReviews&filter[include][0][scope][where][status]=Published&filter[include][1][relation]=posts&filter[include][1][scope][where][status]=Published&filter[include][2][relation]=profiles&filter[include][2][scope][where][status]=Published&filter[include][2][scope][where][partners]=filtre-digital-wallonia&filter[include][2][scope][where][title.language]=fre&filter[include][3][relation]=events&filter[include][3][scope][where][status]=Archived&filter[include][3][scope][where][endDate][gte]=2018-06-15&projectId=5ab93b39fb6a4c11bba097e8",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1696,50 +1696,43 @@
                   "key": "filter[include][2][relation]",
                   "value": "profiles",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
                 },
                 {
                   "key": "filter[include][2][scope][where][status]",
                   "value": "Published",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\"",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
                 },
                 {
                   "key": "filter[include][2][scope][where][partners]",
                   "value": "filtre-digital-wallonia",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
                 },
                 {
                   "key": "filter[include][2][scope][where][title.language]",
                   "value": "fre",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\"",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
                 },
                 {
                   "key": "filter[include][3][relation]",
                   "value": "events",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their have a title in \"fre\"",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their have a title in \"fre\""
                 },
                 {
                   "key": "filter[include][3][scope][where][status]",
                   "value": "Archived",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their status is \"Published\"",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their status is \"Published\""
                 },
                 {
                   "key": "filter[include][3][scope][where][endDate][gte]",
                   "value": "2018-06-15",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their endDate is greater or equal than this value",
-                  "disabled": true
+                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their endDate is greater or equal than this value"
                 },
                 {
                   "key": "projectId",
