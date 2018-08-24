@@ -1830,80 +1830,67 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
+                  "equals": true
                 },
                 {
                   "key": "filter[include][0][relation]",
                   "value": "pressReviews",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked pressReviews will be returned"
+                  "equals": true
                 },
                 {
                   "key": "filter[include][0][scope][where][status]",
                   "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
+                  "equals": true
                 },
                 {
                   "key": "filter[include][1][relation]",
                   "value": "posts",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned"
+                  "equals": true
                 },
                 {
                   "key": "filter[include][1][scope][where][status]",
                   "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
+                  "equals": true
                 },
                 {
                   "key": "filter[include][2][relation]",
                   "value": "profiles",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
+                  "equals": true
                 },
                 {
                   "key": "filter[include][2][scope][where][status]",
                   "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
+                  "equals": true
                 },
                 {
                   "key": "filter[include][2][scope][where][partners]",
                   "value": "filtre-digital-wallonia",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
+                  "equals": true
                 },
                 {
                   "key": "filter[include][2][scope][where][title.language]",
                   "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
+                  "equals": true
                 },
                 {
                   "key": "filter[include][3][relation]",
                   "value": "events",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their have a title in \"fre\""
+                  "equals": true
                 },
                 {
                   "key": "filter[include][3][scope][where][status]",
                   "value": "Archived",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their status is \"Published\""
+                  "equals": true
                 },
                 {
                   "key": "filter[include][3][scope][where][endDate][gte]",
                   "value": "2018-06-15",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their endDate is greater or equal than this value"
+                  "equals": true
                 },
                 {
                   "key": "projectId",
                   "value": "5ab93b39fb6a4c11bba097e8",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The project id"
+                  "equals": true
                 }
               ]
             }
