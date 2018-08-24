@@ -1471,13 +1471,13 @@
             },
             {
               "_postman_id": "805ce626-4b22-44d7-9191-d95492b0a940",
-              "name": "With v2Id Copy",
+              "name": "With slug",
               "request": {
                 "method": "GET",
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/projects/findOne?access_token={{v3_token}}&filter[where][v2Id]=324",
+                  "raw": "{{protocol}}://{{domain}}/api/projects/findOne?access_token={{v3_token}}&filter[where][slug.slug]=wallcode",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -1494,10 +1494,10 @@
                       "equals": true
                     },
                     {
-                      "key": "filter[where][v2Id]",
-                      "value": "324",
+                      "key": "filter[where][slug.slug]",
+                      "value": "wallcode",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe project that has this v2Id value"
+                      "description": "<b>[Optionnal]</b><br />\nThe project that has this slug value"
                     }
                   ]
                 }
