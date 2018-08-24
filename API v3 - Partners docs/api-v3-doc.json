@@ -768,6 +768,17 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "26848432-40cf-40f9-9d82-0f4d5d0b0301",
+          "name": "Detail of a mission",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
         }
       ]
     },
