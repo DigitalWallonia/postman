@@ -113,42 +113,6 @@
               "response": []
             },
             {
-              "_postman_id": "1d70e813-0287-46c6-b991-3ac7c68ee182",
-              "name": "Published Events Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/events/count?access_token={{v3_token}}&[where][status]=Published",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "events",
-                    "count"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "[where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "_postman_id": "b920521a-e875-4536-83e7-4b232c0d1000",
               "name": "Count Future Published Events",
               "request": {
@@ -1647,7 +1611,44 @@
           "_postman_id": "320dd72a-dda0-4a59-8f4c-c32870811137",
           "name": "Count",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "1d70e813-0287-46c6-b991-3ac7c68ee182",
+              "name": "Published Events Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/events/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "events",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
