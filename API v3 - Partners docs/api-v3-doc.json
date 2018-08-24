@@ -1981,6 +1981,41 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "64cb7a07-6adf-4f3a-82d2-7bfa041f46a6",
+          "name": "List of projects Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}&filter[limit]=15",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "15",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
