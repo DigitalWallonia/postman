@@ -1514,7 +1514,7 @@
           "item": [
             {
               "_postman_id": "e7d3676a-ab82-49aa-b9ba-b2de7af8f56a",
-              "name": "Profiles",
+              "name": "One project with his profiles",
               "request": {
                 "method": "GET",
                 "header": [],
