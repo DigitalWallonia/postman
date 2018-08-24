@@ -1551,7 +1551,7 @@
             },
             {
               "_postman_id": "9dfc5372-adee-496f-94a3-946c8a01c00f",
-              "name": "Events",
+              "name": "One project with his events",
               "request": {
                 "method": "GET",
                 "header": [],
