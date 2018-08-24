@@ -1650,7 +1650,7 @@
             },
             {
               "_postman_id": "049008c1-1226-4167-b67f-b289714be5d9",
-              "name": "Published projects Copy",
+              "name": "Published projects",
               "request": {
                 "method": "GET",
                 "header": [],
