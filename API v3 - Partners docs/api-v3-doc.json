@@ -2076,14 +2076,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}&projectId=5ab93b39fb6a4c11bba097e1",
+              "raw": "{{protocol}}://{{domain}}/api/tags/{{projectId}}?access_token={{v3_token}}&tagId=5ab93b39fb6a4c11bba097e1",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "projects",
+                "tags",
                 "{{projectId}}"
               ],
               "query": [
@@ -2094,10 +2094,9 @@
                   "description": "<b>[Obligatory]</b>"
                 },
                 {
-                  "key": "projectId",
+                  "key": "tagId",
                   "value": "5ab93b39fb6a4c11bba097e1",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The project id"
+                  "equals": true
                 }
               ]
             }
