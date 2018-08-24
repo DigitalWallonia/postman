@@ -484,7 +484,7 @@
                   "key": "filter[where][endDate][gte]",
                   "value": "2018-01-05",
                   "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly events with this end date. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal)"
+                  "description": "<b>[Optionnal]</b><br />\nOnly events with this end date. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal or equal)"
                 },
                 {
                   "key": "filter[order]",
