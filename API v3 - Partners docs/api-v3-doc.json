@@ -1991,7 +1991,7 @@
       "item": [
         {
           "_postman_id": "64cb7a07-6adf-4f3a-82d2-7bfa041f46a6",
-          "name": "List of projects Copy",
+          "name": "List of tags",
           "request": {
             "method": "GET",
             "header": [],
