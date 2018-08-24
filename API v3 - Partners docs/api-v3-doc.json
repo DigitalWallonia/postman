@@ -714,78 +714,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "8ac54636-440b-4af4-b0e0-e235101de13f",
-          "name": "Liaisons Copy",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&filter[include][0][relation]=profiles&filter[include][0][scope][where][status]=Published&filter[include][0][scope][where][partners]=filtre-digital-wallonia&filter[include][0][scope][where][title.language]=fre&filter[include][1][relation]=posts&filter[include][1][status]=Published&eventId=5ab960ddfb6a4c11bba127ec",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "{{eventId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[include][0][relation]",
-                  "value": "profiles",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
-                },
-                {
-                  "key": "filter[include][0][scope][where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
-                },
-                {
-                  "key": "filter[include][0][scope][where][partners]",
-                  "value": "filtre-digital-wallonia",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
-                },
-                {
-                  "key": "filter[include][0][scope][where][title.language]",
-                  "value": "fre",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
-                },
-                {
-                  "key": "filter[include][1][relation]",
-                  "value": "posts",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned"
-                },
-                {
-                  "key": "filter[include][1][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
-                },
-                {
-                  "key": "eventId",
-                  "value": "5ab960ddfb6a4c11bba127ec",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The event id"
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -1709,6 +1637,78 @@
                   "value": "5ab93b39fb6a4c11bba097e1",
                   "equals": true,
                   "description": "<b>[Obligatory]</b><br />The project id"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8ac54636-440b-4af4-b0e0-e235101de13f",
+          "name": "Liaisons Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&filter[include][0][relation]=profiles&filter[include][0][scope][where][status]=Published&filter[include][0][scope][where][partners]=filtre-digital-wallonia&filter[include][0][scope][where][title.language]=fre&filter[include][1][relation]=posts&filter[include][1][status]=Published&eventId=5ab960ddfb6a4c11bba127ec",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[include][0][relation]",
+                  "value": "profiles",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
+                },
+                {
+                  "key": "filter[include][0][scope][where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
+                },
+                {
+                  "key": "filter[include][0][scope][where][partners]",
+                  "value": "filtre-digital-wallonia",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
+                },
+                {
+                  "key": "filter[include][0][scope][where][title.language]",
+                  "value": "fre",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
+                },
+                {
+                  "key": "filter[include][1][relation]",
+                  "value": "posts",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned"
+                },
+                {
+                  "key": "filter[include][1][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
+                },
+                {
+                  "key": "eventId",
+                  "value": "5ab960ddfb6a4c11bba127ec",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The event id"
                 }
               ]
             }
