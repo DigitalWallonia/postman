@@ -1981,7 +1981,14 @@
             }
           },
           "response": []
-        },
+        }
+      ]
+    },
+    {
+      "_postman_id": "b5d33b78-8895-4b55-9cbb-1244b2e3b55c",
+      "name": "Tags",
+      "description": "",
+      "item": [
         {
           "_postman_id": "64cb7a07-6adf-4f3a-82d2-7bfa041f46a6",
           "name": "List of projects Copy",
@@ -2018,12 +2025,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "b5d33b78-8895-4b55-9cbb-1244b2e3b55c",
-      "name": "Tags",
-      "description": "",
-      "item": []
     }
   ],
   "event": [
