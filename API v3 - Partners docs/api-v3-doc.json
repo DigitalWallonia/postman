@@ -1792,7 +1792,7 @@
         },
         {
           "_postman_id": "8ac54636-440b-4af4-b0e0-e235101de13f",
-          "name": "One project with his",
+          "name": "One project with his related ressources",
           "request": {
             "method": "GET",
             "header": [],
