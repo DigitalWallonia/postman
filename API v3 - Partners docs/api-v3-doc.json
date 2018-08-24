@@ -2076,7 +2076,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags/{{projectId}}?access_token={{v3_token}}&tagId=5ab93b39fb6a4c11bba097e1",
+              "raw": "{{protocol}}://{{domain}}/api/tags/{{tagId}}?access_token={{v3_token}}&tagId=5ab93b39fb6a4c11bba097e1",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2084,7 +2084,7 @@
               "path": [
                 "api",
                 "tags",
-                "{{projectId}}"
+                "{{tagId}}"
               ],
               "query": [
                 {
