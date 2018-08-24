@@ -1571,60 +1571,6 @@
           "response": []
         },
         {
-          "_postman_id": "ec3e0d89-6c17-b7c9-e59a-3be5967afd65",
-          "name": "Count Published Projects",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "488758c0-eedb-4e4b-b5d4-25b50ec52c10",
-                "type": "text/javascript",
-                "exec": [
-                  "// R\u00e9cup\u00e9ration du JSON complet",
-                  "let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
-                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/count?where={\"status\":\"Published\"}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects",
-                "count"
-              ],
-              "query": [
-                {
-                  "key": "where",
-                  "value": "{\"status\":\"Published\"}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "ccb46574-b9dc-aed2-2ac4-81fdacd6e8e6",
           "name": "Count Published Projects",
           "event": [
