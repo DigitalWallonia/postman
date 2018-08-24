@@ -776,7 +776,32 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": ""
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}&missionId=5ab93b38fb6a4c11bba097db",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "missionId",
+                  "value": "5ab93b38fb6a4c11bba097db",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The mission id"
+                }
+              ]
+            }
           },
           "response": []
         }
