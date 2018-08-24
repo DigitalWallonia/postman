@@ -2070,7 +2070,7 @@
         },
         {
           "_postman_id": "5904574c-6f1d-4802-9077-be652a5dd251",
-          "name": "Detail of a project Copy",
+          "name": "Detail of a tag",
           "request": {
             "method": "GET",
             "header": [],
