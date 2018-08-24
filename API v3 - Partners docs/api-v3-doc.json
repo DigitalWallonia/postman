@@ -1946,14 +1946,7 @@
             }
           },
           "response": []
-        }
-      ]
-    },
-    {
-      "_postman_id": "b5d33b78-8895-4b55-9cbb-1244b2e3b55c",
-      "name": "Tags",
-      "description": "",
-      "item": [
+        },
         {
           "_postman_id": "ef994f12-d6d2-4082-8673-bd0a782d4090",
           "name": "List of projects",
@@ -1990,6 +1983,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "b5d33b78-8895-4b55-9cbb-1244b2e3b55c",
+      "name": "Tags",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
