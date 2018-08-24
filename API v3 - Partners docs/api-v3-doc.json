@@ -1816,7 +1816,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b39fb6a4c11bba097e8?access_token={{v3_token}}&filter[include][0][relation]=pressReviews&filter[include][0][scope][where][status]=Published&filter[include][1][relation]=posts&filter[include][1][scope][where][status]=Published&filter[include][2][relation]=profiles&filter[include][2][scope][where][status]=Published&filter[include][2][scope][where][partners]=filtre-digital-wallonia&filter[include][2][scope][where][title.language]=fre&filter[include][3][relation]=events&filter[include][3][scope][where][status]=Archived&filter[include][3][scope][where][endDate][gte]=2018-06-15&projectId=5ab93b39fb6a4c11bba097e8",
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}&filter[include][0][relation]=pressReviews&filter[include][0][scope][where][status]=Published&filter[include][1][relation]=posts&filter[include][1][scope][where][status]=Published&filter[include][2][relation]=profiles&filter[include][2][scope][where][status]=Published&filter[include][2][scope][where][partners]=filtre-digital-wallonia&filter[include][2][scope][where][title.language]=fre&filter[include][3][relation]=events&filter[include][3][scope][where][status]=Archived&filter[include][3][scope][where][endDate][gte]=2018-06-15&projectId=5ab93b39fb6a4c11bba097e8",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1824,7 +1824,7 @@
               "path": [
                 "api",
                 "projects",
-                "5ab93b39fb6a4c11bba097e8"
+                "{{projectId}}"
               ],
               "query": [
                 {
