@@ -1614,7 +1614,7 @@
           "item": [
             {
               "_postman_id": "1d70e813-0287-46c6-b991-3ac7c68ee182",
-              "name": "Published Events Copy",
+              "name": "Published projects",
               "request": {
                 "method": "GET",
                 "header": [],
