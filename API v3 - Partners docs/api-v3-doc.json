@@ -645,7 +645,7 @@
         },
         {
           "_postman_id": "3c55a1a5-617c-4932-8dab-0152f75c89d5",
-          "name": "Liaisons",
+          "name": "One event with his related ressources",
           "request": {
             "method": "GET",
             "header": [],
