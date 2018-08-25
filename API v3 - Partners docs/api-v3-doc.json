@@ -1145,42 +1145,6 @@
               "response": []
             },
             {
-              "_postman_id": "a7e049d5-e614-40ca-b5bc-45c0473e7dca",
-              "name": "With v2Id contact",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/posts/findOne?access_token={{v3_token}}&filter[where][contacts.v2Id]=19240",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "posts",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][contacts.v2Id]",
-                      "value": "19240",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe post that has a contact with this v2Id value"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "_postman_id": "467f8179-3fd1-4389-a605-9d6afdd2c2ac",
               "name": "With slug Copy",
               "request": {
@@ -1210,6 +1174,42 @@
                       "value": "smart-region",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe post that has this slug"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "a7e049d5-e614-40ca-b5bc-45c0473e7dca",
+              "name": "With v2Id contact",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/posts/findOne?access_token={{v3_token}}&filter[where][contacts.v2Id]=19240",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "posts",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][contacts.v2Id]",
+                      "value": "19240",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe post that has a contact with this v2Id value"
                     }
                   ]
                 }
