@@ -2974,7 +2974,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][v2Id]=254",
+                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][v2Id]=14",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -2993,9 +2993,9 @@
                     },
                     {
                       "key": "filter[where][v2Id]",
-                      "value": "254",
+                      "value": "14",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe tag that has this v2Id value"
+                      "description": "<b>[Optionnal]</b><br />\nThe theme that has this v2Id value"
                     }
                   ]
                 }
