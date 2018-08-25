@@ -717,7 +717,7 @@
         },
         {
           "_postman_id": "f5204307-8a71-4fc5-943e-a2f2741ababd",
-          "name": "Detail of a post Copy",
+          "name": "Detail of an event",
           "request": {
             "method": "GET",
             "header": [],
