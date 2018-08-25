@@ -3004,7 +3004,7 @@
             },
             {
               "_postman_id": "ffed26e1-abf4-49a2-bf02-cd818c34fc56",
-              "name": "Tags Copy",
+              "name": "Themes",
               "request": {
                 "method": "GET",
                 "header": [],
