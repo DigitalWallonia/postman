@@ -715,42 +715,6 @@
           "response": []
         },
         {
-          "_postman_id": "f5204307-8a71-4fc5-943e-a2f2741ababd",
-          "name": "Detail of an event",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "{{eventId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "eventId",
-                  "value": "5b30f5f0580a6c6a99b6eb5f",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The event id"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e5b25b12-1db1-4d42-8c9e-09b5187c3001",
           "name": "Limited fields Copy",
           "event": [
@@ -827,6 +791,42 @@
                   "value": "venueAddress",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f5204307-8a71-4fc5-943e-a2f2741ababd",
+          "name": "Detail of an event",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "eventId",
+                  "value": "5b30f5f0580a6c6a99b6eb5f",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The event id"
                 }
               ]
             }
