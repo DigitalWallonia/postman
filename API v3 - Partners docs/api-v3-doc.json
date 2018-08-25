@@ -995,6 +995,42 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "be7415ae-e1b5-4416-99ce-2cd330cfa3ef",
+          "name": "Detail of a post",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}&postId=5b79cb70b325c70afbd73a1d",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "postId",
+                  "value": "5b79cb70b325c70afbd73a1d",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The post id"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "128c70d8-7c77-4e5b-82a8-b20f50dcd741",
           "name": "List of posts",
           "event": [
@@ -1035,42 +1071,6 @@
                   "value": "10",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "be7415ae-e1b5-4416-99ce-2cd330cfa3ef",
-          "name": "Detail of a post",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}&postId=5b79cb70b325c70afbd73a1d",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "posts",
-                "{{postId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "postId",
-                  "value": "5b79cb70b325c70afbd73a1d",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The post id"
                 }
               ]
             }
