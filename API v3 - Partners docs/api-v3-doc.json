@@ -2409,7 +2409,7 @@
             },
             {
               "_postman_id": "73bc5313-32b7-48c3-8e81-e235259b0b08",
-              "name": "Published tags Copy",
+              "name": "Tags",
               "request": {
                 "method": "GET",
                 "header": [],
