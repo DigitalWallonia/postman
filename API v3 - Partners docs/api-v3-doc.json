@@ -2706,42 +2706,6 @@
               "response": []
             },
             {
-              "_postman_id": "0e735d54-40d9-4a58-9af5-208ebe4045bb",
-              "name": "Published tags Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}&[where][status]=Published",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "tags",
-                    "count"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "[where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nOnly tags that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "_postman_id": "73bc5313-32b7-48c3-8e81-e235259b0b08",
               "name": "Tags",
               "request": {
@@ -3001,7 +2965,44 @@
           "_postman_id": "79bbbfe8-610e-403d-bf72-f039f631eea5",
           "name": "Count",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "0e735d54-40d9-4a58-9af5-208ebe4045bb",
+              "name": "Published tags Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tags",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly tags that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
