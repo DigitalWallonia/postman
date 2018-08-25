@@ -2259,7 +2259,8 @@
                     {
                       "key": "access_token",
                       "value": "{{v3_token}}",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
                     },
                     {
                       "key": "filter[where][v2Id]",
