@@ -1097,7 +1097,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts?access_token={{v3_token}}&filter[limit]=10",
+              "raw": "{{protocol}}://{{domain}}/api/posts?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -1118,6 +1118,26 @@
                   "value": "10",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][0]",
+                  "value": "images",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][1]",
+                  "value": "title",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][2]",
+                  "value": "shortDescription",
+                  "equals": true
                 }
               ]
             }
