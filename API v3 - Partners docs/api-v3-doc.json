@@ -487,7 +487,7 @@
           "item": [
             {
               "_postman_id": "350a4f58-8455-8f96-3cf4-df743490da5d",
-              "name": "One event",
+              "name": "With slug",
               "event": [
                 {
                   "listen": "test",
