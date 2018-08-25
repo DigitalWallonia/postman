@@ -3080,6 +3080,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "36faf373-5ecf-4817-ac76-b674f4aa4fb8",
+          "name": "Associated",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "fa1897ac-656c-4f9b-8834-b460f5748cb7",
           "name": "Detail of a theme",
           "request": {
