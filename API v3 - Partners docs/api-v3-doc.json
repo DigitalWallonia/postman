@@ -1428,12 +1428,9 @@
               "request": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
+                "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][slug.slug]=deco-de-reve&filter[where][status]=Published&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][slug.slug]=dogstudio&filter[where][status]=Published",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -1452,7 +1449,7 @@
                     },
                     {
                       "key": "filter[where][slug.slug]",
-                      "value": "deco-de-reve",
+                      "value": "dogstudio",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe profile that has this slug"
                     },
@@ -1466,7 +1463,7 @@
                       "key": "filter[where][tags.slug.slug]",
                       "value": "filtre-digital-wallonia",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe profile that is tagged with this value"
+                      "disabled": true
                     }
                   ]
                 }
