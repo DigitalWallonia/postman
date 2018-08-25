@@ -802,6 +802,50 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "36efd4e7-e2dc-40fd-9a0f-0fc687b47ea6",
+          "name": "Count Copy",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "e69e8357-6021-4e48-8760-559c0263c0be",
+              "name": "Published missions",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/missions/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "missions",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "26848432-40cf-40f9-9d82-0f4d5d0b0301",
           "name": "Detail of a mission",
           "request": {
