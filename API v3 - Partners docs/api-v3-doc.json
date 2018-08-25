@@ -723,15 +723,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}&postId=5b79cb70b325c70afbd73a1d",
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "posts",
-                "{{postId}}"
+                "events",
+                "{{eventId}}"
               ],
               "query": [
                 {
@@ -741,10 +741,10 @@
                   "description": "<b>[Obligatory]</b>"
                 },
                 {
-                  "key": "postId",
-                  "value": "5b79cb70b325c70afbd73a1d",
+                  "key": "eventId",
+                  "value": "5b30f5f0580a6c6a99b6eb5f",
                   "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The post id"
+                  "description": "<b>[Obligatory]</b><br />The event id"
                 }
               ]
             }
