@@ -2974,14 +2974,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}",
+                  "raw": "{{protocol}}://{{domain}}/api/themes/count?access_token={{v3_token}}",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "tags",
+                    "themes",
                     "count"
                   ],
                   "query": [
