@@ -1079,7 +1079,7 @@
         },
         {
           "_postman_id": "9bd8e44f-8f17-49dc-a67f-3848b0dd3443",
-          "name": "List of posts Copy",
+          "name": "List of posts with limited fields",
           "event": [
             {
               "listen": "test",
