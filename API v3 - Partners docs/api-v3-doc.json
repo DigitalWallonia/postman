@@ -535,7 +535,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/events/findOne?access_token={{v3_token}}&filter[where][status]=Published&filter[where][slug.slug]=square-code",
+                  "raw": "{{protocol}}://{{domain}}/api/events/findOne?access_token={{v3_token}}&filter[where][status]=Published&filter[where][v2Id]=1547",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -559,10 +559,9 @@
                       "description": "<b>[Optionnal]</b><br />\nThe event that has a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
                     },
                     {
-                      "key": "filter[where][slug.slug]",
-                      "value": "square-code",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe event that has this slug"
+                      "key": "filter[where][v2Id]",
+                      "value": "1547",
+                      "equals": true
                     }
                   ]
                 }
