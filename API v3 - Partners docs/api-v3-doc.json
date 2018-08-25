@@ -2855,6 +2855,42 @@
           "response": []
         },
         {
+          "_postman_id": "fa1897ac-656c-4f9b-8834-b460f5748cb7",
+          "name": "Detail of a tag Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags/{{tagId}}?access_token={{v3_token}}&tagId=5ab93b22fb6a4c11bba09715",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "{{tagId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "tagId",
+                  "value": "5ab93b22fb6a4c11bba09715",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The tag id"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "64cb7a07-6adf-4f3a-82d2-7bfa041f46a6",
           "name": "List of tags",
           "request": {
@@ -2948,42 +2984,6 @@
                   "value": "shortDescription",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nTags will be returned only with this field"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "fa1897ac-656c-4f9b-8834-b460f5748cb7",
-          "name": "Detail of a tag Copy",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags/{{tagId}}?access_token={{v3_token}}&tagId=5ab93b22fb6a4c11bba09715",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tags",
-                "{{tagId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "tagId",
-                  "value": "5ab93b22fb6a4c11bba09715",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The tag id"
                 }
               ]
             }
