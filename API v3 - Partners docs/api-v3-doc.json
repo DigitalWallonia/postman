@@ -969,7 +969,7 @@
           "item": [
             {
               "_postman_id": "acf0c95d-c0e6-4622-b2ae-98cca9c2fd59",
-              "name": "Published missions Copy",
+              "name": "Published posts",
               "request": {
                 "method": "GET",
                 "header": [],
