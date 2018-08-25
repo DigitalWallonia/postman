@@ -2734,36 +2734,6 @@
                 }
               },
               "response": []
-            },
-            {
-              "_postman_id": "ffed26e1-abf4-49a2-bf02-cd818c34fc56",
-              "name": "Tags Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "tags",
-                    "count"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    }
-                  ]
-                }
-              },
-              "response": []
             }
           ],
           "_postman_isSubFolder": true
@@ -3026,6 +2996,36 @@
                       "value": "Published",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nOnly tags that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "ffed26e1-abf4-49a2-bf02-cd818c34fc56",
+              "name": "Tags Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tags",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
                     }
                   ]
                 }
