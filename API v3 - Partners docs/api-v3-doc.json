@@ -2150,7 +2150,7 @@
         },
         {
           "_postman_id": "aabffd88-0ac7-4977-a883-f216a7f10da1",
-          "name": "List of profiles with limited fields Copy",
+          "name": "List of projects with limited fields",
           "event": [
             {
               "listen": "test",
