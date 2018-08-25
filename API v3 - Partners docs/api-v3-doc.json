@@ -764,7 +764,7 @@
           "item": [
             {
               "_postman_id": "2443dda6-1fdf-4943-adfc-096ad7c5f32a",
-              "name": "Published events Copy",
+              "name": "Published missions",
               "request": {
                 "method": "GET",
                 "header": [],
