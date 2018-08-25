@@ -2804,7 +2804,8 @@
                     {
                       "key": "filter[where][slug.slug]",
                       "value": "secteur-ecommerce",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe tag that has this slug value"
                     }
                   ]
                 }
