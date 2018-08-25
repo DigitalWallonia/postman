@@ -763,8 +763,8 @@
           "description": "",
           "item": [
             {
-              "_postman_id": "2443dda6-1fdf-4943-adfc-096ad7c5f32a",
-              "name": "Published missions",
+              "_postman_id": "ff7a6551-325e-4ae9-9254-16434cff9f35",
+              "name": "Missions",
               "request": {
                 "method": "GET",
                 "header": [],
@@ -799,8 +799,8 @@
               "response": []
             },
             {
-              "_postman_id": "ff7a6551-325e-4ae9-9254-16434cff9f35",
-              "name": "Missions",
+              "_postman_id": "2443dda6-1fdf-4943-adfc-096ad7c5f32a",
+              "name": "Published missions",
               "request": {
                 "method": "GET",
                 "header": [],
