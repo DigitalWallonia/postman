@@ -968,8 +968,8 @@
           "description": "",
           "item": [
             {
-              "_postman_id": "acf0c95d-c0e6-4622-b2ae-98cca9c2fd59",
-              "name": "Published posts",
+              "_postman_id": "12f8c6f7-9975-4c28-a67e-fb461572528c",
+              "name": "Posts",
               "request": {
                 "method": "GET",
                 "header": [],
@@ -1004,8 +1004,8 @@
               "response": []
             },
             {
-              "_postman_id": "12f8c6f7-9975-4c28-a67e-fb461572528c",
-              "name": "Posts",
+              "_postman_id": "acf0c95d-c0e6-4622-b2ae-98cca9c2fd59",
+              "name": "Published posts",
               "request": {
                 "method": "GET",
                 "header": [],
