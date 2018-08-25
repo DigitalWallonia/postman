@@ -1005,7 +1005,7 @@
             },
             {
               "_postman_id": "12f8c6f7-9975-4c28-a67e-fb461572528c",
-              "name": "Published posts Copy",
+              "name": "Posts",
               "request": {
                 "method": "GET",
                 "header": [],
