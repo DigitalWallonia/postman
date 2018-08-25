@@ -1290,7 +1290,7 @@
             },
             {
               "_postman_id": "3f7c6a8d-f2a3-4709-87e5-67ca08ad403a",
-              "name": "Published profiles Copy",
+              "name": "Profiles",
               "request": {
                 "method": "GET",
                 "header": [],
