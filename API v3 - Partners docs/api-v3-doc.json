@@ -571,7 +571,7 @@
             },
             {
               "_postman_id": "e3a69531-eb6e-48f5-a7c9-7c580c531d83",
-              "name": "With slug Copy",
+              "name": "With v2Id",
               "event": [
                 {
                   "listen": "test",
