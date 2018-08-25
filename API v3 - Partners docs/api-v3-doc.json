@@ -1116,7 +1116,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/posts/findOne?access_token={{v3_token}}&filter[where][slug.slug]=smart-region",
+                  "raw": "{{protocol}}://{{domain}}/api/posts/findOne?access_token={{v3_token}}&filter[where][v2Id]=283897",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -1134,10 +1134,9 @@
                       "description": "<b>[Obligatory]</b>"
                     },
                     {
-                      "key": "filter[where][slug.slug]",
-                      "value": "smart-region",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe post that has this slug"
+                      "key": "filter[where][v2Id]",
+                      "value": "283897",
+                      "equals": true
                     }
                   ]
                 }
