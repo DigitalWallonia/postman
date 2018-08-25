@@ -3152,7 +3152,7 @@
         },
         {
           "_postman_id": "f17e8759-9039-4ed6-83a5-9c778a0eab9d",
-          "name": "List of tags with limited fields Copy",
+          "name": "List of themes with limited fields",
           "event": [
             {
               "listen": "test",
