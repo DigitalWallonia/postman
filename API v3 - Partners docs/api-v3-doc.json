@@ -1109,8 +1109,8 @@
           "description": "",
           "item": [
             {
-              "_postman_id": "024c3d86-6515-419b-9c89-dee18022f61d",
-              "name": "With slug",
+              "_postman_id": "467f8179-3fd1-4389-a605-9d6afdd2c2ac",
+              "name": "With v2Id",
               "request": {
                 "method": "GET",
                 "header": [],
@@ -1145,8 +1145,8 @@
               "response": []
             },
             {
-              "_postman_id": "467f8179-3fd1-4389-a605-9d6afdd2c2ac",
-              "name": "With v2Id",
+              "_postman_id": "024c3d86-6515-419b-9c89-dee18022f61d",
+              "name": "With slug",
               "request": {
                 "method": "GET",
                 "header": [],
