@@ -3086,7 +3086,7 @@
           "item": [
             {
               "_postman_id": "2aeaae50-29da-41fb-a243-38142195cea7",
-              "name": "One project with his related ressources Copy",
+              "name": "One themes with his related ressources",
               "request": {
                 "method": "GET",
                 "header": [],
