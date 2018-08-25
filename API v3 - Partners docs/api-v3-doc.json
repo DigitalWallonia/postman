@@ -616,7 +616,7 @@
                       "key": "filter[where][slug.slug]",
                       "value": "square-code",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe event that has this slug"
+                      "description": "<b>[Optionnal]</b><br />\nThe event that has this slug value"
                     }
                   ]
                 }
