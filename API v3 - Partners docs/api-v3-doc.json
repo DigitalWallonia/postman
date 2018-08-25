@@ -1126,22 +1126,26 @@
                 {
                   "key": "filter[where][status]",
                   "value": "Published",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly posts that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
                 },
                 {
                   "key": "filter[fields][0]",
                   "value": "images",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nPosts will be returned only with this field"
                 },
                 {
                   "key": "filter[fields][1]",
                   "value": "title",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nPosts will be returned only with this field"
                 },
                 {
                   "key": "filter[fields][2]",
                   "value": "shortDescription",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nPosts will be returned only with this field"
                 }
               ]
             }
