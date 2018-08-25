@@ -1263,7 +1263,8 @@
                     {
                       "key": "filter[where][v2Id]",
                       "value": "283897",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe post that has this v2Id value"
                     }
                   ]
                 }
