@@ -154,7 +154,7 @@
             },
             {
               "_postman_id": "ab459046-2708-42d3-a322-cf0bd725b1d6",
-              "name": "Published events Copy",
+              "name": "Events",
               "request": {
                 "method": "GET",
                 "header": [],
