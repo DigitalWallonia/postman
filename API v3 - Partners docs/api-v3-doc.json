@@ -503,12 +503,9 @@
               "request": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
+                "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/events/findOne?access_token={{v3_token}}&filter[where][status]=Published&filter[where][slug.slug]=top-secret-un-monde-a-decrypter&filter[where][tags.slug.slug]=filtre-digital-wallonia",
+                  "raw": "{{protocol}}://{{domain}}/api/events/findOne?access_token={{v3_token}}&filter[where][status]=Published&filter[where][slug.slug]=square-code",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -533,15 +530,9 @@
                     },
                     {
                       "key": "filter[where][slug.slug]",
-                      "value": "top-secret-un-monde-a-decrypter",
+                      "value": "square-code",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe event that has this slug"
-                    },
-                    {
-                      "key": "filter[where][tags.slug.slug]",
-                      "value": "filtre-digital-wallonia",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe event that is tagged with this value"
                     }
                   ]
                 }
