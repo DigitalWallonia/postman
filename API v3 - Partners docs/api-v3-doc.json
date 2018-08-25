@@ -2953,41 +2953,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "a9f1292c-a11f-424d-8ffd-88adbae9f2e9",
-          "name": "List of tags Copy",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}&filter[limit]=15",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tags"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "15",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -3113,6 +3078,41 @@
             }
           ],
           "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "a9f1292c-a11f-424d-8ffd-88adbae9f2e9",
+          "name": "List of themes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}&filter[limit]=15",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "15",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }
