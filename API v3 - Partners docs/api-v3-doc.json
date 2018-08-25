@@ -1076,6 +1076,53 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "9bd8e44f-8f17-49dc-a67f-3848b0dd3443",
+          "name": "List of posts Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts?access_token={{v3_token}}&filter[limit]=10",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "10",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
