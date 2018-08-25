@@ -2968,7 +2968,7 @@
           "item": [
             {
               "_postman_id": "0e735d54-40d9-4a58-9af5-208ebe4045bb",
-              "name": "Published tags Copy",
+              "name": "Published themes",
               "request": {
                 "method": "GET",
                 "header": [],
