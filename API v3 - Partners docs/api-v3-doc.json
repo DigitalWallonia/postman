@@ -2415,7 +2415,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}&[where][status]=Published",
+                  "raw": "{{protocol}}://{{domain}}/api/tags/count?access_token={{v3_token}}",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -2431,12 +2431,6 @@
                       "value": "{{v3_token}}",
                       "equals": true,
                       "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "[where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nOnly tags that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
                     }
                   ]
                 }
