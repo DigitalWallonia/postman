@@ -3004,7 +3004,7 @@
             },
             {
               "_postman_id": "47f6ad5a-a512-47ad-8938-a61e57c5d106",
-              "name": "With slug Copy",
+              "name": "With slug",
               "request": {
                 "method": "GET",
                 "header": [],
