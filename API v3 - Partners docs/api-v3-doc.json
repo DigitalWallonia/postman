@@ -2409,6 +2409,108 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "8ac54636-440b-4af4-b0e0-e235101de13f",
+              "name": "One project with his related ressources",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}&filter[include][0][relation]=pressReviews&filter[include][0][scope][where][status]=Published&filter[include][1][relation]=posts&filter[include][1][scope][where][status]=Published&filter[include][2][relation]=profiles&filter[include][2][scope][where][status]=Published&filter[include][2][scope][where][partners]=filtre-digital-wallonia&filter[include][2][scope][where][title.language]=fre&filter[include][3][relation]=events&filter[include][3][scope][where][status]=Published&filter[include][3][scope][where][endDate][gte]=2018-06-15&projectId=5ab93b39fb6a4c11bba097e8",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "projects",
+                    "{{projectId}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[include][0][relation]",
+                      "value": "pressReviews",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked pressReviews will be returned"
+                    },
+                    {
+                      "key": "filter[include][0][scope][where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked pressReviews will be returned if their status is \"Published\""
+                    },
+                    {
+                      "key": "filter[include][1][relation]",
+                      "value": "posts",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned"
+                    },
+                    {
+                      "key": "filter[include][1][scope][where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
+                    },
+                    {
+                      "key": "filter[include][2][relation]",
+                      "value": "profiles",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
+                    },
+                    {
+                      "key": "filter[include][2][scope][where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
+                    },
+                    {
+                      "key": "filter[include][2][scope][where][partners]",
+                      "value": "filtre-digital-wallonia",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
+                    },
+                    {
+                      "key": "filter[include][2][scope][where][title.language]",
+                      "value": "fre",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
+                    },
+                    {
+                      "key": "filter[include][3][relation]",
+                      "value": "events",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned"
+                    },
+                    {
+                      "key": "filter[include][3][scope][where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their status is \"Published\""
+                    },
+                    {
+                      "key": "filter[include][3][scope][where][endDate][gte]",
+                      "value": "2018-06-15",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly events with this endDate. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than or equal)"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "5ab93b39fb6a4c11bba097e8",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b><br />The project id"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
@@ -2981,110 +3083,7 @@
           "_postman_id": "36faf373-5ecf-4817-ac76-b674f4aa4fb8",
           "name": "Associated",
           "description": "",
-          "item": [
-            {
-              "_postman_id": "8ac54636-440b-4af4-b0e0-e235101de13f",
-              "name": "One project with his related ressources",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}&filter[include][0][relation]=pressReviews&filter[include][0][scope][where][status]=Published&filter[include][1][relation]=posts&filter[include][1][scope][where][status]=Published&filter[include][2][relation]=profiles&filter[include][2][scope][where][status]=Published&filter[include][2][scope][where][partners]=filtre-digital-wallonia&filter[include][2][scope][where][title.language]=fre&filter[include][3][relation]=events&filter[include][3][scope][where][status]=Published&filter[include][3][scope][where][endDate][gte]=2018-06-15&projectId=5ab93b39fb6a4c11bba097e8",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "projects",
-                    "{{projectId}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[include][0][relation]",
-                      "value": "pressReviews",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked pressReviews will be returned"
-                    },
-                    {
-                      "key": "filter[include][0][scope][where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked pressReviews will be returned if their status is \"Published\""
-                    },
-                    {
-                      "key": "filter[include][1][relation]",
-                      "value": "posts",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned"
-                    },
-                    {
-                      "key": "filter[include][1][scope][where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked posts will be returned if their status is \"Published\""
-                    },
-                    {
-                      "key": "filter[include][2][relation]",
-                      "value": "profiles",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned"
-                    },
-                    {
-                      "key": "filter[include][2][scope][where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their status is \"Published\""
-                    },
-                    {
-                      "key": "filter[include][2][scope][where][partners]",
-                      "value": "filtre-digital-wallonia",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have the \"filtre-digital-wallonia\" filter"
-                    },
-                    {
-                      "key": "filter[include][2][scope][where][title.language]",
-                      "value": "fre",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked profiles will be returned if their have a title in \"fre\""
-                    },
-                    {
-                      "key": "filter[include][3][relation]",
-                      "value": "events",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned"
-                    },
-                    {
-                      "key": "filter[include][3][scope][where][status]",
-                      "value": "Published",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nLinked events will be returned if their status is \"Published\""
-                    },
-                    {
-                      "key": "filter[include][3][scope][where][endDate][gte]",
-                      "value": "2018-06-15",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nOnly events with this endDate. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than or equal)"
-                    },
-                    {
-                      "key": "projectId",
-                      "value": "5ab93b39fb6a4c11bba097e8",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b><br />The project id"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            }
-          ],
+          "item": [],
           "_postman_isSubFolder": true
         },
         {
