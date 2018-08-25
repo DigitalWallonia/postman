@@ -1570,6 +1570,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "aebe3e0c-929e-4638-9a4b-05e5626ebdff",
+          "name": "Count",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "f905d6bc-34a3-4109-972e-78122a1826a7",
           "name": "Detail of a profile",
           "request": {
