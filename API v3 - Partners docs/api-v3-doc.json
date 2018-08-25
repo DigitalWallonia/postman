@@ -3170,7 +3170,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/themes?access_token={{v3_token}}&filter[limit]=25&filter[fields][0]=title&filter[fields][1]=shortDescription&filter[fields][2]=longDescription",
+              "raw": "{{protocol}}://{{domain}}/api/themes?access_token={{v3_token}}&filter[limit]=10&filter[fields][0]=title&filter[fields][1]=shortDescription&filter[fields][2]=longDescription",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3188,7 +3188,7 @@
                 },
                 {
                   "key": "filter[limit]",
-                  "value": "25",
+                  "value": "10",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 },
