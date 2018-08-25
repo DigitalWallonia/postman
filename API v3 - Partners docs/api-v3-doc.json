@@ -633,7 +633,7 @@
         },
         {
           "_postman_id": "b01ef49d-e714-4183-afa8-f147dafab9bd",
-          "name": "Limited fields",
+          "name": "List of events with limited fields",
           "event": [
             {
               "listen": "test",
