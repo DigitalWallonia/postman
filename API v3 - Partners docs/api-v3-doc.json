@@ -561,7 +561,8 @@
                     {
                       "key": "filter[where][v2Id]",
                       "value": "1547",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe event that has this slug"
                     }
                   ]
                 }
