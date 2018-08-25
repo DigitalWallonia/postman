@@ -3081,7 +3081,7 @@
         },
         {
           "_postman_id": "fa1897ac-656c-4f9b-8834-b460f5748cb7",
-          "name": "Detail of a tag Copy",
+          "name": "Detail of a theme",
           "request": {
             "method": "GET",
             "header": [],
