@@ -2622,7 +2622,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][v2Id]=254",
+                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=secteur-ecommerce",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -2640,10 +2640,9 @@
                       "description": "<b>[Obligatory]</b>"
                     },
                     {
-                      "key": "filter[where][v2Id]",
-                      "value": "254",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe tag that has this v2Id value"
+                      "key": "filter[where][slug.slug]",
+                      "value": "secteur-ecommerce",
+                      "equals": true
                     }
                   ]
                 }
