@@ -2215,74 +2215,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "2a864fe2-3aad-421c-8df5-25223bb557d5",
-          "name": "List of projects with limited fields Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "projects"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "25",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[fields][0]",
-                  "value": "images",
-                  "equals": true
-                },
-                {
-                  "key": "filter[fields][1]",
-                  "value": "title",
-                  "equals": true
-                },
-                {
-                  "key": "filter[fields][2]",
-                  "value": "shortDescription",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -2400,6 +2332,74 @@
                   "value": "15",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2a864fe2-3aad-421c-8df5-25223bb557d5",
+          "name": "List of projects with limited fields Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "25",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[fields][0]",
+                  "value": "images",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][1]",
+                  "value": "title",
+                  "equals": true
+                },
+                {
+                  "key": "filter[fields][2]",
+                  "value": "shortDescription",
+                  "equals": true
                 }
               ]
             }
