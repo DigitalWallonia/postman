@@ -800,7 +800,7 @@
             },
             {
               "_postman_id": "ff7a6551-325e-4ae9-9254-16434cff9f35",
-              "name": "Published missions Copy",
+              "name": "Missions",
               "request": {
                 "method": "GET",
                 "header": [],
