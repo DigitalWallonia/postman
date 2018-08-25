@@ -2340,7 +2340,7 @@
         },
         {
           "_postman_id": "2a864fe2-3aad-421c-8df5-25223bb557d5",
-          "name": "List of projects with limited fields Copy",
+          "name": "List of tags with limited fields",
           "event": [
             {
               "listen": "test",
