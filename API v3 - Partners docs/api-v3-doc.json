@@ -758,6 +758,42 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "26848432-40cf-40f9-9d82-0f4d5d0b0301",
+          "name": "Detail of a mission",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}&missionId=5ab93b38fb6a4c11bba097db",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "missionId",
+                  "value": "5ab93b38fb6a4c11bba097db",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The mission id"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "00afd06f-a4f8-43d5-82b7-40e2500c4f3e",
           "name": "List of missions",
           "event": [
@@ -798,42 +834,6 @@
                   "value": "5",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "26848432-40cf-40f9-9d82-0f4d5d0b0301",
-          "name": "Detail of a mission",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}&missionId=5ab93b38fb6a4c11bba097db",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "missionId",
-                  "value": "5ab93b38fb6a4c11bba097db",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The mission id"
                 }
               ]
             }
