@@ -562,7 +562,7 @@
                       "key": "filter[where][v2Id]",
                       "value": "1547",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe event that has this slug"
+                      "description": "<b>[Optionnal]</b><br />\nThe event that has this v2Id value"
                     }
                   ]
                 }
