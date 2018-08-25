@@ -2168,14 +2168,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=addresses",
+              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles"
+                "projects"
               ],
               "query": [
                 {
@@ -2199,20 +2199,17 @@
                 {
                   "key": "filter[fields][0]",
                   "value": "images",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
+                  "equals": true
                 },
                 {
                   "key": "filter[fields][1]",
                   "value": "title",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
+                  "equals": true
                 },
                 {
                   "key": "filter[fields][2]",
-                  "value": "addresses",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
+                  "value": "shortDescription",
+                  "equals": true
                 }
               ]
             }
