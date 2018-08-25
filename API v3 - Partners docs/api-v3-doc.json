@@ -2358,7 +2358,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
+              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=title&filter[fields][1]=shortDescription",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2388,16 +2388,11 @@
                 },
                 {
                   "key": "filter[fields][0]",
-                  "value": "images",
-                  "equals": true
-                },
-                {
-                  "key": "filter[fields][1]",
                   "value": "title",
                   "equals": true
                 },
                 {
-                  "key": "filter[fields][2]",
+                  "key": "filter[fields][1]",
                   "value": "shortDescription",
                   "equals": true
                 }
