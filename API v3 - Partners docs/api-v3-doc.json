@@ -2953,6 +2953,42 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "fa1897ac-656c-4f9b-8834-b460f5748cb7",
+          "name": "Detail of a tag Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags/{{tagId}}?access_token={{v3_token}}&tagId=5ab93b22fb6a4c11bba09715",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "{{tagId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "tagId",
+                  "value": "5ab93b22fb6a4c11bba09715",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The tag id"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -3081,7 +3117,7 @@
         },
         {
           "_postman_id": "a9f1292c-a11f-424d-8ffd-88adbae9f2e9",
-          "name": "List of tags Copy",
+          "name": "List of themes",
           "request": {
             "method": "GET",
             "header": [],
