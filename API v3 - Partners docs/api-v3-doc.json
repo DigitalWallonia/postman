@@ -860,14 +860,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=startDate&filter[fields][3]=endDate&filter[fields][4]=venueAddress",
+              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "events"
+                "missions"
               ],
               "query": [
                 {
@@ -878,45 +878,29 @@
                 },
                 {
                   "key": "filter[limit]",
-                  "value": "25",
+                  "value": "10",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 },
                 {
                   "key": "filter[where][status]",
                   "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                  "equals": true
                 },
                 {
                   "key": "filter[fields][0]",
                   "value": "images",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                  "equals": true
                 },
                 {
                   "key": "filter[fields][1]",
                   "value": "title",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                  "equals": true
                 },
                 {
                   "key": "filter[fields][2]",
-                  "value": "startDate",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][3]",
-                  "value": "endDate",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][4]",
-                  "value": "venueAddress",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                  "value": "shortDescription",
+                  "equals": true
                 }
               ]
             }
