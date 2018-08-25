@@ -2780,42 +2780,6 @@
               "response": []
             },
             {
-              "_postman_id": "6372aa0b-22c9-42b1-b43f-87548ac39920",
-              "name": "With v2Id Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][v2Id]=254",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "tags",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][v2Id]",
-                      "value": "254",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe tag that has this v2Id value"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "_postman_id": "5aa0be44-43ce-4d34-9242-96733653405b",
               "name": "With slug",
               "request": {
@@ -3001,7 +2965,44 @@
           "_postman_id": "381be56f-ed1f-40ec-a0e0-fd8349eb0709",
           "name": "Count",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "6372aa0b-22c9-42b1-b43f-87548ac39920",
+              "name": "With v2Id Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][v2Id]=254",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tags",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][v2Id]",
+                      "value": "254",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe tag that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
