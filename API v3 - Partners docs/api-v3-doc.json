@@ -975,14 +975,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/missions/count?access_token={{v3_token}}&[where][status]=Published",
+                  "raw": "{{protocol}}://{{domain}}/api/posts/count?access_token={{v3_token}}&[where][status]=Published",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "missions",
+                    "posts",
                     "count"
                   ],
                   "query": [
