@@ -516,8 +516,8 @@
           "description": "",
           "item": [
             {
-              "_postman_id": "350a4f58-8455-8f96-3cf4-df743490da5d",
-              "name": "With slug",
+              "_postman_id": "e3a69531-eb6e-48f5-a7c9-7c580c531d83",
+              "name": "With v2Id",
               "event": [
                 {
                   "listen": "test",
@@ -570,8 +570,8 @@
               "response": []
             },
             {
-              "_postman_id": "e3a69531-eb6e-48f5-a7c9-7c580c531d83",
-              "name": "With v2Id",
+              "_postman_id": "350a4f58-8455-8f96-3cf4-df743490da5d",
+              "name": "With slug",
               "event": [
                 {
                   "listen": "test",
