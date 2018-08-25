@@ -1043,6 +1043,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "a3bf7024-7ff3-48a9-a872-b778bad2e16b",
+          "name": "Count",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "be7415ae-e1b5-4416-99ce-2cd330cfa3ef",
           "name": "Detail of a post",
           "request": {
