@@ -974,6 +974,42 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "f5204307-8a71-4fc5-943e-a2f2741ababd",
+          "name": "Detail of a post Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}&postId=5b79cb70b325c70afbd73a1d",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "postId",
+                  "value": "5b79cb70b325c70afbd73a1d",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The post id"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
