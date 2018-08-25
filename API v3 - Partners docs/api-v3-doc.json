@@ -842,7 +842,7 @@
         },
         {
           "_postman_id": "e5b25b12-1db1-4d42-8c9e-09b5187c3001",
-          "name": "Limited fields Copy",
+          "name": "Limited fields",
           "event": [
             {
               "listen": "test",
