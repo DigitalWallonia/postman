@@ -3010,14 +3010,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/theme/findOne?access_token={{v3_token}}&filter[where][slug.slug]=secteur-ecommerce",
+                  "raw": "{{protocol}}://{{domain}}/api/themes/findOne?access_token={{v3_token}}&filter[where][slug.slug]=secteur-du-numerique",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "theme",
+                    "themes",
                     "findOne"
                   ],
                   "query": [
@@ -3029,7 +3029,7 @@
                     },
                     {
                       "key": "filter[where][slug.slug]",
-                      "value": "secteur-ecommerce",
+                      "value": "secteur-du-numerique",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe theme that has this slug value"
                     }
