@@ -1282,6 +1282,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "ff08241e-d8a0-4791-a235-3805b171940e",
+          "name": "Filtered",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "a612e2c9-cd37-4d2b-8b66-8d1d8e784be9",
           "name": "Detail of a pressReview",
           "request": {
