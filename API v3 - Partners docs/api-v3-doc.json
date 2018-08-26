@@ -833,6 +833,42 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "a612e2c9-cd37-4d2b-8b66-8d1d8e784be9",
+          "name": "Detail of an event Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "eventId",
+                  "value": "5b30f5f0580a6c6a99b6eb5f",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The event id"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
