@@ -1294,14 +1294,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[where][status]=Published&filter[order]=startDate+ASC&filter[where][title.language]=fre&filter[where][endDate][gte]=2018-10-19",
+                  "raw": "{{protocol}}://{{domain}}/api/pressreviews?access_token={{v3_token}}&filter[where][status]=Published&filter[order]=startDate+ASC&filter[where][title.language]=fre&filter[where][publicationDate][gte]=2018-06-19",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "events"
+                    "pressreviews"
                   ],
                   "query": [
                     {
@@ -1329,10 +1329,9 @@
                       "description": "<b>[Optionnal]</b><br />\nOnly events that have a title in this language. Values : \"fre\" or \"eng\""
                     },
                     {
-                      "key": "filter[where][endDate][gte]",
-                      "value": "2018-10-19",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nOnly events with end date greater than this value. There are 2 options : \"lte\" (less than or equal) or \"gte\" (greater than equal)"
+                      "key": "filter[where][publicationDate][gte]",
+                      "value": "2018-06-19",
+                      "equals": true
                     }
                   ]
                 }
