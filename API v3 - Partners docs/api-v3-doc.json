@@ -1193,7 +1193,7 @@
             },
             {
               "_postman_id": "fda2b340-c168-464c-a8c8-baf0f936f8fa",
-              "name": "Published missions Copy",
+              "name": "Published pressReviews",
               "request": {
                 "method": "GET",
                 "header": [],
