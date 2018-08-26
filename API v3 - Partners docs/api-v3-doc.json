@@ -1164,15 +1164,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
+              "raw": "{{protocol}}://{{domain}}/api/pressreviews/{{pressReviewId}}?access_token={{v3_token}}&pressReviewId=5b7ed59ab325c70afbd75210",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "events",
-                "{{eventId}}"
+                "pressreviews",
+                "{{pressReviewId}}"
               ],
               "query": [
                 {
@@ -1182,93 +1182,10 @@
                   "description": "<b>[Obligatory]</b>"
                 },
                 {
-                  "key": "eventId",
-                  "value": "5b30f5f0580a6c6a99b6eb5f",
+                  "key": "pressReviewId",
+                  "value": "5b7ed59ab325c70afbd75210",
                   "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The event id"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "238a9db8-2046-4957-88b3-df1545d7091c",
-          "name": "List of events with limited fields Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=startDate&filter[fields][3]=endDate&filter[fields][4]=venueAddress",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "25",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[fields][0]",
-                  "value": "images",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][1]",
-                  "value": "title",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][2]",
-                  "value": "startDate",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][3]",
-                  "value": "endDate",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][4]",
-                  "value": "venueAddress",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                  "description": "<b>[Obligatory]</b><br />The pressReview id"
                 }
               ]
             }
@@ -1277,7 +1194,7 @@
         },
         {
           "_postman_id": "9a6da500-8fe4-40fc-bfee-fb7e78553360",
-          "name": "List of events Copy",
+          "name": "List of pressReviews",
           "event": [
             {
               "listen": "test",
@@ -1358,6 +1275,89 @@
                   "value": "startDate+ASC",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nSpecifies how to sort the results: ascending (ASC) or descending (DESC) based on the specified property"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "238a9db8-2046-4957-88b3-df1545d7091c",
+          "name": "List of pressReviews with limited fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=startDate&filter[fields][3]=endDate&filter[fields][4]=venueAddress",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "25",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly events that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[fields][0]",
+                  "value": "images",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                },
+                {
+                  "key": "filter[fields][1]",
+                  "value": "title",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                },
+                {
+                  "key": "filter[fields][2]",
+                  "value": "startDate",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                },
+                {
+                  "key": "filter[fields][3]",
+                  "value": "endDate",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
+                },
+                {
+                  "key": "filter[fields][4]",
+                  "value": "venueAddress",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEvents will be returned only with this field"
                 }
               ]
             }
