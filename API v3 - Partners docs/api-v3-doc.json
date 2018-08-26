@@ -1273,7 +1273,7 @@
             },
             {
               "_postman_id": "852d4a6b-b5a6-4ba9-a6da-6a287342385e",
-              "name": "With slug Copy",
+              "name": "With slug",
               "request": {
                 "method": "GET",
                 "header": [],
