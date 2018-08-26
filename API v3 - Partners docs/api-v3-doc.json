@@ -3215,6 +3215,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "58ca6669-7b6b-4119-bea9-f543cd6382db",
+      "name": "PressReviews",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
