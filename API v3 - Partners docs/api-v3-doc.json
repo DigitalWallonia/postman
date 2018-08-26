@@ -1164,6 +1164,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "e262cfda-d181-490e-8fff-1d95d833598d",
+          "name": "Search",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "a612e2c9-cd37-4d2b-8b66-8d1d8e784be9",
           "name": "Detail of a pressReview",
           "request": {
