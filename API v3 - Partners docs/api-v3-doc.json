@@ -1288,7 +1288,7 @@
           "item": [
             {
               "_postman_id": "cc4abf91-e534-4aa3-b22c-5051e428f128",
-              "name": "By end date",
+              "name": "By publicationDate",
               "request": {
                 "method": "GET",
                 "header": [],
