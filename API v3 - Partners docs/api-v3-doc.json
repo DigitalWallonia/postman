@@ -1152,6 +1152,12 @@
       ]
     },
     {
+      "_postman_id": "58ca6669-7b6b-4119-bea9-f543cd6382db",
+      "name": "PressReviews",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "b0a5fdf9-be0e-4027-8396-9acbea914597",
       "name": "Posts",
       "description": "",
@@ -3215,12 +3221,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "58ca6669-7b6b-4119-bea9-f543cd6382db",
-      "name": "PressReviews",
-      "description": "",
-      "item": []
     }
   ],
   "event": [
