@@ -877,6 +877,36 @@
               "response": []
             },
             {
+              "_postman_id": "135d4ec0-f8aa-4e67-b1a8-cf108f2e2b2c",
+              "name": "Missions Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/missions/count?access_token={{v3_token}}",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "missions",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "_postman_id": "2443dda6-1fdf-4943-adfc-096ad7c5f32a",
               "name": "Published missions",
               "request": {
@@ -1196,38 +1226,7 @@
           "_postman_id": "4f752fd5-cffd-4fa8-b057-f8187d4bd686",
           "name": "Count",
           "description": "",
-          "item": [
-            {
-              "_postman_id": "135d4ec0-f8aa-4e67-b1a8-cf108f2e2b2c",
-              "name": "Missions Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/missions/count?access_token={{v3_token}}",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "missions",
-                    "count"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            }
-          ],
+          "item": [],
           "_postman_isSubFolder": true
         },
         {
