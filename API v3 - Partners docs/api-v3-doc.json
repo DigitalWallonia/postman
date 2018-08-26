@@ -1160,7 +1160,154 @@
           "_postman_id": "4f752fd5-cffd-4fa8-b057-f8187d4bd686",
           "name": "Count",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "135d4ec0-f8aa-4e67-b1a8-cf108f2e2b2c",
+              "name": "PressReviews",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/pressreviews/count?access_token={{v3_token}}",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "pressreviews",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "fda2b340-c168-464c-a8c8-baf0f936f8fa",
+              "name": "Published pressReviews",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/pressreviews/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "pressreviews",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly missions that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "e262cfda-d181-490e-8fff-1d95d833598d",
+          "name": "Search",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "4e23f4ed-a01c-453a-b613-8d6efa574ee0",
+              "name": "With v2Id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/pressreviews/findOne?access_token={{v3_token}}&filter[where][v2Id]=462",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "pressreviews",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][v2Id]",
+                      "value": "462",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "852d4a6b-b5a6-4ba9-a6da-6a287342385e",
+              "name": "With slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=fwb",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tags",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][slug.slug]",
+                      "value": "fwb",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
