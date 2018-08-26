@@ -957,42 +957,6 @@
               "response": []
             },
             {
-              "_postman_id": "4f569965-5af8-4bb8-996e-1851c1e49126",
-              "name": "With slug",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=fwb",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "tags",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][slug.slug]",
-                      "value": "fwb",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "_postman_id": "4e23f4ed-a01c-453a-b613-8d6efa574ee0",
               "name": "With v2Id Copy",
               "request": {
@@ -1020,6 +984,42 @@
                     {
                       "key": "filter[where][v2Id]",
                       "value": "462",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "4f569965-5af8-4bb8-996e-1851c1e49126",
+              "name": "With slug",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=fwb",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "tags",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][slug.slug]",
+                      "value": "fwb",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
                     }
