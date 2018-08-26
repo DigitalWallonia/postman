@@ -1158,7 +1158,7 @@
       "item": [
         {
           "_postman_id": "a612e2c9-cd37-4d2b-8b66-8d1d8e784be9",
-          "name": "Detail of an event Copy",
+          "name": "Detail of a pressReview",
           "request": {
             "method": "GET",
             "header": [],
@@ -1194,7 +1194,7 @@
         },
         {
           "_postman_id": "238a9db8-2046-4957-88b3-df1545d7091c",
-          "name": "List of events with limited fields Copy",
+          "name": "List of pressReviews with limited fields",
           "event": [
             {
               "listen": "test",
