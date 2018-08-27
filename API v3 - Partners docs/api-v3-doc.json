@@ -911,6 +911,36 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "3162fa44-61a9-4968-bac8-536043044774",
+              "name": "Missions Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/missions/count?access_token={{v3_token}}",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "missions",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
