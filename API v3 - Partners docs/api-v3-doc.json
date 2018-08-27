@@ -1264,7 +1264,7 @@
                       "key": "filter[where][v2Id]",
                       "value": "462",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
+                      "description": "<b>[Optionnal]</b><br />\nThe pressreview that has this v2Id value"
                     }
                   ]
                 }
