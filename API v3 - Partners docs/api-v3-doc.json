@@ -1157,6 +1157,42 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "db552945-8ea6-4bb2-b2c2-6cf30fd8175d",
+          "name": "Detail of a page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}&missionId=5ab93b38fb6a4c11bba097db",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "{{missionId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "missionId",
+                  "value": "5ab93b38fb6a4c11bba097db",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The mission id"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "31e3a1e8-e462-484a-9a5d-60bd76a06944",
           "name": "List of pages with limited fields",
           "event": [
@@ -1229,7 +1265,7 @@
         },
         {
           "_postman_id": "4ef1f398-f1c3-4b6c-946f-0896f67574d8",
-          "name": "List of missions Copy",
+          "name": "List of pages",
           "event": [
             {
               "listen": "test",
@@ -1268,42 +1304,6 @@
                   "value": "5",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "db552945-8ea6-4bb2-b2c2-6cf30fd8175d",
-          "name": "Detail of a mission Copy",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}&missionId=5ab93b38fb6a4c11bba097db",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions",
-                "{{missionId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "missionId",
-                  "value": "5ab93b38fb6a4c11bba097db",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The mission id"
                 }
               ]
             }
