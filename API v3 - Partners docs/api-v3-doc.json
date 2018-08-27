@@ -1115,126 +1115,8 @@
           "response": []
         },
         {
-          "_postman_id": "4ef1f398-f1c3-4b6c-946f-0896f67574d8",
-          "name": "List of missions Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=5",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "5",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "e5b25b12-1db1-4d42-8c9e-09b5187c3001",
           "name": "List of missions with limited fields",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "10",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
-                },
-                {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly missions that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
-                  "key": "filter[fields][0]",
-                  "value": "images",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][1]",
-                  "value": "title",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][2]",
-                  "value": "shortDescription",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "31e3a1e8-e462-484a-9a5d-60bd76a06944",
-          "name": "List of missions with limited fields Copy",
           "event": [
             {
               "listen": "test",
@@ -1309,7 +1191,126 @@
       "_postman_id": "8037c7b1-89b9-4204-81b3-f3d9318098f1",
       "name": "Pages",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "31e3a1e8-e462-484a-9a5d-60bd76a06944",
+          "name": "List of missions with limited fields Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=10&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=shortDescription",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "10",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nOnly missions that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                },
+                {
+                  "key": "filter[fields][0]",
+                  "value": "images",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
+                },
+                {
+                  "key": "filter[fields][1]",
+                  "value": "title",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
+                },
+                {
+                  "key": "filter[fields][2]",
+                  "value": "shortDescription",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4ef1f398-f1c3-4b6c-946f-0896f67574d8",
+          "name": "List of missions Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=5",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "5",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "58ca6669-7b6b-4119-bea9-f543cd6382db",
