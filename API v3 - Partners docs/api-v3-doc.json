@@ -1231,6 +1231,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "f54aafca-5603-452e-ba7a-a8fe8df54629",
+          "name": "Search",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "db552945-8ea6-4bb2-b2c2-6cf30fd8175d",
           "name": "Detail of a page",
           "request": {
