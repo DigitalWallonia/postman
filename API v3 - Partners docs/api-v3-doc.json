@@ -1237,7 +1237,7 @@
           "item": [
             {
               "_postman_id": "216dcc98-deb1-43de-9302-02dd575301a0",
-              "name": "With slug Copy",
+              "name": "With slug",
               "request": {
                 "method": "GET",
                 "header": [],
