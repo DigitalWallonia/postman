@@ -991,6 +991,42 @@
                 }
               },
               "response": []
+            },
+            {
+              "_postman_id": "e861651e-3afd-4653-abf9-9d019c6740dd",
+              "name": "With v2Id Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/missions/findOne?access_token={{v3_token}}&filter[where][v2Id]=462",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "missions",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][v2Id]",
+                      "value": "462",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
@@ -1263,42 +1299,6 @@
                     {
                       "key": "filter[where][slug.slug]",
                       "value": "fwb",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "e861651e-3afd-4653-abf9-9d019c6740dd",
-              "name": "With v2Id Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/missions/findOne?access_token={{v3_token}}&filter[where][v2Id]=462",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "missions",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][v2Id]",
-                      "value": "462",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
                     }
