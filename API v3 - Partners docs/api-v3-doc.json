@@ -1169,14 +1169,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/missions/count?access_token={{v3_token}}",
+                  "raw": "{{protocol}}://{{domain}}/api/pages/count?access_token={{v3_token}}",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "missions",
+                    "pages",
                     "count"
                   ],
                   "query": [
