@@ -991,42 +991,6 @@
                 }
               },
               "response": []
-            },
-            {
-              "_postman_id": "216dcc98-deb1-43de-9302-02dd575301a0",
-              "name": "With slug Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=fwb",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "tags",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][slug.slug]",
-                      "value": "fwb",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
-                    }
-                  ]
-                }
-              },
-              "response": []
             }
           ],
           "_postman_isSubFolder": true
