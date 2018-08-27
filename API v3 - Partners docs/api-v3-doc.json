@@ -1300,12 +1300,14 @@
                     {
                       "key": "access_token",
                       "value": "{{v3_token}}",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
                     },
                     {
                       "key": "filter[limit]",
                       "value": "10",
-                      "equals": true
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                     }
                   ]
                 }
