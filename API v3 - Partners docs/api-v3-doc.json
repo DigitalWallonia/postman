@@ -1184,7 +1184,8 @@
                 {
                   "key": "pageId",
                   "value": "5ab96766fb6a4c11bba161ea",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The page id"
                 }
               ]
             }
