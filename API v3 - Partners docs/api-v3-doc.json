@@ -928,14 +928,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=fwb",
+                  "raw": "{{protocol}}://{{domain}}/api/missions/findOne?access_token={{v3_token}}&filter[where][slug.slug]=vivatech",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "tags",
+                    "missions",
                     "findOne"
                   ],
                   "query": [
@@ -947,7 +947,7 @@
                     },
                     {
                       "key": "filter[where][slug.slug]",
-                      "value": "fwb",
+                      "value": "vivatech",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
                     }
