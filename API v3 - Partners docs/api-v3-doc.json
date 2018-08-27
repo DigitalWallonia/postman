@@ -1157,6 +1157,13 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "775fa75a-bee6-47de-b465-194470a71bc5",
+          "name": "Count",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "db552945-8ea6-4bb2-b2c2-6cf30fd8175d",
           "name": "Detail of a page",
           "request": {
