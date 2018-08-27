@@ -1286,7 +1286,29 @@
                 "method": "GET",
                 "header": [],
                 "body": {},
-                "url": ""
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile?access_token={{v3_token}}&filter[limit]=10",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "xPressReviewProfile"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[limit]",
+                      "value": "10",
+                      "equals": true
+                    }
+                  ]
+                }
               },
               "response": []
             }
