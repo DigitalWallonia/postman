@@ -1243,14 +1243,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/tags/findOne?access_token={{v3_token}}&filter[where][slug.slug]=fwb",
+                  "raw": "{{protocol}}://{{domain}}/api/pages/findOne?access_token={{v3_token}}&filter[where][slug.slug]=equipe-agence-du-numerique",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "tags",
+                    "pages",
                     "findOne"
                   ],
                   "query": [
@@ -1262,9 +1262,9 @@
                     },
                     {
                       "key": "filter[where][slug.slug]",
-                      "value": "fwb",
+                      "value": "equipe-agence-du-numerique",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe mission that has this v2Id value"
+                      "description": "<b>[Optionnal]</b><br />\nThe page that has this v2Id value"
                     }
                   ]
                 }
