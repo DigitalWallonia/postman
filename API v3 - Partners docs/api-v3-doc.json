@@ -1163,7 +1163,7 @@
           "item": [
             {
               "_postman_id": "3162fa44-61a9-4968-bac8-536043044774",
-              "name": "Missions Copy",
+              "name": "Pages",
               "request": {
                 "method": "GET",
                 "header": [],
@@ -1193,7 +1193,7 @@
             },
             {
               "_postman_id": "91baefbc-dddc-4f77-98f0-6d27f441c63b",
-              "name": "Published missions Copy",
+              "name": "Published pages",
               "request": {
                 "method": "GET",
                 "header": [],
