@@ -1212,14 +1212,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=5",
+              "raw": "{{protocol}}://{{domain}}/api/pages?access_token={{v3_token}}&filter[limit]=5",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "missions"
+                "pages"
               ],
               "query": [
                 {
