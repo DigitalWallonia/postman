@@ -1115,6 +1115,53 @@
           "response": []
         },
         {
+          "_postman_id": "4ef1f398-f1c3-4b6c-946f-0896f67574d8",
+          "name": "List of missions Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=5",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "filter[limit]",
+                  "value": "5",
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "e5b25b12-1db1-4d42-8c9e-09b5187c3001",
           "name": "List of missions with limited fields",
           "event": [
@@ -1257,53 +1304,6 @@
                   "value": "shortDescription",
                   "equals": true,
                   "description": "<b>[Optionnal]</b><br />\nMissions will be returned only with this field"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "4ef1f398-f1c3-4b6c-946f-0896f67574d8",
-          "name": "List of missions Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7620cc35-c9f6-4277-bac3-b4e41612b6a9",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions?access_token={{v3_token}}&filter[limit]=5",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "missions"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "filter[limit]",
-                  "value": "5",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 }
               ]
             }
