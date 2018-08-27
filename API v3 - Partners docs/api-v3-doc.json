@@ -1287,7 +1287,7 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile?access_token={{v3_token}}&filter[limit]=10",
+                  "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile?access_token={{v3_token}}&filter[limit]=10&filter[where][role]=Quoted",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -1308,6 +1308,12 @@
                       "value": "10",
                       "equals": true,
                       "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
+                    },
+                    {
+                      "key": "filter[where][role]",
+                      "value": "Quoted",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly pressreviews that have a role with this value. Values : \"Quoted\" or \"Source\""
                     }
                   ]
                 }
