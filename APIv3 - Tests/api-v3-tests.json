@@ -430,7 +430,7 @@
                   "    return v.toString(6);",
                   "  });",
                   "}",
-                  "postman.environment.set(\"uniqIdv2\", uuidv2());"
+                  "pm.environment.set(\"uniqIdv2\", uuidv2());"
                 ]
               }
             },
