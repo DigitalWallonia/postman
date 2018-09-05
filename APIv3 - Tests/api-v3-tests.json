@@ -2619,6 +2619,83 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "1d889868-e774-4112-94cd-b893127b113c",
+      "name": "Recherche",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2c1ad804-6bbc-4d81-9bed-a218d996cbd1",
+          "name": "Ajout Profile Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "408349d2-5d8b-41e3-9cad-2aec5ecb9efd",
+                "type": "text/javascript",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent'\"] = jsonData.id;",
+                  "tests[\"Le param\u00e8tre slug est pr\u00e9sent\"] = jsonData.slug[0].slug;",
+                  "tests[\"La valeur du param\u00e8tre slug est ctp-f\"] = jsonData.slug[0].slug === \"automatedtest-fre\";",
+                  "tests[\"Le param\u00e8tre title est pr\u00e9sent\"] = jsonData.title[0];",
+                  "tests[\"La valeur du param\u00e8tre title est Test Postman recherche contact\"] = jsonData.title[0].text === \"Test Postman recherche contact\";",
+                  "tests[\"Le param\u00e8tre statut est pr\u00e9sent\"] = jsonData.status;",
+                  "tests[\"La valeur du param\u00e8tre statut est Published\"] = jsonData.status === \"Published\";",
+                  "",
+                  "// Si le JSON comporte un param\u00e8tre id",
+                  "if (responseBody.has(jsonData.id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
+                  "    postman.setEnvironmentVariable(\"profileId\", jsonData.id);",
+                  "    postman.setNextRequest(\"Find Fullname contact\");",
+                  "}",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"Published\",\r\n  \"emailAddresses\": [\r\n    \"testRech@hotmail.com\"\r\n  ],\r\n  \"title\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Test Postman recherche contact\",\r\n    \"id\": 45456464651516\r\n  }],\r\n  \"shortTitle\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"TestContactTest\",\r\n    \"id\": 383543453\r\n  }],\r\n  \"shortDescription\": [{\r\n    \"language\": \"fre\",\r\n    \"text\": \"Environnement de tests\",\r\n    \"id\": 783783\r\n  }],\r\n  \"addresses\": [{\r\n    \"thoroughfare\": \"Rue du Tilleul\",\r\n    \"number\": \"54\",\r\n    \"box\": null,\r\n    \"additionalInformation\": null,\r\n    \"postalCode\": \"4432\",\r\n    \"locality\": \"Ans\",\r\n    \"countryCode\": \"BE\",\r\n    \"coordinates\": {\r\n      \"lat\": 50.6760996,\r\n      \"lng\": 5.519184300000006\r\n    },\r\n    \"phoneNumbers\": [\r\n\r\n    ],\r\n    \"id\": \"59b8e8a38a8c9\"\r\n  }],\r\n  \"contacts\": [{\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Defays\",\r\n    \"status\": \"Published\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275616\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n    ],\r\n    \"tags\": [\r\n    ],\r\n    \"urls\": [\r\n    ]\r\n  },\r\n  {\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Dupond\",\r\n    \"status\": \"Hidden\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275615\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n    ],\r\n    \"tags\": [\r\n    ],\r\n    \"urls\": [\r\n    ]\r\n  },\r\n  {\r\n    \"firstName\": \"Boris\",\r\n    \"lastName\": \"Tartempion\",\r\n    \"status\": \"Published\",\r\n    \"emailAddresses\": [\r\n      \"b.defays@aplusconcept.be\"\r\n    ],\r\n    \"id\": \"59b7e92865a72b1156275617\",\r\n    \"images\": [\r\n\r\n    ],\r\n    \"profiles\": [\r\n    ],\r\n    \"tags\": [\r\n    ],\r\n    \"urls\": [\r\n    ]\r\n  }],\r\n  \"enterprises\": [{\r\n    \"role\": \"[object Object]\",\r\n    \"countryCode\": \"BE\",\r\n    \"enterpriseNumber\": \"BE0824959363\",\r\n    \"startDate\": null,\r\n    \"vatNumber\": \"BE 0824.959.363\",\r\n    \"authorizedCapital\": null,\r\n    \"id\": \"59b8e8a38a839\",\r\n    \"legalForm\": {\r\n      \"countryCode\": \"BE\",\r\n      \"id\": \"59b7e72c65a72b1156273eb7\",\r\n      \"name\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"Soci\u00e9t\u00e9 Priv\u00e9e \u00e0 Responsabilit\u00e9 Limit\u00e9e\",\r\n        \"id\": \"c75b4ba2d3628941840cb2b6\"\r\n      }],\r\n      \"abbreviation\": [{\r\n        \"language\": \"fre\",\r\n        \"text\": \"SPRL\",\r\n        \"id\": \"4f03b28afd815438637072cc\"\r\n      }]\r\n    },\r\n    \"legalName\": [{\r\n      \"language\": \"fre\",\r\n      \"text\": \"Test Concept\",\r\n      \"id\": \"59b8e8a38a886\"\r\n    }],\r\n    \"abbreviation\": [\r\n\r\n    ]\r\n  }],\r\n  \"slug\": [{\r\n      \"language\": \"fre\",\r\n      \"slug\": \"automatedtest-fre\",\r\n      \"id\": \"59b8e8a3872c9\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"slug\": \"automatedtest-eng\",\r\n      \"id\": \"59b8e8a387307\"\r\n    },\r\n    {\r\n      \"language\": \"dut\",\r\n      \"slug\": \"automatedtest-dut\",\r\n      \"id\": \"59b8e8a387340\"\r\n    },\r\n    {\r\n      \"language\": \"ger\",\r\n      \"slug\": \"automatedtest-ger\",\r\n      \"id\": \"59b8e8a387379\"\r\n    }\r\n  ],\r\n  \"partners\": [\r\n  \t\"filtre-digital-wallonia\"\r\n  ]\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
