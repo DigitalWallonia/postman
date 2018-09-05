@@ -2760,7 +2760,7 @@
         },
         {
           "_postman_id": "cd6af69f-bce8-4643-a1e0-46aebddd02f7",
-          "name": "Profile Delete Copy",
+          "name": "Profile Delete",
           "event": [
             {
               "listen": "test",
