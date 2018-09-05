@@ -2697,7 +2697,7 @@
         },
         {
           "_postman_id": "8381bdc5-1689-4cca-bd49-4460cb771b20",
-          "name": "Find Fullname contact Copy",
+          "name": "Find Fullname contact",
           "event": [
             {
               "listen": "test",
