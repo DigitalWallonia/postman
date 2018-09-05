@@ -2626,6 +2626,69 @@
       "description": "",
       "item": [
         {
+          "_postman_id": "8381bdc5-1689-4cca-bd49-4460cb771b20",
+          "name": "Find Fullname contact Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "35690d95-1493-4dd8-9481-8c8850fcb80f",
+                "type": "text/javascript",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "const jsonRecherche = JSON.parse(responseBody).hits;",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = jsonRecherche.total === 1;",
+                  "const jsonData = jsonRecherche.hits[0]",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent'\"] = jsonData.id;",
+                  "tests[\"Le param\u00e8tre slug est pr\u00e9sent\"] = jsonData.source.slug[0].slug;",
+                  "tests[\"La valeur du param\u00e8tre slug est ctp-f\"] = jsonData.source.slug[0].slug === \"automatedtest-fre\";",
+                  "tests[\"Le param\u00e8tre title est pr\u00e9sent\"] = jsonData.source.title[0];",
+                  "tests[\"La valeur du param\u00e8tre shortTitle est TestContactTest\"] = jsonData.source.shortTitle[0].text === \"TestContactTest\";",
+                  "tests[\"Le param\u00e8tre statut est pr\u00e9sent\"] = jsonData.source.status;",
+                  "tests[\"La valeur du param\u00e8tre statut est Published\"] = jsonData.source.status === \"Published\";",
+                  "tests[\"La valeur du param\u00e8tre status contact1 est Published\"] = jsonData.source.contacts[0].status === \"Published\";",
+                  "tests[\"La valeur du param\u00e8tre fullName contact1 est Defays Boris\"] = jsonData.source.contacts[0].fullName === \"Defays Boris\";",
+                  "tests[\"La valeur du param\u00e8tre status contact3 est Hidden\"] = jsonData.source.contacts[1].status === \"Hidden\";",
+                  "tests[\"La valeur du param\u00e8tre fullName contact3 n'existe pas\"] = jsonData.source.contacts[1].fullName == null;",
+                  "postman.setNextRequest(\"Profile Delete\");",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/search?access_token={{v3_token}}&q=TestContactTest",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "q",
+                  "value": "TestContactTest",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "2c1ad804-6bbc-4d81-9bed-a218d996cbd1",
           "name": "Ajout Profile",
           "event": [
@@ -2688,69 +2751,6 @@
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "8381bdc5-1689-4cca-bd49-4460cb771b20",
-          "name": "Find Fullname contact Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "35690d95-1493-4dd8-9481-8c8850fcb80f",
-                "type": "text/javascript",
-                "exec": [
-                  "// R\u00e9cup\u00e9ration du JSON complet",
-                  "const jsonRecherche = JSON.parse(responseBody).hits;",
-                  "",
-                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = jsonRecherche.total === 1;",
-                  "const jsonData = jsonRecherche.hits[0]",
-                  "tests[\"Le param\u00e8tre id est pr\u00e9sent'\"] = jsonData.id;",
-                  "tests[\"Le param\u00e8tre slug est pr\u00e9sent\"] = jsonData.source.slug[0].slug;",
-                  "tests[\"La valeur du param\u00e8tre slug est ctp-f\"] = jsonData.source.slug[0].slug === \"automatedtest-fre\";",
-                  "tests[\"Le param\u00e8tre title est pr\u00e9sent\"] = jsonData.source.title[0];",
-                  "tests[\"La valeur du param\u00e8tre shortTitle est TestContactTest\"] = jsonData.source.shortTitle[0].text === \"TestContactTest\";",
-                  "tests[\"Le param\u00e8tre statut est pr\u00e9sent\"] = jsonData.source.status;",
-                  "tests[\"La valeur du param\u00e8tre statut est Published\"] = jsonData.source.status === \"Published\";",
-                  "tests[\"La valeur du param\u00e8tre status contact1 est Published\"] = jsonData.source.contacts[0].status === \"Published\";",
-                  "tests[\"La valeur du param\u00e8tre fullName contact1 est Defays Boris\"] = jsonData.source.contacts[0].fullName === \"Defays Boris\";",
-                  "tests[\"La valeur du param\u00e8tre status contact3 est Hidden\"] = jsonData.source.contacts[1].status === \"Hidden\";",
-                  "tests[\"La valeur du param\u00e8tre fullName contact3 n'existe pas\"] = jsonData.source.contacts[1].fullName == null;",
-                  "postman.setNextRequest(\"Profile Delete\");",
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/search?access_token={{v3_token}}&q=TestContactTest",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "search"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "q",
-                  "value": "TestContactTest",
                   "equals": true
                 }
               ]
