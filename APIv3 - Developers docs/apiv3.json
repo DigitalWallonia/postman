@@ -868,26 +868,18 @@
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
+            "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/projects?filter={\"limit\":15}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "projects"
+                "profiles"
               ],
               "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"limit\":15}",
-                  "equals": true
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
@@ -4673,6 +4665,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "fc83214c-0e7b-4506-a21e-7e6ddcaf0228",
+      "name": "Relations",
+      "description": "",
+      "item": []
     },
     {
       "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
