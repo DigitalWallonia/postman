@@ -535,7 +535,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "0d612fe8-3818-4193-a9e4-dab4c5ae2c35",
+            "id": "f3d9873b-be3a-4050-b3e3-01397ab8fa3e",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful GET request\", function() {",
@@ -621,7 +621,7 @@
               "    constructJson.push(el);",
               "    i++;",
               "  });",
-              "  ",
+              "  console.log(constructJson);",
               "  postman.setEnvironmentVariable(\"contact\", JSON.stringify(constructJson));",
               "  postman.setNextRequest(\"Embed Contact\");",
               "}else{",
@@ -700,7 +700,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "f523dd03-13ba-46b3-97a3-bfa7aa2b2e45",
+            "id": "94a7ec10-ed43-4111-9788-20fc6dc63c6b",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful GET request\", function() {",
@@ -737,7 +737,60 @@
           "query": [
             {
               "key": "access_token",
-              "value": "{{v3_token}}"
+              "value": "{{v3_token}}",
+              "equals": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "c00bc892-4fc7-48e4-9de2-ba8529dcca68",
+      "name": "Embed Contact Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "94a7ec10-ed43-4111-9788-20fc6dc63c6b",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful GET request\", function() {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
+              "});",
+              "postman.setNextRequest(\"Add publicationDate\");"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contacts\": \n  \n    {{contact}}\n  \n  \n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{projectId}}"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}",
+              "equals": true
             }
           ]
         }
