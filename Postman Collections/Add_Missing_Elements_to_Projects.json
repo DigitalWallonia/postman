@@ -746,58 +746,6 @@
       "response": []
     },
     {
-      "_postman_id": "c00bc892-4fc7-48e4-9de2-ba8529dcca68",
-      "name": "Embed Contact Copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "94a7ec10-ed43-4111-9788-20fc6dc63c6b",
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Successful GET request\", function() {",
-              "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
-              "});",
-              "postman.setNextRequest(\"Add publicationDate\");"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"contacts\": \n  \n    {{contact}}\n  \n  \n}"
-        },
-        "url": {
-          "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{domain}}"
-          ],
-          "path": [
-            "api",
-            "projects",
-            "{{projectId}}"
-          ],
-          "query": [
-            {
-              "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
       "_postman_id": "c771d9ee-7e3c-4460-ba7f-585b0e0a631e",
       "name": "Add publicationDate",
       "event": [
