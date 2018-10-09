@@ -177,14 +177,14 @@
                 "header": [],
                 "body": {},
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][v2Id]=2941",
+                  "raw": "{{protocol}}://{{domain}}/api/enterprises/findOne?access_token={{v3_token}}&filter[where][v2Id]=8284",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
                   ],
                   "path": [
                     "api",
-                    "profiles",
+                    "enterprises",
                     "findOne"
                   ],
                   "query": [
@@ -196,9 +196,9 @@
                     },
                     {
                       "key": "filter[where][v2Id]",
-                      "value": "2941",
+                      "value": "8284",
                       "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this v2Id value"
+                      "description": "<b>[Optionnal]</b><br />\nThe enterprise that has this v2Id value"
                     }
                   ]
                 }
