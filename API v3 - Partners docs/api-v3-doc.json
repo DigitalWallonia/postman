@@ -108,7 +108,7 @@
         },
         {
           "_postman_id": "a9a80d6a-9022-4cb8-aa0f-19911cf004c0",
-          "name": "List of profiles Copy",
+          "name": "List of enterprises",
           "event": [
             {
               "listen": "test",
