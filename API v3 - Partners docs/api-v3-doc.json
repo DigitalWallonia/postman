@@ -110,6 +110,13 @@
           "_postman_isSubFolder": true
         },
         {
+          "_postman_id": "3c16a58f-55e0-4f46-9568-7e7299b3e695",
+          "name": "Filtered",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        },
+        {
           "_postman_id": "419d9f6c-51e3-4a1d-a6a2-1b04cc488d79",
           "name": "Detail of an enterprise",
           "request": {
