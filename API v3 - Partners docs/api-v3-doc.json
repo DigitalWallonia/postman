@@ -114,7 +114,7 @@
             },
             {
               "_postman_id": "df3b7501-50f4-411f-abd1-3658ee491217",
-              "name": "Profiles",
+              "name": "Enterprises",
               "request": {
                 "method": "GET",
                 "header": [],
