@@ -72,42 +72,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "816f31a9-519e-443c-b92f-5e51592c39f1",
-          "name": "Published profiles",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/count?access_token={{v3_token}}&[where][status]=Published",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "profiles",
-                "count"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "df3b7501-50f4-411f-abd1-3658ee491217",
           "name": "Profiles",
           "request": {
@@ -154,7 +118,44 @@
           "_postman_id": "6fdf4108-a8fa-482d-8493-8864ebc1702f",
           "name": "Count",
           "description": "",
-          "item": [],
+          "item": [
+            {
+              "_postman_id": "816f31a9-519e-443c-b92f-5e51592c39f1",
+              "name": "Published profiles",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
           "_postman_isSubFolder": true
         },
         {
