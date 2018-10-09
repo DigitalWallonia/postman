@@ -79,15 +79,15 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
+              "raw": "{{protocol}}://{{domain}}/api/enterprises/{{enterpriseId}}?access_token={{v3_token}}&enterpriseId=5bba05a2b8fcb507be4c4a0e",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "events",
-                "{{eventId}}"
+                "enterprises",
+                "{{enterpriseId}}"
               ],
               "query": [
                 {
@@ -97,10 +97,9 @@
                   "description": "<b>[Obligatory]</b>"
                 },
                 {
-                  "key": "eventId",
-                  "value": "5b30f5f0580a6c6a99b6eb5f",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The event id"
+                  "key": "enterpriseId",
+                  "value": "5bba05a2b8fcb507be4c4a0e",
+                  "equals": true
                 }
               ]
             }
