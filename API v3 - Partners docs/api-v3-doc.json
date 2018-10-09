@@ -73,7 +73,7 @@
       "item": [
         {
           "_postman_id": "419d9f6c-51e3-4a1d-a6a2-1b04cc488d79",
-          "name": "Detail of an event Copy",
+          "name": "Detail of an enterprise",
           "request": {
             "method": "GET",
             "header": [],
