@@ -70,7 +70,44 @@
       "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
       "name": "Enterprises",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "419d9f6c-51e3-4a1d-a6a2-1b04cc488d79",
+          "name": "Detail of an event Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "eventId",
+                  "value": "5b30f5f0580a6c6a99b6eb5f",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The event id"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "1c08a021-8397-a84e-30b3-80cab07302a7",
@@ -635,42 +672,6 @@
         {
           "_postman_id": "f5204307-8a71-4fc5-943e-a2f2741ababd",
           "name": "Detail of an event",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}&eventId=5b30f5f0580a6c6a99b6eb5f",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "events",
-                "{{eventId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b>"
-                },
-                {
-                  "key": "eventId",
-                  "value": "5b30f5f0580a6c6a99b6eb5f",
-                  "equals": true,
-                  "description": "<b>[Obligatory]</b><br />The event id"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "419d9f6c-51e3-4a1d-a6a2-1b04cc488d79",
-          "name": "Detail of an event Copy",
           "request": {
             "method": "GET",
             "header": [],
