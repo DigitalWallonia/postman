@@ -192,7 +192,8 @@
                 {
                   "key": "enterpriseId",
                   "value": "5bba05a2b8fcb507be4c4a0e",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The enterprise id"
                 }
               ]
             }
@@ -238,17 +239,20 @@
                 {
                   "key": "filter[limit]",
                   "value": "3",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 },
                 {
                   "key": "filter[offset]",
                   "value": "0",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nUsed for pagination. It's the number of records into a dataset that you want to start"
                 },
                 {
                   "key": "filter[where][legalName.language]",
                   "value": "fre",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\n Only enterprises that have a legalName in this language. Values : \"fre\" or \"eng\""
                 }
               ]
             }
