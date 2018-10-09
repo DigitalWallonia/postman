@@ -182,14 +182,14 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[limit]=25&filter[where][status]=Published&filter[fields][0]=images&filter[fields][1]=title&filter[fields][2]=addresses",
+              "raw": "{{protocol}}://{{domain}}/api/enterprises?access_token={{v3_token}}&filter[limit]=25&filter[fields][0]=legalName&filter[fields][1]=juridicalForm",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles"
+                "enterprises"
               ],
               "query": [
                 {
@@ -205,28 +205,14 @@
                   "description": "<b>[Optionnal]</b><br />\nA limit filter limits the number of records returned to the specified number (or less). Max 25"
                 },
                 {
-                  "key": "filter[where][status]",
-                  "value": "Published",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
-                },
-                {
                   "key": "filter[fields][0]",
-                  "value": "images",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
+                  "value": "legalName",
+                  "equals": true
                 },
                 {
                   "key": "filter[fields][1]",
-                  "value": "title",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
-                },
-                {
-                  "key": "filter[fields][2]",
-                  "value": "addresses",
-                  "equals": true,
-                  "description": "<b>[Optionnal]</b><br />\nProfiles will be returned only with this field"
+                  "value": "juridicalForm",
+                  "equals": true
                 }
               ]
             }
@@ -2381,6 +2367,86 @@
             },
             {
               "_postman_id": "3f7c6a8d-f2a3-4709-87e5-67ca08ad403a",
+              "name": "Profiles",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "738d3915-473f-45c5-b3c9-796739d8d82c",
+          "name": "Count Copy",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "816f31a9-519e-443c-b92f-5e51592c39f1",
+              "name": "Published profiles",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/count?access_token={{v3_token}}&[where][status]=Published",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "count"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "[where][status]",
+                      "value": "Published",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nOnly profiles that have a status with this value. Values : \"Published\", \"Hidden\", \"Archived\" or \"Pending\""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "df3b7501-50f4-411f-abd1-3658ee491217",
               "name": "Profiles",
               "request": {
                 "method": "GET",
