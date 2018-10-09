@@ -2710,6 +2710,42 @@
               "response": []
             },
             {
+              "_postman_id": "9460e747-be0c-4b5f-85fe-550a5fe6956c",
+              "name": "With IdV2 Copy",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][v2Id]=2941",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "findOne"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true,
+                      "description": "<b>[Obligatory]</b>"
+                    },
+                    {
+                      "key": "filter[where][v2Id]",
+                      "value": "2941",
+                      "equals": true,
+                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this v2Id value"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "_postman_id": "2bc84376-5b3b-008a-9a33-4f8874a3c28e",
               "name": "With slug",
               "event": [
@@ -2763,42 +2799,6 @@
                       "value": "filtre-digital-wallonia",
                       "equals": true,
                       "disabled": true
-                    }
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "_postman_id": "9460e747-be0c-4b5f-85fe-550a5fe6956c",
-              "name": "With IdV2 Copy",
-              "request": {
-                "method": "GET",
-                "header": [],
-                "body": {},
-                "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?access_token={{v3_token}}&filter[where][v2Id]=2941",
-                  "protocol": "{{protocol}}",
-                  "host": [
-                    "{{domain}}"
-                  ],
-                  "path": [
-                    "api",
-                    "profiles",
-                    "findOne"
-                  ],
-                  "query": [
-                    {
-                      "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true,
-                      "description": "<b>[Obligatory]</b>"
-                    },
-                    {
-                      "key": "filter[where][v2Id]",
-                      "value": "2941",
-                      "equals": true,
-                      "description": "<b>[Optionnal]</b><br />\nThe profile that has this v2Id value"
                     }
                   ]
                 }
