@@ -164,7 +164,7 @@
         },
         {
           "_postman_id": "e657974a-9946-4ab2-85a1-fb5356d6b4b7",
-          "name": "List of profiles with limited fields Copy",
+          "name": "List of enterprises with limited fields",
           "event": [
             {
               "listen": "test",
