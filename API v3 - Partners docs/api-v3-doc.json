@@ -67,6 +67,12 @@
       ]
     },
     {
+      "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
+      "name": "Enterprises",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "1c08a021-8397-a84e-30b3-80cab07302a7",
       "name": "Events",
       "description": "",
@@ -3877,12 +3883,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
-      "name": "Enterprises",
-      "description": "",
-      "item": []
     }
   ],
   "event": [
