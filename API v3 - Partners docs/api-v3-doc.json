@@ -304,12 +304,14 @@
                 {
                   "key": "filter[fields][0]",
                   "value": "legalName",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEnterprises will be returned only with this field"
                 },
                 {
                   "key": "filter[fields][1]",
                   "value": "juridicalForm",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Optionnal]</b><br />\nEnterprises will be returned only with this field"
                 }
               ]
             }
