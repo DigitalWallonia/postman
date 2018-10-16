@@ -4737,7 +4737,19 @@
       "_postman_id": "874b5553-1b3e-4eb7-80d2-a8364a9150c2",
       "name": "Survey",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "d3763c9f-56ed-4106-ac06-75ed1ffa8422",
+          "name": "Create a new survey",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
