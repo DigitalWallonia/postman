@@ -4745,15 +4745,10 @@
             {
               "listen": "test",
               "script": {
-                "id": "32b5a496-0f92-4404-9562-49ca6d1bb873",
+                "id": "6e0cf77c-973c-469a-8303-e4f03b4038ad",
                 "type": "text/javascript",
                 "exec": [
-                  "if (responseCode.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    if(jsonData.id){",
-                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
-                  "    }",
-                  "}"
+                  ""
                 ]
               }
             }
