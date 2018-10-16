@@ -4773,6 +4773,17 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "2ec17f25-d9d9-41f1-a3e9-9a13970a7194",
+          "name": "List all survey",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
         }
       ]
     },
