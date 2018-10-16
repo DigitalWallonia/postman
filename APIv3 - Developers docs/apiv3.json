@@ -4801,6 +4801,17 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "27a5b9f5-35c8-43fa-9b56-4dab4b81565c",
+          "name": "List questions of a survey",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": ""
+          },
+          "response": []
         }
       ]
     },
