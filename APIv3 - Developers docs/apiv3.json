@@ -4741,6 +4741,23 @@
         {
           "_postman_id": "d3763c9f-56ed-4106-ac06-75ed1ffa8422",
           "name": "Create a new survey",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "32b5a496-0f92-4404-9562-49ca6d1bb873",
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id){",
+                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [
@@ -4751,7 +4768,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n \"questions\": {\r\n \"title\": \"Survey_TITLE\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"panel\",\r\n     \"name\": \"panel1\",\r\n     \"elements\": [\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question1\",\r\n       \"title\": \"Question 1\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\",\r\n        \"item4\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question2\",\r\n       \"title\": \"Question 2\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question3\",\r\n       \"title\": \"Question 3\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      }\r\n     ],\r\n     \"title\": \"Categorie 1\"\r\n    }\r\n   ]\r\n  }\r\n ]\r\n},\r\n\"slug\":\"SUPER_SURV45689887\",\r\n\"meta\": {\r\n  \"translations\":[],\r\n   \"helpers\":[]\r\n }\r\n}"
+              "raw": "{\r\n \"questions\": {\r\n \"title\": \"Survey_TITLE\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"panel\",\r\n     \"name\": \"panel1\",\r\n     \"elements\": [\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question1\",\r\n       \"title\": \"Question 1\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\",\r\n        \"item4\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question2\",\r\n       \"title\": \"Question 2\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question3\",\r\n       \"title\": \"Question 3\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      }\r\n     ],\r\n     \"title\": \"Categorie 1\"\r\n    }\r\n   ]\r\n  }\r\n ]\r\n},\r\n\"slug\":\"SUPER_SURV4568987\",\r\n\"meta\": {\r\n  \"translations\":[],\r\n   \"helpers\":[]\r\n }\r\n}"
             },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/createSurvey?access_token={{v3_token}}",
