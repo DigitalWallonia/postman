@@ -4781,7 +4781,24 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": ""
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveys?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveys"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         }
