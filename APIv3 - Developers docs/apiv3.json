@@ -4763,7 +4763,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n \"questions\": {\r\n \"title\": \"Survey_TITLE\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"panel\",\r\n     \"name\": \"panel1\",\r\n     \"elements\": [\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question1\",\r\n       \"title\": \"Question 1\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\",\r\n        \"item4\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question2\",\r\n       \"title\": \"Question 2\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question3\",\r\n       \"title\": \"Question 3\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      }\r\n     ],\r\n     \"title\": \"Categorie 1\"\r\n    }\r\n   ]\r\n  }\r\n ]\r\n},\r\n\"slug\":\"SUPER_SURV4568987\",\r\n\"meta\": {\r\n  \"translations\":[],\r\n   \"helpers\":[]\r\n }\r\n}"
+              "raw": "{\r\n \"questions\": {\r\n \"title\": \"Survey_TITLE\",\r\n \"pages\": [\r\n  {\r\n   \"name\": \"page1\",\r\n   \"elements\": [\r\n    {\r\n     \"type\": \"panel\",\r\n     \"name\": \"panel1\",\r\n     \"elements\": [\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question1\",\r\n       \"title\": \"Question 1\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\",\r\n        \"item4\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question2\",\r\n       \"title\": \"Question 2\",\r\n       \"choices\": [\r\n        {\"text\":\"item1\", \"value\":1},\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      },\r\n      {\r\n       \"type\": \"radiogroup\",\r\n       \"name\": \"question3\",\r\n       \"title\": \"Question 3\",\r\n       \"choices\": [\r\n        \"item1\",\r\n        \"item2\",\r\n        \"item3\"\r\n       ]\r\n      }\r\n     ],\r\n     \"title\": \"Categorie 1\"\r\n    }\r\n   ]\r\n  }\r\n ]\r\n},\r\n\"slug\":\"SUPER_SURV456897\",\r\n\"meta\": {\r\n  \"translations\":[],\r\n   \"helpers\":[]\r\n }\r\n}"
             },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/createSurvey?access_token={{v3_token}}",
@@ -4789,6 +4789,23 @@
         {
           "_postman_id": "2ec17f25-d9d9-41f1-a3e9-9a13970a7194",
           "name": "List all survey",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2bb40b35-77fe-4c9e-8bd9-827a0b8b51f5",
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(Array.isArray(jsonData) && jsonData.length > 0){",
+                  "        postman.setEnvironmentVariable(\"surveyId\", jsonData[0].id);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [],
