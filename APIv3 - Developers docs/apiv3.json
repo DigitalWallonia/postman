@@ -4757,7 +4757,7 @@
       "item": [
         {
           "_postman_id": "7027dbe2-b41b-4cca-9177-a757ecbf2adc",
-          "name": "Create a new survey Copy",
+          "name": "Create a new survey",
           "event": [
             {
               "listen": "test",
