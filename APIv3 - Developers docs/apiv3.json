@@ -4860,6 +4860,36 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "1c194e9f-b328-495a-bb8f-3ec8ec5f887a",
+          "name": "List questions of a survey Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveys/{{surveyId}}/questions?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveys",
+                "{{surveyId}}",
+                "questions"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
