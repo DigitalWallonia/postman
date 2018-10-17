@@ -4828,17 +4828,17 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\t\"questions\": {\r\n\t\t\"title\": [{ \"language\": \"fre\", \"text\": \"Mon titre\" }],\r\n\t\t\"pages\": [{\r\n\t\t\t\"name\": \"page1\",\r\n\t\t\t\"elements\": [{\r\n\t    \t\t\"type\": \"panel\",\r\n\t    \t\t\"name\": \"panel1\",\r\n\t    \t\t\"title\": [{ \"language\": \"fre\", \"text\": \"Cat\u00e9gorie 1\" }],\r\n\t    \t\t\"elements\": [{\r\n\t    \t\t\t\"type\": \"radiogroup\",\r\n\t    \t\t\t\"name\": \"question1\",\r\n\t    \t\t\t\"title\": [{ \"language\": \"fre\", \"text\": \"Question 1\" }],\r\n\t\t\t    \t\"choices\": [\r\n\t\t\t    \t\t{\"text\": [{ \"language\": \"fre\", \"text\": \"item 1\" }], \"value\": 1},\r\n\t\t\t        \t{\"text\": [{ \"language\": \"fre\", \"text\": \"item 2\" }], \"value\": 2}\r\n\t\t\t        ]\r\n\t\t\t\t}]\r\n\t    \t}]\r\n\t\t}]\r\n\t},\r\n\t\"slug\": [{ \"language\": \"fre\", \"slug\": \"survey-test\"}]\r\n}"
+              "raw": "{\r\n\t\"slug\": [{ \"language\": \"fre\", \"slug\": \"survey-test\"}],\r\n\t\"title\": [{ \"language\": \"fre\", \"text\": \"survey Title\" }],\r\n\t\"surveyCategories\": [{\r\n\t\t\"name\": \"cat1\",\r\n\t\t\"order\": 1,\r\n\t\t\"page\":1,\r\n\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"categorie label\" }],\r\n\t\t\"questions\": [{\r\n\t\t\t\"type\": \"radiogroup\",\r\n\t\t\t\"name\": \"question1\",\r\n\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"Question 1\" }],\r\n\t\t\t\"order\": 1,\r\n\t\t\t\"answers\": [{\r\n\t\t\t\t\"order\": 1,\r\n\t\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"item 1\" }], \"value\": 1\r\n\t\t\t\t}, {\r\n\t\t\t\t\"order\": 2,\r\n\t\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"item 2\" }], \"value\": 2\r\n\t\t\t}]\r\n\t\t}]\r\n\t}]\r\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/createSurvey?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/surveys?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "createSurvey"
+                "surveys"
               ],
               "query": [
                 {
