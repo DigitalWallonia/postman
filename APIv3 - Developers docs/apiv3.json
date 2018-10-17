@@ -4756,54 +4756,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "d3763c9f-56ed-4106-ac06-75ed1ffa8422",
-          "name": "Create a new survey",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6e0cf77c-973c-469a-8303-e4f03b4038ad",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"questions\": {\r\n\t\t\"title\": [{ \"language\": \"fre\", \"text\": \"Mon titre\" }],\r\n\t\t\"pages\": [{\r\n\t\t\t\"name\": \"page1\",\r\n\t\t\t\"elements\": [{\r\n\t    \t\t\"type\": \"panel\",\r\n\t    \t\t\"name\": \"panel1\",\r\n\t    \t\t\"title\": [{ \"language\": \"fre\", \"text\": \"Cat\u00e9gorie 1\" }],\r\n\t    \t\t\"elements\": [{\r\n\t    \t\t\t\"type\": \"radiogroup\",\r\n\t    \t\t\t\"name\": \"question1\",\r\n\t    \t\t\t\"title\": [{ \"language\": \"fre\", \"text\": \"Question 1\" }],\r\n\t\t\t    \t\"choices\": [\r\n\t\t\t    \t\t{\"text\": [{ \"language\": \"fre\", \"text\": \"item 1\" }], \"value\": 1},\r\n\t\t\t        \t{\"text\": [{ \"language\": \"fre\", \"text\": \"item 2\" }], \"value\": 2}\r\n\t\t\t        ]\r\n\t\t\t\t}]\r\n\t    \t}]\r\n\t\t}]\r\n\t},\r\n\t\"slug\": [{ \"language\": \"fre\", \"slug\": \"survey-test\"}]\r\n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/createSurvey?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "createSurvey"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "7027dbe2-b41b-4cca-9177-a757ecbf2adc",
           "name": "Create a new survey Copy",
           "event": [
