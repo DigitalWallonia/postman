@@ -4856,7 +4856,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveys/{{surveyId}}/questions?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/surveys/findone?filter={\"where\":{\"slug.slug\":\"module-smart-process\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4864,10 +4864,14 @@
               "path": [
                 "api",
                 "surveys",
-                "{{surveyId}}",
-                "questions"
+                "findone"
               ],
               "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"slug.slug\":\"module-smart-process\"}}",
+                  "equals": true
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
