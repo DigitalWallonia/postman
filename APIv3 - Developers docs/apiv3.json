@@ -4756,54 +4756,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "7027dbe2-b41b-4cca-9177-a757ecbf2adc",
-          "name": "Create a new survey",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "6e0cf77c-973c-469a-8303-e4f03b4038ad",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"slug\": [{ \"language\": \"fre\", \"slug\": \"survey-test\"}],\r\n\t\"title\": [{ \"language\": \"fre\", \"text\": \"survey Title\" }],\r\n\t\"surveyCategories\": [{\r\n\t\t\"name\": \"cat1\",\r\n\t\t\"order\": 1,\r\n\t\t\"page\":1,\r\n\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"categorie label\" }],\r\n\t\t\"questions\": [{\r\n\t\t\t\"type\": \"radiogroup\",\r\n\t\t\t\"name\": \"question1\",\r\n\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"Question 1\" }],\r\n\t\t\t\"order\": 1,\r\n\t\t\t\"answers\": [{\r\n\t\t\t\t\"order\": 1,\r\n\t\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"item 1\" }], \"value\": 1\r\n\t\t\t\t}, {\r\n\t\t\t\t\"order\": 2,\r\n\t\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"item 2\" }], \"value\": 2\r\n\t\t\t}]\r\n\t\t}]\r\n\t}]\r\n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveys?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "surveys"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "cbc80b42-d274-4033-8df7-5742480d45fc",
           "name": "Create Survey smart-process",
           "event": [
