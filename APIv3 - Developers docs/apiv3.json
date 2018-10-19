@@ -9,7 +9,48 @@
       "_postman_id": "2b7254c0-740a-076a-293a-8da471c69f85",
       "name": "Auth",
       "description": null,
-      "item": [],
+      "item": [
+        {
+          "_postman_id": "6e4e8322-e303-4b72-bf56-cc756d53477e",
+          "name": "Get Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7b4e7f29-8dc9-455c-b25b-111ace905397",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id){",
+                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+                  "        postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "    }else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@digitalwallonia.be\",\n  \"password\": \"v6]G(uk.NUGVohei{Ai?e2bn\"\n}"
+            },
+            "url": "{{protocol}}://{{domain}}/api/users/login"
+          },
+          "response": []
+        }
+      ],
       "event": [
         {
           "listen": "prerequest",
