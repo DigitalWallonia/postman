@@ -4926,6 +4926,45 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "ea6c3cc1-92cf-47cb-b08b-2ea8e440a389",
+          "name": "Update Survey Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"status\" : \"Published\"\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveys/5bcd9f37171eff0c1536248e?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveys",
+                "5bcd9f37171eff0c1536248e"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
