@@ -5073,6 +5073,45 @@
           "response": []
         },
         {
+          "_postman_id": "13ba8c78-6fe2-487f-8dc7-cf3584d35929",
+          "name": "Update Survey Status Copy",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"status\" : \"Published\"\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveys/5bcd9f37171eff0c1536248e?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveys",
+                "5bcd9f37171eff0c1536248e"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "02f5097d-f83f-4137-b20a-8dd0684a63a0",
           "name": "Delete Survey",
           "request": {
