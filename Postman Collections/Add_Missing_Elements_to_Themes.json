@@ -69,11 +69,11 @@
           "listen": "test",
           "script": {
             "id": "4360cb56-f196-421b-ac4a-7fedb0418795",
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful GET request\", function() {",
               "    pm.expect(pm.response.code).to.be.oneOf([201, 202, 200]);",
               "});",
+              "let contact = [];",
               "if (pm.response.code === 200) {",
               "    let jsonData = JSON.parse(responseBody);",
               "    jsonData.emailAddresses = [",
@@ -81,10 +81,12 @@
               "    ];",
               "    jsonData.role = \"Contact Person\";",
               "    jsonData.status = \"Published\";",
-              "    postman.setEnvironmentVariable(\"contact\", JSON.stringify(jsonData));",
+              "    contact = JSON.stringify(jsonData);",
               "}",
+              "postman.setEnvironmentVariable(\"contact\", contact);",
               "postman.setNextRequest(\"Patch Theme\");"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
@@ -109,11 +111,13 @@
           "query": [
             {
               "key": "filter",
-              "value": "{\"where\":{\"v2Id\":\"{{contactV2Id}}\"}}"
+              "value": "{\"where\":{\"v2Id\":\"{{contactV2Id}}\"}}",
+              "equals": true
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}"
+              "value": "{{v3_token}}",
+              "equals": true
             }
           ]
         }
