@@ -209,13 +209,6 @@
           "_postman_isSubFolder": true
         },
         {
-          "_postman_id": "505b6078-aa1b-4537-8c09-39f2503ac153",
-          "name": "BCE",
-          "description": "",
-          "item": [],
-          "_postman_isSubFolder": true
-        },
-        {
           "_postman_id": "419d9f6c-51e3-4a1d-a6a2-1b04cc488d79",
           "name": "Detail of an enterprise",
           "request": {
@@ -4129,6 +4122,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "505b6078-aa1b-4537-8c09-39f2503ac153",
+      "name": "BCE",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
