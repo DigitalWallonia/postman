@@ -67,6 +67,92 @@
       ]
     },
     {
+      "_postman_id": "505b6078-aa1b-4537-8c09-39f2503ac153",
+      "name": "BCE",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "91bee8be-0501-4571-bb22-e8e56b7440e4",
+          "name": "Find Enterprise with valid BCE Number",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "37f2b677-4eaa-48c1-bbf8-4d9545a23bfa",
+                "exec": [
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "let enterpriseJSON = JSON.parse(postman.getEnvironmentVariable('enterpriseJSON'));",
+                  "let type =  [",
+                  "'Inconnu',",
+                  "'Personne physique',",
+                  "'Personne morale',",
+                  "];",
+                  "postman.setEnvironmentVariable(\"enterpriseId\", jsonData.id);",
+                  "tests[`enterpriseNumber is 0886480822`] = jsonData && jsonData.enterpriseNumber === enterpriseJSON.bceNumber.replace(/[^0-9]/g, '');",
+                  "tests[`legalName fre is ${enterpriseJSON.denomination}`] = jsonData && jsonData.legalName && _.find(jsonData.legalName, l => l.language === 'fre') && _.find(jsonData.legalName, l => l.language === 'fre').text === enterpriseJSON.denomination;",
+                  "tests[`juridicalForm code is ${enterpriseJSON.juridicalForm}`] = jsonData.juridicalForm && jsonData.juridicalForm.code === enterpriseJSON.juridicalForm;",
+                  "tests[`type of enterprise is ${type.indexOf(enterpriseJSON.type).toString()}`] = jsonData.type && jsonData.type.code === type.indexOf(enterpriseJSON.type).toString();",
+                  "tests[`juridicalSituation code is ${enterpriseJSON.juridicalSituation}`] = jsonData.juridicalSituation && jsonData.juridicalSituation.code === enterpriseJSON.juridicalSituation;",
+                  "if(typeof enterpriseJSON.denominationAbbrev === 'object') {",
+                  "    tests[`abbreviation comes from BCE`] = _.find(jsonData.origin, o => o.abbreviation === 'bce') !== undefined;",
+                  "} else {",
+                  "    tests[`abbreviation is not set in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.abbreviation) === undefined;",
+                  "}",
+                  "if(typeof enterpriseJSON.address === 'object') {",
+                  "    tests[`address comes from BCE`] = _.find(jsonData.origin, o => o.address === 'bce') !== undefined;",
+                  "} else {",
+                  "    tests[`address is not set in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.address) === undefined;",
+                  "}",
+                  "if(enterpriseJSON.naceCodes.length > 0) {",
+                  "    tests[`activities comes from BCE`] = _.find(jsonData.origin, o => o.activities === 'bce') !== undefined;",
+                  "} else {",
+                  "    tests[`activities are not set  in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.activities) === undefined;",
+                  "}",
+                  "if(enterpriseJSON.establishments.length > 0) {",
+                  "    tests[`establishments comes from BCE`] = _.find(jsonData.origin, o => o.establishments === 'bce') !== undefined;",
+                  "} else {",
+                  "    tests[`establishments are not set  in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.establishments) === undefined;",
+                  "}",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/bce/886480822?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "bce",
+                "886480822"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
       "name": "Enterprises",
       "description": "",
@@ -4122,12 +4208,6 @@
           "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "505b6078-aa1b-4537-8c09-39f2503ac153",
-      "name": "BCE",
-      "description": "",
-      "item": []
     }
   ],
   "event": [
