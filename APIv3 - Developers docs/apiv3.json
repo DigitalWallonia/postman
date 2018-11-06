@@ -5336,9 +5336,9 @@
         },
         {
           "_postman_id": "81a23e73-859d-4395-91cb-8df18dab3579",
-          "name": "get an existing session Copy",
+          "name": "delete an existing session",
           "request": {
-            "method": "GET",
+            "method": "DELETE",
             "header": [
               {
                 "key": "Content-Type",
@@ -5347,15 +5347,16 @@
               },
               {
                 "key": "Authorization",
-                "value": "{{auth0_token}}"
+                "value": "{{auth0_token}}",
+                "disabled": true
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"closingDate\": \"2018-10-30T10:58:11.922Z\"\n}"
+              "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveysessions/{{surveysessionId}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/surveysessions/5be19edb194bce3ab6a5eef7?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5363,7 +5364,7 @@
               "path": [
                 "api",
                 "surveysessions",
-                "{{surveysessionId}}"
+                "5be19edb194bce3ab6a5eef7"
               ],
               "query": [
                 {
