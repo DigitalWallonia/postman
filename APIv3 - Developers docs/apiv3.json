@@ -5335,6 +5335,48 @@
           "response": []
         },
         {
+          "_postman_id": "81a23e73-859d-4395-91cb-8df18dab3579",
+          "name": "get an existing session Copy",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": true
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth0_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"closingDate\": \"2018-10-30T10:58:11.922Z\"\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveysessions/{{surveysessionId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveysessions",
+                "{{surveysessionId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "bc26b537-63eb-453e-aeaf-bc0cbcdbf787",
           "name": "get an existing session based on linkUserProfileEntreprise",
           "request": {
