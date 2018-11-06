@@ -73,48 +73,13 @@
       "item": [
         {
           "_postman_id": "60e0b5f5-6537-47cf-b712-2485eec3d7d0",
-          "name": "Find Enterprise with valid BCE Number Copy",
+          "name": "Add or update an enterprise with BCE information",
           "event": [
             {
               "listen": "test",
               "script": {
                 "id": "37f2b677-4eaa-48c1-bbf8-4d9545a23bfa",
                 "exec": [
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
-                  "let jsonData = JSON.parse(responseBody);",
-                  "let enterpriseJSON = JSON.parse(postman.getEnvironmentVariable('enterpriseJSON'));",
-                  "let type =  [",
-                  "'Inconnu',",
-                  "'Personne physique',",
-                  "'Personne morale',",
-                  "];",
-                  "postman.setEnvironmentVariable(\"enterpriseId\", jsonData.id);",
-                  "tests[`enterpriseNumber is 0886480822`] = jsonData && jsonData.enterpriseNumber === enterpriseJSON.bceNumber.replace(/[^0-9]/g, '');",
-                  "tests[`legalName fre is ${enterpriseJSON.denomination}`] = jsonData && jsonData.legalName && _.find(jsonData.legalName, l => l.language === 'fre') && _.find(jsonData.legalName, l => l.language === 'fre').text === enterpriseJSON.denomination;",
-                  "tests[`juridicalForm code is ${enterpriseJSON.juridicalForm}`] = jsonData.juridicalForm && jsonData.juridicalForm.code === enterpriseJSON.juridicalForm;",
-                  "tests[`type of enterprise is ${type.indexOf(enterpriseJSON.type).toString()}`] = jsonData.type && jsonData.type.code === type.indexOf(enterpriseJSON.type).toString();",
-                  "tests[`juridicalSituation code is ${enterpriseJSON.juridicalSituation}`] = jsonData.juridicalSituation && jsonData.juridicalSituation.code === enterpriseJSON.juridicalSituation;",
-                  "if(typeof enterpriseJSON.denominationAbbrev === 'object') {",
-                  "    tests[`abbreviation comes from BCE`] = _.find(jsonData.origin, o => o.abbreviation === 'bce') !== undefined;",
-                  "} else {",
-                  "    tests[`abbreviation is not set in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.abbreviation) === undefined;",
-                  "}",
-                  "if(typeof enterpriseJSON.address === 'object') {",
-                  "    tests[`address comes from BCE`] = _.find(jsonData.origin, o => o.address === 'bce') !== undefined;",
-                  "} else {",
-                  "    tests[`address is not set in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.address) === undefined;",
-                  "}",
-                  "if(enterpriseJSON.naceCodes.length > 0) {",
-                  "    tests[`activities comes from BCE`] = _.find(jsonData.origin, o => o.activities === 'bce') !== undefined;",
-                  "} else {",
-                  "    tests[`activities are not set  in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.activities) === undefined;",
-                  "}",
-                  "if(enterpriseJSON.establishments.length > 0) {",
-                  "    tests[`establishments comes from BCE`] = _.find(jsonData.origin, o => o.establishments === 'bce') !== undefined;",
-                  "} else {",
-                  "    tests[`establishments are not set  in origin`] = jsonData.origin && _.find(jsonData.origin, o => o.establishments) === undefined;",
-                  "}",
-                  "",
                   ""
                 ],
                 "type": "text/javascript"
@@ -129,7 +94,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/bce/886480822?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/bce/{{bceNum}}?access_token={{v3_token}}&bceNum=886480822",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -137,13 +102,20 @@
               "path": [
                 "api",
                 "bce",
-                "886480822"
+                "{{bceNum}}"
               ],
               "query": [
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
-                  "equals": true
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                },
+                {
+                  "key": "bceNum",
+                  "value": "886480822",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b><br />The bce number"
                 }
               ]
             }
