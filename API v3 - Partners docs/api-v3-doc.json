@@ -203,7 +203,8 @@
                       "description": "<b>[Optionnal]</b><br />\nThe enterprise that has this v2Id value"
                     }
                   ]
-                }
+                },
+                "description": "&#x26D4; BE CAREFUL &#x26D4;\n\nThe model \"LegalForm\" changed to \"JuridicalForm\" !\n\nIn the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !"
               },
               "response": []
             }
