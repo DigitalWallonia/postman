@@ -69,7 +69,7 @@
     {
       "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
       "name": "Enterprises",
-      "description": "!! BE CAREFUL !! \\u2600 | \n\nThe model \"LegalForm\" changed to \"JuridicalForm\". In the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !",
+      "description": "!! BE CAREFUL !! &#x2600; | %E2%98%80 | U+2600 \\002600 |\n\nThe model \"LegalForm\" changed to \"JuridicalForm\". In the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !",
       "item": [
         {
           "_postman_id": "6fdf4108-a8fa-482d-8493-8864ebc1702f",
