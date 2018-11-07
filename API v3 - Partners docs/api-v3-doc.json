@@ -69,7 +69,7 @@
     {
       "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
       "name": "Enterprises",
-      "description": "",
+      "description": "!! BE CAREFUL !!\n\nThe model \"LegalForm\" changed to \"JuridicalForm\". In the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !",
       "item": [
         {
           "_postman_id": "6fdf4108-a8fa-482d-8493-8864ebc1702f",
@@ -361,6 +361,28 @@
             }
           },
           "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "e7a8dee7-990c-4d87-a690-602f1124d970",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "0490b976-5a93-4234-8a73-6d1c501969f1",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     },
