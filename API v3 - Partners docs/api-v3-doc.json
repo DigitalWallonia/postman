@@ -69,7 +69,7 @@
     {
       "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
       "name": "Enterprises",
-      "description": "&#x26D4; BE CAREFUL &#x26D4;\n\nThe model \"LegalForm\" changed to \"JuridicalForm\". In the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !",
+      "description": "&#x26D4; BE CAREFUL &#x26D4;\n\nThe model \"LegalForm\" changed to \"JuridicalForm\" !\n\nIn the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !",
       "item": [
         {
           "_postman_id": "6fdf4108-a8fa-482d-8493-8864ebc1702f",
@@ -102,7 +102,8 @@
                       "description": "<b>[Obligatory]</b>"
                     }
                   ]
-                }
+                },
+                "description": "&#x26D4; BE CAREFUL &#x26D4;\n\nThe model \"LegalForm\" changed to \"JuridicalForm\" !\n\nIn the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !"
               },
               "response": []
             }
@@ -157,7 +158,8 @@
                       "description": "<b>[Optionnal]</b><br />\nOnly enterprises that have an abbreviation with this value"
                     }
                   ]
-                }
+                },
+                "description": "&#x26D4; BE CAREFUL &#x26D4;\n\nThe model \"LegalForm\" changed to \"JuridicalForm\" !\n\nIn the interest of backward compatibility \"LegalForm\" will be kept till 01/06 !"
               },
               "response": []
             }
