@@ -5408,15 +5408,14 @@
               "raw": "{\n\t\"closingDate\": \"2018-10-30T10:58:11.922Z\"\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveysessions/{{surveysessionId}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/surveysessions?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "surveysessions",
-                "{{surveysessionId}}"
+                "surveysessions"
               ],
               "query": [
                 {
