@@ -5014,13 +5014,14 @@
             {
               "listen": "test",
               "script": {
-                "id": "2bb40b35-77fe-4c9e-8bd9-827a0b8b51f5",
+                "id": "c5cb3306-4e40-42be-9479-81a8364d4b64",
                 "type": "text/javascript",
                 "exec": [
                   "if (responseCode.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
                   "    if(Array.isArray(jsonData) && jsonData.length > 0){",
                   "        postman.setEnvironmentVariable(\"surveyId\", jsonData[0].id);",
+                  "        postman.setEnvironmentVariable(\"surveyName\", jsonData[0].name);",
                   "    }",
                   "}"
                 ]
