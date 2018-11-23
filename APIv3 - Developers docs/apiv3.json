@@ -5181,7 +5181,7 @@
               "raw": "{\n\t\"status\" : \"Published\"\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveys/{{surveyName}}?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/surveys/{{surveyId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5189,7 +5189,7 @@
               "path": [
                 "api",
                 "surveys",
-                "{{surveyName}}"
+                "{{surveyId}}"
               ],
               "query": [
                 {
