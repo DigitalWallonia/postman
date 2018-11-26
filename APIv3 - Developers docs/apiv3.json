@@ -4903,7 +4903,7 @@
         },
         {
           "_postman_id": "14e65d34-b1ef-4e96-99d3-7ceb33b3038c",
-          "name": "Create Survey TEST recommendation Copy",
+          "name": "Create Survey TEST conditional",
           "event": [
             {
               "listen": "test",
