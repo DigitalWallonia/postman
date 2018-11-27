@@ -4858,7 +4858,7 @@
         },
         {
           "_postman_id": "64e943e1-cc2f-4454-a724-393ed3385020",
-          "name": "Create Survey smart-process - with recommendation",
+          "name": "Create Survey smart-product - with recommendation",
           "event": [
             {
               "listen": "test",
