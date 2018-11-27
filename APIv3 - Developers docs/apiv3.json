@@ -5123,7 +5123,7 @@
         },
         {
           "_postman_id": "bc5ed8f7-fd83-463e-b478-335b31da5b5c",
-          "name": "Create Survey smart-business-model Copy",
+          "name": "Create Survey smart-business-model - with recommendation",
           "event": [
             {
               "listen": "test",
