@@ -2619,6 +2619,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "9973487d-56b6-44ff-97ff-5647dd15a43f",
+      "name": "Survey",
+      "description": "",
+      "item": []
     }
   ]
 }
