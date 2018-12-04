@@ -2627,7 +2627,7 @@
       "item": [
         {
           "_postman_id": "b15717a7-21ff-4c1e-9dea-271dab9829fb",
-          "name": "Liste des projets Copy",
+          "name": "Liste des Survey",
           "event": [
             {
               "listen": "test",
