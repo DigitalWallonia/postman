@@ -5009,52 +5009,6 @@
           "response": []
         },
         {
-          "_postman_id": "e9b11eed-fc66-4520-9e4b-acbf6b8370ca",
-          "name": "List all survey Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c5cb3306-4e40-42be-9479-81a8364d4b64",
-                "type": "text/javascript",
-                "exec": [
-                  "if (responseCode.code === 200) {",
-                  "    let jsonData = JSON.parse(responseBody);",
-                  "    if(Array.isArray(jsonData) && jsonData.length > 0){",
-                  "        postman.setEnvironmentVariable(\"surveyId\", jsonData[0].id);",
-                  "        postman.setEnvironmentVariable(\"surveyName\", jsonData[0].name);",
-                  "    }",
-                  "}"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveys?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "surveys"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "30a6b597-178b-46fa-a766-33742c6471e0",
           "name": "Compute benchmarks",
           "event": [
