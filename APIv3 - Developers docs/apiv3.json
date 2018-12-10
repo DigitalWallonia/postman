@@ -5756,13 +5756,11 @@
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json",
-                "disabled": true
+                "value": "application/json"
               },
               {
                 "key": "Authorization",
-                "value": "{{auth0_token}}",
-                "disabled": true
+                "value": "{{auth0_token}}"
               }
             ],
             "body": {
@@ -5770,7 +5768,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/surveysessions/5be19edb194bce3ab6a5eef7?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/surveysessions/5be01fe613e5dc095639b0bb?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5778,7 +5776,7 @@
               "path": [
                 "api",
                 "surveysessions",
-                "5be19edb194bce3ab6a5eef7"
+                "5be01fe613e5dc095639b0bb"
               ],
               "query": [
                 {
