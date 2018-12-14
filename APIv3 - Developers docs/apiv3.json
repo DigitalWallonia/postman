@@ -5887,7 +5887,78 @@
       "_postman_id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6",
       "name": "PublicUser",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "e9e730bf-5d62-4a9c-876f-ea2849b1ad72",
+          "name": "Find Linked Public User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
+                "type": "text/javascript",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent\"] = jsonData.id;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"countryCode\": \"BE\",\n    \"enterpriseNumber\": \"0568575002\",\n    \"startDate\": \"2015-01-12T23:00:00.000Z\",\n    \"address\":{\n        \"type\": \"Head Office\",\n        \"thoroughfare\": \"Avenue du Prince de Li\u00e8ge\",\n        \"number\": \"133\",\n        \"postalCode\": \"5100\",\n        \"locality\": \"Jambes\",\n        \"countryCode\": \"BE\"\n    },\n    \"authorizedCapital\": \"1061570\",\n    \"legalForm\": {\n        \"countryCode\": \"BE\",\n        \"name\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"Soci\u00e9t\u00e9 Anonyme de droit public\"\n            }\n        ],\n        \"abbreviation\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"SA de droit public\"\n            }\n        ]\n    },\n    \"legalName\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"automatedTest-Enterprise-fre\"\n        }\n    ],\n    \"abbreviation\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"AdN\"\n        }\n    ],\n    \"activities\":[ \n    \t{\n\t\t\"activityGroup\": {\n          \"code\": \"412\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Construction de b\u00e2timents r\u00e9sidentiels et non r\u00e9sidentiels\"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"Burgerlijke en utiliteitsbouw\"\n            },\n            {\n              \"language\": \"ger\",\n              \"text\": \"Bau von Geb\u00e4uden\"\n            }\n          ]\n        },\n        \"classification\": {\n          \"code\": \"MAIN\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Principale\"\n            }\n          ]\n        },\n        \"nace2003\": {\n          \"code\": \"4521101\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"la r\u00e9alisation du gros oeuvre de maisons individuelles \"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"het optrekken van de ruwbouw van individuele huizen \"\n            }\n          ]\n        },\n        \"nace2008\": {\n          \"code\": \"4120101\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"R\u00e9alisation du gros oeuvre de maisons individuelles\"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"Optrekken van de ruwbouw van individuele huizen\"\n            },\n            {\n              \"language\": \"ger\",\n              \"text\": \"Erstellung des Rohbaus von Eigenheimen\"\n            }\n          ]\n        }\n      }\n    ],\n    \"establishments\": []\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/publicusers/findone?filter={\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "publicusers",
+                "findone"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
@@ -6176,76 +6247,6 @@
             {
               "key": "where[status]",
               "value": "Published",
-              "equals": true
-            },
-            {
-              "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "e9e730bf-5d62-4a9c-876f-ea2849b1ad72",
-      "name": "Find Linked Public User",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
-            "type": "text/javascript",
-            "exec": [
-              "// R\u00e9cup\u00e9ration du JSON complet",
-              "let jsonData = JSON.parse(responseBody);",
-              "",
-              "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
-              "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
-              "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
-              "tests[\"Le param\u00e8tre id est pr\u00e9sent\"] = jsonData.id;"
-            ]
-          }
-        },
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"countryCode\": \"BE\",\n    \"enterpriseNumber\": \"0568575002\",\n    \"startDate\": \"2015-01-12T23:00:00.000Z\",\n    \"address\":{\n        \"type\": \"Head Office\",\n        \"thoroughfare\": \"Avenue du Prince de Li\u00e8ge\",\n        \"number\": \"133\",\n        \"postalCode\": \"5100\",\n        \"locality\": \"Jambes\",\n        \"countryCode\": \"BE\"\n    },\n    \"authorizedCapital\": \"1061570\",\n    \"legalForm\": {\n        \"countryCode\": \"BE\",\n        \"name\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"Soci\u00e9t\u00e9 Anonyme de droit public\"\n            }\n        ],\n        \"abbreviation\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"SA de droit public\"\n            }\n        ]\n    },\n    \"legalName\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"automatedTest-Enterprise-fre\"\n        }\n    ],\n    \"abbreviation\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"AdN\"\n        }\n    ],\n    \"activities\":[ \n    \t{\n\t\t\"activityGroup\": {\n          \"code\": \"412\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Construction de b\u00e2timents r\u00e9sidentiels et non r\u00e9sidentiels\"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"Burgerlijke en utiliteitsbouw\"\n            },\n            {\n              \"language\": \"ger\",\n              \"text\": \"Bau von Geb\u00e4uden\"\n            }\n          ]\n        },\n        \"classification\": {\n          \"code\": \"MAIN\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"Principale\"\n            }\n          ]\n        },\n        \"nace2003\": {\n          \"code\": \"4521101\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"la r\u00e9alisation du gros oeuvre de maisons individuelles \"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"het optrekken van de ruwbouw van individuele huizen \"\n            }\n          ]\n        },\n        \"nace2008\": {\n          \"code\": \"4120101\",\n          \"description\": [\n            {\n              \"language\": \"fre\",\n              \"text\": \"R\u00e9alisation du gros oeuvre de maisons individuelles\"\n            },\n            {\n              \"language\": \"dut\",\n              \"text\": \"Optrekken van de ruwbouw van individuele huizen\"\n            },\n            {\n              \"language\": \"ger\",\n              \"text\": \"Erstellung des Rohbaus von Eigenheimen\"\n            }\n          ]\n        }\n      }\n    ],\n    \"establishments\": []\n}"
-        },
-        "url": {
-          "raw": "{{protocol}}://{{domain}}/api/publicusers/findone?filter={\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}&access_token={{v3_token}}",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{domain}}"
-          ],
-          "path": [
-            "api",
-            "publicusers",
-            "findone"
-          ],
-          "query": [
-            {
-              "key": "filter",
-              "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}",
               "equals": true
             },
             {
