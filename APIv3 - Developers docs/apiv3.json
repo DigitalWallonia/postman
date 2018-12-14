@@ -5884,6 +5884,12 @@
       ]
     },
     {
+      "_postman_id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6",
+      "name": "PublicUser",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
       "name": "Count Profils New Style",
       "event": [
