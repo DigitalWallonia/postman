@@ -5710,13 +5710,32 @@
         {
           "_postman_id": "cab00433-1c21-4af1-b2fa-71b5a37ddf99",
           "name": "list all existing sessions",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e3d7f045-3574-47b6-a178-f74286a4e43e",
+                "type": "text/javascript",
+                "exec": [
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Si le JSON comporte un param\u00e8tre id",
+                  "if (responseBody.has(jsonData[0].id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
+                  "    postman.setEnvironmentVariable(\"surveySessionId\", jsonData[0].id);",
+                  "}",
+                  "",
+                  "console.log(\"remaining\", jsonData.length)"
+                ]
+              }
+            }
+          ],
           "request": {
             "method": "GET",
             "header": [
               {
                 "key": "Content-Type",
-                "value": "application/json",
-                "disabled": true
+                "value": "application/json"
               },
               {
                 "key": "Authorization",
