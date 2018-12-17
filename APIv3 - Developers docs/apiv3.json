@@ -5076,10 +5076,16 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "filter",
+                "value": "{where:{\"a\"=2}}",
+                "disabled": true
+              }
+            ],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?filter={where{\"a\"=2}}&surveyId=5c137f60596112250e1f8a5c&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5090,6 +5096,16 @@
                 "compute"
               ],
               "query": [
+                {
+                  "key": "filter",
+                  "value": "{where{\"a\"=2}}",
+                  "equals": true
+                },
+                {
+                  "key": "surveyId",
+                  "value": "5c137f60596112250e1f8a5c",
+                  "equals": true
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}\n\n",
