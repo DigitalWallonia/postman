@@ -5085,7 +5085,7 @@
             ],
             "body": {},
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?filter={\"where\":{\"a\"=2}}&surveyId=5c137f60596112250e1f8a5c&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?filter={\"where\":{\"activityCode.code\":\"code\"}}&surveyId=5c137f60596112250e1f8a5c&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5098,7 +5098,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"a\"=2}}",
+                  "value": "{\"where\":{\"activityCode.code\":\"code\"}}",
                   "equals": true
                 },
                 {
