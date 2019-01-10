@@ -5266,6 +5266,45 @@
           "response": []
         },
         {
+          "_postman_id": "09c73133-7253-45cd-a12a-28c2b9014430",
+          "name": "Update Survey Slug Status Copy",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slug\": [{ \"language\": \"fre\", \"slug\": \"module-smart-process\", \"status\": \"Published\"}]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveys/5be047fd78f3422caf8cc70a?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveys",
+                "5be047fd78f3422caf8cc70a"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "_postman_id": "2d5490c4-0cc7-48a0-b833-4fde93240a03",
           "name": "Create Survey TEST recommendation",
           "event": [
