@@ -5309,7 +5309,7 @@
         },
         {
           "_postman_id": "13579aa4-95dc-40d8-a07a-15e41bc251ec",
-          "name": "Create Survey smart-process - with recommendation",
+          "name": "Create Survey smart-process",
           "event": [
             {
               "listen": "test",
