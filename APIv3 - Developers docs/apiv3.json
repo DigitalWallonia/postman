@@ -5359,6 +5359,45 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "4ca3e0b0-2a36-457a-b4cf-6238ebb8ec2d",
+          "name": "Update Suvey Responses order",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"questions\": [{\n\t\t\t\"type\": \"radiogroup\",\n\t\t\t\"name\": \"Q1\",\n\t\t\t\"scoreFormula\": \"Q1/3*100\",\n\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"Dans quelle mesure le produit et/ou l'emballage adapte-t-il son fonctionnement sur base de son \u00e9tat, de ses conditions de fonctionnement ou d'utilisation?\" }],\n\t\t\t\"order\": 1,\n\t\t\t\"answers\": [\n\t\t\t\t{ \"order\": 1, \"label\": [{ \"language\": \"fre\", \"text\": \"L'utilisateur peut r\u00e9gler le produit en fonction de son \u00e9tat, de ses conditions de fonctionnement ou d'utilisation \" }], \"value\": 1},\n        { \"order\": 2, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit sugg\u00e8re des optimisations en temps r\u00e9el \u00e0 l'utilisateur en fonction de son \u00e9tat, de ses conditions de fonctionnement ou d'utilisation \" }], \"value\": 2},\n        { \"order\": 3, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit optimise son fonctionnement de mani\u00e8re autonome et en temps r\u00e9el en fonction de son \u00e9tat, de ses conditions de fonctionnement ou d'utilisation (e.g. voiture autonome adaptant sa distance de s\u00e9curit\u00e9 en fonction de l'\u00e9tat des pneus)\" }], \"value\": 3},\n        { \"order\": 4, \"label\": [{ \"language\": \"fre\", \"text\": \"Aucune des propositions pr\u00e9c\u00e9dentes n'est correcte\" }], \"value\": 0}\n\t\t\t]\n\t\t}, {\n\t\t\t\"type\": \"radiogroup\",\n\t\t\t\"name\": \"Q2\",\n\t\t\t\"scoreFormula\": \"Q2/3*100\",\n\t\t\t\n\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"Dans quelle mesure le produit et/ou l'emballage s'adapte-t-il \u00e0 son contexte environnant?\" }],\n\t\t\t\"order\": 2,\n\t\t\t\"answers\": [\n\t\t\t\t{ \"order\": 1, \"label\": [{ \"language\": \"fre\", \"text\": \"L'utilisateur peut r\u00e9gler le produit pour s'adapter \u00e0 l'environnement\" }], \"value\": 1},\n        { \"order\": 2, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit sugg\u00e8re des optimisations en temps r\u00e9el \u00e0 l'utilisateur sur base de son environnement\" }], \"value\": 2},\n        { \"order\": 3, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit optimise son fonctionnement de mani\u00e8re autonome et en temps r\u00e9el en fonction de son environnement (e.g. un robot agricole arrose le terrain en fonction de l'irrigation du sol)\" }], \"value\": 3},\n        { \"order\": 4, \"label\": [{ \"language\": \"fre\", \"text\": \"Aucune des propositions pr\u00e9c\u00e9dentes n'est correcte\" }], \"value\": 0 }\n\t\t\t]\n\t\t}, {\n\t\t\t\"type\": \"radiogroup\",\n\t\t\t\"name\": \"Q3\",\n\t\t\t\"scoreFormula\": \"Q3/3*100\",\n\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"Dans quelle mesure le produit et/ou l'emballage personnalise-t-il son fonctionnement \u00e0 son utilisateur, de mani\u00e8re autonome et proactive?\" }],\n\t\t\t\"order\": 3,\n\t\t\t\"answers\": [\n\t\t\t\t{ \"order\": 1, \"label\": [{ \"language\": \"fre\", \"text\": \"L'utilisateur peut personnaliser le produit sur base de ses besoins ou envies\" }], \"value\": 1},\n        { \"order\": 2, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit sugg\u00e8re des options de personnalisation sur base du comportement et des habitudes de l'utilisateur\" }], \"value\": 2},\n        { \"order\": 3, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit personnalise son fonctionnement de mani\u00e8re autonome et en temps r\u00e9el en fonction de l'utilisateur (e.g. un assistant virtuel capable d'adapter son fonctionnement sur base de l'utilisateur)\" }], \"value\": 3},\n        { \"order\": 4, \"label\": [{ \"language\": \"fre\", \"text\": \"Aucune des propositions pr\u00e9c\u00e9dentes n'est correcte\" }], \"value\": 0 }\n\t\t\t]\n\t\t}, {\n\t\t\t\"type\": \"radiogroup\",\n\t\t\t\"name\": \"Q4\",\n\t\t\t\"scoreFormula\": \"Q4/3*100\",\n\t\t\t\"label\": [{ \"language\": \"fre\", \"text\": \"Dans quelle mesure le produit et/ou l'emballage \u00e9change-t-il de l'information avec d'autres produits et aligne-t-il sont fonctionnement sur cette base?\" }],\n\t\t\t\"order\": 4,\n\t\t\t\"answers\": [\n\t\t\t\t{ \"order\": 1, \"label\": [{ \"language\": \"fre\", \"text\": \"L'utilisateur peut adapter le fonctionnement d'un produit sur base du fonctionnement d'autres produits similaires\" }], \"value\": 1},\n        { \"order\": 2, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit adapte son fonctionnement de mani\u00e8re autonome et en temps r\u00e9el sur base de donn\u00e9es re\u00e7ues d'autres produits similaires et du r\u00e9seau (donn\u00e9es format\u00e9es)\" }], \"value\": 2},\n        { \"order\": 3, \"label\": [{ \"language\": \"fre\", \"text\": \"Le produit adapte son fonctionnement de mani\u00e8re autonome et en temps r\u00e9el sur base de donn\u00e9es re\u00e7ues de n'importe quel autre type de produits et du r\u00e9seau (donn\u00e9es nonformat\u00e9es)\" }], \"value\": 3},\n        { \"order\": 4, \"label\": [{ \"language\": \"fre\", \"text\": \"Aucune des propositions pr\u00e9c\u00e9dentes n'est correcte\" }], \"value\": 0 }\n\t\t\t]\n\t\t}]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/surveys/5c3759183320394f3013660f?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "surveys",
+                "5c3759183320394f3013660f"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
