@@ -5071,7 +5071,7 @@
         },
         {
           "_postman_id": "7167dc72-efe1-4cab-87b5-9af740e2300d",
-          "name": "Create Survey smart-process Copy",
+          "name": "Patch Survey smart-process",
           "event": [
             {
               "listen": "test",
