@@ -4965,7 +4965,7 @@
         },
         {
           "_postman_id": "7ca6b299-870d-4f2e-af55-1a94a20032b7",
-          "name": "Create Survey smart-business-model Copy",
+          "name": "Patch Survey smart-business-model",
           "event": [
             {
               "listen": "test",
