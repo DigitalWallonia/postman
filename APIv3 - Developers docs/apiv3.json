@@ -4858,7 +4858,7 @@
         },
         {
           "_postman_id": "af722c91-3ca0-475e-8890-05ba91e9abf8",
-          "name": "Create Survey smart-product Copy",
+          "name": "Patch Survey smart-product",
           "event": [
             {
               "listen": "test",
