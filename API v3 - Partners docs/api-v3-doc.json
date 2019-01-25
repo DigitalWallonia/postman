@@ -70,7 +70,15 @@
       "_postman_id": "74f95e4b-e751-41cb-9fe9-809fff8b5993",
       "name": "Contacts",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "8d0b23fc-5e42-48ff-bfb0-529b6df7d312",
+          "name": "Search",
+          "description": "",
+          "item": [],
+          "_postman_isSubFolder": true
+        }
+      ]
     },
     {
       "_postman_id": "17a32742-f97a-42ac-a2d3-7d926d9eee3d",
