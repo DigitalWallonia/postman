@@ -2851,7 +2851,49 @@
                   "mode": "raw",
                   "raw": ""
                 },
-                "url": ""
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}&filter[where][contacts.tags.slug.slug]=accompagnement-made-different&filter[where][status]=Published&filter[fields][0]=title&filter[fields][1]=slug&filter[fields][2]=contacts",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[where][contacts.tags.slug.slug]",
+                      "value": "accompagnement-made-different",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[where][status]",
+                      "value": "Published",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[fields][0]",
+                      "value": "title",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[fields][1]",
+                      "value": "slug",
+                      "equals": true
+                    },
+                    {
+                      "key": "filter[fields][2]",
+                      "value": "contacts",
+                      "equals": true
+                    }
+                  ]
+                }
               },
               "response": []
             }
