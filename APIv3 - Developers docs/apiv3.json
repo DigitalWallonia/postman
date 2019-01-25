@@ -5181,7 +5181,6 @@
               "listen": "test",
               "script": {
                 "id": "2bb40b35-77fe-4c9e-8bd9-827a0b8b51f5",
-                "type": "text/javascript",
                 "exec": [
                   "if (responseCode.code === 200) {",
                   "    let jsonData = JSON.parse(responseBody);",
@@ -5189,16 +5188,20 @@
                   "        postman.setEnvironmentVariable(\"surveyId\", jsonData[0].id);",
                   "    }",
                   "}"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?force=true&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5210,9 +5213,14 @@
               ],
               "query": [
                 {
+                  "key": "force",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
                   "key": "access_token",
-                  "value": "{{v3_token}}\n\n",
-                  "equals": true
+                  "value": "{{v3_token}}",
+                  "type": "text"
                 }
               ]
             }
