@@ -4288,7 +4288,22 @@
       "_postman_id": "2a344547-fb9e-41a2-9e62-7365efe8c8f1",
       "name": "Newsletter",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "71b99509-38c3-44ab-90ce-4a2c6ce8fa4d",
+          "name": "Subscribe",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": ""
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
