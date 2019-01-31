@@ -4293,13 +4293,39 @@
           "_postman_id": "71b99509-38c3-44ab-90ce-4a2c6ce8fa4d",
           "name": "Subscribe",
           "request": {
-            "method": "GET",
-            "header": [],
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "raw",
-              "raw": ""
+              "raw": "{\r\n\t\"listId\": \"\",\r\n\t\"groupId\": \"\",\r\n\t\"email_address\": \"{{v3_email}}\"\r\n}"
             },
-            "url": ""
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/newsletter/subscribe?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "newsletter",
+                "subscribe"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true,
+                  "description": "<b>[Obligatory]</b>"
+                }
+              ]
+            }
           },
           "response": []
         }
