@@ -4326,7 +4326,7 @@
                 }
               ]
             },
-            "description": "This request is used to subscribe to AdN newsletters.\nThe `email_address` is obligatory.\nIf `listId` and `groupId` are missing, the default newsletter is \"Newsletters Digital Wallonia\".\nTo get valid `listId` and `groupId`, contact our partner Christelle Darville (christelle.darville@adn.be)"
+            "description": "This request is used to subscribe to AdN newsletters.\nThe `email_address` is required.\nIf `listId` and `groupId` are missing, the default newsletter is \"Newsletters Digital Wallonia\".\nTo get valid `listId` and `groupId`, contact our partners manager Christelle Darville (christelle.darville@adn.be)"
           },
           "response": []
         }
