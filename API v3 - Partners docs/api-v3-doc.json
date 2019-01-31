@@ -4283,6 +4283,12 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "2a344547-fb9e-41a2-9e62-7365efe8c8f1",
+      "name": "Newsletter",
+      "description": "",
+      "item": []
     }
   ],
   "event": [
