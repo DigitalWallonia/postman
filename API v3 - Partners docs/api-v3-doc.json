@@ -4291,7 +4291,7 @@
       "item": [
         {
           "_postman_id": "71b99509-38c3-44ab-90ce-4a2c6ce8fa4d",
-          "name": "Subscribe",
+          "name": "Subscribe to AdN newsletter",
           "request": {
             "method": "POST",
             "header": [
@@ -4325,7 +4325,8 @@
                   "description": "<b>[Obligatory]</b>"
                 }
               ]
-            }
+            },
+            "description": "This request is used to subscribe to AdN newsletters.\nThe `email_address` is obligatory.\nIf `listId` and `groupId` are missing, the default newsletter is \"Newsletters Digital Wallonia\".\nTo get valid `listId` and `groupId`, contact our partner Christelle Darville (christelle.darville@adn.be)"
           },
           "response": []
         }
