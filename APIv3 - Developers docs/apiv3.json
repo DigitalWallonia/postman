@@ -6147,6 +6147,59 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "6b19b780-1e67-4c51-be0f-16d712a73440",
+          "name": "Mission related to post",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0ebbca40-e2fd-4059-9856-fea58471f62c",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent'\"] = jsonData.id;",
+                  "tests[\"Le param\u00e8tre title est pr\u00e9sent\"] = jsonData.title;",
+                  "tests[\"Le param\u00e8tre statut est pr\u00e9sent\"] = jsonData.status;",
+                  "tests[\"La valeur du param\u00e8tre statut est Published\"] = jsonData.status === \"Published\";"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/missions/5ab93b37fb6a4c11bba097cf?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "missions",
+                "5ab93b37fb6a4c11bba097cf"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
