@@ -6101,10 +6101,7 @@
               "script": {
                 "id": "e9a979ae-5fcc-4a15-88f2-49c3ddc0db67",
                 "exec": [
-                  "const jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable('surveysessionId', jsonData.id);",
-                  "postman.setEnvironmentVariable('linkUserProfileID', \"5bd834b86791e52edae53d2b\");"
+                  ""
                 ],
                 "type": "text/javascript"
               }
