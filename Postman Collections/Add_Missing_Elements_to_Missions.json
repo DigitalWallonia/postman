@@ -6,6 +6,118 @@
   },
   "item": [
     {
+      "_postman_id": "7b7593fa-8641-41d6-8253-f1a8fe72901c",
+      "name": "Add CTA To Project",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "b8a7a2bc-1a66-4b98-9469-f9c3b3bc9c49",
+          "name": "Create CTA with Url-Image",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"type\": \"InternalLink\",\r\n  \"name\": \"sensibilisation_facturation\",\r\n  \"label\": [\r\n    {\r\n      \"language\": \"fre\",\r\n      \"text\": \"Sensibilisation \u00e0 la facturation \u00e9lectronique\",\r\n      \"createdAt\": \"2019-03-28T12:02:53.142Z\",\r\n       \"id\" : \"{{$guid}}\"\r\n    },\r\n    {\r\n      \"language\": \"eng\",\r\n      \"text\": \"Awareness of electronic invoicing\",\r\n      \"createdAt\": \"2019-03-28T12:02:53.142Z\",\r\n       \"id\" : \"{{$guid}}\"\r\n    }\r\n  ],\r\n  \"url\": {\r\n    \"type\": \"Web\",\r\n    \"address\": \"https://www.digitalwallonia.be/fr/publications/sensibilisation-a-la-facturation-electronique\",\r\n    \"title\": \"Sensibilisation \u00e0 la facturation \u00e9lectronique\",\r\n    \"v2Id\": 0\r\n  },\r\n  \"createdAt\": \"2019-03-28T12:02:53.142Z\",\r\n  \"touchedAt\": \"2019-03-28T12:02:53.142Z\",\r\n  \"updatedAt\": \"2019-03-28T12:02:53.142Z\",\r\n  \"image\": {\r\n    \"type\": \"Image\",\r\n    \"container\": \"digitalwallonia-content\",\r\n    \"name\": \"facturation-electronique\",\r\n    \"url\": \"https://content.digitalwallonia.be/post/20180322085036/iStock-539356748.jpg\"\r\n  }\r\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/cta?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "cta"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "c34539ed-832e-4dca-b454-8506580d7063",
+          "name": "Link CTA (Url-Image) to Project",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5c4d2422-cc5b-4984-aef5-9919e00803eb",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent\"] = jsonData.id;",
+                  "tests[\"Le param\u00e8tre ctaId est correct\"] = jsonData.ctaId = postman.getEnvironmentVariable(\"ctaId\");",
+                  "tests[\"Le param\u00e8tre projectId est correct\"] = jsonData.projectId = postman.getEnvironmentVariable(\"projectId\");",
+                  "",
+                  "// Si le JSON comporte un param\u00e8tre id",
+                  "if (responseBody.has(\"id\")) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
+                  "    postman.setEnvironmentVariable(\"XProjectCtaId\", jsonData.id);",
+                  "}",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/ctas/rel/{{ctaId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "{{projectId}}",
+                "ctas",
+                "rel",
+                "{{ctaId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "_postman_id": "44d4586e-0867-4693-9a4d-e6ac75603fe2",
       "name": "Find Mission",
       "event": [
