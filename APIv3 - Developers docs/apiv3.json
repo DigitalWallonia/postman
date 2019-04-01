@@ -6028,7 +6028,7 @@
         },
         {
           "_postman_id": "1d4f781e-3948-46c9-85e5-889c63462d1d",
-          "name": "Find Linked Public User Copy",
+          "name": "Find Linked Public User with Id",
           "event": [
             {
               "listen": "test",
