@@ -6146,67 +6146,6 @@
             }
           },
           "response": []
-        },
-        {
-          "_postman_id": "c57dac39-2154-455f-9ffc-022f493190d3",
-          "name": "Get Activity From BCE Number Copy",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "e9a979ae-5fcc-4a15-88f2-49c3ddc0db67",
-                "exec": [
-                  "const jsonData = JSON.parse(responseBody);",
-                  "",
-                  "postman.setEnvironmentVariable('surveysessionId', jsonData.id);",
-                  "postman.setEnvironmentVariable('linkUserProfileID', \"5bd834b86791e52edae53d2b\");"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Authorization",
-                "value": "{{auth0_token}}",
-                "disabled": true
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"answers\": [{}],\n\t\"surveyId\": \"5be04519e1c4e36d9fcaaab4\",\n\t\"xProfilePublicUser\":{\n        \"id\": \"5bd834b86791e52edae53d2b\",\n        \"profileId\": \"5bd834a66791e52edae53d29\",\n        \"publicUserId\": \"5bd834ad6791e52edae53d2a\",\n        \"enterprise\": {\n            \"countryCode\": \"BE\",\n            \"enterpriseNumber\": \"1871903715\",\n            \"startDate\": \"2015-01-12T23:00:00.000Z\",\n            \"authorizedCapital\": 1061570,\n            \"id\": \"5bd8324d2369031c1361805f\",\n            \"address\": {\n                \"type\": \"Head Office\",\n                \"thoroughfare\": \"Avenue du Prince de Li\u00e8ge\",\n                \"number\": \"133\",\n                \"postalCode\": \"5100\",\n                \"locality\": \"Jambes\",\n                \"countryCode\": \"BE\"\n            },\n            \"createdAt\": \"2018-10-30T10:28:29.033Z\",\n            \"touchedAt\": \"2018-10-30T10:28:29.035Z\",\n            \"updatedAt\": \"2018-10-30T10:28:29.033Z\",\n            \"sortKeys\": {},\n            \"legalName\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"automatedTest-Enterprise-fre\"\n                }\n            ],\n            \"abbreviation\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"AdN\"\n                }\n            ],\n            \"activities\": [\n                {\n                    \"activityGroup\": {\n                        \"code\": \"412\",\n                        \"description\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Construction de b\u00e2timents r\u00e9sidentiels et non r\u00e9sidentiels\"\n                            },\n                            {\n                                \"language\": \"dut\",\n                                \"text\": \"Burgerlijke en utiliteitsbouw\"\n                            },\n                            {\n                                \"language\": \"ger\",\n                                \"text\": \"Bau von Geb\u00e4uden\"\n                            }\n                        ],\n                        \"createdAt\": \"2018-10-30T10:28:29.032Z\",\n                        \"touchedAt\": \"2018-10-30T10:28:29.032Z\",\n                        \"updatedAt\": \"2018-10-30T10:28:29.032Z\"\n                    },\n                    \"classification\": {\n                        \"code\": \"MAIN\",\n                        \"description\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Principale\"\n                            }\n                        ],\n                        \"createdAt\": \"2018-10-30T10:28:29.032Z\",\n                        \"touchedAt\": \"2018-10-30T10:28:29.032Z\",\n                        \"updatedAt\": \"2018-10-30T10:28:29.032Z\"\n                    },\n                    \"nace2003\": {\n                        \"code\": \"4521101\",\n                        \"description\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"la r\u00e9alisation du gros oeuvre de maisons individuelles \"\n                            },\n                            {\n                                \"language\": \"dut\",\n                                \"text\": \"het optrekken van de ruwbouw van individuele huizen \"\n                            }\n                        ],\n                        \"createdAt\": \"2018-10-30T10:28:29.033Z\",\n                        \"touchedAt\": \"2018-10-30T10:28:29.033Z\",\n                        \"updatedAt\": \"2018-10-30T10:28:29.033Z\"\n                    },\n                    \"nace2008\": {\n                        \"code\": \"4120101\",\n                        \"description\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"R\u00e9alisation du gros oeuvre de maisons individuelles\"\n                            },\n                            {\n                                \"language\": \"dut\",\n                                \"text\": \"Optrekken van de ruwbouw van individuele huizen\"\n                            },\n                            {\n                                \"language\": \"ger\",\n                                \"text\": \"Erstellung des Rohbaus von Eigenheimen\"\n                            }\n                        ],\n                        \"createdAt\": \"2018-10-30T10:28:29.033Z\",\n                        \"touchedAt\": \"2018-10-30T10:28:29.033Z\",\n                        \"updatedAt\": \"2018-10-30T10:28:29.033Z\"\n                    }\n                }\n            ],\n            \"establishments\": [],\n            \"juridicalForm\": {\n                \"code\": \"009\",\n                \"startDate\": \"1799-12-31T23:00:00.000Z\",\n                \"stopDate\": \"1996-06-30T22:00:00.000Z\",\n                \"description\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Soci\u00e9t\u00e9 coop\u00e9rative \u00e0 responsabilit\u00e9 limit\u00e9e, coop\u00e9rative de participation\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"text\": \"Co\u00f6peratieve vennootschap met beperkte aansprakelijkheid, bij wijze van deelneming\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"text\": \"Genossenschaft mit beschr\u00e4nkter Haftung, Genossenschaft auf Beteiligung\"\n                    }\n                ],\n                \"abbreviation\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"SCRL CP\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"text\": \"CVBA CD\"\n                    },\n                    {\n                        \"language\": \"ger\",\n                        \"text\": \"GbHGB\"\n                    }\n                ],\n                \"createdAt\": \"2018-10-30T10:28:29.031Z\",\n                \"touchedAt\": \"2018-10-30T10:28:29.031Z\",\n                \"updatedAt\": \"2018-10-30T10:28:29.031Z\"\n            },\n            \"typeOfEnterprise\": {\n                \"code\": \"2\",\n                \"description\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Personne morale\"\n                    },\n                    {\n                        \"language\": \"dut\",\n                        \"text\": \"Rechtspersoon\"\n                    }\n                ]\n            }\n        },\n        \"profile\": {\n            \"id\": \"5bd834a66791e52edae53d29\",\n            \"title\": [\n                {\n                    \"language\": \"fre\",\n                    \"text\": \"automatedTest\"\n                }\n            ],\n            \"slug\": [\n                {\n                    \"language\": \"fre\",\n                    \"slug\": \"automatedTest-1540895910-f\"\n                }\n            ]\n        }\n    } \n}"
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/xProfilePublicUser?access_token={{v3_token}}&filter={\"fields\":[\"id\",\"publicUserId\",\"profileId\",\"enterprise\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"id\",\"title\",\"slug\"]}}],\"where\":{\"enterprise.enterpriseNumber\":\"0407850653\"}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "xProfilePublicUser"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                },
-                {
-                  "key": "filter",
-                  "value": "{\"fields\":[\"id\",\"publicUserId\",\"profileId\",\"enterprise\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"id\",\"title\",\"slug\"]}}],\"where\":{\"enterprise.enterpriseNumber\":\"0407850653\"}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
