@@ -6027,76 +6027,6 @@
           "response": []
         },
         {
-          "_postman_id": "1d4f781e-3948-46c9-85e5-889c63462d1d",
-          "name": "Find Linked Public User with Id",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
-                "type": "text/javascript",
-                "exec": [
-                  "// R\u00e9cup\u00e9ration du JSON complet",
-                  "let jsonData = JSON.parse(responseBody);",
-                  "",
-                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
-                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
-                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
-                  "tests[\"Le param\u00e8tre id est pr\u00e9sent\"] = jsonData.id;"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
-                "type": "text/javascript",
-                "exec": [
-                  ""
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/publicusers/findone?filter={\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "publicusers",
-                "findone"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}",
-                  "equals": true
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "_postman_id": "fcf56268-bc13-4bff-919b-355fde7a4c1b",
           "name": "Get Linked Activities",
           "event": [
@@ -6356,6 +6286,76 @@
                 "5c1806c7948b1c3c4fbf1081"
               ],
               "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "1d4f781e-3948-46c9-85e5-889c63462d1d",
+          "name": "Find Linked Public User with Id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
+                "type": "text/javascript",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent\"] = jsonData.id;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/publicusers/findone?filter={\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "publicusers",
+                "findone"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}",
+                  "equals": true
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
