@@ -832,7 +832,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "93db0d3b-bbfe-468b-a648-dc902c0847aa",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
                   "let jsonData = JSON.parse(responseBody);",
@@ -873,23 +873,27 @@
                   "    console.log(postStatus);",
                   "});",
                   ""
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "profiles"
+                "projects"
               ],
               "query": [
                 {
