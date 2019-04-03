@@ -4184,7 +4184,7 @@
       "item": [
         {
           "_postman_id": "c7f53d73-ae71-40b5-bb43-01b3bb45dac5",
-          "name": "Find tagBundle",
+          "name": "Find tagBundle by tagCategory slug",
           "request": {
             "method": "GET",
             "header": [],
