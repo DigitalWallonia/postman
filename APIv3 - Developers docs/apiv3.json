@@ -4193,25 +4193,24 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?access_token={{v3_token}}&filter={\"where\":{\"v2Id\":\"9\"}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.v2Id\":\"9\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "tagCategories",
-                "findOne"
+                "tagBundles"
               ],
               "query": [
                 {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
+                  "key": "filter",
+                  "value": "{\"where\":{\"tagCategory.v2Id\":\"9\"}}",
                   "equals": true
                 },
                 {
-                  "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"9\"}}",
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
                   "equals": true
                 }
               ]
