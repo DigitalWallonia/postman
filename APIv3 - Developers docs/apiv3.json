@@ -4184,7 +4184,7 @@
       "item": [
         {
           "_postman_id": "c7f53d73-ae71-40b5-bb43-01b3bb45dac5",
-          "name": "Find tagBundle by tagCategory slug",
+          "name": "Get tagBundles by tagCategory slug",
           "request": {
             "method": "GET",
             "header": [],
@@ -4258,7 +4258,7 @@
         },
         {
           "_postman_id": "4755cd2d-8a52-4624-a8b3-2e1cd38578bb",
-          "name": "Find tagCategory",
+          "name": "Find tagCategory with v2Id",
           "request": {
             "method": "GET",
             "header": [],
