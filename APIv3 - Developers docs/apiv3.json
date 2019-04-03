@@ -4292,7 +4292,7 @@
         },
         {
           "_postman_id": "b32740fb-7181-4694-9da8-1023fe3a80f8",
-          "name": "Delete tagCategory Copy",
+          "name": "Delete tagBundle",
           "request": {
             "method": "DELETE",
             "header": [],
