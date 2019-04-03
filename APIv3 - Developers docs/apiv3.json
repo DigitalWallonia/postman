@@ -4220,17 +4220,17 @@
           "response": []
         },
         {
-          "_postman_id": "5ad84ccb-a240-44fd-947c-96fadf385692",
-          "name": "Delete tagCategory",
+          "_postman_id": "4755cd2d-8a52-4624-a8b3-2e1cd38578bb",
+          "name": "Find tagCategory",
           "request": {
-            "method": "DELETE",
+            "method": "GET",
             "header": [],
             "body": {
               "mode": "raw",
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?access_token={{v3_token}}&filter={\"where\":{\"v2Id\":\"9\"}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4238,13 +4238,18 @@
               "path": [
                 "api",
                 "tagCategories",
-                "5ab93b05fb6a4c11bba09622"
+                "findOne"
               ],
               "query": [
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}",
                   "equals": true
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"9\"}}",
+                  "type": "text"
                 }
               ]
             }
@@ -4252,8 +4257,8 @@
           "response": []
         },
         {
-          "_postman_id": "4755cd2d-8a52-4624-a8b3-2e1cd38578bb",
-          "name": "Find tagCategory",
+          "_postman_id": "5ad84ccb-a240-44fd-947c-96fadf385692",
+          "name": "Delete tagCategory",
           "request": {
             "method": "DELETE",
             "header": [],
