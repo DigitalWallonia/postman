@@ -4217,6 +4217,42 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "711cb430-fb2c-4e7e-a0ae-3518a08201d8",
+          "name": "Get tagBundles by tagCategory slug Copy",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.slug.slug\":\"marches\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagBundles"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"tagCategory.slug.slug\":\"marches\"}}",
+                  "equals": true
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
