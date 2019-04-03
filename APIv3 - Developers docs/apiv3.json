@@ -4301,15 +4301,15 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles/5ab93b0afb6a4c11bba0963e?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "tagCategories",
-                "5ab93b05fb6a4c11bba09622"
+                "tagBundles",
+                "5ab93b0afb6a4c11bba0963e"
               ],
               "query": [
                 {
