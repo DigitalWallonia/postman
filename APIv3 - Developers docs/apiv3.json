@@ -4230,7 +4230,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/10?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4238,7 +4238,39 @@
               "path": [
                 "api",
                 "tagCategories",
-                "10"
+                "5ab93b05fb6a4c11bba09622"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "4755cd2d-8a52-4624-a8b3-2e1cd38578bb",
+          "name": "Delete tagCategory Copy",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "5ab93b05fb6a4c11bba09622"
               ],
               "query": [
                 {
