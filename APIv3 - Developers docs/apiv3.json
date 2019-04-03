@@ -4193,7 +4193,7 @@
               "raw": ""
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.v2Id\":\"9\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.slug.slug\":\"marches\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4205,7 +4205,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tagCategory.v2Id\":\"9\"}}",
+                  "value": "{\"where\":{\"tagCategory.slug.slug\":\"marches\"}}",
                   "equals": true
                 },
                 {
