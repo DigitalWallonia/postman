@@ -4289,6 +4289,38 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "b32740fb-7181-4694-9da8-1023fe3a80f8",
+          "name": "Delete tagCategory Copy",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "5ab93b05fb6a4c11bba09622"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -4368,38 +4400,6 @@
         {
           "_postman_id": "5ad84ccb-a240-44fd-947c-96fadf385692",
           "name": "Delete tagCategory",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tagCategories",
-                "5ab93b05fb6a4c11bba09622"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "_postman_id": "b32740fb-7181-4694-9da8-1023fe3a80f8",
-          "name": "Delete tagCategory Copy",
           "request": {
             "method": "DELETE",
             "header": [],
