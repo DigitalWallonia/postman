@@ -4187,7 +4187,39 @@
       "_postman_id": "28177638-1d76-f231-4181-1942413b4c56",
       "name": "TagCategory",
       "description": null,
-      "item": []
+      "item": [
+        {
+          "_postman_id": "49b7404d-3b32-47d9-ae01-08a66685c103",
+          "name": "List tagCategories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "956fbc92-5d6f-59a1-234d-8a21362f2340",
