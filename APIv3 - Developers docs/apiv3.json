@@ -4181,7 +4181,45 @@
       "_postman_id": "b774d2e0-a592-9951-d3dd-73965d312c60",
       "name": "TagBundle",
       "description": null,
-      "item": []
+      "item": [
+        {
+          "_postman_id": "c7f53d73-ae71-40b5-bb43-01b3bb45dac5",
+          "name": "Find tagBundle",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?access_token={{v3_token}}&filter={\"where\":{\"v2Id\":\"9\"}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tagCategories",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}",
+                  "equals": true
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2Id\":\"9\"}}",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "28177638-1d76-f231-4181-1942413b4c56",
@@ -4249,7 +4287,7 @@
                 {
                   "key": "filter",
                   "value": "{\"where\":{\"v2Id\":\"9\"}}",
-                  "type": "text"
+                  "equals": true
                 }
               ]
             }
