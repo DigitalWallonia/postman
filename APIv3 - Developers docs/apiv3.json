@@ -6359,6 +6359,71 @@
       "_postman_id": "89b81867-259e-4718-9342-a18fc682ebda"
     },
     {
+      "name": "CTA",
+      "item": [
+        {
+          "name": "CTA List",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7b4e7f29-8dc9-455c-b25b-111ace905397",
+                "exec": [
+                  "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+                  "if (responseCode.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "    if(jsonData.id){",
+                  "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+                  "        postman.setNextRequest(\"Ajout d'un environnement\");",
+                  "    }else{",
+                  "        postman.setNextRequest(null);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "172c08aa-a7b2-475c-baf6-4a7decdd8caa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{v3_email}}\",\n  \"password\": \"{{v3_password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/cta?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "cta"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "69261b98-3f08-4a81-82b5-a11d2d4706c2"
+    },
+    {
       "name": "Count Profils New Style",
       "event": [
         {
@@ -6636,65 +6701,6 @@
               "key": "where[status]",
               "value": "Published"
             },
-            {
-              "key": "access_token",
-              "value": "{{v3_token}}"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "CTA List",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "7b4e7f29-8dc9-455c-b25b-111ace905397",
-            "exec": [
-              "tests[\"response code is 200 OK\"] = responseCode.code === 200",
-              "if (responseCode.code === 200) {",
-              "    let jsonData = JSON.parse(responseBody);",
-              "    if(jsonData.id){",
-              "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
-              "        postman.setNextRequest(\"Ajout d'un environnement\");",
-              "    }else{",
-              "        postman.setNextRequest(null);",
-              "    }",
-              "}"
-            ],
-            "type": "text/javascript"
-          }
-        }
-      ],
-      "_postman_id": "172c08aa-a7b2-475c-baf6-4a7decdd8caa",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"email\": \"{{v3_email}}\",\n  \"password\": \"{{v3_password}}\"\n}"
-        },
-        "url": {
-          "raw": "{{protocol}}://{{domain}}/api/cta?access_token={{v3_token}}",
-          "protocol": "{{protocol}}",
-          "host": [
-            "{{domain}}"
-          ],
-          "path": [
-            "api",
-            "cta"
-          ],
-          "query": [
             {
               "key": "access_token",
               "value": "{{v3_token}}"
