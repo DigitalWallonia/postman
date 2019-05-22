@@ -6,12 +6,9 @@
   },
   "item": [
     {
-      "_postman_id": "2b7254c0-740a-076a-293a-8da471c69f85",
       "name": "Auth",
-      "description": null,
       "item": [
         {
-          "_postman_id": "6e4e8322-e303-4b72-bf56-cc756d53477e",
           "name": "Get Token",
           "event": [
             {
@@ -34,6 +31,7 @@
               }
             }
           ],
+          "_postman_id": "6e4e8322-e303-4b72-bf56-cc756d53477e",
           "request": {
             "method": "POST",
             "header": [
@@ -51,6 +49,7 @@
           "response": []
         }
       ],
+      "_postman_id": "2b7254c0-740a-076a-293a-8da471c69f85",
       "event": [
         {
           "listen": "prerequest",
@@ -75,12 +74,9 @@
       ]
     },
     {
-      "_postman_id": "aef2f905-27bb-6681-a973-f8251f2a4ee5",
       "name": "Post",
-      "description": null,
       "item": [
         {
-          "_postman_id": "85da5afa-3207-806f-6d67-a7d257c80abc",
           "name": "Ajout d'une publication",
           "event": [
             {
@@ -112,6 +108,7 @@
               }
             }
           ],
+          "_postman_id": "85da5afa-3207-806f-6d67-a7d257c80abc",
           "request": {
             "method": "POST",
             "header": [
@@ -129,7 +126,6 @@
           "response": []
         },
         {
-          "_postman_id": "4bb28c23-3692-6b5d-9871-cb31a2b6cf4f",
           "name": "Liste des publications",
           "event": [
             {
@@ -177,13 +173,10 @@
               }
             }
           ],
+          "_postman_id": "4bb28c23-3692-6b5d-9871-cb31a2b6cf4f",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"limit\":10}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -197,13 +190,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10}",
-                  "equals": true
+                  "value": "{\"limit\":10}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             },
@@ -212,7 +203,6 @@
           "response": []
         },
         {
-          "_postman_id": "6ccc5fbb-e87c-1331-1830-e37079a6bddb",
           "name": "D\u00e9tail d'une publication",
           "event": [
             {
@@ -235,19 +225,15 @@
               }
             }
           ],
+          "_postman_id": "6ccc5fbb-e87c-1331-1830-e37079a6bddb",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}&access_token={{v3_token}}"
           },
           "response": []
         },
         {
-          "_postman_id": "ff2f2595-87d9-c28b-ddc1-68b9e5486782",
           "name": "Supprimer une publication",
           "event": [
             {
@@ -265,19 +251,15 @@
               }
             }
           ],
+          "_postman_id": "ff2f2595-87d9-c28b-ddc1-68b9e5486782",
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "5b11ca7f-68f5-62c7-2ccb-991741b70ff4",
           "name": "D\u00e9tail d'une publication inexistante",
           "event": [
             {
@@ -298,19 +280,15 @@
               }
             }
           ],
+          "_postman_id": "5b11ca7f-68f5-62c7-2ccb-991741b70ff4",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "7ff79f4f-1c31-e761-f642-c941ff900004",
           "name": "Recherche Post by slug",
           "event": [
             {
@@ -327,13 +305,10 @@
               }
             }
           ],
+          "_postman_id": "7ff79f4f-1c31-e761-f642-c941ff900004",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/posts/findOne?filter={\"where\":{ \"slug.slug\":\"business\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -348,13 +323,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"business\"}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"slug.slug\":\"business\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -362,8 +335,8 @@
           "response": []
         },
         {
-          "_postman_id": "fa8affb6-5931-8284-a420-32bd6d0b4c89",
           "name": "Ajout d'un slug",
+          "_postman_id": "fa8affb6-5931-8284-a420-32bd6d0b4c89",
           "request": {
             "method": "POST",
             "header": [
@@ -391,8 +364,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -400,8 +372,8 @@
           "response": []
         },
         {
-          "_postman_id": "6cf5fcff-c430-9289-9fe9-2f44ee4f3d6f",
           "name": "Archivage d'un slug",
+          "_postman_id": "6cf5fcff-c430-9289-9fe9-2f44ee4f3d6f",
           "request": {
             "method": "PUT",
             "header": [
@@ -430,8 +402,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -439,7 +410,6 @@
           "response": []
         },
         {
-          "_postman_id": "c698e59c-f4a1-5d95-99fd-8c22c3f03283",
           "name": "Updates All Post Where Tags",
           "event": [
             {
@@ -453,6 +423,7 @@
               }
             }
           ],
+          "_postman_id": "c698e59c-f4a1-5d95-99fd-8c22c3f03283",
           "request": {
             "method": "POST",
             "header": [
@@ -479,13 +450,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"tags.v2Id\":196}",
-                  "equals": true
+                  "value": "{\"tags.v2Id\":196}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -493,12 +462,15 @@
           "response": []
         },
         {
-          "_postman_id": "71f9e05d-03c2-fa8b-1c7a-b66456183272",
           "name": "Find Posts match v2Id tag",
+          "_postman_id": "71f9e05d-03c2-fa8b-1c7a-b66456183272",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"where\":{\"tags.v2Id\":196}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -512,13 +484,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tags.v2Id\":196}}",
-                  "equals": true
+                  "value": "{\"where\":{\"tags.v2Id\":196}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -526,7 +496,6 @@
           "response": []
         },
         {
-          "_postman_id": "16e07280-3832-c8ad-14f5-19f1ec4fe89f",
           "name": "Updates All Post Status Where Tags",
           "event": [
             {
@@ -540,6 +509,7 @@
               }
             }
           ],
+          "_postman_id": "16e07280-3832-c8ad-14f5-19f1ec4fe89f",
           "request": {
             "method": "POST",
             "header": [
@@ -566,13 +536,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"tags.v2Id\":196}",
-                  "equals": true
+                  "value": "{\"tags.v2Id\":196}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -580,7 +548,6 @@
           "response": []
         },
         {
-          "_postman_id": "ec0e111e-6d27-1c69-9cda-3149469909e0",
           "name": "Updates All Post Tags Where Tags",
           "event": [
             {
@@ -594,6 +561,7 @@
               }
             }
           ],
+          "_postman_id": "ec0e111e-6d27-1c69-9cda-3149469909e0",
           "request": {
             "method": "POST",
             "header": [
@@ -620,13 +588,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"tags.v2Id\":196}",
-                  "equals": true
+                  "value": "{\"tags.v2Id\":196}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -634,12 +600,15 @@
           "response": []
         },
         {
-          "_postman_id": "cd847285-fe1e-dbc7-16bf-b2385d831a8b",
           "name": "Find Posts match v2Id contact",
+          "_postman_id": "cd847285-fe1e-dbc7-16bf-b2385d831a8b",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/posts?filter={\"where\":{\"contacts.v2Id\":36292}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -653,28 +622,24 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"contacts.v2Id\":36292}}",
-                  "equals": true
+                  "value": "{\"where\":{\"contacts.v2Id\":36292}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "aef2f905-27bb-6681-a973-f8251f2a4ee5"
     },
     {
-      "_postman_id": "60c46c28-e591-d2c9-b24a-643277aaf8f4",
       "name": "Project",
-      "description": null,
       "item": [
         {
-          "_postman_id": "b18561be-1f25-5a8e-21b5-8c501690fb75",
           "name": "Ajout Projet",
           "event": [
             {
@@ -714,6 +679,7 @@
               }
             }
           ],
+          "_postman_id": "b18561be-1f25-5a8e-21b5-8c501690fb75",
           "request": {
             "method": "POST",
             "header": [
@@ -826,7 +792,6 @@
           ]
         },
         {
-          "_postman_id": "39ca6c62-9ca2-d8b2-7bba-ce8a4d124d9e",
           "name": "Liste des projets",
           "event": [
             {
@@ -878,13 +843,10 @@
               }
             }
           ],
+          "_postman_id": "39ca6c62-9ca2-d8b2-7bba-ce8a4d124d9e",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -898,8 +860,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -907,7 +868,6 @@
           "response": []
         },
         {
-          "_postman_id": "8fc26f17-287c-a4eb-1360-149cd031725d",
           "name": "D\u00e9tail d'un projet",
           "event": [
             {
@@ -929,10 +889,14 @@
               }
             }
           ],
+          "_postman_id": "8fc26f17-287c-a4eb-1360-149cd031725d",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -947,8 +911,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -956,7 +919,6 @@
           "response": []
         },
         {
-          "_postman_id": "c289c197-519e-4cde-2f27-d98b37d456ac",
           "name": "Supression d'un projet",
           "event": [
             {
@@ -975,13 +937,10 @@
               }
             }
           ],
+          "_postman_id": "c289c197-519e-4cde-2f27-d98b37d456ac",
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -996,8 +955,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -1005,7 +963,6 @@
           "response": []
         },
         {
-          "_postman_id": "ea3ee641-c058-c960-2971-1bc79c976964",
           "name": "D\u00e9tail d'un projet inexistant",
           "event": [
             {
@@ -1026,20 +983,17 @@
               }
             }
           ],
+          "_postman_id": "ea3ee641-c058-c960-2971-1bc79c976964",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/projects/{{projetId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "3d80b806-d67b-551f-694a-df2c6857adb1",
           "name": "Add Image to Commerce Connect\u00e9",
+          "_postman_id": "3d80b806-d67b-551f-694a-df2c6857adb1",
           "request": {
             "method": "PATCH",
             "header": [
@@ -1057,8 +1011,8 @@
           "response": []
         },
         {
-          "_postman_id": "b4df221e-dae9-255a-e810-e14a3934f290",
           "name": "Add Image to Ecole num\u00e9rique",
+          "_postman_id": "b4df221e-dae9-255a-e810-e14a3934f290",
           "request": {
             "method": "PATCH",
             "header": [
@@ -1076,8 +1030,8 @@
           "response": []
         },
         {
-          "_postman_id": "14315a5d-659b-1cbb-7df0-56adf56165d0",
           "name": "Add image to Made Different",
+          "_postman_id": "14315a5d-659b-1cbb-7df0-56adf56165d0",
           "request": {
             "method": "PATCH",
             "header": [
@@ -1095,8 +1049,8 @@
           "response": []
         },
         {
-          "_postman_id": "940dcd82-4f92-99c3-d277-01e5716ec85b",
           "name": "Add Image to KIKK Festival",
+          "_postman_id": "940dcd82-4f92-99c3-d277-01e5716ec85b",
           "request": {
             "method": "PATCH",
             "header": [
@@ -1114,7 +1068,6 @@
           "response": []
         },
         {
-          "_postman_id": "a8f2739c-4ca1-4eca-f22b-a85a3b02d998",
           "name": "Add Image to Wallcode",
           "event": [
             {
@@ -1134,6 +1087,7 @@
               }
             }
           ],
+          "_postman_id": "a8f2739c-4ca1-4eca-f22b-a85a3b02d998",
           "request": {
             "method": "PATCH",
             "header": [
@@ -1151,7 +1105,6 @@
           "response": []
         },
         {
-          "_postman_id": "cfe640c7-525a-9005-19d0-cdc6765da0f4",
           "name": "Add Title and Description FR / EN",
           "event": [
             {
@@ -1173,6 +1126,7 @@
               }
             }
           ],
+          "_postman_id": "cfe640c7-525a-9005-19d0-cdc6765da0f4",
           "request": {
             "method": "PATCH",
             "header": [
@@ -1190,12 +1144,15 @@
           "response": []
         },
         {
-          "_postman_id": "38bcd397-154e-adf3-8e8d-f16fc818ac81",
           "name": "Recherche Projet",
+          "_postman_id": "38bcd397-154e-adf3-8e8d-f16fc818ac81",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"v2Id\":324}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1210,13 +1167,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":324}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"v2Id\":324}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -1224,7 +1179,6 @@
           "response": []
         },
         {
-          "_postman_id": "bbedb821-2e1c-b2c6-44cc-871551b74eb1",
           "name": "Profil d'un projet",
           "event": [
             {
@@ -1246,19 +1200,15 @@
               }
             }
           ],
+          "_postman_id": "bbedb821-2e1c-b2c6-44cc-871551b74eb1",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/profiles"
           },
           "response": []
         },
         {
-          "_postman_id": "fa860380-2d27-0a04-bf0b-aa7c19e011a4",
           "name": "Events d'un projet",
           "event": [
             {
@@ -1289,10 +1239,14 @@
               }
             }
           ],
+          "_postman_id": "fa860380-2d27-0a04-bf0b-aa7c19e011a4",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/5a65e9ebc2c99942f22cad44/events?filter={\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1308,13 +1262,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -1322,64 +1274,48 @@
           "response": []
         },
         {
-          "_postman_id": "f7cca8fa-47cd-b9cc-ee7b-8f5a9e85ab74",
           "name": "Lien profile / project",
+          "_postman_id": "f7cca8fa-47cd-b9cc-ee7b-8f5a9e85ab74",
           "request": {
             "method": "PUT",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/profiles/46c2a320-cba6-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "0fb7564b-5c74-d2f8-9faa-b3ba611d625d",
           "name": "Lien event / project",
+          "_postman_id": "0fb7564b-5c74-d2f8-9faa-b3ba611d625d",
           "request": {
             "method": "PUT",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/events/dadf2f90-cbad-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "f8765526-06fa-a6b8-dd4d-78137e52b099",
           "name": "Lien post / project",
+          "_postman_id": "f8765526-06fa-a6b8-dd4d-78137e52b099",
           "request": {
             "method": "PUT",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/posts/61808ec0-cdd6-11e7-a5ae-17fd7f215200/projects/rel/{{projetId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "3fb9c757-f140-ba7a-7a37-c7ca375a0196",
           "name": "Lien pressReview / project",
+          "_postman_id": "3fb9c757-f140-ba7a-7a37-c7ca375a0196",
           "request": {
             "method": "PUT",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/pressReviews/b3c0db40-d34e-11e7-afa2-9d3a45678716/projects/rel/{{projetId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "41717d2d-62e1-6ca9-92b7-2bf9e87e83c0",
           "name": "Lien project Contact",
+          "_postman_id": "41717d2d-62e1-6ca9-92b7-2bf9e87e83c0",
           "request": {
             "method": "POST",
             "header": [
@@ -1397,8 +1333,8 @@
           "response": []
         },
         {
-          "_postman_id": "0863f4cd-351b-d828-6828-4238bf80f5a3",
           "name": "Lien project Tag",
+          "_postman_id": "0863f4cd-351b-d828-6828-4238bf80f5a3",
           "request": {
             "method": "POST",
             "header": [
@@ -1416,8 +1352,8 @@
           "response": []
         },
         {
-          "_postman_id": "0897a106-f765-bde3-4357-59725292e79a",
           "name": "Lien project Th\u00e8me",
+          "_postman_id": "0897a106-f765-bde3-4357-59725292e79a",
           "request": {
             "method": "POST",
             "header": [
@@ -1435,7 +1371,6 @@
           "response": []
         },
         {
-          "_postman_id": "35081a2e-08ef-6da1-a15c-33a689698ffe",
           "name": "Projects + Liaisons",
           "event": [
             {
@@ -1466,13 +1401,10 @@
               }
             }
           ],
+          "_postman_id": "35081a2e-08ef-6da1-a15c-33a689698ffe",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?filter={\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1487,13 +1419,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -1501,7 +1431,6 @@
           "response": []
         },
         {
-          "_postman_id": "37dfd7e7-7294-9ffa-1c46-36fbf8cc4091",
           "name": "Projects FindOne",
           "event": [
             {
@@ -1519,13 +1448,10 @@
               }
             }
           ],
+          "_postman_id": "37dfd7e7-7294-9ffa-1c46-36fbf8cc4091",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{\"and\":[{\"slug.slug\":\"wallcode\"},{\"status\":\"Published\"}]},\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"and\":[{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"posts\",\"scope\":{\"where\":{\"and\":[{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\":[{\"tags.slug.slug\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{\"endDate\":{\"gte\":\"2017-11-27T09:45:59.897Z\"}},{\"tags.slug.slug\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}}]}",
               "protocol": "{{protocol}}",
@@ -1540,8 +1466,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"wallcode\"},{\"status\":\"Published\"}]},\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"and\":[{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"posts\",\"scope\":{\"where\":{\"and\":[{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\":[{\"tags.slug.slug\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{\"endDate\":{\"gte\":\"2017-11-27T09:45:59.897Z\"}},{\"tags.slug.slug\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}}]}",
-                  "equals": true
+                  "value": "{\"where\":{\"and\":[{\"slug.slug\":\"wallcode\"},{\"status\":\"Published\"}]},\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"and\":[{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"posts\",\"scope\":{\"where\":{\"and\":[{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\":[{\"tags.slug.slug\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{\"endDate\":{\"gte\":\"2017-11-27T09:45:59.897Z\"}},{\"tags.slug.slug\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"en\"}]}}}]}"
                 }
               ]
             }
@@ -1549,7 +1474,6 @@
           "response": []
         },
         {
-          "_postman_id": "92c53f17-6b6b-48ba-76bb-c7ee69456301",
           "name": "Count Projects",
           "event": [
             {
@@ -1568,13 +1492,10 @@
               }
             }
           ],
+          "_postman_id": "92c53f17-6b6b-48ba-76bb-c7ee69456301",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/count?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1589,8 +1510,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -1598,7 +1518,6 @@
           "response": []
         },
         {
-          "_postman_id": "ccb46574-b9dc-aed2-2ac4-81fdacd6e8e6",
           "name": "Count Published Projects",
           "event": [
             {
@@ -1629,13 +1548,10 @@
               }
             }
           ],
+          "_postman_id": "ccb46574-b9dc-aed2-2ac4-81fdacd6e8e6",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/count?where={\"status\":\"Published\"}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1650,13 +1566,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"status\":\"Published\"}",
-                  "equals": true
+                  "value": "{\"status\":\"Published\"}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -1664,7 +1578,6 @@
           "response": []
         },
         {
-          "_postman_id": "1b8ad52b-972c-d513-3aea-2ef0bf7b3930",
           "name": "Count Futures Events d'un projet",
           "event": [
             {
@@ -1695,10 +1608,14 @@
               }
             }
           ],
+          "_postman_id": "1b8ad52b-972c-d513-3aea-2ef0bf7b3930",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}/events/count?where[endDate][gte]={{currentDate}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1715,18 +1632,15 @@
               "query": [
                 {
                   "key": "where[endDate][gte]",
-                  "value": "{{currentDate}}",
-                  "equals": true
+                  "value": "{{currentDate}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "where",
                   "value": "{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}",
-                  "equals": true,
                   "disabled": true
                 }
               ]
@@ -1735,7 +1649,6 @@
           "response": []
         },
         {
-          "_postman_id": "ccad3d4e-9f99-6086-76f0-3c70f549b444",
           "name": "Projects + Liaisons Profiles",
           "event": [
             {
@@ -1766,13 +1679,10 @@
               }
             }
           ],
+          "_postman_id": "ccad3d4e-9f99-6086-76f0-3c70f549b444",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?filter={\"include\":[{\"relation\":\"pressReviews\",\"skip\":0,\"limit\":2,\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"posts\",\"scope\":{\"skip\":0,\"limit\":2,\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]},\"skip\":0,\"limit\":1}},{\"relation\":\"events\",\"scope\":{\"skip\":0,\"limit\":2,\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1787,13 +1697,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"skip\":0,\"limit\":2,\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"posts\",\"scope\":{\"skip\":0,\"limit\":2,\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]},\"skip\":0,\"limit\":1}},{\"relation\":\"events\",\"scope\":{\"skip\":0,\"limit\":2,\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"skip\":0,\"limit\":2,\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"posts\",\"scope\":{\"skip\":0,\"limit\":2,\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]},\"skip\":0,\"limit\":1}},{\"relation\":\"events\",\"scope\":{\"skip\":0,\"limit\":2,\"where\":{\"and\": [{\"endDate\":{\"gte\":\"{{currentDate}}\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "filter[skip]",
@@ -1813,7 +1721,6 @@
           "response": []
         },
         {
-          "_postman_id": "522b7734-5756-141f-df5b-bf8373aff7b6",
           "name": "Projects + Liaisons Event",
           "event": [
             {
@@ -1844,13 +1751,10 @@
               }
             }
           ],
+          "_postman_id": "522b7734-5756-141f-df5b-bf8373aff7b6",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"id\":\"{{projectId}}\"},\"include\":{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"}]}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1865,13 +1769,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"id\":\"{{projectId}}\"},\"include\":{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"}]}}}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"id\":\"{{projectId}}\"},\"include\":{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"}]}}}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "filter[skip]",
@@ -1891,7 +1793,6 @@
           "response": []
         },
         {
-          "_postman_id": "a8a40b03-13d3-5350-05d1-629e2f82ed84",
           "name": "Projects + Liaisons Event - Bis",
           "event": [
             {
@@ -1922,13 +1823,10 @@
               }
             }
           ],
+          "_postman_id": "a8a40b03-13d3-5350-05d1-629e2f82ed84",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/findOne?filter={\"where\":{ \"id\":\"{{projectId}}\"},\"include\":{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"}]}}}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -1943,13 +1841,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"id\":\"{{projectId}}\"},\"include\":{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"}]}}}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"id\":\"{{projectId}}\"},\"include\":{\"relation\":\"events\",\"scope\":{\"where\":{\"and\":[{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"}]}}}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "filter[skip]",
@@ -1969,7 +1865,6 @@
           "response": []
         },
         {
-          "_postman_id": "a8f1bdae-9aef-f0b2-27d5-1cb3c1aea8c3",
           "name": "Count Projects Related",
           "event": [
             {
@@ -2000,10 +1895,14 @@
               }
             }
           ],
+          "_postman_id": "a8f1bdae-9aef-f0b2-27d5-1cb3c1aea8c3",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?filter={\"fields\":[\"id\"],\"include\":[{\"relation\":\"events\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\", \"startDate\", \"endDate\", \"images\",\"venueAdditionalInformation\",\"venueAddress\"],\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]}}},{\"relation\":\"profiles\",\"scope\":{\"fields\":[\"id\", \"slug\",\"shortTitle\", \"title\", \"addresses\", \"urls\",\"emailAddresses\",\"updatedAt\"],\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"}]}}},{\"relation\":\"posts\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\",\"images\"],\"where\":{\"and\":[{\"status\":\"Published\"},{\"publicationDate\":{\"lte\":\"{{currentDate}}\"}}]}}},{\"relation\":\"pressReviews\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\",\"shortDescription\",\"publicationDate\", \"urls\"],\"where\":{\"and\":[{\"status\":\"Published\"}]}}}]}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2018,13 +1917,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"fields\":[\"id\"],\"include\":[{\"relation\":\"events\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\", \"startDate\", \"endDate\", \"images\",\"venueAdditionalInformation\",\"venueAddress\"],\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]}}},{\"relation\":\"profiles\",\"scope\":{\"fields\":[\"id\", \"slug\",\"shortTitle\", \"title\", \"addresses\", \"urls\",\"emailAddresses\",\"updatedAt\"],\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"}]}}},{\"relation\":\"posts\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\",\"images\"],\"where\":{\"and\":[{\"status\":\"Published\"},{\"publicationDate\":{\"lte\":\"{{currentDate}}\"}}]}}},{\"relation\":\"pressReviews\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\",\"shortDescription\",\"publicationDate\", \"urls\"],\"where\":{\"and\":[{\"status\":\"Published\"}]}}}]}",
-                  "equals": true
+                  "value": "{\"fields\":[\"id\"],\"include\":[{\"relation\":\"events\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\", \"startDate\", \"endDate\", \"images\",\"venueAdditionalInformation\",\"venueAddress\"],\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]}}},{\"relation\":\"profiles\",\"scope\":{\"fields\":[\"id\", \"slug\",\"shortTitle\", \"title\", \"addresses\", \"urls\",\"emailAddresses\",\"updatedAt\"],\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"}]}}},{\"relation\":\"posts\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\",\"images\"],\"where\":{\"and\":[{\"status\":\"Published\"},{\"publicationDate\":{\"lte\":\"{{currentDate}}\"}}]}}},{\"relation\":\"pressReviews\",\"scope\":{\"fields\":[\"id\", \"slug\",\"title\",\"shortDescription\",\"publicationDate\", \"urls\"],\"where\":{\"and\":[{\"status\":\"Published\"}]}}}]}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2032,7 +1929,6 @@
           "response": []
         },
         {
-          "_postman_id": "70493f18-088d-8466-985f-821fdea3fc48",
           "name": "Get Token",
           "event": [
             {
@@ -2051,6 +1947,7 @@
               }
             }
           ],
+          "_postman_id": "70493f18-088d-8466-985f-821fdea3fc48",
           "request": {
             "method": "POST",
             "header": [
@@ -2067,15 +1964,13 @@
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "60c46c28-e591-d2c9-b24a-643277aaf8f4"
     },
     {
-      "_postman_id": "4f5bf7de-a89b-3a31-0da0-b93693aa85c6",
       "name": "Missions",
-      "description": null,
       "item": [
         {
-          "_postman_id": "5416da43-551c-b75b-5526-63b13ea4c8e9",
           "name": "Liste des missions",
           "event": [
             {
@@ -2126,13 +2021,10 @@
               }
             }
           ],
+          "_postman_id": "5416da43-551c-b75b-5526-63b13ea4c8e9",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/missions?filter={\"limit\":5}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2146,13 +2038,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":5}",
-                  "equals": true
+                  "value": "{\"limit\":5}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2160,7 +2050,6 @@
           "response": []
         },
         {
-          "_postman_id": "91ca3264-6d55-3263-b36e-da6c776c1a6e",
           "name": "D\u00e9tail d'une mission",
           "event": [
             {
@@ -2182,13 +2071,10 @@
               }
             }
           ],
+          "_postman_id": "91ca3264-6d55-3263-b36e-da6c776c1a6e",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2203,8 +2089,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2212,7 +2097,6 @@
           "response": []
         },
         {
-          "_postman_id": "2cfb50ac-45d3-e21c-842f-096e817b3528",
           "name": "Add Image to CES 2018",
           "event": [
             {
@@ -2233,6 +2117,7 @@
               }
             }
           ],
+          "_postman_id": "2cfb50ac-45d3-e21c-842f-096e817b3528",
           "request": {
             "method": "PATCH",
             "header": [
@@ -2259,8 +2144,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2268,7 +2152,6 @@
           "response": []
         },
         {
-          "_postman_id": "b1cbc8f2-902a-ad1d-d509-3e588b652d55",
           "name": "Find Contact CES2018",
           "event": [
             {
@@ -2289,13 +2172,10 @@
               }
             }
           ],
+          "_postman_id": "b1cbc8f2-902a-ad1d-d509-3e588b652d55",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"v2Id\":\"12207\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2309,11 +2189,9 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"12207\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"v2Id\":\"12207\"}}"
                 },
                 {
-                  "equals": true,
                   "key": "",
                   "value": "",
                   "disabled": true
@@ -2326,8 +2204,7 @@
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2335,8 +2212,8 @@
           "response": []
         },
         {
-          "_postman_id": "8c79ed04-cf13-e83b-75a1-9b622eae06f8",
           "name": "Link Contact to CES",
+          "_postman_id": "8c79ed04-cf13-e83b-75a1-9b622eae06f8",
           "request": {
             "method": "POST",
             "header": [
@@ -2350,7 +2227,7 @@
               "raw": "    {\n        \"v2Id\": 12207,\n        \"firstName\": \"Pascal\",\n        \"lastName\": \"Butera\",\n        \"emailAddresses\": [\n            \"pascal.butera@adn.aei.be\",\n            \"butera.pascal@gmail.com\",\n            \"pascal_butera@msn.com\",\n            \"pascal.butera@adn.be\"\n        ],\n        \"phoneNumbers\": [\n            3281778061,\n            32496422631\n        ],\n        \"faxNumbers\": [\n            3281778099\n        ],\n        \"id\": \"5a25d74dce18e431f484b682\",\n        \"createdAt\": \"2014-11-27T09:23:55.000Z\",\n        \"updatedAt\": \"2017-12-04T23:16:29.068Z\",\n        \"images\": [\n            {\n                \"type\": \"Photo\",\n                \"container\": \"digitalwallonia-images\",\n                \"url\": \"https://dev-api.digitalwallonia.be/v2/ressources/22954/awt-pascal-butera-5-71-hd\",\n                \"id\": \"5a25d74d0da5b\"\n            }\n        ],\n        \"tags\": [\n            {\n                \"v2Id\": 35,\n                \"status\": \"Published\",\n                \"id\": \"5a25d5b1ce18e431f484a9d0\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"#mforum\",\n                        \"id\": \"5a25d5b1eb872\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Communaut\u00e9 des entreprises et partenaires du #mforum. Le #mforum est une initiative de Digital Wallonia et Proximus qui vise \u00e0 d\u00e9crypter les enjeux et opportunit\u00e9s professionnelles des technologies mobiles et de l'IoT\",\n                        \"id\": \"5a25d5b1eb888\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"mforum\",\n                        \"id\": \"5a25d5b1eb860\"\n                    }\n                ],\n                \"tagBundle\": {\n                    \"v2Id\": 5,\n                    \"status\": \"Published\",\n                    \"id\": \"5a25d5afce18e431f484a914\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"r\u00e9seaux\",\n                            \"id\": \"5a25d5afe5196\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Membres des r\u00e9seaux wallons li\u00e9s au num\u00e9rique\",\n                            \"id\": \"5a25d5afe51a9\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"reseaux\",\n                            \"id\": \"5a25d5afe5144\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-12-04T23:09:35.942Z\",\n                    \"updatedAt\": \"2017-12-04T23:09:35.942Z\",\n                    \"tagCategory\": {\n                        \"v2Id\": 3,\n                        \"status\": \"Published\",\n                        \"id\": \"5a25d5afce18e431f484a90b\",\n                        \"title\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"communaut\u00e9s\",\n                                \"id\": \"5a25d5af95342\"\n                            }\n                        ],\n                        \"shortDescription\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                                \"id\": \"5a25d5af95348\"\n                            }\n                        ],\n                        \"slug\": [\n                            {\n                                \"language\": \"fre\",\n                                \"slug\": \"communautes\",\n                                \"id\": \"5a25d5af9533a\"\n                            }\n                        ],\n                        \"createdAt\": \"2017-12-04T23:09:35.612Z\",\n                        \"updatedAt\": \"2017-12-04T23:09:35.612Z\"\n                    }\n                },\n                \"createdAt\": \"2017-12-04T23:09:37.968Z\",\n                \"updatedAt\": \"2017-12-04T23:09:37.968Z\"\n            },\n            {\n                \"v2Id\": 36,\n                \"status\": \"Hidden\",\n                \"id\": \"5a25d5b1ce18e431f484a9d1\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"#pme20\",\n                        \"id\": \"5a25d5b1ecba5\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Club pme 2.0 et ses \u00e9v\u00e9nements\",\n                        \"id\": \"5a25d5b1ecbab\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"pme20\",\n                        \"id\": \"5a25d5b1ecb97\"\n                    }\n                ],\n                \"tagBundle\": {\n                    \"v2Id\": 5,\n                    \"status\": \"Published\",\n                    \"id\": \"5a25d5afce18e431f484a914\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"r\u00e9seaux\",\n                            \"id\": \"5a25d5afe5196\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Membres des r\u00e9seaux wallons li\u00e9s au num\u00e9rique\",\n                            \"id\": \"5a25d5afe51a9\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"reseaux\",\n                            \"id\": \"5a25d5afe5144\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-12-04T23:09:35.942Z\",\n                    \"updatedAt\": \"2017-12-04T23:09:35.942Z\",\n                    \"tagCategory\": {\n                        \"v2Id\": 3,\n                        \"status\": \"Published\",\n                        \"id\": \"5a25d5afce18e431f484a90b\",\n                        \"title\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"communaut\u00e9s\",\n                                \"id\": \"5a25d5af95342\"\n                            }\n                        ],\n                        \"shortDescription\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                                \"id\": \"5a25d5af95348\"\n                            }\n                        ],\n                        \"slug\": [\n                            {\n                                \"language\": \"fre\",\n                                \"slug\": \"communautes\",\n                                \"id\": \"5a25d5af9533a\"\n                            }\n                        ],\n                        \"createdAt\": \"2017-12-04T23:09:35.612Z\",\n                        \"updatedAt\": \"2017-12-04T23:09:35.612Z\"\n                    }\n                },\n                \"createdAt\": \"2017-12-04T23:09:37.974Z\",\n                \"updatedAt\": \"2017-12-04T23:09:37.974Z\"\n            },\n            {\n                \"v2Id\": 234,\n                \"status\": \"Published\",\n                \"id\": \"5a25d5b1ce18e431f484a9b7\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"MWC 2016\",\n                        \"id\": \"5a25d5b1cd822\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Entreprises wallonnes pr\u00e9sentes au Mobile World Congress (MWC) 2016 du 22 au 25 f\u00e9vrier 2016 \u00e0 Barcelone. Le salon MWC est d\u00e9di\u00e9 \u00e0 l'industrie de la t\u00e9l\u00e9phonie mobile\",\n                        \"id\": \"5a25d5b1cd82e\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"mwc2016\",\n                        \"id\": \"5a25d5b1cd819\"\n                    }\n                ],\n                \"tagBundle\": {\n                    \"v2Id\": 10,\n                    \"status\": \"Published\",\n                    \"id\": \"5a25d5afce18e431f484a919\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"missions et \u00e9v\u00e9nements\",\n                            \"id\": \"5a25d5afec2f6\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Acteurs wallons pr\u00e9sents lors de missions et d'\u00e9v\u00e9nements d\u00e9di\u00e9s au num\u00e9rique\",\n                            \"id\": \"5a25d5afec2fd\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"missions\",\n                            \"id\": \"5a25d5afec2e7\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-12-04T23:09:35.972Z\",\n                    \"updatedAt\": \"2017-12-04T23:09:35.972Z\",\n                    \"tagCategory\": {\n                        \"v2Id\": 3,\n                        \"status\": \"Published\",\n                        \"id\": \"5a25d5afce18e431f484a90b\",\n                        \"title\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"communaut\u00e9s\",\n                                \"id\": \"5a25d5af95342\"\n                            }\n                        ],\n                        \"shortDescription\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                                \"id\": \"5a25d5af95348\"\n                            }\n                        ],\n                        \"slug\": [\n                            {\n                                \"language\": \"fre\",\n                                \"slug\": \"communautes\",\n                                \"id\": \"5a25d5af9533a\"\n                            }\n                        ],\n                        \"createdAt\": \"2017-12-04T23:09:35.612Z\",\n                        \"updatedAt\": \"2017-12-04T23:09:35.612Z\"\n                    }\n                },\n                \"createdAt\": \"2017-12-04T23:09:37.845Z\",\n                \"updatedAt\": \"2017-12-04T23:09:37.845Z\"\n            },\n            {\n                \"v2Id\": 341,\n                \"status\": \"Published\",\n                \"id\": \"5a25d5b1ce18e431f484a99e\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"DES 2017\",\n                        \"id\": \"5a25d5b1af5fa\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Entreprises wallonnes pr\u00e9sentes au Digital Enterprise Show (DES) du 23 mai au 25 mai 2017 \u00e0 Madrid. Le salon DES est d\u00e9di\u00e9 \u00e0 la transformation num\u00e9rique des entreprises\",\n                        \"id\": \"5a25d5b1af601\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"des-2017\",\n                        \"id\": \"5a25d5b1af5ec\"\n                    }\n                ],\n                \"tagBundle\": {\n                    \"v2Id\": 10,\n                    \"status\": \"Published\",\n                    \"id\": \"5a25d5afce18e431f484a919\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"missions et \u00e9v\u00e9nements\",\n                            \"id\": \"5a25d5afec2f6\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Acteurs wallons pr\u00e9sents lors de missions et d'\u00e9v\u00e9nements d\u00e9di\u00e9s au num\u00e9rique\",\n                            \"id\": \"5a25d5afec2fd\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"missions\",\n                            \"id\": \"5a25d5afec2e7\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-12-04T23:09:35.972Z\",\n                    \"updatedAt\": \"2017-12-04T23:09:35.972Z\",\n                    \"tagCategory\": {\n                        \"v2Id\": 3,\n                        \"status\": \"Published\",\n                        \"id\": \"5a25d5afce18e431f484a90b\",\n                        \"title\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"communaut\u00e9s\",\n                                \"id\": \"5a25d5af95342\"\n                            }\n                        ],\n                        \"shortDescription\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                                \"id\": \"5a25d5af95348\"\n                            }\n                        ],\n                        \"slug\": [\n                            {\n                                \"language\": \"fre\",\n                                \"slug\": \"communautes\",\n                                \"id\": \"5a25d5af9533a\"\n                            }\n                        ],\n                        \"createdAt\": \"2017-12-04T23:09:35.612Z\",\n                        \"updatedAt\": \"2017-12-04T23:09:35.612Z\"\n                    }\n                },\n                \"createdAt\": \"2017-12-04T23:09:37.721Z\",\n                \"updatedAt\": \"2017-12-04T23:09:37.721Z\"\n            },\n            {\n                \"v2Id\": 426,\n                \"status\": \"Published\",\n                \"id\": \"5a25d5b1ce18e431f484a9d2\",\n                \"title\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Agence du Num\u00e9rique\",\n                        \"id\": \"5a25d5b1ee664\"\n                    }\n                ],\n                \"shortDescription\": [\n                    {\n                        \"language\": \"fre\",\n                        \"text\": \"Membres du personnel de l'Agence du Num\u00e9rique\",\n                        \"id\": \"5a25d5b1ee66a\"\n                    }\n                ],\n                \"slug\": [\n                    {\n                        \"language\": \"fre\",\n                        \"slug\": \"agence-du-numerique\",\n                        \"id\": \"5a25d5b1ee656\"\n                    }\n                ],\n                \"tagBundle\": {\n                    \"v2Id\": 5,\n                    \"status\": \"Published\",\n                    \"id\": \"5a25d5afce18e431f484a914\",\n                    \"title\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"r\u00e9seaux\",\n                            \"id\": \"5a25d5afe5196\"\n                        }\n                    ],\n                    \"shortDescription\": [\n                        {\n                            \"language\": \"fre\",\n                            \"text\": \"Membres des r\u00e9seaux wallons li\u00e9s au num\u00e9rique\",\n                            \"id\": \"5a25d5afe51a9\"\n                        }\n                    ],\n                    \"slug\": [\n                        {\n                            \"language\": \"fre\",\n                            \"slug\": \"reseaux\",\n                            \"id\": \"5a25d5afe5144\"\n                        }\n                    ],\n                    \"createdAt\": \"2017-12-04T23:09:35.942Z\",\n                    \"updatedAt\": \"2017-12-04T23:09:35.942Z\",\n                    \"tagCategory\": {\n                        \"v2Id\": 3,\n                        \"status\": \"Published\",\n                        \"id\": \"5a25d5afce18e431f484a90b\",\n                        \"title\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"communaut\u00e9s\",\n                                \"id\": \"5a25d5af95342\"\n                            }\n                        ],\n                        \"shortDescription\": [\n                            {\n                                \"language\": \"fre\",\n                                \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\n                                \"id\": \"5a25d5af95348\"\n                            }\n                        ],\n                        \"slug\": [\n                            {\n                                \"language\": \"fre\",\n                                \"slug\": \"communautes\",\n                                \"id\": \"5a25d5af9533a\"\n                            }\n                        ],\n                        \"createdAt\": \"2017-12-04T23:09:35.612Z\",\n                        \"updatedAt\": \"2017-12-04T23:09:35.612Z\"\n                    }\n                },\n                \"createdAt\": \"2017-12-04T23:09:37.980Z\",\n                \"updatedAt\": \"2017-12-04T23:09:37.980Z\"\n            }\n        ],\n        \"urls\": [\n            {\n                \"type\": \"Facebook\",\n                \"address\": \"http://www.facebook.com/pascal.butera\",\n                \"v2Id\": 269,\n                \"id\": \"5a25d74d10437\",\n                \"createdAt\": \"2015-01-13T12:35:38+0100\"\n            },\n            {\n                \"type\": \"Twitter\",\n                \"address\": \"https://twitter.com/Pascal_Butera\",\n                \"v2Id\": 790,\n                \"id\": \"5a25d74d1044c\",\n                \"createdAt\": \"2015-01-13T10:20:38+0100\"\n            },\n            {\n                \"type\": \"LinkedIn\",\n                \"address\": \"https://www.linkedin.com/in/pascalbutera/\",\n                \"v2Id\": 27436,\n                \"id\": \"5a25d74d10452\",\n                \"createdAt\": \"2017-03-01T14:12:02+0100\"\n            }\n        ]\n    }"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}/contacts?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}/contacts?access_token={{v3_token}}\n",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2364,8 +2241,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}\n",
-                  "equals": true
+                  "value": "{{v3_token}}\n"
                 }
               ]
             }
@@ -2373,8 +2249,8 @@
           "response": []
         },
         {
-          "_postman_id": "bb60053e-712a-c239-c43c-3a23afba7aaa",
           "name": "Link CES to Theme",
+          "_postman_id": "bb60053e-712a-c239-c43c-3a23afba7aaa",
           "request": {
             "method": "POST",
             "header": [
@@ -2388,7 +2264,7 @@
               "raw": "    {\n        \"id\": \"5a0eedafdaea5a674a380c8a\",\n        \"title\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"secteur num\u00e9rique\",\n                \"id\": \"5a0eedaf0184e\"\n            },\n            {\n                \"language\": \"eng\",\n                \"text\": \"Digital sector\",\n                \"id\": \"5a0eedaf01888\"\n            }\n        ],\n        \"shortDescription\": [\n            {\n                \"language\": \"fre\",\n                \"text\": \"D\u00e9velopper et structurer le secteur pour capter les opportunit\u00e9s et la valeur ajout\u00e9e de l'\u00e9conomie du num\u00e9rique pour la Wallonie\",\n                \"id\": \"5a0eedaf018c2\"\n            },\n            {\n                \"language\": \"eng\",\n                \"text\": \"A strong digital sector and an cutting-edge research, able to capture and maintain the added value of the digital transformation on our territory.\",\n                \"id\": \"5a0eedaf018fb\"\n            }\n        ],\n        \"longDescription\": [],\n        \"images\": [],\n        \"slug\": [\n            {\n                \"language\": \"fre\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf01764\"\n            },\n            {\n                \"language\": \"eng\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf017a0\"\n            },\n            {\n                \"language\": \"dut\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf017da\"\n            },\n            {\n                \"language\": \"ger\",\n                \"slug\": \"secteur-numerique\",\n                \"id\": \"5a0eedaf01814\"\n            }\n        ],\n        \"createdAt\": \"2017-11-17T14:09:51.008Z\",\n        \"updatedAt\": \"2017-11-17T14:09:51.009Z\",\n        \"v2Id\": 1\n    }"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}/themes?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/missions/{{missionId}}/themes?access_token={{v3_token}}\n",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2402,8 +2278,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}\n",
-                  "equals": true
+                  "value": "{{v3_token}}\n"
                 }
               ]
             }
@@ -2411,17 +2286,13 @@
           "response": []
         },
         {
-          "_postman_id": "3ee5721e-a410-5f7d-54ff-97246bcb3153",
           "name": "Lien profile / mission",
+          "_postman_id": "3ee5721e-a410-5f7d-54ff-97246bcb3153",
           "request": {
             "method": "PUT",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/5a25eb16ce18e431f485171d/missions/rel/{{missionId}}?oauth_token={{v2_token}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/5a25eb16ce18e431f485171d/missions/rel/{{missionId}}?oauth_token={{v2_token}}&access_token={{v3_token}}\n",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -2437,13 +2308,11 @@
               "query": [
                 {
                   "key": "oauth_token",
-                  "value": "{{v2_token}}",
-                  "equals": true
+                  "value": "{{v2_token}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}\n",
-                  "equals": true
+                  "value": "{{v3_token}}\n"
                 }
               ]
             }
@@ -2451,15 +2320,11 @@
           "response": []
         },
         {
-          "_postman_id": "c48e6957-803c-e698-b589-b9df2ff2ebf8",
           "name": "Lien profile / mission copy",
+          "_postman_id": "c48e6957-803c-e698-b589-b9df2ff2ebf8",
           "request": {
             "method": "PUT",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/5a25e823ce18e431f4851155/missions/rel/5a2a99db26818b62a18d15c8?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2477,8 +2342,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2486,8 +2350,8 @@
           "response": []
         },
         {
-          "_postman_id": "d6a843b8-7577-e981-8ac7-d227d2ce01df",
           "name": "Ajout d'un slug ENG to CES 2018",
+          "_postman_id": "d6a843b8-7577-e981-8ac7-d227d2ce01df",
           "request": {
             "method": "POST",
             "header": [
@@ -2517,8 +2381,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2526,8 +2389,8 @@
           "response": []
         },
         {
-          "_postman_id": "bf0fc7d0-afcb-be8c-4618-dffde47375da",
           "name": "Ajout d'une description ENG to CES 2018",
+          "_postman_id": "bf0fc7d0-afcb-be8c-4618-dffde47375da",
           "request": {
             "method": "POST",
             "header": [
@@ -2557,8 +2420,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2566,8 +2428,8 @@
           "response": []
         },
         {
-          "_postman_id": "12fd51fc-e43d-6841-dcd2-772a910c8da6",
           "name": "Ajout d'un titre ENG to CES 2018",
+          "_postman_id": "12fd51fc-e43d-6841-dcd2-772a910c8da6",
           "request": {
             "method": "POST",
             "header": [
@@ -2605,6 +2467,7 @@
           "response": []
         }
       ],
+      "_postman_id": "4f5bf7de-a89b-3a31-0da0-b93693aa85c6",
       "event": [
         {
           "listen": "prerequest",
@@ -2629,18 +2492,14 @@
       ]
     },
     {
-      "_postman_id": "90a87f1b-f101-d14b-8733-58cd5ee95dc1",
       "name": "Address",
-      "description": null,
-      "item": []
+      "item": [],
+      "_postman_id": "90a87f1b-f101-d14b-8733-58cd5ee95dc1"
     },
     {
-      "_postman_id": "2cf0bb3d-8dfd-0411-e370-07706397efd0",
       "name": "Contact",
-      "description": null,
       "item": [
         {
-          "_postman_id": "8a7477d8-3b63-3a60-afd1-18d968bafb6e",
           "name": "Contact filtr\u00e9s par tag",
           "event": [
             {
@@ -2658,10 +2517,14 @@
               }
             }
           ],
+          "_postman_id": "8a7477d8-3b63-3a60-afd1-18d968bafb6e",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"tags.slug.slug\":\"dw-champions\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2675,11 +2538,9 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tags.slug.slug\":\"dw-champions\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"tags.slug.slug\":\"dw-champions\"}}"
                 },
                 {
-                  "equals": true,
                   "key": "",
                   "value": "",
                   "disabled": true
@@ -2692,8 +2553,7 @@
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2701,7 +2561,6 @@
           "response": []
         },
         {
-          "_postman_id": "f73f6085-7af7-450a-a015-a3af2fefdc8d",
           "name": "Contact filtr\u00e9s emails",
           "event": [
             {
@@ -2719,10 +2578,14 @@
               }
             }
           ],
+          "_postman_id": "f73f6085-7af7-450a-a015-a3af2fefdc8d",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"tags.slug.slug\":\"dw-champions\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2736,11 +2599,9 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tags.slug.slug\":\"dw-champions\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"tags.slug.slug\":\"dw-champions\"}}"
                 },
                 {
-                  "equals": true,
                   "key": "",
                   "value": "",
                   "disabled": true
@@ -2753,28 +2614,23 @@
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "2cf0bb3d-8dfd-0411-e370-07706397efd0"
     },
     {
-      "_postman_id": "843c7266-6cb4-3823-2d5e-4ef4a01499ed",
       "name": "Profile",
-      "description": null,
       "item": [
         {
-          "_postman_id": "2e7acf98-60b3-6761-54ac-b5620a0b1cf1",
           "name": "Add Archived Slug Workflow",
-          "description": null,
           "item": [
             {
-              "_postman_id": "45ecbeec-277e-744e-0ec4-468dd90659e1",
               "name": "Recherche Profil Title",
               "event": [
                 {
@@ -2794,13 +2650,10 @@
                   }
                 }
               ],
+              "_postman_id": "45ecbeec-277e-744e-0ec4-468dd90659e1",
               "request": {
                 "method": "GET",
                 "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": ""
-                },
                 "url": {
                   "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"title.text\":\"Dogstudio\"}}",
                   "protocol": "{{protocol}}",
@@ -2815,8 +2668,7 @@
                   "query": [
                     {
                       "key": "filter",
-                      "value": "{\"where\":{ \"title.text\":\"Dogstudio\"}}",
-                      "equals": true
+                      "value": "{\"where\":{ \"title.text\":\"Dogstudio\"}}"
                     }
                   ]
                 }
@@ -2824,7 +2676,6 @@
               "response": []
             },
             {
-              "_postman_id": "f11fd224-aad7-b1aa-655a-a71783b9f384",
               "name": "Add Archived Slug",
               "event": [
                 {
@@ -2840,6 +2691,7 @@
                   }
                 }
               ],
+              "_postman_id": "f11fd224-aad7-b1aa-655a-a71783b9f384",
               "request": {
                 "method": "PATCH",
                 "header": [
@@ -2857,10 +2709,10 @@
               "response": []
             }
           ],
+          "_postman_id": "2e7acf98-60b3-6761-54ac-b5620a0b1cf1",
           "_postman_isSubFolder": true
         },
         {
-          "_postman_id": "86588f43-4348-b680-e095-08dc093f7c7a",
           "name": "Ajout d'un profil",
           "event": [
             {
@@ -2903,6 +2755,7 @@
               }
             }
           ],
+          "_postman_id": "86588f43-4348-b680-e095-08dc093f7c7a",
           "request": {
             "method": "POST",
             "header": [
@@ -2928,8 +2781,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2937,7 +2789,6 @@
           "response": []
         },
         {
-          "_postman_id": "1266b770-2de8-9676-9165-d7cbe84b56fe",
           "name": "Liste des profils",
           "event": [
             {
@@ -2956,13 +2807,10 @@
               }
             }
           ],
+          "_postman_id": "1266b770-2de8-9676-9165-d7cbe84b56fe",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -2976,13 +2824,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10}",
-                  "equals": true
+                  "value": "{\"limit\":10}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -2990,7 +2836,6 @@
           "response": []
         },
         {
-          "_postman_id": "b7a08f57-04c2-b6c8-3dbc-3343eae01f06",
           "name": "D\u00e9tail d'un profil",
           "event": [
             {
@@ -3007,13 +2852,10 @@
               }
             }
           ],
+          "_postman_id": "b7a08f57-04c2-b6c8-3dbc-3343eae01f06",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3028,8 +2870,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3037,7 +2878,6 @@
           "response": []
         },
         {
-          "_postman_id": "c282c0e4-2d46-6ffd-aa6a-4b4d062ecb6b",
           "name": "Post associ\u00e9 \u00e0 un profil",
           "event": [
             {
@@ -3054,16 +2894,19 @@
               }
             }
           ],
+          "_postman_id": "c282c0e4-2d46-6ffd-aa6a-4b4d062ecb6b",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}/posts"
           },
           "response": []
         },
         {
-          "_postman_id": "e9728c32-c3cc-c27f-81dc-935b35228637",
           "name": "Recherche Profil Idv2",
           "event": [
             {
@@ -3080,10 +2923,14 @@
               }
             }
           ],
+          "_postman_id": "e9728c32-c3cc-c27f-81dc-935b35228637",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":12249}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3098,13 +2945,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":12249}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"v2Id\":12249}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3112,7 +2957,6 @@
           "response": []
         },
         {
-          "_postman_id": "e86f67fa-e762-bf08-4a59-dcb0a9860a95",
           "name": "Recherche Profil slug",
           "event": [
             {
@@ -3147,13 +2991,10 @@
               }
             }
           ],
+          "_postman_id": "e86f67fa-e762-bf08-4a59-dcb0a9860a95",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"slug.slug\":\"adn\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3168,13 +3009,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"adn\"}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"slug.slug\":\"adn\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3182,7 +3021,6 @@
           "response": []
         },
         {
-          "_postman_id": "f625e374-6034-2584-15a1-d6f51a9367fc",
           "name": "Supprimer un profil",
           "event": [
             {
@@ -3200,10 +3038,14 @@
               }
             }
           ],
+          "_postman_id": "f625e374-6034-2584-15a1-d6f51a9367fc",
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3218,8 +3060,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3227,7 +3068,6 @@
           "response": []
         },
         {
-          "_postman_id": "a5bcee92-8654-2c37-7a56-46f74d22f605",
           "name": "D\u00e9tail d'un profil inexistant",
           "event": [
             {
@@ -3243,19 +3083,15 @@
               }
             }
           ],
+          "_postman_id": "a5bcee92-8654-2c37-7a56-46f74d22f605",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "e968daee-14f0-b8e3-4bd4-56945080bad8",
           "name": "Liste des profils filtr\u00e9s par tags",
           "event": [
             {
@@ -3274,13 +3110,10 @@
               }
             }
           ],
+          "_postman_id": "e968daee-14f0-b8e3-4bd4-56945080bad8",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
               "protocol": "{{protocol}}",
@@ -3294,8 +3127,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 }
               ]
             }
@@ -3303,7 +3135,6 @@
           "response": []
         },
         {
-          "_postman_id": "ac300b8c-4575-9397-7aba-bbf5351b90fe",
           "name": "Liste des profils filtr\u00e9s par th\u00e8me",
           "event": [
             {
@@ -3317,13 +3148,10 @@
               }
             }
           ],
+          "_postman_id": "ac300b8c-4575-9397-7aba-bbf5351b90fe",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"themes.v2Id\": \"4\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3337,13 +3165,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"themes.v2Id\": \"4\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"themes.v2Id\": \"4\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3351,7 +3177,6 @@
           "response": []
         },
         {
-          "_postman_id": "cd93c549-3dec-4729-896b-3a5213f7f63f",
           "name": "Liste des profils filtr\u00e9s par tags multiples",
           "event": [
             {
@@ -3365,10 +3190,14 @@
               }
             }
           ],
+          "_postman_id": "cd93c549-3dec-4729-896b-3a5213f7f63f",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"where\":{\"and\": [{ \"tags.slug.slug\": \"entreprise-privee\"},{\"tags.slug.slug\": \"belgique\"},{\"status\": \"Published\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3382,13 +3211,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"and\": [{ \"tags.slug.slug\": \"entreprise-privee\"},{\"tags.slug.slug\": \"belgique\"},{\"status\": \"Published\"}]}}",
-                  "equals": true
+                  "value": "{\"where\":{\"and\": [{ \"tags.slug.slug\": \"entreprise-privee\"},{\"tags.slug.slug\": \"belgique\"},{\"status\": \"Published\"}]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3396,7 +3223,6 @@
           "response": []
         },
         {
-          "_postman_id": "fddd37ff-d3aa-421c-96f6-426cfe9f3810",
           "name": "Liste des profils - Fields limit",
           "event": [
             {
@@ -3415,10 +3241,14 @@
               }
             }
           ],
+          "_postman_id": "fddd37ff-d3aa-421c-96f6-426cfe9f3810",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":25,\"where\":{\"and\":[{\"status\":\"Published\"}]},\"fields\":{\"images\":true,\"title\":true,\"addresses\":true}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3432,28 +3262,24 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":25,\"where\":{\"and\":[{\"status\":\"Published\"}]},\"fields\":{\"images\":true,\"title\":true,\"addresses\":true}}",
-                  "equals": true
+                  "value": "{\"limit\":25,\"where\":{\"and\":[{\"status\":\"Published\"}]},\"fields\":{\"images\":true,\"title\":true,\"addresses\":true}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "843c7266-6cb4-3823-2d5e-4ef4a01499ed"
     },
     {
-      "_postman_id": "c5fde80e-7a65-f755-a391-c0c7905d5c98",
       "name": "Event",
-      "description": null,
       "item": [
         {
-          "_postman_id": "93531f6e-578a-bfdf-715d-dd9da777ba24",
           "name": "Ajout d'un \u00e9v\u00e9nement",
           "event": [
             {
@@ -3477,6 +3303,7 @@
               }
             }
           ],
+          "_postman_id": "93531f6e-578a-bfdf-715d-dd9da777ba24",
           "request": {
             "method": "POST",
             "header": [
@@ -3502,8 +3329,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3511,7 +3337,6 @@
           "response": []
         },
         {
-          "_postman_id": "122a5b38-6684-34ec-3bd1-c71be27b565d",
           "name": "D\u00e9tail d'un \u00e9v\u00e9nement",
           "event": [
             {
@@ -3528,19 +3353,15 @@
               }
             }
           ],
+          "_postman_id": "122a5b38-6684-34ec-3bd1-c71be27b565d",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "1760fb2c-c307-f030-b0ed-2a64dc77c110",
           "name": "Liste des \u00e9v\u00e9nements",
           "event": [
             {
@@ -3559,13 +3380,10 @@
               }
             }
           ],
+          "_postman_id": "1760fb2c-c307-f030-b0ed-2a64dc77c110",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3579,13 +3397,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10}",
-                  "equals": true
+                  "value": "{\"limit\":10}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3597,7 +3413,10 @@
               "originalRequest": {
                 "method": "GET",
                 "header": [],
-                "body": {},
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
                 "url": {
                   "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10,\"fields\":{\"startDate\":true, \"endData\":true}}&access_token={{v3_token}}",
                   "protocol": "{{protocol}}",
@@ -3611,13 +3430,11 @@
                   "query": [
                     {
                       "key": "filter",
-                      "value": "{\"limit\":10,\"fields\":{\"startDate\":true, \"endData\":true}}",
-                      "equals": true
+                      "value": "{\"limit\":10,\"fields\":{\"startDate\":true, \"endData\":true}}"
                     },
                     {
                       "key": "access_token",
-                      "value": "{{v3_token}}",
-                      "equals": true
+                      "value": "{{v3_token}}"
                     }
                   ]
                 }
@@ -3706,7 +3523,6 @@
           ]
         },
         {
-          "_postman_id": "6473bedd-f218-62cb-7eb7-ee62de24d8b1",
           "name": "Supprimer un \u00e9v\u00e9nement",
           "event": [
             {
@@ -3724,19 +3540,15 @@
               }
             }
           ],
+          "_postman_id": "6473bedd-f218-62cb-7eb7-ee62de24d8b1",
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "9e0c0490-4a35-2c4e-7f9a-c9aaff668748",
           "name": "D\u00e9tail d'un \u00e9v\u00e9nement inexistant",
           "event": [
             {
@@ -3752,19 +3564,15 @@
               }
             }
           ],
+          "_postman_id": "9e0c0490-4a35-2c4e-7f9a-c9aaff668748",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
           },
           "response": []
         },
         {
-          "_postman_id": "3e7a5d24-bad6-fb64-a5ec-7c569f5b9557",
           "name": "Liste des \u00e9v\u00e9nements filtr\u00e9s par date de fin",
           "event": [
             {
@@ -3782,13 +3590,10 @@
               }
             }
           ],
+          "_postman_id": "3e7a5d24-bad6-fb64-a5ec-7c569f5b9557",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events?filter={\"order\":[\"startDate+ASC\"],\"where\":{\"and\": [{\"endDate\":{\"gt\":\"2017-10-19T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3802,11 +3607,9 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"order\":[\"startDate+ASC\"],\"where\":{\"and\": [{\"endDate\":{\"gt\":\"2017-10-19T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"order\":[\"startDate+ASC\"],\"where\":{\"and\": [{\"endDate\":{\"gt\":\"2017-10-19T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
-                  "equals": true,
                   "key": "",
                   "value": "",
                   "disabled": true
@@ -3819,8 +3622,7 @@
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3828,7 +3630,6 @@
           "response": []
         },
         {
-          "_postman_id": "7b03f5a0-51f2-f4a7-60d3-2b1bde0f7d3b",
           "name": "Liste des events filtr\u00e9s par tags",
           "event": [
             {
@@ -3847,13 +3648,10 @@
               }
             }
           ],
+          "_postman_id": "7b03f5a0-51f2-f4a7-60d3-2b1bde0f7d3b",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3867,13 +3665,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3881,7 +3677,6 @@
           "response": []
         },
         {
-          "_postman_id": "40e15e48-e0b1-b59c-e28c-c063e79e3472",
           "name": "Posts d'un event",
           "event": [
             {
@@ -3899,24 +3694,24 @@
               }
             }
           ],
+          "_postman_id": "40e15e48-e0b1-b59c-e28c-c063e79e3472",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/events/5a2637b7ce18e431f4853105/posts"
           },
           "response": []
         },
         {
-          "_postman_id": "4aa70f43-ba71-9c6f-f842-04486d10c77b",
           "name": "Liste des profils associ\u00e9s \u00e0 un event",
+          "_postman_id": "4aa70f43-ba71-9c6f-f842-04486d10c77b",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/xEventProfile?filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\",\"shortDescription\",\"images\",\"updatedAt\",\"addresses\",\"emailAddresses\",\"urls\",\"tags\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"eventId\":\"{{eventId}}\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3930,13 +3725,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\",\"shortDescription\",\"images\",\"updatedAt\",\"addresses\",\"emailAddresses\",\"urls\",\"tags\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"eventId\":\"{{eventId}}\"}}",
-                  "equals": true
+                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\",\"shortDescription\",\"images\",\"updatedAt\",\"addresses\",\"emailAddresses\",\"urls\",\"tags\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"eventId\":\"{{eventId}}\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3944,7 +3737,6 @@
           "response": []
         },
         {
-          "_postman_id": "9197ab09-ad83-d4e2-8f97-0e52392e6534",
           "name": "Count Published Events",
           "event": [
             {
@@ -3963,10 +3755,14 @@
               }
             }
           ],
+          "_postman_id": "9197ab09-ad83-d4e2-8f97-0e52392e6534",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events/count?where={\"status\":\"Published\"}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -3981,13 +3777,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"status\":\"Published\"}",
-                  "equals": true
+                  "value": "{\"status\":\"Published\"}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -3995,7 +3789,6 @@
           "response": []
         },
         {
-          "_postman_id": "4bbe905b-0e2a-e9d0-2665-a54e69466cb4",
           "name": "Count Future Published Events",
           "event": [
             {
@@ -4026,13 +3819,10 @@
               }
             }
           ],
+          "_postman_id": "4bbe905b-0e2a-e9d0-2665-a54e69466cb4",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events/count?where={\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4047,13 +3837,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]}",
-                  "equals": true
+                  "value": "{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4061,7 +3849,6 @@
           "response": []
         },
         {
-          "_postman_id": "8b024bd8-269d-6c34-a2d4-2dc4383e9782",
           "name": "Event + Liaisons",
           "event": [
             {
@@ -4079,13 +3866,10 @@
               }
             }
           ],
+          "_postman_id": "8b024bd8-269d-6c34-a2d4-2dc4383e9782",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events/5a82111c728b8f170251f38e?filter={\"include\":[{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4100,13 +3884,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"include\":[{\"relation\":\"posts\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"partners\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4114,7 +3896,6 @@
           "response": []
         },
         {
-          "_postman_id": "3bad078f-7895-45b2-8dc1-5a5822cc366e",
           "name": "Liste des \u00e9v\u00e9nements - Fields Limit",
           "event": [
             {
@@ -4145,10 +3926,14 @@
               }
             }
           ],
+          "_postman_id": "3bad078f-7895-45b2-8dc1-5a5822cc366e",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/events?filter={\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true,\"images\":true},\"where\":{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]},\"order\":[\"endDate+ASC\"]}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4162,38 +3947,34 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true,\"images\":true},\"where\":{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]},\"order\":[\"endDate+ASC\"]}",
-                  "equals": true
+                  "value": "{\"limit\":25,\"fields\":{\"startDate\":true, \"endDate\":true,\"title\":true,\"venueAddress\":true,\"images\":true},\"where\":{\"and\":[{\"status\":\"Published\"},{\"endDate\":{\"gte\":\"{{currentDate}}\"}}]},\"order\":[\"endDate+ASC\"]}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "c5fde80e-7a65-f755-a391-c0c7905d5c98"
     },
     {
-      "_postman_id": "b774d2e0-a592-9951-d3dd-73965d312c60",
       "name": "TagBundle",
-      "description": null,
       "item": [
         {
-          "_postman_id": "c7f53d73-ae71-40b5-bb43-01b3bb45dac5",
           "name": "Get tagBundles by tagCategory slug",
+          "_postman_id": "c7f53d73-ae71-40b5-bb43-01b3bb45dac5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.slug.slug\":\"marches\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.slug.slug\":\"projets-missions\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4205,13 +3986,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tagCategory.slug.slug\":\"marches\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"tagCategory.slug.slug\":\"projets-missions\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4219,15 +3998,14 @@
           "response": []
         },
         {
-          "_postman_id": "711cb430-fb2c-4e7e-a0ae-3518a08201d8",
           "name": "Get tagBundles",
+          "_postman_id": "711cb430-fb2c-4e7e-a0ae-3518a08201d8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.slug.slug\":\"marches\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4241,13 +4019,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tagCategory.slug.slug\":\"marches\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"tagCategory.slug.slug\":\"marches\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4255,15 +4031,14 @@
           "response": []
         },
         {
-          "_postman_id": "bd4cc7f9-352a-4267-90d8-16970c66c32b",
           "name": "Get tagBundles by tagCategory v2Id",
+          "_postman_id": "bd4cc7f9-352a-4267-90d8-16970c66c32b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tagBundles?filter={\"where\":{\"tagCategory.v2Id\":10}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4277,13 +4052,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"tagCategory.v2Id\":10}}",
-                  "equals": true
+                  "value": "{\"where\":{\"tagCategory.v2Id\":10}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4291,15 +4064,14 @@
           "response": []
         },
         {
-          "_postman_id": "b32740fb-7181-4694-9da8-1023fe3a80f8",
           "name": "Delete tagBundle",
+          "_postman_id": "b32740fb-7181-4694-9da8-1023fe3a80f8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tagBundles/5ab93b0afb6a4c11bba0963e?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4314,31 +4086,28 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "b774d2e0-a592-9951-d3dd-73965d312c60"
     },
     {
-      "_postman_id": "28177638-1d76-f231-4181-1942413b4c56",
       "name": "TagCategory",
-      "description": null,
       "item": [
         {
-          "_postman_id": "49b7404d-3b32-47d9-ae01-08a66685c103",
           "name": "List tagCategories",
+          "_postman_id": "49b7404d-3b32-47d9-ae01-08a66685c103",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tagCategories?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4352,8 +4121,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4361,15 +4129,14 @@
           "response": []
         },
         {
-          "_postman_id": "4755cd2d-8a52-4624-a8b3-2e1cd38578bb",
           "name": "Find tagCategory with v2Id",
+          "_postman_id": "4755cd2d-8a52-4624-a8b3-2e1cd38578bb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tagCategories/findOne?access_token={{v3_token}}&filter={\"where\":{\"v2Id\":\"9\"}}",
               "protocol": "{{protocol}}",
@@ -4384,13 +4151,11 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"v2Id\":\"9\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"v2Id\":\"9\"}}"
                 }
               ]
             }
@@ -4398,15 +4163,14 @@
           "response": []
         },
         {
-          "_postman_id": "5ad84ccb-a240-44fd-947c-96fadf385692",
           "name": "Delete tagCategory",
+          "_postman_id": "5ad84ccb-a240-44fd-947c-96fadf385692",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "DELETE",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tagCategories/5ab93b05fb6a4c11bba09622?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4421,29 +4185,25 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "28177638-1d76-f231-4181-1942413b4c56"
     },
     {
-      "_postman_id": "956fbc92-5d6f-59a1-234d-8a21362f2340",
       "name": "Enterprise",
-      "description": null,
-      "item": []
+      "item": [],
+      "_postman_id": "956fbc92-5d6f-59a1-234d-8a21362f2340"
     },
     {
-      "_postman_id": "545c8b72-02c1-99a2-164d-c80fe500abae",
       "name": "Tag",
-      "description": null,
       "item": [
         {
-          "_postman_id": "ee5807d7-7949-b65a-ce3f-3d4963c94478",
           "name": "Liste des tags",
           "event": [
             {
@@ -4461,27 +4221,20 @@
               }
             }
           ],
+          "_postman_id": "ee5807d7-7949-b65a-ce3f-3d4963c94478",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": "{{protocol}}://{{domain}}/api/tags"
           },
           "response": []
         },
         {
-          "_postman_id": "e4599abd-bc78-b6b8-bbf2-819f617c552a",
           "name": "Recherche Tag v2Id",
+          "_postman_id": "e4599abd-bc78-b6b8-bbf2-819f617c552a",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{ \"v2Id\":\"254\"}}",
               "protocol": "{{protocol}}",
@@ -4496,8 +4249,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":\"254\"}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"v2Id\":\"254\"}}"
                 }
               ]
             }
@@ -4505,7 +4257,6 @@
           "response": []
         },
         {
-          "_postman_id": "7bc66230-7ed3-dc88-90e2-657c20503b53",
           "name": "D\u00e9tail tag",
           "event": [
             {
@@ -4523,13 +4274,10 @@
               }
             }
           ],
+          "_postman_id": "7bc66230-7ed3-dc88-90e2-657c20503b53",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/tags/5a8b3e02a5aa1d38438967de?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4544,23 +4292,20 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "545c8b72-02c1-99a2-164d-c80fe500abae"
     },
     {
-      "_postman_id": "e6b60181-4163-19e9-ff13-54900f554cb6",
       "name": "Themes",
-      "description": null,
       "item": [
         {
-          "_postman_id": "23a72cb1-e209-120b-a6dc-9a104be091fc",
           "name": "Liste des themes",
           "event": [
             {
@@ -4578,13 +4323,10 @@
               }
             }
           ],
+          "_postman_id": "23a72cb1-e209-120b-a6dc-9a104be091fc",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/themes?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4598,8 +4340,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4607,7 +4348,6 @@
           "response": []
         },
         {
-          "_postman_id": "0971ee4c-6d7f-1789-dc9e-9f084485aaa6",
           "name": "Secteur du num\u00e9rique",
           "event": [
             {
@@ -4651,6 +4391,7 @@
               }
             }
           ],
+          "_postman_id": "0971ee4c-6d7f-1789-dc9e-9f084485aaa6",
           "request": {
             "method": "PATCH",
             "header": [
@@ -4685,7 +4426,6 @@
           "response": []
         },
         {
-          "_postman_id": "c342aac5-e070-7256-741b-de39b415906c",
           "name": "Get Theme with Related",
           "event": [
             {
@@ -4701,13 +4441,10 @@
               }
             }
           ],
+          "_postman_id": "c342aac5-e070-7256-741b-de39b415906c",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/projects/{{projectId}}?filter={\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"2017-11-27T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4722,33 +4459,33 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"2017-11-27T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
-                  "equals": true
+                  "value": "{\"include\":[{\"relation\":\"pressReviews\",\"scope\":{\"where\":{\"status\": \"Published\"}}},{\"relation\":\"profiles\",\"scope\":{\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}},{\"relation\":\"events\",\"scope\":{\"where\":{\"and\": [{\"endDate\":{\"gte\":\"2017-11-27T23:00:00.000Z\"}},{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}}],\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "e6b60181-4163-19e9-ff13-54900f554cb6"
     },
     {
-      "_postman_id": "ae075b11-1349-d79e-7cc4-fea0c9f446e7",
       "name": "PressReviews",
-      "description": "",
       "item": [
         {
-          "_postman_id": "0c8edca0-6ec1-23f3-2702-35165bcb1b58",
           "name": "PressReviews With Profiles",
+          "_postman_id": "0c8edca0-6ec1-23f3-2702-35165bcb1b58",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/pressReviews/{{pressReviewId}}?filter={\"fields\":[\"id\",\"title\",\"shortDescription\"],\"include\":[{\"relation\":\"profiles\",\"scope\":{\"fields\":[\"id\",\"slug\",\"shortTitle\", \"title\"],\"where\":{\"and\":[{\"status\":\"Published\"}]}}}]}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4763,13 +4500,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"fields\":[\"id\",\"title\",\"shortDescription\"],\"include\":[{\"relation\":\"profiles\",\"scope\":{\"fields\":[\"id\",\"slug\",\"shortTitle\", \"title\"],\"where\":{\"and\":[{\"status\":\"Published\"}]}}}]}",
-                  "equals": true
+                  "value": "{\"fields\":[\"id\",\"title\",\"shortDescription\"],\"include\":[{\"relation\":\"profiles\",\"scope\":{\"fields\":[\"id\",\"slug\",\"shortTitle\", \"title\"],\"where\":{\"and\":[{\"status\":\"Published\"}]}}}]}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4777,12 +4512,15 @@
           "response": []
         },
         {
-          "_postman_id": "7f32263d-2cbb-1046-a7b7-160b1670b1de",
           "name": "Get PressReviews",
+          "_postman_id": "7f32263d-2cbb-1046-a7b7-160b1670b1de",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/pressReviews?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4796,8 +4534,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4805,12 +4542,15 @@
           "response": []
         },
         {
-          "_postman_id": "790c0b54-d0c1-0cc3-7490-a1c47fd0c7d6",
           "name": "Liste des profils associ\u00e9s \u00e0 une revue de presse",
+          "_postman_id": "790c0b54-d0c1-0cc3-7490-a1c47fd0c7d6",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile?filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"and\":[{\"pressReviewId\":\"{{pressReviewId}}\"},{\"role\":\"Source\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4824,13 +4564,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"and\":[{\"pressReviewId\":\"{{pressReviewId}}\"},{\"role\":\"Source\"}]}}",
-                  "equals": true
+                  "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"and\":[{\"pressReviewId\":\"{{pressReviewId}}\"},{\"role\":\"Source\"}]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4838,12 +4576,15 @@
           "response": []
         },
         {
-          "_postman_id": "57ce1612-e360-bf81-b113-9fc73ab9fb5b",
           "name": "Count PressReview",
+          "_postman_id": "57ce1612-e360-bf81-b113-9fc73ab9fb5b",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/pressReviews/count?where={\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-01-31T23:00:00.000Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4858,13 +4599,11 @@
               "query": [
                 {
                   "key": "where",
-                  "value": "{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-01-31T23:00:00.000Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}",
-                  "equals": true
+                  "value": "{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-01-31T23:00:00.000Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4872,12 +4611,15 @@
           "response": []
         },
         {
-          "_postman_id": "33ac1487-0dd5-e56f-d0e0-b1f7a51988c3",
           "name": "PressReview Dispay Feb 2018",
+          "_postman_id": "33ac1487-0dd5-e56f-d0e0-b1f7a51988c3",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/pressReviews?filter={\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-01T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4891,28 +4633,24 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-01T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}",
-                  "equals": true
+                  "value": "{\"order\":[\"publicationDate DESC\"],\"limit\":24,\"offset\":0,\"where\":{\"and\":[{\"title.language\":\"fre\"},{\"shortDescription.language\":\"fre\"},{\"status\":\"Published\"},{\"publicationDate\":{\"between\":[\"2018-02-01T09:58:08.587Z\",\"2018-02-28T22:59:59.999Z\"]}},{\"status\":\"Published\"}]}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "ae075b11-1349-d79e-7cc4-fea0c9f446e7"
     },
     {
-      "_postman_id": "e5fdd8b2-cc62-689b-10cf-86a926cb4658",
       "name": "Page",
-      "description": "",
       "item": [
         {
-          "_postman_id": "9c64ead7-da1a-963d-7ff0-46821cf57d4f",
           "name": "Recherche Page by slug",
           "event": [
             {
@@ -4926,10 +4664,14 @@
               }
             }
           ],
+          "_postman_id": "9c64ead7-da1a-963d-7ff0-46821cf57d4f",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/pages/findOne?filter={\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4944,33 +4686,33 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}",
-                  "equals": true
+                  "value": "{\"where\":{ \"slug.slug\":\"equipe-agence-du-numerique\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "e5fdd8b2-cc62-689b-10cf-86a926cb4658"
     },
     {
-      "_postman_id": "df9d9b5f-afcf-48ae-a7e0-ee450c3c0203",
       "name": "Container",
-      "description": null,
       "item": [
         {
-          "_postman_id": "a34ac135-abaf-4d56-be52-e2c2e43f78a8",
           "name": "Container List",
+          "_postman_id": "a34ac135-abaf-4d56-be52-e2c2e43f78a8",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/containers?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -4984,8 +4726,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -4993,12 +4734,15 @@
           "response": []
         },
         {
-          "_postman_id": "e59fb2ff-ec03-472f-80fb-4b5cb937b2f5",
           "name": "Container Access",
+          "_postman_id": "e59fb2ff-ec03-472f-80fb-4b5cb937b2f5",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-content/files?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -5014,8 +4758,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5023,12 +4766,15 @@
           "response": []
         },
         {
-          "_postman_id": "3229dc62-df0c-43f0-b156-23d77411cb45",
           "name": "Container Access File",
+          "_postman_id": "3229dc62-df0c-43f0-b156-23d77411cb45",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/containers/digitalwallonia-content/files/digitalwallonia-content/20180319112405/Twitter_Bird.png?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -5047,29 +4793,25 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "df9d9b5f-afcf-48ae-a7e0-ee450c3c0203"
     },
     {
-      "_postman_id": "fc83214c-0e7b-4506-a21e-7e6ddcaf0228",
       "name": "Relations",
-      "description": "",
-      "item": []
+      "item": [],
+      "_postman_id": "fc83214c-0e7b-4506-a21e-7e6ddcaf0228"
     },
     {
-      "_postman_id": "874b5553-1b3e-4eb7-80d2-a8364a9150c2",
       "name": "Survey",
-      "description": "",
       "item": [
         {
-          "_postman_id": "64e943e1-cc2f-4454-a724-393ed3385020",
           "name": "Create Survey smart-product",
           "event": [
             {
@@ -5083,6 +4825,7 @@
               }
             }
           ],
+          "_postman_id": "64e943e1-cc2f-4454-a724-393ed3385020",
           "request": {
             "method": "POST",
             "header": [
@@ -5113,8 +4856,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5122,7 +4864,6 @@
           "response": []
         },
         {
-          "_postman_id": "af722c91-3ca0-475e-8890-05ba91e9abf8",
           "name": "Patch Survey smart-product",
           "event": [
             {
@@ -5136,6 +4877,10 @@
               }
             }
           ],
+          "_postman_id": "af722c91-3ca0-475e-8890-05ba91e9abf8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -5167,8 +4912,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5176,7 +4920,6 @@
           "response": []
         },
         {
-          "_postman_id": "bc5ed8f7-fd83-463e-b478-335b31da5b5c",
           "name": "Create Survey smart-business-model",
           "event": [
             {
@@ -5190,6 +4933,7 @@
               }
             }
           ],
+          "_postman_id": "bc5ed8f7-fd83-463e-b478-335b31da5b5c",
           "request": {
             "method": "POST",
             "header": [
@@ -5220,8 +4964,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5229,7 +4972,6 @@
           "response": []
         },
         {
-          "_postman_id": "7ca6b299-870d-4f2e-af55-1a94a20032b7",
           "name": "Patch Survey smart-business-model",
           "event": [
             {
@@ -5243,6 +4985,10 @@
               }
             }
           ],
+          "_postman_id": "7ca6b299-870d-4f2e-af55-1a94a20032b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -5274,8 +5020,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5283,7 +5028,6 @@
           "response": []
         },
         {
-          "_postman_id": "13579aa4-95dc-40d8-a07a-15e41bc251ec",
           "name": "Create Survey smart-process",
           "event": [
             {
@@ -5297,6 +5041,7 @@
               }
             }
           ],
+          "_postman_id": "13579aa4-95dc-40d8-a07a-15e41bc251ec",
           "request": {
             "method": "POST",
             "header": [
@@ -5327,8 +5072,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5336,7 +5080,6 @@
           "response": []
         },
         {
-          "_postman_id": "7167dc72-efe1-4cab-87b5-9af740e2300d",
           "name": "Patch Survey smart-process",
           "event": [
             {
@@ -5350,6 +5093,10 @@
               }
             }
           ],
+          "_postman_id": "7167dc72-efe1-4cab-87b5-9af740e2300d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -5381,8 +5128,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5390,7 +5136,6 @@
           "response": []
         },
         {
-          "_postman_id": "2ec17f25-d9d9-41f1-a3e9-9a13970a7194",
           "name": "List all survey",
           "event": [
             {
@@ -5410,13 +5155,10 @@
               }
             }
           ],
+          "_postman_id": "2ec17f25-d9d9-41f1-a3e9-9a13970a7194",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/surveys?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -5430,8 +5172,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5439,7 +5180,6 @@
           "response": []
         },
         {
-          "_postman_id": "30a6b597-178b-46fa-a766-33742c6471e0",
           "name": "Compute benchmarks",
           "event": [
             {
@@ -5458,13 +5198,10 @@
               }
             }
           ],
+          "_postman_id": "30a6b597-178b-46fa-a766-33742c6471e0",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?force=true&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -5493,7 +5230,6 @@
           "response": []
         },
         {
-          "_postman_id": "f30b9a9b-c638-4d46-9ade-dd46cf48d5db",
           "name": "Get filtered benchmarks",
           "event": [
             {
@@ -5512,6 +5248,7 @@
               }
             }
           ],
+          "_postman_id": "f30b9a9b-c638-4d46-9ade-dd46cf48d5db",
           "request": {
             "method": "GET",
             "header": [
@@ -5521,9 +5258,12 @@
                 "disabled": true
               }
             ],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?filter={\"where\":{\"activityCode.code\":\"code\"}}&surveyId=5c137f60596112250e1f8a5c&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/benchmark/compute?filter={\"where\":{\"activityCode.code\":\"code\"}}&surveyId=5c137f60596112250e1f8a5c&access_token={{v3_token}}\n\n",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5536,18 +5276,15 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"activityCode.code\":\"code\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"activityCode.code\":\"code\"}}"
                 },
                 {
                   "key": "surveyId",
-                  "value": "5c137f60596112250e1f8a5c",
-                  "equals": true
+                  "value": "5c137f60596112250e1f8a5c"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}\n\n",
-                  "equals": true
+                  "value": "{{v3_token}}\n\n"
                 }
               ]
             }
@@ -5555,12 +5292,15 @@
           "response": []
         },
         {
-          "_postman_id": "1c194e9f-b328-495a-bb8f-3ec8ec5f887a",
           "name": "Get Survey from slug",
+          "_postman_id": "1c194e9f-b328-495a-bb8f-3ec8ec5f887a",
           "request": {
             "method": "GET",
             "header": [],
-            "body": {},
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/surveys/findone?filter={\"where\":{\"slug.slug\":\"module-smart-process\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -5575,13 +5315,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"slug.slug\":\"module-smart-process\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"slug.slug\":\"module-smart-process\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5589,8 +5327,8 @@
           "response": []
         },
         {
-          "_postman_id": "ea6c3cc1-92cf-47cb-b08b-2ea8e440a389",
           "name": "Update Survey Status",
+          "_postman_id": "ea6c3cc1-92cf-47cb-b08b-2ea8e440a389",
           "request": {
             "method": "PATCH",
             "header": [
@@ -5619,8 +5357,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5628,8 +5365,8 @@
           "response": []
         },
         {
-          "_postman_id": "02f5097d-f83f-4137-b20a-8dd0684a63a0",
           "name": "Delete Survey",
+          "_postman_id": "02f5097d-f83f-4137-b20a-8dd0684a63a0",
           "request": {
             "method": "DELETE",
             "header": [
@@ -5656,8 +5393,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5665,8 +5401,8 @@
           "response": []
         },
         {
-          "_postman_id": "13ba8c78-6fe2-487f-8dc7-cf3584d35929",
           "name": "Update Survey Slug Status",
+          "_postman_id": "13ba8c78-6fe2-487f-8dc7-cf3584d35929",
           "request": {
             "method": "PATCH",
             "header": [
@@ -5695,8 +5431,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5704,8 +5439,11 @@
           "response": []
         },
         {
-          "_postman_id": "09c73133-7253-45cd-a12a-28c2b9014430",
           "name": "Update Survey Image",
+          "_postman_id": "09c73133-7253-45cd-a12a-28c2b9014430",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -5734,8 +5472,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5743,7 +5480,6 @@
           "response": []
         },
         {
-          "_postman_id": "678ab70b-5b2a-4510-8a84-3bc36741459d",
           "name": "Create Survey TEST smartphone",
           "event": [
             {
@@ -5757,6 +5493,7 @@
               }
             }
           ],
+          "_postman_id": "678ab70b-5b2a-4510-8a84-3bc36741459d",
           "request": {
             "method": "POST",
             "header": [
@@ -5787,8 +5524,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5796,8 +5532,11 @@
           "response": []
         },
         {
-          "_postman_id": "4ca3e0b0-2a36-457a-b4cf-6238ebb8ec2d",
           "name": "Update Suvey Responses order",
+          "_postman_id": "4ca3e0b0-2a36-457a-b4cf-6238ebb8ec2d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -5826,23 +5565,20 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "874b5553-1b3e-4eb7-80d2-a8364a9150c2"
     },
     {
-      "_postman_id": "32000580-9710-4355-be6e-3394f48d51f7",
       "name": "SurveySession",
-      "description": "",
       "item": [
         {
-          "_postman_id": "215de6db-2665-4364-b1a9-a684d441c32c",
           "name": "Create a new Session",
           "event": [
             {
@@ -5859,6 +5595,7 @@
               }
             }
           ],
+          "_postman_id": "215de6db-2665-4364-b1a9-a684d441c32c",
           "request": {
             "method": "POST",
             "header": [
@@ -5889,8 +5626,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5898,8 +5634,8 @@
           "response": []
         },
         {
-          "_postman_id": "5a4a1880-76d1-474a-bdc9-1730ba584979",
           "name": "Update existing session",
+          "_postman_id": "5a4a1880-76d1-474a-bdc9-1730ba584979",
           "request": {
             "method": "PATCH",
             "header": [
@@ -5930,8 +5666,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5939,8 +5674,8 @@
           "response": []
         },
         {
-          "_postman_id": "2365bba3-3d69-4e66-975b-74fdf73b38b2",
           "name": "set closing date",
+          "_postman_id": "2365bba3-3d69-4e66-975b-74fdf73b38b2",
           "request": {
             "method": "PATCH",
             "header": [
@@ -5971,8 +5706,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -5980,8 +5714,8 @@
           "response": []
         },
         {
-          "_postman_id": "6e17c7ea-5243-4074-b520-e7a6422e53f6",
           "name": "get an existing session",
+          "_postman_id": "6e17c7ea-5243-4074-b520-e7a6422e53f6",
           "request": {
             "method": "GET",
             "header": [
@@ -6013,8 +5747,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6022,7 +5755,6 @@
           "response": []
         },
         {
-          "_postman_id": "cab00433-1c21-4af1-b2fa-71b5a37ddf99",
           "name": "list all existing sessions",
           "event": [
             {
@@ -6044,6 +5776,7 @@
               }
             }
           ],
+          "_postman_id": "cab00433-1c21-4af1-b2fa-71b5a37ddf99",
           "request": {
             "method": "GET",
             "header": [
@@ -6073,8 +5806,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6082,8 +5814,8 @@
           "response": []
         },
         {
-          "_postman_id": "81a23e73-859d-4395-91cb-8df18dab3579",
           "name": "delete an existing session",
+          "_postman_id": "81a23e73-859d-4395-91cb-8df18dab3579",
           "request": {
             "method": "DELETE",
             "header": [
@@ -6114,8 +5846,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6123,8 +5854,8 @@
           "response": []
         },
         {
-          "_postman_id": "bc26b537-63eb-453e-aeaf-bc0cbcdbf787",
           "name": "get an existing session based on linkUserProfileEntreprise",
+          "_postman_id": "bc26b537-63eb-453e-aeaf-bc0cbcdbf787",
           "request": {
             "method": "GET",
             "header": [
@@ -6155,13 +5886,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"xProfilePublicUser.id\":\"5bd834b86791e52edae53d2b\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"xProfilePublicUser.id\":\"5bd834b86791e52edae53d2b\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6169,8 +5898,8 @@
           "response": []
         },
         {
-          "_postman_id": "41b0a33c-3eff-4798-8c2e-5e90209ff47a",
           "name": "get an existing session based on linkUserProfileEntreprise Copy",
+          "_postman_id": "41b0a33c-3eff-4798-8c2e-5e90209ff47a",
           "request": {
             "method": "GET",
             "header": [
@@ -6201,28 +5930,24 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"xProfilePublicUser\":{\"profileId\":\"5bd834a66791e52edae53d29\"}}}",
-                  "equals": true
+                  "value": "{\"where\":{\"xProfilePublicUser\":{\"profileId\":\"5bd834a66791e52edae53d29\"}}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "32000580-9710-4355-be6e-3394f48d51f7"
     },
     {
-      "_postman_id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6",
       "name": "PublicUser",
-      "description": "",
       "item": [
         {
-          "_postman_id": "e9e730bf-5d62-4a9c-876f-ea2849b1ad72",
           "name": "Find Linked Public User",
           "event": [
             {
@@ -6252,6 +5977,7 @@
               }
             }
           ],
+          "_postman_id": "e9e730bf-5d62-4a9c-876f-ea2849b1ad72",
           "request": {
             "method": "GET",
             "header": [
@@ -6278,13 +6004,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6292,7 +6016,6 @@
           "response": []
         },
         {
-          "_postman_id": "fcf56268-bc13-4bff-919b-355fde7a4c1b",
           "name": "Get Linked Activities",
           "event": [
             {
@@ -6309,6 +6032,10 @@
               }
             }
           ],
+          "_postman_id": "fcf56268-bc13-4bff-919b-355fde7a4c1b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -6338,13 +6065,11 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "filter",
-                  "value": "{\"fields\":[\"id\",\"publicUserId\",\"profileId\",\"enterprise\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"id\",\"title\",\"slug\"]}}],\"where\":{\"publicUserId\":\"5bd334cbf0395918959c2a93\"}}",
-                  "equals": true
+                  "value": "{\"fields\":[\"id\",\"publicUserId\",\"profileId\",\"enterprise\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"id\",\"title\",\"slug\"]}}],\"where\":{\"publicUserId\":\"5bd334cbf0395918959c2a93\"}}"
                 }
               ]
             }
@@ -6352,7 +6077,6 @@
           "response": []
         },
         {
-          "_postman_id": "1342e828-5bc0-49a9-b375-e8c14fe50222",
           "name": "Get Activity From BCE Number",
           "event": [
             {
@@ -6369,6 +6093,10 @@
               }
             }
           ],
+          "_postman_id": "1342e828-5bc0-49a9-b375-e8c14fe50222",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -6399,13 +6127,11 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 },
                 {
                   "key": "filter",
-                  "value": "{\"fields\":[\"id\",\"publicUserId\",\"profileId\",\"enterprise\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"id\",\"title\",\"slug\"]}}],\"where\":{\"enterprise.enterpriseNumber\":\"0407850653\"}}",
-                  "equals": true
+                  "value": "{\"fields\":[\"id\",\"publicUserId\",\"profileId\",\"enterprise\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"id\",\"title\",\"slug\"]}}],\"where\":{\"enterprise.enterpriseNumber\":\"0407850653\"}}"
                 }
               ]
             }
@@ -6413,7 +6139,6 @@
           "response": []
         },
         {
-          "_postman_id": "1d4f781e-3948-46c9-85e5-889c63462d1d",
           "name": "Find Linked Public User with Id",
           "event": [
             {
@@ -6443,6 +6168,10 @@
               }
             }
           ],
+          "_postman_id": "1d4f781e-3948-46c9-85e5-889c63462d1d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -6451,10 +6180,6 @@
                 "value": "application/json"
               }
             ],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/publicusers/findone?filter={\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -6469,28 +6194,24 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}",
-                  "equals": true
+                  "value": "{\"where\":{\"ssoUniqueIdentifier\":\"auth0|5bb4a3ea22bf0b48cecfa7ae\"}}"
                 },
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6"
     },
     {
-      "_postman_id": "89b81867-259e-4718-9342-a18fc682ebda",
       "name": "Update related",
-      "description": null,
       "item": [
         {
-          "_postman_id": "42a13a88-e326-4c75-8049-2122af83f314",
           "name": "Post related to mission",
           "event": [
             {
@@ -6504,6 +6225,10 @@
               }
             }
           ],
+          "_postman_id": "42a13a88-e326-4c75-8049-2122af83f314",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [
@@ -6530,8 +6255,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6539,7 +6263,6 @@
           "response": []
         },
         {
-          "_postman_id": "6b19b780-1e67-4c51-be0f-16d712a73440",
           "name": "Mission related to post",
           "event": [
             {
@@ -6553,13 +6276,13 @@
               }
             }
           ],
+          "_postman_id": "6b19b780-1e67-4c51-be0f-16d712a73440",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
             "url": {
               "raw": "{{protocol}}://{{domain}}/api/missions/5ab93b37fb6a4c11bba097cf?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
@@ -6574,8 +6297,7 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
@@ -6583,7 +6305,6 @@
           "response": []
         },
         {
-          "_postman_id": "61360bfb-61a2-4a80-b4d0-d0a4e2fbe6ae",
           "name": "PATCH post related to mission",
           "event": [
             {
@@ -6597,6 +6318,10 @@
               }
             }
           ],
+          "_postman_id": "61360bfb-61a2-4a80-b4d0-d0a4e2fbe6ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -6623,18 +6348,17 @@
               "query": [
                 {
                   "key": "access_token",
-                  "value": "{{v3_token}}",
-                  "equals": true
+                  "value": "{{v3_token}}"
                 }
               ]
             }
           },
           "response": []
         }
-      ]
+      ],
+      "_postman_id": "89b81867-259e-4718-9342-a18fc682ebda"
     },
     {
-      "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
       "name": "Count Profils New Style",
       "event": [
         {
@@ -6653,13 +6377,10 @@
           }
         }
       ],
+      "_postman_id": "b808f5ac-8299-fc8c-9bcf-07abe9b8899e",
       "request": {
         "method": "GET",
         "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/profiles/count?where={\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}&access_token={{v3_token}}",
           "protocol": "{{protocol}}",
@@ -6674,13 +6395,11 @@
           "query": [
             {
               "key": "where",
-              "value": "{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}",
-              "equals": true
+              "value": "{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}"
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -6688,7 +6407,6 @@
       "response": []
     },
     {
-      "_postman_id": "16f3a05d-d886-87c6-67d1-3bf02ad2bfc3",
       "name": "Contact filtr\u00e9s par v2ID New Style",
       "event": [
         {
@@ -6706,13 +6424,10 @@
           }
         }
       ],
+      "_postman_id": "16f3a05d-d886-87c6-67d1-3bf02ad2bfc3",
       "request": {
         "method": "GET",
         "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"v2id\":\"14615\"}}&access_token={{v3_token}}",
           "protocol": "{{protocol}}",
@@ -6726,13 +6441,11 @@
           "query": [
             {
               "key": "filter",
-              "value": "{\"where\":{\"v2id\":\"14615\"}}",
-              "equals": true
+              "value": "{\"where\":{\"v2id\":\"14615\"}}"
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -6740,12 +6453,15 @@
       "response": []
     },
     {
-      "_postman_id": "bab2d48c-afb4-6cae-5cf8-74162aab5a9c",
       "name": "Liste des profils associ\u00e9s \u00e0 une revue de presse",
+      "_postman_id": "bab2d48c-afb4-6cae-5cf8-74162aab5a9c",
       "request": {
         "method": "GET",
         "header": [],
-        "body": {},
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/xPressReviewProfile?filter={\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\",\"shortDescription\",\"images\",\"updatedAt\",\"addresses\",\"emailAddresses\",\"urls\",\"tags\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"pressReviewId\":\"5a3baddd6e6bd65d6119fbfe\"}}&access_token={{v3_token}}",
           "protocol": "{{protocol}}",
@@ -6759,13 +6475,11 @@
           "query": [
             {
               "key": "filter",
-              "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\",\"shortDescription\",\"images\",\"updatedAt\",\"addresses\",\"emailAddresses\",\"urls\",\"tags\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"pressReviewId\":\"5a3baddd6e6bd65d6119fbfe\"}}",
-              "equals": true
+              "value": "{\"fields\":[\"role\",\"profileId\"],\"include\":[{\"relation\":\"profile\",\"scope\":{\"fields\":[\"status\",\"slug\",\"title\",\"shortTitle\",\"shortDescription\",\"images\",\"updatedAt\",\"addresses\",\"emailAddresses\",\"urls\",\"tags\"],\"where\":{\"status\":\"Published\"}}}],\"where\":{\"pressReviewId\":\"5a3baddd6e6bd65d6119fbfe\"}}"
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -6773,8 +6487,8 @@
       "response": []
     },
     {
-      "_postman_id": "28a06dfd-f5b9-45f8-aaaa-51ed9bac6baa",
       "name": "Request to service desk",
+      "_postman_id": "28a06dfd-f5b9-45f8-aaaa-51ed9bac6baa",
       "request": {
         "method": "POST",
         "header": [
@@ -6800,8 +6514,7 @@
           "query": [
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -6809,7 +6522,6 @@
       "response": []
     },
     {
-      "_postman_id": "0b142181-faca-4152-b238-c3c2659845ea",
       "name": "Subscribe Newsletter",
       "event": [
         {
@@ -6823,6 +6535,7 @@
           }
         }
       ],
+      "_postman_id": "0b142181-faca-4152-b238-c3c2659845ea",
       "request": {
         "method": "POST",
         "header": [
@@ -6849,8 +6562,7 @@
           "query": [
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -6858,12 +6570,15 @@
       "response": []
     },
     {
-      "_postman_id": "130387b8-231e-484a-b4bd-e66239b585cb",
       "name": "Count Profiles in Projects",
+      "_postman_id": "130387b8-231e-484a-b4bd-e66239b585cb",
       "request": {
         "method": "GET",
         "header": [],
-        "body": {},
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b3afb6a4c11bba097f1/profiles/count?filter={\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"fre\"},{\"tags.slug.slug\":\"entreprise-privee\"},{\"tags.slug.slug\":\"secteur-du-numerique\"},{\"status\":\"Published\"}]}&access_token={{v3_token}}",
           "protocol": "{{protocol}}",
@@ -6880,13 +6595,11 @@
           "query": [
             {
               "key": "filter",
-              "value": "{\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"fre\"},{\"tags.slug.slug\":\"entreprise-privee\"},{\"tags.slug.slug\":\"secteur-du-numerique\"},{\"status\":\"Published\"}]}",
-              "equals": true
+              "value": "{\"where\":{\"and\":[{\"partners\":\"filtre-digital-wallonia\"},{\"status\":\"Published\"},{\"title.language\":\"fre\"},{\"tags.slug.slug\":\"entreprise-privee\"},{\"tags.slug.slug\":\"secteur-du-numerique\"},{\"status\":\"Published\"}]}"
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -6894,12 +6607,15 @@
       "response": []
     },
     {
-      "_postman_id": "0c3bde65-7270-4c22-979f-d5c0bc5d998e",
       "name": "Count Profiles",
+      "_postman_id": "0c3bde65-7270-4c22-979f-d5c0bc5d998e",
       "request": {
         "method": "GET",
         "header": [],
-        "body": {},
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
         "url": {
           "raw": "{{protocol}}://{{domain}}/api/profiles/count?where[partners]=filtre-digital-wallonia&where[status]=Published&access_token={{v3_token}}",
           "protocol": "{{protocol}}",
@@ -6914,18 +6630,74 @@
           "query": [
             {
               "key": "where[partners]",
-              "value": "filtre-digital-wallonia",
-              "equals": true
+              "value": "filtre-digital-wallonia"
             },
             {
               "key": "where[status]",
-              "value": "Published",
-              "equals": true
+              "value": "Published"
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CTA List",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7b4e7f29-8dc9-455c-b25b-111ace905397",
+            "exec": [
+              "tests[\"response code is 200 OK\"] = responseCode.code === 200",
+              "if (responseCode.code === 200) {",
+              "    let jsonData = JSON.parse(responseBody);",
+              "    if(jsonData.id){",
+              "        postman.setEnvironmentVariable(\"v3_token\", jsonData.id);",
+              "        postman.setNextRequest(\"Ajout d'un environnement\");",
+              "    }else{",
+              "        postman.setNextRequest(null);",
+              "    }",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "172c08aa-a7b2-475c-baf6-4a7decdd8caa",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{v3_email}}\",\n  \"password\": \"{{v3_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{protocol}}://{{domain}}/api/cta?access_token={{v3_token}}",
+          "protocol": "{{protocol}}",
+          "host": [
+            "{{domain}}"
+          ],
+          "path": [
+            "api",
+            "cta"
+          ],
+          "query": [
+            {
+              "key": "access_token",
+              "value": "{{v3_token}}"
             }
           ]
         }
