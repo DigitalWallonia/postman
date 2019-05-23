@@ -6425,7 +6425,47 @@
     },
     {
       "name": "Activity",
-      "item": [],
+      "item": [
+        {
+          "name": "Activity List with publicUsers",
+          "_postman_id": "a2834add-1cf6-422a-923e-c5bea9e31122",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/activities?access_token={{v3_token}}&limit=5&filter={\"include\":[{\"relation\":\"_publicUsers\"}]}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "activities"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "5",
+                  "type": "text"
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[{\"relation\":\"_publicUsers\"}]}",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
       "_postman_id": "7a59f7d3-e5ad-482b-ad21-373e8cda36f6"
     },
     {
