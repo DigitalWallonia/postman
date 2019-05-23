@@ -6462,6 +6462,39 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "PublicUsers for an activity",
+          "_postman_id": "437a3932-fe13-48db-a732-af6a98fdd441",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/xActivityPublicUser?access_token={{v3_token}}&filter={\"where\":{\"activityId\":\"5cac45facc6bbb044220aff2\"}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "xActivityPublicUser"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"activityId\":\"5cac45facc6bbb044220aff2\"}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "7a59f7d3-e5ad-482b-ad21-373e8cda36f6"
