@@ -6436,7 +6436,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/activities?access_token={{v3_token}}&limit=5&filter={\"include\":[{\"relation\":\"_publicUsers\"}]}",
+              "raw": "{{protocol}}://{{domain}}/api/activities?access_token={{v3_token}}&limit=5&filter={\"include\":[\"_publicUsers\"]}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -6452,13 +6452,11 @@
                 },
                 {
                   "key": "limit",
-                  "value": "5",
-                  "type": "text"
+                  "value": "5"
                 },
                 {
                   "key": "filter",
-                  "value": "{\"include\":[{\"relation\":\"_publicUsers\"}]}",
-                  "type": "text"
+                  "value": "{\"include\":[\"_publicUsers\"]}"
                 }
               ]
             }
