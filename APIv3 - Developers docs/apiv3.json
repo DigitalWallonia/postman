@@ -6525,6 +6525,36 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Activity linkList with CBE Number",
+          "_postman_id": "99d22f38-7194-4f15-90f6-b9e1e933afa9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/activities/linkList?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "activities",
+                "linkList"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "7a59f7d3-e5ad-482b-ad21-373e8cda36f6"
