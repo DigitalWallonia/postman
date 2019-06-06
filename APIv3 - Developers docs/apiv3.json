@@ -6506,27 +6506,20 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/activities?access_token={{v3_token}}&limit=5&filter={\"include\":[\"_publicUsers\"]}",
+              "raw": "{{protocol}}://{{domain}}/api/activities/linkList?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "activities"
+                "activities",
+                "linkList"
               ],
               "query": [
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}"
-                },
-                {
-                  "key": "limit",
-                  "value": "5"
-                },
-                {
-                  "key": "filter",
-                  "value": "{\"include\":[\"_publicUsers\"]}"
                 }
               ]
             }
