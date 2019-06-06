@@ -6495,6 +6495,43 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Activity linkList",
+          "_postman_id": "2e5973ff-217f-4a58-9011-d79fa481d703",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/activities?access_token={{v3_token}}&limit=5&filter={\"include\":[\"_publicUsers\"]}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "activities"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                },
+                {
+                  "key": "filter",
+                  "value": "{\"include\":[\"_publicUsers\"]}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "7a59f7d3-e5ad-482b-ad21-373e8cda36f6"
