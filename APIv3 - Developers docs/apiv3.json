@@ -4253,7 +4253,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{ \"v2Id\":\"254\"}}",
+              "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{ \"v2Id\":\"254\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4267,6 +4267,10 @@
                 {
                   "key": "filter",
                   "value": "{\"where\":{ \"v2Id\":\"254\"}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
                 }
               ]
             }
