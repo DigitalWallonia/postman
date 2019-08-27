@@ -4209,7 +4209,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "4107a7c3-45da-4198-a88b-fe2d255cdb2f",
                 "exec": [
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
                   "",
@@ -4217,7 +4217,8 @@
                   "",
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Il existe bien au moins 1 tag\"] = jsonData.length >= 1;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -4225,7 +4226,23 @@
           "request": {
             "method": "GET",
             "header": [],
-            "url": "{{protocol}}://{{domain}}/api/tags"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
           },
           "response": []
         },
