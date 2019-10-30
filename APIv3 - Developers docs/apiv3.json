@@ -2620,6 +2620,56 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Recherche Contact Idv2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "973707b1-0ac6-40f1-b389-df20db51991b",
+                "exec": [
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le titre est pr\u00e9sent\"] = jsonData.title[0].text === \"A+ Concept\";"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d08ea8d1-3d4f-480f-a88b-83795bb55048",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts/findOne?filter={\"where\":{ \"v2Id\":33861}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{ \"v2Id\":33861}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "2cf0bb3d-8dfd-0411-e370-07706397efd0"
