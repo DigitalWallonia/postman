@@ -133,6 +133,7 @@
               "pm.test(\"Successful GET request\", function () {",
               "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
               "});",
+              "console.log('////// Theme id: ', postman.getEnvironmentVariable(\"themeId\"));",
               "console.log('************ ', pm.response,  postman.getEnvironmentVariable(\"contact\"));",
               "if (pm.response.code === 200) {",
               "    let jsonData = JSON.parse(responseBody);",
