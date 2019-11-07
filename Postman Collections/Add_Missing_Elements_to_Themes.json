@@ -6,7 +6,6 @@
   },
   "item": [
     {
-      "_postman_id": "f5197908-d82b-4f03-940d-e2bc2966f0b3",
       "name": "Find Theme",
       "event": [
         {
@@ -29,6 +28,7 @@
           }
         }
       ],
+      "_postman_id": "f5197908-d82b-4f03-940d-e2bc2966f0b3",
       "request": {
         "method": "GET",
         "header": [],
@@ -62,7 +62,6 @@
       "response": []
     },
     {
-      "_postman_id": "8e3c79a1-8404-445f-92f5-00b1f4085e67",
       "name": "Find Contact",
       "event": [
         {
@@ -90,6 +89,7 @@
           }
         }
       ],
+      "_postman_id": "8e3c79a1-8404-445f-92f5-00b1f4085e67",
       "request": {
         "method": "GET",
         "header": [],
@@ -111,13 +111,11 @@
           "query": [
             {
               "key": "filter",
-              "value": "{\"where\":{\"v2Id\":\"{{contactV2Id}}\"}}",
-              "equals": true
+              "value": "{\"where\":{\"v2Id\":\"{{contactV2Id}}\"}}"
             },
             {
               "key": "access_token",
-              "value": "{{v3_token}}",
-              "equals": true
+              "value": "{{v3_token}}"
             }
           ]
         }
@@ -125,24 +123,31 @@
       "response": []
     },
     {
-      "_postman_id": "33a21d96-dd8c-4aba-8a47-0db0ca74fe78",
       "name": "Patch Theme",
       "event": [
         {
           "listen": "test",
           "script": {
             "id": "56f7fdb6-6e22-498b-84c4-ac5c77c41cf2",
-            "type": "text/javascript",
             "exec": [
-              "postman.setNextRequest(\"\");"
-            ]
+              "pm.test(\"Successful GET request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+              "});",
+              "console.log('************ ', pm.response);",
+              "if (pm.response.code === 200) {",
+              "    let jsonData = JSON.parse(responseBody);",
+              "}else{",
+              "    postman.setNextRequest(\"\");",
+              "}",
+              ""
+            ],
+            "type": "text/javascript"
           }
         },
         {
           "listen": "prerequest",
           "script": {
             "id": "159a490a-52e1-41b2-b126-1d619449e65a",
-            "type": "text/javascript",
             "exec": [
               "function uuidv4() {",
               "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
@@ -162,10 +167,15 @@
               "pm.environment.set(\"uniqId8\", uuidv4());",
               "pm.environment.set(\"uniqId9\", uuidv4());",
               "pm.environment.set(\"uniqId10\", uuidv4());"
-            ]
+            ],
+            "type": "text/javascript"
           }
         }
       ],
+      "_postman_id": "33a21d96-dd8c-4aba-8a47-0db0ca74fe78",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
       "request": {
         "method": "PATCH",
         "header": [
