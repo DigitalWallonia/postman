@@ -2670,6 +2670,19 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Supprimer un contact",
+          "_postman_id": "9d22e5b9-f181-4982-9d97-89f0025a57b9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": ""
+          },
+          "response": []
         }
       ],
       "_postman_id": "2cf0bb3d-8dfd-0411-e370-07706397efd0"
