@@ -3177,7 +3177,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "6864cd08-15b9-43e3-a295-8807a14d2638",
                 "exec": [
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
                   "",
@@ -3186,7 +3186,8 @@
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
                   "tests[\"On r\u00e9cup\u00e8re bien 10 profils ou moins\"] = jsonData.length <= 10;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
@@ -3195,7 +3196,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"partenaire-dw\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3207,7 +3208,11 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"filtre-digital-wallonia\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"tags.slug.slug\": \"partenaire-dw\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
                 }
               ]
             }
