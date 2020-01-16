@@ -4417,7 +4417,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "28a2a949-157f-4a53-9ac7-7a87498d1682",
                 "exec": [
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
                   "",
@@ -4425,11 +4425,15 @@
                   "",
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Il existe bien au moins 1 tag\"] = jsonData.length >= 1;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "23a72cb1-e209-120b-a6dc-9a104be091fc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
