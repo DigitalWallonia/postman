@@ -4406,6 +4406,40 @@
           "response": []
         },
         {
+          "name": "Recherche Tag Slug",
+          "_postman_id": "c175dbf8-ef13-4505-adc2-d0bc4838c032",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Patch Tag",
           "event": [
             {
@@ -4474,40 +4508,10 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \n    \"contacts\":[\n      {{contact}}\n    ]\n}"
+              "raw": "{\r\n    \"v2Id\": 300,\r\n    \"status\": \"Published\",\r\n    \"sortKeys\": {\r\n        \"fre\": \"ecosysteme fintech\",\r\n        \"eng\": \"fintech ecosystem\"\r\n    },\r\n    \"id\": \"5ab93b17fb6a4c11bba096b7\",\r\n    \"title\": [\r\n        {\r\n            \"language\": \"fre\",\r\n            \"text\": \"\u00e9cosyst\u00e8me FinTech\",\r\n            \"createdAt\": \"2016-08-23T10:30:35.000Z\",\r\n            \"id\": \"0cee78f773c5d4bc1f1f73afaa6476a7\"\r\n        },\r\n        {\r\n            \"language\": \"eng\",\r\n            \"text\": \"FinTech ecosystem\",\r\n            \"createdAt\": \"2020-01-05T10:30:35.000Z\",\r\n            \"id\": \"0cee78f773c5d4bc1f1f73afaa6476a8\"\r\n        }\r\n    ],\r\n    \"shortDescription\": [\r\n        {\r\n            \"language\": \"fre\",\r\n            \"text\": \"Initiatives et acteurs impliqu\u00e9s dans la transformation num\u00e9rique des services financiers\",\r\n            \"createdAt\": \"2016-08-23T10:30:35.000Z\",\r\n            \"id\": \"1dca511f39e9a43ba706beadcc01003f\"\r\n        },\r\n        {\r\n            \"language\": \"eng\",\r\n            \"text\": \"Initiatives and actors involved in the digital transformation of financial services\",\r\n            \"createdAt\": \"2016-08-23T10:30:35.000Z\",\r\n            \"id\": \"82f6a6970f8011b4308f9990a38ce810\"\r\n        }\r\n    ],\r\n    \"slug\": [\r\n        {\r\n            \"language\": \"fre\",\r\n            \"slug\": \"ecosysteme-fintech\",\r\n            \"status\": \"Published\",\r\n            \"createdAt\": \"2016-08-23T10:30:35.000Z\",\r\n            \"id\": \"6c699b8979f037e63330977d7a47b506\"\r\n        },\r\n        {\r\n            \"language\": \"eng\",\r\n            \"slug\": \"fintech-ecosystem\",\r\n            \"status\": \"Published\",\r\n            \"createdAt\": \"2020-01-05T10:30:35.000Z\",\r\n            \"id\": \"6c699b8979f037e63330977d7a47b507\"\r\n        }\r\n    ],\r\n    \"createdAt\": \"2016-08-23T10:30:35.000Z\",\r\n    \"touchedAt\": \"2020-02-05T08:14:38.516Z\",\r\n    \"updatedAt\": \"2017-03-02T15:03:21.000Z\",\r\n    \"tagBundle\": {\r\n        \"v2Id\": 26,\r\n        \"status\": \"Published\",\r\n        \"sortKeys\": {\r\n            \"fre\": \"ecosystemes\",\r\n\t\t\t\"eng\": \"ecosystems\"\r\n        },\r\n        \"id\": \"5ab93b09fb6a4c11bba0963c\",\r\n        \"title\": [\r\n            {\r\n                \"language\": \"fre\",\r\n                \"text\": \"\u00e9cosyst\u00e8mes\",\r\n                \"createdAt\": \"2017-03-02T14:59:22.000Z\",\r\n                \"id\": \"0b412341ff8b6a7c75b2acaa0e1e93b9\"\r\n            },\r\n\t\t\t{\r\n                \"language\": \"eng\",\r\n                \"text\": \"ecosystems\",\r\n                \"createdAt\": \"2020-01-05T14:59:22.000Z\",\r\n                \"id\": \"1297a6a83498b41efdbafcd21bb23cd7\"\r\n            }\r\n        ],\r\n        \"shortDescription\": [\r\n            {\r\n                \"language\": \"fre\",\r\n                \"text\": \"Initiatives et acteurs impliqu\u00e9s dans le d\u00e9veloppement du secteur num\u00e9rique wallon\",\r\n                \"createdAt\": \"2017-03-02T14:59:22.000Z\",\r\n                \"id\": \"f929f8dae7b5eb644147875481848db1\"\r\n            },\r\n\t\t\t{\r\n                \"language\": \"eng\",\r\n                \"text\": \"Initiatives and actors involved in the development of the Walloon digital sector\",\r\n                \"createdAt\": \"2020-01-05T14:59:22.000Z\",\r\n                \"id\": \"6b0f305273z577178d3e85f2ef5afa47\"\r\n            }\r\n        ],\r\n        \"slug\": [\r\n            {\r\n                \"language\": \"fre\",\r\n                \"slug\": \"ecosystemes\",\r\n                \"status\": \"Published\",\r\n                \"createdAt\": \"2017-03-02T14:59:22.000Z\",\r\n                \"id\": \"77e35e8100f7a4b4a8e8686f1ef3271a\"\r\n            },\r\n\t\t\t{\r\n                \"language\": \"eng\",\r\n                \"slug\": \"ecosystems\",\r\n                \"status\": \"Published\",\r\n                \"createdAt\": \"2020-01-05T14:59:22.000Z\",\r\n                \"id\": \"77e35e9100f7a4b4a8e8686f1ef3271b\"\r\n            }\r\n        ],\r\n        \"createdAt\": \"2017-03-02T14:59:22.000Z\",\r\n        \"touchedAt\": \"2019-11-19T15:58:08.691Z\",\r\n        \"updatedAt\": \"2017-11-29T14:31:10.000Z\",\r\n        \"tagCategory\": {\r\n            \"v2Id\": 3,\r\n            \"status\": \"Published\",\r\n            \"sortKeys\": {\r\n                \"fre\": \"communautes\",\r\n                \"eng\": \"communities\"\r\n            },\r\n            \"id\": \"5ab93b05fb6a4c11bba0961e\",\r\n            \"title\": [\r\n                {\r\n                    \"language\": \"fre\",\r\n                    \"text\": \"communaut\u00e9s\",\r\n                    \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n                    \"id\": \"fc2cf112cccee2b50812b4a20455c906\"\r\n                },\r\n                {\r\n                    \"language\": \"eng\",\r\n                    \"text\": \"communities\",\r\n                    \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n                    \"id\": \"9b21f76566f408b742d7d8f20fda4040\"\r\n                }\r\n            ],\r\n            \"shortDescription\": [\r\n                {\r\n                    \"language\": \"fre\",\r\n                    \"text\": \"Communaut\u00e9s li\u00e9es au d\u00e9veloppement num\u00e9rique de la Wallonie. R\u00e9pond \u00e0 la question \\\"Quelle est ma communaut\u00e9 d'appartenance ?\\\"\",\r\n                    \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n                    \"id\": \"1b27e6335bac8a58dc2ffbc4a8c6d757\"\r\n                },\r\n                {\r\n                    \"language\": \"eng\",\r\n                    \"text\": \"Communities linked to the digital development of Wallonia. Answers the question : \\\"Which community do I belong to ?\\\"\",\r\n                    \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n                    \"id\": \"1b27e6335bac8a58dc2ffbc4a8c6d757\"\r\n                }\r\n            ],\r\n            \"slug\": [\r\n                {\r\n                    \"language\": \"fre\",\r\n                    \"slug\": \"communautes\",\r\n                    \"status\": \"Published\",\r\n                    \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n                    \"id\": \"8d6c61441668f79fa838e1be719b1328\"\r\n                },\r\n                {\r\n                    \"language\": \"eng\",\r\n                    \"slug\": \"communities\",\r\n                    \"status\": \"Published\",\r\n                    \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n                    \"id\": \"825e796b3bcff317f85e97bdd31c9f1e\"\r\n                }\r\n            ],\r\n            \"createdAt\": \"2015-10-26T10:33:12.000Z\",\r\n            \"touchedAt\": \"2019-11-19T15:58:05.068Z\",\r\n            \"updatedAt\": \"2017-10-12T12:04:22.000Z\"\r\n        }\r\n    }\r\n}"
             },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/themes/{{themeId}}?access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "themes",
-                "{{themeId}}"
-              ],
-              "query": [
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Recherche Tag Slug",
-          "_postman_id": "c175dbf8-ef13-4505-adc2-d0bc4838c032",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tags/5ab93b17fb6a4c11bba096b7?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -4515,13 +4519,9 @@
               "path": [
                 "api",
                 "tags",
-                "findOne"
+                "5ab93b17fb6a4c11bba096b7"
               ],
               "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}"
-                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}"
