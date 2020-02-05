@@ -4404,6 +4404,98 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Patch Tag",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "56f7fdb6-6e22-498b-84c4-ac5c77c41cf2",
+                "exec": [
+                  "pm.test(\"Successful GET request\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
+                  "});",
+                  "console.log('////// Theme id: ', postman.getEnvironmentVariable(\"themeId\"));",
+                  "console.log('////// slug FR: ', postman.getEnvironmentVariable(\"slugFR\"));",
+                  "console.log('////// old slugFR: ', postman.getEnvironmentVariable(\"oldSlugFR\"));",
+                  "console.log('////// slug EN: ', postman.getEnvironmentVariable(\"slugEN\"));",
+                  "console.log('////// old slug EN: ', postman.getEnvironmentVariable(\"oldSlugEN\"));",
+                  "// console.log('************ ', pm.response,  postman.getEnvironmentVariable(\"contact\"));",
+                  "if (pm.response.code === 200) {",
+                  "    let jsonData = JSON.parse(responseBody);",
+                  "}else{",
+                  "    postman.setNextRequest(\"\");",
+                  "}",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "159a490a-52e1-41b2-b126-1d619449e65a",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "let currentDate = new Date();",
+                  "pm.environment.set(\"currentDate\", currentDate);",
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());",
+                  "pm.environment.set(\"uniqId3\", uuidv4());",
+                  "pm.environment.set(\"uniqId4\", uuidv4());",
+                  "pm.environment.set(\"uniqId5\", uuidv4());",
+                  "pm.environment.set(\"uniqId6\", uuidv4());",
+                  "pm.environment.set(\"uniqId7\", uuidv4());",
+                  "pm.environment.set(\"uniqId8\", uuidv4());",
+                  "pm.environment.set(\"uniqId9\", uuidv4());",
+                  "pm.environment.set(\"uniqId10\", uuidv4());"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "1b1ea540-cbb3-44b4-a5c5-7001b4ae20fc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \n    \"contacts\":[\n      {{contact}}\n    ]\n}"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/themes/{{themeId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "themes",
+                "{{themeId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "545c8b72-02c1-99a2-164d-c80fe500abae"
