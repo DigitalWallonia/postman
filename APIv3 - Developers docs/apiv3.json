@@ -4406,40 +4406,6 @@
           "response": []
         },
         {
-          "name": "Recherche Tag Slug",
-          "_postman_id": "c175dbf8-ef13-4505-adc2-d0bc4838c032",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}&access_token={{v3_token}}",
-              "protocol": "{{protocol}}",
-              "host": [
-                "{{domain}}"
-              ],
-              "path": [
-                "api",
-                "tags",
-                "findOne"
-              ],
-              "query": [
-                {
-                  "key": "filter",
-                  "value": "{\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}"
-                },
-                {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Patch Tag",
           "event": [
             {
@@ -4522,6 +4488,40 @@
                 "{{themeId}}"
               ],
               "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recherche Tag Slug",
+          "_postman_id": "c175dbf8-ef13-4505-adc2-d0bc4838c032",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags/findOne?filter={\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags",
+                "findOne"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"slug.slug\":\"ecosysteme-fintech\"}}"
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}"
