@@ -2992,27 +2992,27 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "f1e4d5ec-f0ca-48ba-a086-07705bad53a7",
                 "exec": [
                   "let jsonData = JSON.parse(responseBody);",
                   "",
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Le titre est pr\u00e9sent\"] = jsonData.title[0].text === \"A+ Concept\";"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "e9728c32-c3cc-c27f-81dc-935b35228637",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "body": {
-              "mode": "formdata",
-              "formdata": []
-            },
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":12249}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"v2Id\":12045}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3025,7 +3025,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"where\":{ \"v2Id\":12249}}"
+                  "value": "{\"where\":{ \"v2Id\":12045}}"
                 },
                 {
                   "key": "access_token",
