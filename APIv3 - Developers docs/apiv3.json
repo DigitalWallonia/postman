@@ -1110,7 +1110,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "type": "text/javascript",
+                "id": "bf38165a-8eae-4a51-85d3-4974e9793dbe",
                 "exec": [
                   "function uuidv4() {",
                   "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
@@ -1122,11 +1122,15 @@
                   "pm.environment.set(\"uniqId2\", uuidv4());",
                   "pm.environment.set(\"uniqId3\", uuidv4());",
                   "pm.environment.set(\"uniqId4\", uuidv4());"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "cfe640c7-525a-9005-19d0-cdc6765da0f4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "PATCH",
             "header": [
@@ -1137,9 +1141,29 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"wallcode\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId1}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"wallcode\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId2}}\"\n        }\n    ],\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"#WallCode\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId1}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"#WallCode\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId2}}\"\n        }\n    ],\n    \"shortDescription\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Ensemble des \u00e9l\u00e9ments relatifs au programme Wallcode : publications, partenaires, \u00e9v\u00e9nements, etc. Wallcode est le programme d'initiation des \u00e9l\u00e8ves wallons aux sciences informatiques, \u00e0 la logique algorithmique et aux langages de programmation faisant partie de la strat\u00e9gie Digital Wallonia\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId3}}\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"Wallcode is the program for introducing Walloon students to computer science, algorithmic logic and programming languages \u200b\u200bthat are part of the Digital Wallonia strategy\",\n            \"createdAt\": \"2016-11-17T18:05:23.000Z\",\n            \"id\": \"{{uniqId4}}\"\n        }\n    ]\n}"
+              "raw": "{\n    \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"madedifferent\",\n            \"status\": \"Archived\",\n            \"createdAt\": \"2016-11-17T13:55:57.000Z\",\n            \"id\": \"87b671fa6837856cc57b5d89b0c760d1\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"made-different-digital-wallonia\",\n            \"status\": \"Archived\",\n            \"createdAt\": \"2016-11-17T13:55:57.000Z\",\n            \"id\": \"adfeffbfd6fb1dfc8f8e0b602a70b8f4\"\n        },\n        {\n            \"language\": \"fre\",\n            \"slug\": \"industrie-du-futur\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2016-11-17T13:55:57.000Z\",\n            \"id\": \"afc43e94212cf5a81f26fee5e7cb73a7\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"futur-industry\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2020-02-28T13:55:57.000Z\",\n            \"id\": \"afc43e94212cf5a81f26fee5e7cb73a8\"\n        }\n    ],\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Industrie du futur\",\n            \"createdAt\": \"2016-11-17T13:55:57.000Z\",\n            \"id\": \"af7ccb09bd2a8a4e9561e554f5f16970\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"Futur industry\",\n            \"createdAt\": \"2020-02-28T13:55:57.000Z\",\n            \"id\": \"af7ccb09bd2a8a4e9561e554f5f16971\"\n        }\n    ],\n    \"shortDescription\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Le projet \\\"industrie du futur\\\" vise l'am\u00e9lioration de la comp\u00e9titivit\u00e9 des entreprises manufacturi\u00e8res par l'usage des technologies num\u00e9riques avanc\u00e9es. L'objectif est de proposer et mutualiser des outils, de l'accompagnement, des aides,\u2026 facilitant la transformation des entreprises sur les court et moyen terme. Ce projet b\u00e9n\u00e9ficie du soutien d'une quarantaine de partenaires wallons. Il fait partie de la strat\u00e9gie Digital Wallonia.\",\n            \"createdAt\": \"2016-11-17T13:55:57.000Z\",\n            \"id\": \"635d51284c86ce79738190ff763f6d1e\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"The \\\"industry of the future\\\" project aims to improve the competitiveness of manufacturing companies through the use of advanced digital technologies. The objective is to propose and pool tools, support, aid, etc. to facilitate the transformation of companies in the short and medium term. This project has the support of some forty Walloon partners. It is part of the Digital Wallonia strategy.\",\n            \"createdAt\": \"2020-02-28T13:55:57.000Z\",\n            \"id\": \"cf69a8308508722d72f06bd058add26g\"\n        }\n    ],\n    \"images\": [\n        {\n            \"type\": \"Banner\",\n            \"container\": \"digitalwallonia-content\",\n            \"name\": \"Made Different Digital Wallonia\",\n            \"url\": \"https://content.digitalwallonia.be/post/20180322084543/Projet-Made-Different.png\",\n            \"width\": 830,\n            \"height\": 380,\n            \"sizes\": [\n                \"150x68\",\n                \"300x137\",\n                \"768x351\"\n            ],\n            \"hash\": \"c189b3fa98d2bc0ef64927a59f577b1eb72ff2033b70b04ec35af61cdc14f0974b4b5b7f8276e7df16730a330447f2bc1d39c0124d2138f6d232af100e998127\",\n            \"id\": \"1705444ad9d7760bffb209c9f9566997\"\n        },\n        {\n            \"type\": \"Logo\",\n            \"container\": \"digitalwallonia-content\",\n            \"name\": \"Made Different Digital Wallonia\",\n            \"url\": \"https://content.digitalwallonia.be/post/20200220160056/Logo-IndustrieFuture.png\",\n            \"width\": 2217,\n            \"height\": 528,\n            \"sizes\": [\n                \"150x35\",\n                \"300x71\",\n                \"768x182\",\n                \"1024x243\",\n                \"1440x342\",\n                \"2048x487\"\n            ],\n            \"hash\": \"fb6d5dc493f3af726841ae66397c2375b964e00295610493bc072d7c928eb5dc6f0e0da104590f86af78492c8d1f7b8ee490f5cb1dfa1c19087730b5e7dee24c\",\n            \"id\": \"4eecaaeae9df4d7aa698111e0ef2d140\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {}
+              }
             },
-            "url": "{{protocol}}://{{domain}}/api/projects/{{projectId}}"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b39fb6a4c11bba097e8?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "5ab93b39fb6a4c11bba097e8"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
           },
           "response": []
         },
