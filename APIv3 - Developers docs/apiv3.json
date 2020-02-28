@@ -1987,6 +1987,69 @@
             "url": "{{protocol}}://{{domain}}/api/users/login"
           },
           "response": []
+        },
+        {
+          "name": "Patch Title, Description, Images, Slug ...",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "bf38165a-8eae-4a51-85d3-4974e9793dbe",
+                "exec": [
+                  "function uuidv4() {",
+                  "  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {",
+                  "    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);",
+                  "    return v.toString(16);",
+                  "  });",
+                  "}",
+                  "pm.environment.set(\"uniqId1\", uuidv4());",
+                  "pm.environment.set(\"uniqId2\", uuidv4());",
+                  "pm.environment.set(\"uniqId3\", uuidv4());",
+                  "pm.environment.set(\"uniqId4\", uuidv4());"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "4ca5180e-4585-45d0-9e8d-2ce954eb5383",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"startups-tech\",\n            \"status\": \"Archived\",\n            \"createdAt\": \"2018-03-18T19:53:54.000Z\",\n            \"id\": \"757b0430c5932b30bf24bf4b59b20add\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"startups-tech\",\n            \"status\": \"Archived\",\n            \"createdAt\": \"2018-03-18T19:53:54.000Z\",\n            \"id\": \"182e22ee63fec94c2e0d2031aa30d551\"\n        },\n        {\n            \"language\": \"fre\",\n            \"slug\": \"startups\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2018-03-18T19:53:54.000Z\",\n            \"id\": \"78802bb806ffa02e272404540d286f6e\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"Startups\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2020-02-28T19:48:13.000Z\",\n            \"id\": \"56dc11ebc8ef29c7f54ecfa37db38259\"\n        }\n    ],\n    \"title\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Startups\",\n            \"createdAt\": \"2018-03-18T19:53:54.000Z\",\n            \"id\": \"dab0312e9350004a0c12a2f1968347eb\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"Startups\",\n            \"createdAt\": \"2020-02-28T13:55:57.000Z\",\n            \"id\": \"af7ccb09bd2a8a4e9561e554f5f16971\"\n        }\n    ],\n    \"shortDescription\": [\n        {\n            \"language\": \"fre\",\n            \"text\": \"Dans le cadre du d\u00e9veloppement du secteur du num\u00e9rique, Digital Wallonia propose une cartographie compl\u00e8te des startups et scale-up wallonnes, organis\u00e9es par produits, services et \u00e9cosyst\u00e8mes sectoriels. Celles-ci b\u00e9n\u00e9ficient en outre d\u2019un financement sp\u00e9cifique, notamment au travers du fonds d'investissement W.IN.G, et d'un support op\u00e9rationnel au travers d'un r\u00e9seau structur\u00e9 d'incubateurs et acc\u00e9l\u00e9rateurs\",\n            \"createdAt\": \"2018-03-18T19:53:54.000Z\",\n            \"id\": \"3d8906edbaace37813ea4a0c01d90e6c\"\n        },\n        {\n            \"language\": \"eng\",\n            \"text\": \"As part of the development of the digital sector, Digital Wallonia offers a complete mapping of Walloon start-ups, organised by products, services and sectoral ecosystems. These also benefit from specific financing, notably through the W.IN.G investment fund, and operational support through a structured network of incubators and accelerators\",\n            \"createdAt\": \"2020-02-28T13:55:57.000Z\",\n            \"id\": \"cf69a8308508722d72f06bd058add26g\"\n        }\n    ],\n    \"images\": [\n        {\n            \"type\": \"Banner\",\n            \"container\": \"digitalwallonia-content\",\n            \"name\": \"Startups & Tech\",\n            \"url\": \"https://content.digitalwallonia.be/post/20180322084501/Projet-Startups.png\",\n            \"width\": 830,\n            \"height\": 380,\n            \"sizes\": [\n                \"150x68\",\n                \"300x137\",\n                \"768x351\"\n            ],\n            \"hash\": \"c63321083c1931c3eb392741b65607e5799c35e8fcabd703f5df4f6e3c6fa8814c8d55121047e7464668a166c9ece7b992e73593ca800f998384046d14384576\",\n            \"id\": \"045f524d996461c1687b6aaa36e40a44\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b3afb6a4c11bba097ee?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "5ab93b3afb6a4c11bba097ee"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "60c46c28-e591-d2c9-b24a-643277aaf8f4"
