@@ -2238,6 +2238,62 @@
               "body": "{\"id\":\"8a08f170-cf98-11e7-9f78-dbd672e1342d\",\"v2Id\":null,\"status\":\"Pending\",\"title\":[],\"shortDescription\":[],\"longDescription\":[],\"images\":[],\"contacts\":[],\"createdAt\":\"2017-11-22T15:19:31.590Z\",\"updatedAt\":\"2017-11-22T15:19:31.591Z\",\"slug\":[],\"tags\":[],\"themes\":[]}"
             }
           ]
+        },
+        {
+          "name": "Get export prestataires",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "91d3dc79-a660-4b01-ae3c-1aa6c6a75e6e",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "8f9a4969-400e-43af-b517-a30735114688",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [],
+              "options": {
+                "formdata": {}
+              }
+            },
+            "url": {
+              "raw": "{{env}}/api/v1/organisations/{{organisationID}}?oauth_token={{oauthToken}}",
+              "host": [
+                "{{env}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "organisations",
+                "{{organisationID}}"
+              ],
+              "query": [
+                {
+                  "key": "oauth_token",
+                  "value": "{{oauthToken}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "60c46c28-e591-d2c9-b24a-643277aaf8f4"
