@@ -2050,6 +2050,194 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Patch Image sur Projet",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0eee10fb-022b-4ed6-ba43-cee69159f870",
+                "exec": [
+                  "// R\u00e9cup\u00e9ration du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
+                  "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le param\u00e8tre id est pr\u00e9sent'\"] = jsonData.id;",
+                  "tests[\"Le param\u00e8tre slug est pr\u00e9sent\"] = jsonData.slug[0].slug;",
+                  "tests[\"Le param\u00e8tre title est pr\u00e9sent\"] = jsonData.title[0];",
+                  "tests[\"Le param\u00e8tre statut est pr\u00e9sent\"] = jsonData.status;",
+                  "tests[\"La valeur du param\u00e8tre statut est Published\"] = jsonData.status === \"Published\";",
+                  "tests[\"Le param\u00e8tre title est pr\u00e9sent\"] = jsonData.title[0];",
+                  "tests[\"Le param\u00e8tre statut est pr\u00e9sent\"] = jsonData.status;",
+                  "tests[\"Url de images pr\u00e9sente\"] = jsonData.images[0].url;",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "// Si le JSON comporte un param\u00e8tre id",
+                  "if (responseBody.has(jsonData.id)) {",
+                  "    // On set la valeur de la variable d'environnement id avec l'id fraichement cr\u00e9\u00e9",
+                  "    postman.setEnvironmentVariable(\"projetId\", jsonData.id);",
+                  "}",
+                  "else{",
+                  "    console.log(\"jsonData n'a pas d'id\");",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "8efc49dc-d09c-4f57-a600-ba0dca90bea4",
+                "exec": [
+                  "let currentDate = new Date();",
+                  "pm.environment.set(\"currentDate\", currentDate);",
+                  "console.log(currentDate);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "834b00ef-98ac-44f7-8569-a5d06412889c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\n        \"images\": [ \n          {\n          \"type\": \"Logo\",\n          \"name\": \"Logo Edtechforum\",\n          \"url\": \"https://thumbnails.digitalwallonia.be/97f3eed61d2883ac3fa84b3f40b00078ce58f6f1b3f4d4d25bfe4fd19661696b282dcc9390e9c906abcc5ce61c19445ed01b03ca25884565fc9dbfe2da8385b9/300x87.webp\"\n       }\n    ]\n    }",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/projects/5ab93b39fb6a4c11bba097e8?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "projects",
+                "5ab93b39fb6a4c11bba097e8"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dac22422-1fe3-4a51-bfad-45eda6f93590",
+              "name": "Exemple Post Projet",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"v2Id\":323,\"createdAt\":\"2016-11-17T19:05:23+0100\",\"updatedAt\":\"2017-07-28T15:16:06+0200\",\"slug\":[{\"id\":\"5a1596100c37c\",\"language\":\"fre\",\"slug\":\"wallcode\"}],\"title\":[{\"id\":\"5a1596100c3ce\",\"language\":\"fre\",\"text\":\"#WallCode\"}],\"shortDescription\":[{\"id\":\"5a1596100c413\",\"language\":\"fre\",\"text\":\"Ensemble des \\u00e9l\\u00e9ments relatifs au programme Wallcode : publications, partenaires, \\u00e9v\\u00e9nements, etc. Wallcode est le programme d'initiation des \\u00e9l\\u00e8ves wallons aux sciences informatiques, \\u00e0 la logique algorithmique et aux langages de programmation faisant partie de la strat\\u00e9g["
+                },
+                "url": "{{protocol}}://{{domain}}/api/projects"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true",
+                  "name": "Access-Control-Allow-Credentials",
+                  "description": ""
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "name": "Connection",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "274",
+                  "name": "Content-Length",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "name": "Content-Type",
+                  "description": ""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Nov 2017 15:19:31 GMT",
+                  "name": "Date",
+                  "description": ""
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"112-LU3qg+1QTliBPvl3CnvD7hg8JTM\"",
+                  "name": "ETag",
+                  "description": ""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Origin",
+                  "name": "Vary",
+                  "description": ""
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff",
+                  "name": "X-Content-Type-Options",
+                  "description": ""
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen",
+                  "name": "X-Download-Options",
+                  "description": ""
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY",
+                  "name": "X-Frame-Options",
+                  "description": ""
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block",
+                  "name": "X-XSS-Protection",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\"id\":\"8a08f170-cf98-11e7-9f78-dbd672e1342d\",\"v2Id\":null,\"status\":\"Pending\",\"title\":[],\"shortDescription\":[],\"longDescription\":[],\"images\":[],\"contacts\":[],\"createdAt\":\"2017-11-22T15:19:31.590Z\",\"updatedAt\":\"2017-11-22T15:19:31.591Z\",\"slug\":[],\"tags\":[],\"themes\":[]}"
+            }
+          ]
         }
       ],
       "_postman_id": "60c46c28-e591-d2c9-b24a-643277aaf8f4"
