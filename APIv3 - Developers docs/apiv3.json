@@ -4016,21 +4016,42 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "f6b8844e-f70b-409a-bb57-3d12c074b33b",
                 "exec": [
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
                   "tests[\"Une erreur 404 est bien renvoy\u00e9e\"] = responseCode.code === 404;",
                   "",
                   "postman.clearEnvironmentVariable(\"profileId\");"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "9e0c0490-4a35-2c4e-7f9a-c9aaff668748",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
           },
           "response": []
         },
