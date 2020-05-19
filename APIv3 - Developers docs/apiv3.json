@@ -3758,22 +3758,43 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "e1124fb2-88c6-4e70-8439-32225be9db81",
                 "exec": [
                   "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Le titles est pr\u00e9sent\"] = responseBody.has(\"title\");",
                   "tests[\"Le status est pr\u00e9sent\"] = responseBody.has(\"status\");",
                   "tests[\"Le status est pr\u00e9sent\"] = responseBody.has(\"type\");"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "122a5b38-6684-34ec-3bd1-c71be27b565d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "url": "{{protocol}}://{{domain}}/api/events/{{eventId}}"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/{{eventId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "{{eventId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
           },
           "response": []
         },
