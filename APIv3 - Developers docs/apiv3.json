@@ -239,7 +239,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "982323fa-cfdc-4fd3-98a3-80b57d8a0646",
                 "exec": [
                   "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
                   "",
@@ -247,15 +247,36 @@
                   "",
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
                   "tests[\"Une et un seule publication a \u00e9t\u00e9 supprim\u00e9e\"] = jsonData.count === 1;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "ff2f2595-87d9-c28b-ddc1-68b9e5486782",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "DELETE",
             "header": [],
-            "url": "{{protocol}}://{{domain}}/api/posts/{{postId}}"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/posts/{{postId}}?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
           },
           "response": []
         },
