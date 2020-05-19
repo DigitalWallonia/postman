@@ -4165,7 +4165,7 @@
             {
               "listen": "test",
               "script": {
-                "type": "text/javascript",
+                "id": "9036cb1f-3c10-4cce-b6b8-c11ea42f4ee7",
                 "exec": [
                   "// R\u00e9cup\u00e9ration du JSON complet",
                   "let jsonData = JSON.parse(responseBody);",
@@ -4173,15 +4173,37 @@
                   "// S\u00e9rie de tests sur la pr\u00e9sence des \u00e9l\u00e9ments obligatoires",
                   "tests[`Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
                   "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;"
-                ]
+                ],
+                "type": "text/javascript"
               }
             }
           ],
           "_postman_id": "40e15e48-e0b1-b59c-e28c-c063e79e3472",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
-            "url": "{{protocol}}://{{domain}}/api/events/5a2637b7ce18e431f4853105/posts"
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/events/5ab960dbfb6a4c11bba127e2/posts?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "5ab960dbfb6a4c11bba127e2",
+                "posts"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
           },
           "response": []
         },
