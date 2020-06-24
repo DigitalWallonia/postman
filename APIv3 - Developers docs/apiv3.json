@@ -3856,7 +3856,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?filter[where][partners]=filtre-pole-mecatech&filter[where][status]=Published&filter[where][title.language]=eng&filter[where][slug.language]=eng&access_token={{v3_token}}&filter[where][tags.slug.slug]=agoria&limit=25",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter[where][partners]=filtre-pole-mecatech&filter[where][status]=Published&filter[where][title.language]=eng&filter[where][slug.language]=eng&filter[where][tags.slug.slug]=agoria&filter[fields][tags]=true&filter[fields][partners]=true&filter[fields][title]=true&filter[fields][slug]=true&limit=25&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3883,16 +3883,36 @@
                   "value": "eng"
                 },
                 {
-                  "key": "access_token",
-                  "value": "{{v3_token}}"
-                },
-                {
                   "key": "filter[where][tags.slug.slug]",
                   "value": "agoria"
                 },
                 {
+                  "key": "filter[fields][tags]",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[fields][partners]",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[fields][title]",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[fields][slug]",
+                  "value": "true",
+                  "type": "text"
+                },
+                {
                   "key": "limit",
                   "value": "25"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
                 }
               ]
             }
