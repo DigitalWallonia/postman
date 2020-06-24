@@ -3760,6 +3760,57 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Liste des profils filtr\u00e9s par partenaire (en)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6864cd08-15b9-43e3-a295-8807a14d2638",
+                "exec": [
+                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
+                  "tests[\"On r\u00e9cup\u00e8re bien 10 profils ou moins\"] = jsonData.length <= 10;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "4014f7c4-3eb5-4dac-a093-079086bc7e06",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"fre\" }]}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "843c7266-6cb4-3823-2d5e-4ef4a01499ed"
