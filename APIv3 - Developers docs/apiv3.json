@@ -3711,7 +3711,7 @@
           "response": []
         },
         {
-          "name": "Liste des profils filtr\u00e9s par partenaire",
+          "name": "Liste des profils filtr\u00e9s par partenaire (fr)",
           "event": [
             {
               "listen": "test",
