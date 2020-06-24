@@ -3789,7 +3789,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"eng\" },{\"slug.language\":\"eng\"}]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter[where][partners]=filtre-pole-mecatech&filter[where][status]=Published&filter[where][title.language]=eng&filter[where][slug.language]=eng&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3800,8 +3800,24 @@
               ],
               "query": [
                 {
-                  "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"eng\" },{\"slug.language\":\"eng\"}]}}"
+                  "key": "filter[where][partners]",
+                  "value": "filtre-pole-mecatech",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "eng",
+                  "type": "text"
+                },
+                {
+                  "key": "filter[where][slug.language]",
+                  "value": "eng",
+                  "type": "text"
                 },
                 {
                   "key": "access_token",
