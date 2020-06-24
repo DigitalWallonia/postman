@@ -3827,6 +3827,79 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Liste des profils filtr\u00e9s par partenaire et par tag (en)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6864cd08-15b9-43e3-a295-8807a14d2638",
+                "exec": [
+                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe bien au moins 1 profil\"] = jsonData.length >= 1;",
+                  "tests[\"On r\u00e9cup\u00e8re bien 10 profils ou moins\"] = jsonData.length <= 10;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "e1329ad5-4cfc-4f67-b8ec-afb129e6a55d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter[where][partners]=filtre-pole-mecatech&filter[where][status]=Published&filter[where][title.language]=eng&filter[where][slug.language]=eng&access_token={{v3_token}}&filter[where][tags.slug.slug]=agoria&limit=25",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "profiles"
+              ],
+              "query": [
+                {
+                  "key": "filter[where][partners]",
+                  "value": "filtre-pole-mecatech"
+                },
+                {
+                  "key": "filter[where][status]",
+                  "value": "Published"
+                },
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "eng"
+                },
+                {
+                  "key": "filter[where][slug.language]",
+                  "value": "eng"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                },
+                {
+                  "key": "filter[where][tags.slug.slug]",
+                  "value": "agoria",
+                  "type": "text"
+                },
+                {
+                  "key": "limit",
+                  "value": "25",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "843c7266-6cb4-3823-2d5e-4ef4a01499ed"
