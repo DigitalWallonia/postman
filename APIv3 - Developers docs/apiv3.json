@@ -3888,13 +3888,11 @@
                 },
                 {
                   "key": "filter[where][tags.slug.slug]",
-                  "value": "agoria",
-                  "type": "text"
+                  "value": "agoria"
                 },
                 {
                   "key": "limit",
-                  "value": "25",
-                  "type": "text"
+                  "value": "25"
                 }
               ]
             }
