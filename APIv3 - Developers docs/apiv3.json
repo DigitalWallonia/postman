@@ -3789,7 +3789,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"eng\" }]}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/profiles?filter={\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"eng\" },{\"slug.language\":\"eng\"}]}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -3801,7 +3801,7 @@
               "query": [
                 {
                   "key": "filter",
-                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"eng\" }]}}"
+                  "value": "{\"limit\":10,\"where\":{\"and\": [{ \"partners\": \"filtre-pole-mecatech\" },{\"status\": \"Published\"},{ \"title.language\": \"eng\" },{\"slug.language\":\"eng\"}]}}"
                 },
                 {
                   "key": "access_token",
