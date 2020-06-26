@@ -5247,6 +5247,52 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Liste des tags EN",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4107a7c3-45da-4198-a88b-fe2d255cdb2f",
+                "exec": [
+                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Il existe bien au moins 1 tag\"] = jsonData.length >= 1;"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "b44f7c26-3fae-4266-9d83-6de15b553c1d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "tags"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "545c8b72-02c1-99a2-164d-c80fe500abae"
