@@ -4759,6 +4759,56 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Events filtr\u00e9s par v2ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "515a162a-b925-42ee-8f04-a675fe53251d",
+                "exec": [
+                  "tests[\"Le temps de r\u00e9ponse est inf\u00e9rieur \u00e0 250ms\"] = responseTime < environment.responseTime;",
+                  "",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"La requ\u00eate a \u00e9t\u00e9 accept\u00e9e et trait\u00e9e par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"L'\u00e9l\u00e9ment count est pr\u00e9sent\"] = responseBody.has(\"count\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bdcc6e53-d882-44e1-a782-80bcd82dbd15",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"v2id\":\"14615\"}}&access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "contacts"
+              ],
+              "query": [
+                {
+                  "key": "filter",
+                  "value": "{\"where\":{\"v2id\":\"14615\"}}"
+                },
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "_postman_id": "c5fde80e-7a65-f755-a391-c0c7905d5c98"
@@ -5275,7 +5325,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/tags?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/tags?filter[where][title.language]=eng&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -5285,6 +5335,11 @@
                 "tags"
               ],
               "query": [
+                {
+                  "key": "filter[where][title.language]",
+                  "value": "eng",
+                  "type": "text"
+                },
                 {
                   "key": "access_token",
                   "value": "{{v3_token}}"
