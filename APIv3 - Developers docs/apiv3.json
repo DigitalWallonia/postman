@@ -4787,14 +4787,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/contacts?filter={\"where\":{\"v2id\":\"14615\"}}&access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/events?filter={\"where\":{\"v2id\":\"14615\"}}&access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "contacts"
+                "events"
               ],
               "query": [
                 {
