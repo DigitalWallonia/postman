@@ -3068,7 +3068,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "type": "text/javascript",
+                    "id": "7c4fcecb-c3f4-480c-ae80-bf62623c3f2a",
                     "exec": [
                       "pm.test(\"Successful POST request\", function () {",
                       "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
@@ -3078,16 +3078,20 @@
                       "postman.setEnvironmentVariable(\"profileId\", jsonData.id);",
                       "postman.setNextRequest(\"Add Archived Slug\");",
                       "}"
-                    ]
+                    ],
+                    "type": "text/javascript"
                   }
                 }
               ],
               "_postman_id": "45ecbeec-277e-744e-0ec4-468dd90659e1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
               "request": {
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"title.text\":\"Dogstudio\"}}",
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/findOne?filter={\"where\":{ \"title.text\":\"Dogstudio\"}}&access_token={{v3_token}}",
                   "protocol": "{{protocol}}",
                   "host": [
                     "{{domain}}"
@@ -3101,6 +3105,10 @@
                     {
                       "key": "filter",
                       "value": "{\"where\":{ \"title.text\":\"Dogstudio\"}}"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}"
                     }
                   ]
                 }
@@ -3143,7 +3151,24 @@
                     "raw": {}
                   }
                 },
-                "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}&access_token={{v3_token}}"
+                "url": {
+                  "raw": "{{protocol}}://{{domain}}/api/profiles/5ab951a8fb6a4c11bba103a8?access_token={{v3_token}}",
+                  "protocol": "{{protocol}}",
+                  "host": [
+                    "{{domain}}"
+                  ],
+                  "path": [
+                    "api",
+                    "profiles",
+                    "5ab951a8fb6a4c11bba103a8"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "{{v3_token}}"
+                    }
+                  ]
+                }
               },
               "response": []
             }
