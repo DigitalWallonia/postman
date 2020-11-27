@@ -3113,17 +3113,21 @@
                 {
                   "listen": "test",
                   "script": {
-                    "type": "text/javascript",
+                    "id": "3cac7906-452e-401f-9042-f9df9a0f8b1e",
                     "exec": [
                       "pm.test(\"Successful POST request\", function () {",
                       "    pm.expect(pm.response.code).to.be.oneOf([201,202,200]);",
                       "});",
                       "pm.environment.unset(\"profileId\");"
-                    ]
+                    ],
+                    "type": "text/javascript"
                   }
                 }
               ],
               "_postman_id": "f11fd224-aad7-b1aa-655a-a71783b9f384",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
               "request": {
                 "method": "PATCH",
                 "header": [
@@ -3134,9 +3138,12 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957c5\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957d1\"\n        },\n        {\n            \"language\": \"dut\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957f0\"\n        },\n        {\n            \"language\": \"ger\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd495807\"\n        },\n      {\n          \"language\": \"fre\",\n          \"slug\": \"catstudio\",\n          \"status\": \"Archived\",\n          \"createdAt\": \"2017-10-26T10:40:51.000Z\",\n          \"id\": \"59ef0cd4957r2\"\n      }\n  ]\n}"
+                  "raw": "{\n  \"slug\": [\n        {\n            \"language\": \"fre\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957c5\"\n        },\n        {\n            \"language\": \"eng\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957d1\"\n        },\n        {\n            \"language\": \"dut\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd4957f0\"\n        },\n        {\n            \"language\": \"ger\",\n            \"slug\": \"dogstudio\",\n            \"status\": \"Published\",\n            \"createdAt\": \"2014-11-25T10:40:51.000Z\",\n            \"id\": \"59ef0cd495807\"\n        },\n      {\n          \"language\": \"fre\",\n          \"slug\": \"catstudio\",\n          \"status\": \"Archived\",\n          \"createdAt\": \"2017-10-26T10:40:51.000Z\",\n          \"id\": \"59ef0cd4957r2\"\n      }\n  ]\n}",
+                  "options": {
+                    "raw": {}
+                  }
                 },
-                "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}"
+                "url": "{{protocol}}://{{domain}}/api/profiles/{{profileId}}&access_token={{v3_token}}"
               },
               "response": []
             }
