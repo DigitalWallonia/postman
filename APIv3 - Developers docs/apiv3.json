@@ -7640,6 +7640,73 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Update Linked Public User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent\"] = jsonData.id;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "040477eb-29fa-47a5-916b-6607acae15fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Isabelle\",\r\n    \"lastName\": \"Semeraro\",\r\n    \"password\": \"aOCyzyusAb5h\",\r\n    \"partners\": [\r\n      \"filtre-charleroi-entreprendre\"\r\n    ],\r\n    \"email\": \"Isabelle.Semeraro@Charleroi.be\"\r\n  }"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/users/614c42ba34badc04a9e07d01?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "614c42ba34badc04a9e07d01"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6"
