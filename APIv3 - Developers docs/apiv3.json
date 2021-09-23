@@ -7556,14 +7556,14 @@
               }
             ],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/publicUsers?access_token={{v3_token}}",
+              "raw": "{{protocol}}://{{domain}}/api/users?access_token={{v3_token}}",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "publicUsers"
+                "users"
               ],
               "query": [
                 {
