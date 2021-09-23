@@ -7512,6 +7512,68 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "List Linked Public User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent\"] = jsonData.id;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "7854d2c6-9e96-4caf-9134-97071526bdb1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/publicUsers?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "publicUsers"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6"
