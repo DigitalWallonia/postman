@@ -7574,6 +7574,72 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "New Linked Public User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0712a41f-06b9-4ff2-bf99-08d31025a00e",
+                "exec": [
+                  "// Récupération du JSON complet",
+                  "let jsonData = JSON.parse(responseBody);",
+                  "",
+                  "// Série de tests sur la présence des éléments obligatoires",
+                  "tests[`Le temps de réponse est inférieur à ${environment.responseTime}ms`] = responseTime < environment.responseTime;",
+                  "tests[\"La requête a été acceptée et traitée par le serveur\"] = responseCode.code === 200;",
+                  "tests[\"Le paramètre id est présent\"] = jsonData.id;"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e3ec2b1b-759c-4174-9830-50fd772e7c90",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "2abe2cd2-3b2b-451c-8d4c-bdcd1d4f2e01",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Antoine\",\r\n    \"lastName\": \"Hublet\",\r\n    \"password\": \"aOCbzbdsAb5h\",\r\n    \"partners\": [\r\n      \"filtre-reseau-ia\"\r\n    ],\r\n    \"email\": \"antoine.hublet@adn.be\",\r\n  }"
+            },
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/users?access_token={{v3_token}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "id": "2e169452-7e72-4911-b64e-8ab2c0eaefd6"
