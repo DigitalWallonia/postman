@@ -6027,14 +6027,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages?access_token={{v3_token}}&status=Published&filter[fields][title]=true&filter[fields][slug]=true",
+              "raw": "{{protocol}}://{{domain}}/api/pages/count?access_token={{v3_token}}&status=Published&filter[fields][title]=true&filter[fields][slug]=true",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
               ],
               "path": [
                 "api",
-                "pages"
+                "pages",
+                "count"
               ],
               "query": [
                 {
