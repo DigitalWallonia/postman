@@ -6027,7 +6027,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{protocol}}://{{domain}}/api/pages/count?access_token={{v3_token}}&status=Published&filter[fields][title]=true&filter[fields][slug]=true",
+              "raw": "{{protocol}}://{{domain}}/api/pages/count?access_token={{v3_token}}&status=Published",
               "protocol": "{{protocol}}",
               "host": [
                 "{{domain}}"
@@ -6050,14 +6050,6 @@
                 {
                   "key": "status",
                   "value": "Published"
-                },
-                {
-                  "key": "filter[fields][title]",
-                  "value": "true"
-                },
-                {
-                  "key": "filter[fields][slug]",
-                  "value": "true"
                 }
               ]
             }
