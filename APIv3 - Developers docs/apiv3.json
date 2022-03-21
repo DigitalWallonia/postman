@@ -6055,6 +6055,64 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Liste des pages",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "77700562-a2af-48b1-af52-00a2aeb27a6c",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "2b9fdf52-0d9b-4a70-ae40-187457e6633d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{domain}}/api/pages?access_token={{v3_token}}&status=Published&filter[fields][title]=true&filter[fields][slug]=true&limit=50",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{domain}}"
+              ],
+              "path": [
+                "api",
+                "pages"
+              ],
+              "query": [
+                {
+                  "key": "access_token",
+                  "value": "{{v3_token}}"
+                },
+                {
+                  "key": "status",
+                  "value": "Published"
+                },
+                {
+                  "key": "filter[fields][title]",
+                  "value": "true"
+                },
+                {
+                  "key": "filter[fields][slug]",
+                  "value": "true"
+                },
+                {
+                  "key": "limit",
+                  "value": "50",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "id": "e5fdd8b2-cc62-689b-10cf-86a926cb4658"
